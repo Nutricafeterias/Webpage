@@ -1,0 +1,201 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { ArrowRight, Star } from 'lucide-react'
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import Image from 'next/image'
+
+const floaters = [
+  { emoji: '🍎', size: 'text-4xl', x: '8%',  y: '15%', delay: 0,   dur: 4 },
+  { emoji: '🥗', size: 'text-3xl', x: '6%',  y: '60%', delay: 0.5, dur: 5 },
+  { emoji: '🌮', size: 'text-4xl', x: '90%', y: '20%', delay: 0.3, dur: 3.5 },
+  { emoji: '🍊', size: 'text-3xl', x: '88%', y: '65%', delay: 0.8, dur: 4.5 },
+  { emoji: '🥦', size: 'text-2xl', x: '50%', y: '8%',  delay: 0.2, dur: 5 },
+  { emoji: '🍌', size: 'text-2xl', x: '75%', y: '80%', delay: 1,   dur: 3.8 },
+]
+
+export function Hero() {
+  return (
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-amber-50 flex items-center pt-20">
+
+      {/* Big blob backgrounds */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-100 rounded-full opacity-40 animate-blob blur-3xl -translate-y-32 translate-x-32 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-100 rounded-full opacity-40 animate-blob blur-3xl translate-y-24 -translate-x-24 pointer-events-none" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-orange-50 rounded-full opacity-50 blur-3xl pointer-events-none" />
+
+      {/* Floating food emojis */}
+      {floaters.map((f, i) => (
+        <motion.span
+          key={i}
+          className={`${f.size} absolute pointer-events-none select-none z-10`}
+          style={{ left: f.x, top: f.y }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: [0, -12, 0] }}
+          transition={{
+            opacity: { delay: f.delay, duration: 0.5 },
+            y: { delay: f.delay, duration: f.dur, repeat: Infinity, ease: 'easeInOut' },
+          }}
+        >
+          {f.emoji}
+        </motion.span>
+      ))}
+
+      <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-16">
+
+        {/* LEFT */}
+        <div>
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 text-sm font-semibold mb-6 shadow-sm"
+          >
+            <Star className="w-3.5 h-3.5 fill-emerald-500 text-emerald-500" />
+            Operador de cafeterías escolares #1 en México
+          </motion.div>
+
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-5xl md:text-6xl lg:text-[4.2rem] font-black leading-[1.05] text-stone-900 tracking-tight"
+          >
+            La cafetería,
+            <br />
+            <span className="gradient-text-primary">el lugar favorito</span>
+            <br />
+            de tu escuela 🎉
+          </motion.h1>
+
+          {/* Sub */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="mt-5 text-lg text-stone-600 leading-relaxed max-w-xl"
+          >
+            Hacemos que los alumnos <strong className="text-stone-900">amen la hora del almuerzo</strong>.
+            Operamos cafeterías escolares de forma integral con servicio rápido,
+            alimentación saludable y tecnología que hace todo más fácil.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="mt-8 flex flex-col sm:flex-row gap-4"
+          >
+            <a
+              href="#contacto"
+              className="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-base transition-all duration-200 shadow-lg shadow-emerald-200 hover:shadow-emerald-300 hover:scale-[1.03] active:scale-[0.98]"
+            >
+              ¡Agenda una reunión gratis!
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a
+              href="https://wa.me/5215567034269"
+              className="group inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white hover:bg-green-50 border-2 border-stone-200 hover:border-green-300 text-stone-800 font-semibold transition-all duration-200 shadow-sm"
+            >
+              <WhatsAppIcon className="w-4 h-4 text-green-500" />
+              Hablar por WhatsApp
+            </a>
+          </motion.div>
+
+          {/* Trust row */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="mt-8 flex flex-wrap items-center gap-3"
+          >
+            {/* Avatars stack */}
+            <div className="flex -space-x-2">
+              {['👨‍🏫','👩‍🏫','👨‍💼','👩‍💼','🧑‍🎓'].map((e, i) => (
+                <span key={i} className="w-9 h-9 rounded-full bg-emerald-100 border-2 border-white flex items-center justify-center text-lg shadow-sm">{e}</span>
+              ))}
+            </div>
+            <div>
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+              <p className="text-xs text-stone-500 mt-0.5">
+                <strong className="text-stone-700">+10 escuelas</strong> confían en nosotros
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* RIGHT – photo collage */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative h-[520px] hidden lg:block"
+        >
+          {/* Main photo */}
+          <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl shadow-emerald-100 border-4 border-white">
+            <Image
+              src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&h=600&fit=crop&q=85"
+              alt="Alumnos felices en cafetería"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+          </div>
+
+          {/* Floating stat card 1 */}
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -bottom-4 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 border border-emerald-100"
+          >
+            <span className="text-3xl">⚡</span>
+            <div>
+              <div className="text-xl font-black text-stone-900">{'<'}3 min</div>
+              <div className="text-xs text-stone-500">Tiempo de espera</div>
+            </div>
+          </motion.div>
+
+          {/* Floating stat card 2 */}
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+            className="absolute -top-4 -right-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 border border-amber-100"
+          >
+            <span className="text-3xl">😊</span>
+            <div>
+              <div className="text-xl font-black text-stone-900">97%</div>
+              <div className="text-xs text-stone-500">Satisfacción</div>
+            </div>
+          </motion.div>
+
+          {/* Floating stat card 3 */}
+          <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+            className="absolute top-1/2 -right-8 bg-emerald-500 text-white rounded-2xl shadow-xl p-4 flex items-center gap-3"
+          >
+            <span className="text-3xl">🏫</span>
+            <div>
+              <div className="text-xl font-black">+10</div>
+              <div className="text-xs opacity-80">Escuelas</div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Wave bottom */}
+      <div className="wave-bottom">
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-12">
+          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#ffffff" />
+        </svg>
+      </div>
+    </section>
+  )
+}
