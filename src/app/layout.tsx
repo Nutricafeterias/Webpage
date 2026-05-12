@@ -10,20 +10,23 @@ const jakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Nutri Cafeterías — Cafeterías Escolares en México | Servicio Integral',
+  title: 'Cafeterías Escolares en México | Nutri Cafeterías — Comedores Escolares CDMX',
   description:
-    'Operamos cafeterías escolares de forma integral: servicio rápido, alimentación saludable y tecnología de vanguardia. Más de 10 años de experiencia en escuelas privadas de México. 97% de satisfacción.',
+    'Operamos cafeterías y comedores escolares en escuelas privadas de México. Servicio integral, alimentación saludable, tecnología de pago con huella y app para padres. +10 años de experiencia en CDMX. 97% satisfacción.',
   keywords: [
     'cafetería escolar',
     'cafeterías escolares México',
+    'comedor escolar CDMX',
+    'comedores escolares Ciudad de México',
     'operación cafetería escolar',
-    'comedor escolar',
-    'comedores escolares CDMX',
-    'cafetería escuela privada',
-    'alimentación saludable escuelas',
+    'cafetería escuela privada México',
     'concesión cafetería escolar',
-    'servicio cafetería colegio',
+    'servicio cafetería colegio privado',
+    'alimentación saludable escuelas',
+    'cafetería escolar integral',
+    'administración cafetería escolar',
     'nutri cafeterías',
+    'cafeteriasescolares',
   ],
   authors: [{ name: 'Nutri Cafeterías' }],
   creator: 'Nutri Cafeterías',

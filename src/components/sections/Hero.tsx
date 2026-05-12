@@ -62,11 +62,11 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-5xl md:text-6xl lg:text-[4.2rem] font-black leading-[1.05] text-stone-900 tracking-tight"
           >
-            La cafetería,
+            Cafeterías escolares
             <br />
-            <span className="gradient-text-primary">el lugar favorito</span>
+            <span className="gradient-text-primary">que los alumnos</span>
             <br />
-            de tu escuela 🎉
+            realmente aman 🎉
           </motion.h1>
 
           {/* Sub */}
@@ -76,9 +76,9 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-5 text-lg text-stone-600 leading-relaxed max-w-xl"
           >
-            Hacemos que los alumnos <strong className="text-stone-900">amen la hora del almuerzo</strong>.
-            Operamos cafeterías escolares de forma integral con servicio rápido,
-            alimentación saludable y tecnología que hace todo más fácil.
+            Operamos <strong className="text-stone-900">cafeterías y comedores escolares</strong> de forma integral en escuelas privadas de México.
+            Servicio rápido, alimentación saludable y tecnología de vanguardia.
+            Con presencia en CDMX y más de 10 años de experiencia.
           </motion.p>
 
           {/* CTAs */}
