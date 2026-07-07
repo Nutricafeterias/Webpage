@@ -3,6 +3,7 @@ import { Hero } from '@/components/sections/Hero'
 import { Marquee } from '@/components/sections/Marquee'
 import { StatsBar } from '@/components/sections/StatsBar'
 import { Problem } from '@/components/sections/Problem'
+import { DiagnosticTeaser } from '@/components/sections/DiagnosticTeaser'
 import { Experience } from '@/components/sections/Experience'
 import { Services } from '@/components/sections/Services'
 import { MenuPreview } from '@/components/sections/MenuPreview'
@@ -43,6 +44,7 @@ export default function Home() {
         <Marquee />
         <StatsBar />
         <Problem />
+        <DiagnosticTeaser />
         <Experience />
         <Services />
         <MenuPreview />

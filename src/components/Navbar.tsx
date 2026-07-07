@@ -6,13 +6,13 @@ import { Menu, X, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
 const links = [
-  { href: '/#servicios',  label: '🌟 Servicios' },
-  { href: '/#programas',  label: '🎓 Programas' },
-  { href: '/#tecnologia', label: '📱 Tecnología' },
-  { href: '/#padres',     label: '👨‍👩‍👧 Padres' },
-  { href: '/#escuelas',   label: '🏫 Escuelas' },
-  { href: '/blog',        label: '📝 Blog' },
-  { href: '/#faq',        label: '❓ FAQ' },
+  { href: '/diagnostico', label: '📊 Evalúa tu escuela' },
+  { href: '/#servicios',   label: '🌟 Servicios' },
+  { href: '/#programas',   label: '🎓 Programas' },
+  { href: '/#tecnologia',  label: '📱 Tecnología' },
+  { href: '/#escuelas',    label: '🏫 Escuelas' },
+  { href: '/blog',         label: '📝 Blog' },
+  { href: '/#faq',         label: '❓ FAQ' },
 ]
 
 export function Navbar() {
