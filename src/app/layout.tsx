@@ -97,6 +97,10 @@ const jsonLd = {
     { '@type': 'AdministrativeArea', name: 'Área Metropolitana del Valle de México' },
   ],
   serviceType: 'Operación integral de cafeterías escolares',
+  hasCredential: [
+    { '@type': 'EducationalOccupationalCredential', credentialCategory: 'certification', name: 'Distintivo H' },
+    { '@type': 'EducationalOccupationalCredential', credentialCategory: 'license', name: 'Licencia sanitaria' },
+  ],
   knowsAbout: [
     'cafeterías escolares',
     'comedores escolares',

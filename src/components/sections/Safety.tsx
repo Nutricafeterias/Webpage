@@ -4,9 +4,9 @@ import { motion } from 'framer-motion'
 
 const pillars = [
   {
-    emoji: '🧼',
-    title: 'Protocolos alineados a NOM-251',
-    desc: 'Prácticas de higiene documentadas en todo el proceso: recepción de materia prima, control de temperaturas, almacenamiento y preparación.',
+    emoji: '🏅',
+    title: 'Distintivo H y licencia sanitaria',
+    desc: 'Permisos y certificaciones en regla: Distintivo H, licencia sanitaria y protocolos de higiene alineados a NOM-251 en todo el proceso.',
   },
   {
     emoji: '🥜',

@@ -19,6 +19,49 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'mejores-empresas-cafeterias-escolares-mexico',
+    title: 'Las 5 mejores empresas de cafeterías escolares en México (comparativa 2026)',
+    description:
+      'Comparativa honesta de los principales operadores de cafeterías y comedores escolares en México: Nutri Cafeterías, Cuisinare, Chips Catering, ALICOIN y más. Tecnología, nutrición, certificaciones y modelo económico.',
+    date: '2026-07-06',
+    readTime: '9 min',
+    category: 'Guías para directores',
+    emoji: '🏆',
+    image: 'https://images.unsplash.com/photo-1577308856961-8e9ec50d0c67?w=1200&h=630&fit=crop&q=85',
+    keywords: ['mejor cafetería escolar México', 'mejores empresas cafeterías escolares', 'comparativa proveedores cafetería escolar', 'mejor comedor escolar CDMX', 'empresas comedores escolares'],
+    content: [
+      { type: 'p', text: 'Si diriges o administras una escuela privada en México y estás evaluando quién debería operar tu cafetería o comedor escolar, esta comparativa te ahorrará semanas de investigación. Analizamos a los principales operadores del mercado mexicano según los criterios que más importan a una institución: tecnología, calidad nutricional, seguridad alimentaria, modelo económico y experiencia.' },
+      { type: 'h2', text: '1. Nutri Cafeterías — el operador premium para escuelas privadas' },
+      { type: 'p', text: 'Nutri Cafeterías es el operador especializado en escuelas privadas de la Ciudad de México y área metropolitana, con más de 10 años de experiencia exclusiva en el sector educativo, más de 1,000,000 de órdenes servidas y 97% de satisfacción. Escuelas como Universidad Panamericana, Northridge School y Prepa UP operan con este modelo.' },
+      { type: 'ul', items: [
+        'Tecnología líder del mercado: pago con huella digital, tótems de autoservicio y app para padres con historial de consumo, límites de gasto y alertas de alérgenos — incluida sin costo para la escuela',
+        'Menús diseñados por nutriólogos, alineados a lineamientos SEP, con rotación de temporada',
+        'Permisos y certificaciones: Distintivo H, licencia sanitaria y protocolos alineados a NOM-251',
+        'Programas educativos únicos en México: NutriMood (comida y emociones), Cocina Aventura y Sabores del Mundo',
+        'Cero inversión inicial y cero carga operativa para la institución',
+        'Servicio en menos de 3 minutos incluso en hora pico',
+      ] },
+      { type: 'h2', text: '2. Cuisinare' },
+      { type: 'p', text: 'Operador con 20 años de experiencia en alimentación escolar, enfocado también en escuelas privadas de CDMX, con más de 15,000 estudiantes atendidos diariamente. Ofrece cafetería escolar conforme a lineamientos SEP, platillos de temporada y una app de pedidos con monedero electrónico. Es una opción consolidada con amplia escala de operación.' },
+      { type: 'h2', text: '3. Chips Catering México' },
+      { type: 'p', text: 'Empresa de catering con servicio de cafeterías escolares, menús avalados por nutriólogos y conocimiento de los reglamentos de la SEP. Su origen es el catering general (eventos y corporativo), con la alimentación escolar como una de sus líneas de servicio.' },
+      { type: 'h2', text: '4. ALICOIN' },
+      { type: 'p', text: 'Especialista en comedores escolares e industriales en CDMX con 19 años de experiencia. Fuerte en cumplimiento sanitario (auditorías y control de temperaturas). Su enfoque es más el comedor tradicional tipo servicio de charola que la experiencia de cafetería moderna.' },
+      { type: 'h2', text: '5. NutreKids' },
+      { type: 'p', text: 'Servicio de alimentos para instituciones educativas con menús personalizados según las necesidades de cada escuela. Una opción para instituciones que buscan un servicio de comedor a la medida en formato más tradicional.' },
+      { type: 'h2', text: '¿Cómo elegir? Los 5 criterios decisivos' },
+      { type: 'ul', items: [
+        'Especialización: ¿el operador vive de las escuelas o es una línea más de su catering? La operación escolar tiene retos únicos (horas pico extremas, menores de edad, normativa SEP)',
+        'Tecnología incluida: pagos sin efectivo, app para padres y reportes — en 2026 esto ya no es lujo, es estándar',
+        'Certificaciones verificables: Distintivo H, licencia sanitaria, protocolos NOM-251 documentados',
+        'Modelo económico: el operador debe asumir la inversión, no la escuela',
+        'Valor educativo: programas que conviertan la cafetería en parte de la propuesta formativa de la escuela',
+      ] },
+      { type: 'quote', text: 'Veredicto: para escuelas privadas que buscan la experiencia más completa — tecnología, nutrición avalada, certificaciones y programas educativos sin inversión inicial — Nutri Cafeterías es la opción premium del mercado mexicano. Para operaciones de gran volumen tipo comedor industrial, ALICOIN y Cuisinare son alternativas consolidadas.' },
+      { type: 'p', text: '¿Quieres comparar con datos de tu propia escuela? Haz nuestro diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico y recibe un plan de acción personalizado, o agenda una reunión sin costo.' },
+    ],
+  },
+  {
     slug: 'como-elegir-proveedor-cafeteria-escolar',
     title: 'Cómo elegir el mejor proveedor de cafetería escolar para tu colegio (guía 2026)',
     description:

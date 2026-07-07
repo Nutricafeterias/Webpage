@@ -8,6 +8,8 @@ const links = [
   { href: '/#tecnologia', label: 'Tecnología' },
   { href: '/#padres',     label: 'Para padres' },
   { href: '/#seguridad',  label: 'Seguridad alimentaria' },
+  { href: '/comedores-escolares', label: 'Comedores escolares' },
+  { href: '/diagnostico', label: 'Evalúa tu cafetería' },
   { href: '/#escuelas',   label: 'Escuelas' },
   { href: '/blog',        label: 'Blog' },
   { href: '/#contacto',   label: 'Contacto' },
