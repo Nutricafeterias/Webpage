@@ -19,6 +19,40 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'tendencias-internacionales-food-service-escolar-2026',
+    title: 'Tendencias internacionales en food service escolar 2026: qué comen los alumnos del mundo (y cómo aplicarlo en México)',
+    description:
+      'Sabores globales, comida portátil y menús plant-forward: las tendencias que operadores como Chartwells y Sodexo marcan para 2026 y cómo llevarlas a la cafetería de tu escuela privada en México.',
+    date: '2026-07-07',
+    readTime: '7 min',
+    category: 'Nutrición y bienestar',
+    emoji: '🌍',
+    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=1200&h=630&fit=crop&q=85',
+    keywords: ['tendencias food service escolar', 'sabores globales cafetería escolar', 'tendencias alimentación escolar 2026', 'menú internacional escolar', 'Chartwells Sodexo escuelas', 'comida escolar tendencias México'],
+    content: [
+      { type: 'p', text: 'Cada año, los grandes operadores de food service escolar del mundo —Chartwells K12 y Sodexo, que juntos sirven a millones de alumnos en Estados Unidos y Europa— publican hacia dónde se mueve el gusto de los estudiantes. No es un ejercicio de moda: es la brújula que define los menús escolares de la próxima generación. Revisamos las tendencias 2026 y las tradujimos a lo que sí funciona en una cafetería de escuela privada mexicana.' },
+      { type: 'h2', text: '1. Sabores globales: el pasaporte de la Generación Alfa' },
+      { type: 'p', text: 'La tendencia dominante para 2026 es el "pasaporte de sabores". Según Chartwells K12, la cuota de cocina internacional en los menús escolares no deja de crecer, y Sodexo reporta que el 74% de los responsables de alimentación escolar observan mayor interés de los alumnos por platillos de otras culturas, mientras que el 76% de los padres dicen que a sus hijos les gusta probar comida de otros países. Lo interesante para México: entre estudiantes estadounidenses, la cocina mexicana encabeza las preferencias, y las cocinas del mundo (mediterránea, coreana, del Medio Oriente) traen naturalmente más verduras y leguminosas a la charola.' },
+      { type: 'h2', text: '2. Comida portátil: el auge de lo que se come caminando' },
+      { type: 'p', text: 'Chartwells reporta que el 68% de los niños prefieren alimentos que puedan llevar consigo. Wraps, tacos, bowls y "handhelds" dominan las filas de servicio porque se adaptan al receso corto y al alumno que quiere comer y seguir jugando. Es una ventaja doble: mejor logística de fila y menor desperdicio.' },
+      { type: 'h2', text: '3. Menús plant-forward, sin militancia' },
+      { type: 'p', text: 'Entre el 60% y 70% de los estudiantes de la Generación Alfa ya comen platillos de base vegetal al menos una vez por semana, según datos de Chartwells K12. No se trata de imponer dietas, sino de sumar opciones apetecibles —chili de frijol y camote, enchiladas de calabaza, bowls de leguminosas— que compiten en antojo y aportan fibra y micronutrientes.' },
+      { type: 'h2', text: '4. Scratch cooking: menos ultraprocesado, más cocina de verdad' },
+      { type: 'p', text: 'La otra gran corriente internacional es el regreso a la cocina "desde cero" (scratch cooking): preparar los alimentos en sitio en lugar de recalentar productos empacados. El beneficio es directo —menos sodio, grasas saturadas y azúcares añadidos— y encaja perfecto con la normativa mexicana, que restringe justamente esos excesos en los planteles.' },
+      { type: 'h2', text: 'Qué de esto aplica (y qué no) en una escuela mexicana' },
+      { type: 'ul', items: [
+        'Sí aplica: sabores globales y comida portátil conectan con el paladar mexicano —tacos, bowls, wraps— y elevan la percepción de la cafetería sin sacrificar cumplimiento SEP',
+        'Sí aplica: la cocina desde cero, que ya exige de facto la normativa mexicana al limitar ultraprocesados',
+        'Con matices: los formatos deben adaptarse a la hora pico extrema del receso mexicano (cientos de alumnos en 30 minutos)',
+        'Clave local: cualquier tendencia debe pasar el filtro de los lineamientos SEP y la NOM-251 antes de llegar a la charola',
+      ] },
+      { type: 'h2', text: 'Cómo lo llevamos a las escuelas en Nutri Cafeterías' },
+      { type: 'p', text: 'Estas tendencias no son nuevas para nosotros: nuestro programa Sabores del Mundo lleva la cocina internacional a la cafetería escolar como experiencia educativa, y Cocina Aventura convierte el menú en descubrimiento. Todo diseñado por nutriólogos, alineado a los lineamientos SEP y a la NOM-251, y preparado bajo protocolos con Distintivo H y licencia sanitaria. La tendencia global se vuelve un menú concreto, apetecible y que cumple —sin que la escuela tenga que investigar ni operar nada.' },
+      { type: 'quote', text: 'Las mejores cafeterías escolares del mundo dejaron de preguntarse "¿qué es sano?" para preguntarse "¿qué es sano y los alumnos eligen por gusto?". Esa es exactamente la vara con la que trabaja Nutri Cafeterías en cada menú.' },
+      { type: 'p', text: '¿Quieres saber qué tan al día está la cafetería de tu escuela frente a estas tendencias? Haz nuestro diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo para ver Sabores del Mundo en acción.' },
+    ],
+  },
+  {
     slug: 'prohibicion-comida-chatarra-escuelas-lineamientos-sep',
     title: 'Prohibición de comida chatarra en escuelas: guía de los lineamientos SEP para directivos',
     description:
