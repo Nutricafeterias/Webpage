@@ -18,6 +18,7 @@ const menus = [
     label: 'Recursos',
     items: [
       { href: '/diagnostico', label: 'Evalúa tu escuela', desc: 'Diagnóstico gratis en 2 minutos' },
+      { href: '/lineamientos-sep', label: 'Lineamientos SEP', desc: 'Cumplimiento garantizado' },
       { href: '/blog',        label: 'Blog', desc: 'Guías para directores' },
       { href: '/#faq',        label: 'Preguntas frecuentes', desc: 'Respuestas claras' },
     ],

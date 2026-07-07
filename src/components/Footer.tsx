@@ -8,6 +8,7 @@ const links = [
   { href: '/catering-escolar',     label: 'Catering para eventos' },
   { href: '/programas',   label: 'Programas educativos' },
   { href: '/menus',       label: 'Menús' },
+  { href: '/lineamientos-sep', label: 'Lineamientos SEP' },
   { href: '/nosotros',    label: 'Nosotros' },
   { href: '/diagnostico', label: 'Evalúa tu cafetería' },
   { href: '/blog',        label: 'Blog' },

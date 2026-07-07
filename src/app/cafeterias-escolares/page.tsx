@@ -10,6 +10,7 @@ import { MenuPreview } from '@/components/sections/MenuPreview'
 import { Programs } from '@/components/sections/Programs'
 import { Parents } from '@/components/sections/Parents'
 import { HowItWorks } from '@/components/sections/HowItWorks'
+import { CafeteriaStyles } from '@/components/sections/CafeteriaStyles'
 import { BeforeAfter } from '@/components/sections/BeforeAfter'
 import { Safety } from '@/components/sections/Safety'
 
@@ -96,6 +97,7 @@ export default function CafeteriasEscolaresPage() {
 
         <Experience />
         <Services />
+        <CafeteriaStyles />
         <MenuPreview />
         <Programs />
         <Parents />

@@ -3,6 +3,7 @@ import { Hero } from '@/components/sections/Hero'
 import { Marquee } from '@/components/sections/Marquee'
 import { StatsBar } from '@/components/sections/StatsBar'
 import { Problem } from '@/components/sections/Problem'
+import { SepBanner } from '@/components/sections/SepBanner'
 import { DiagnosticTeaser } from '@/components/sections/DiagnosticTeaser'
 import { ServicesSplit } from '@/components/sections/ServicesSplit'
 import { Technology } from '@/components/sections/Technology'
@@ -37,6 +38,7 @@ export default function Home() {
         <Marquee />
         <StatsBar />
         <Problem />
+        <SepBanner />
         <DiagnosticTeaser />
         <ServicesSplit />
         <Technology />
