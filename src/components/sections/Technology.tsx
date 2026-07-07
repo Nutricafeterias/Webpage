@@ -25,7 +25,7 @@ export function Technology() {
           <h2 className="text-4xl md:text-5xl font-black text-stone-900 leading-tight">
             La cafetería más{' '}
             <span className="gradient-text-primary">moderna</span>{' '}
-            de la ciudad 🚀
+            de la ciudad
           </h2>
           <p className="mt-4 text-stone-500 max-w-2xl mx-auto text-lg">
             Integrada de forma invisible. Fácil de usar para alumnos de cualquier edad.
@@ -61,7 +61,7 @@ export function Technology() {
           <p className="text-2xl md:text-3xl font-black text-white relative z-10">
             Menos de <span className="bg-white text-emerald-600 px-2 rounded-lg">3 minutos</span> desde que el alumno llega hasta que recibe su pedido
           </p>
-          <p className="mt-2 text-emerald-100 relative z-10">Incluso en horas pico 🎉</p>
+          <p className="mt-2 text-emerald-100 relative z-10">Incluso en horas pico.</p>
         </motion.div>
       </div>
     </section>

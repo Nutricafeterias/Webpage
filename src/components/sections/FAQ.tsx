@@ -60,7 +60,7 @@ export function FAQ() {
           </h2>
           <p className="mt-4 text-stone-500 text-lg">
             Elegir quién opera la cafetería de tu escuela es una decisión importante.
-            Aquí respondemos todo con total claridad. 👇
+            Aquí respondemos todo con total claridad.
           </p>
         </motion.div>
 

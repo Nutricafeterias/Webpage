@@ -3,15 +3,15 @@ import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import Image from 'next/image'
 
 const links = [
-  { href: '/#servicios',  label: 'Servicios' },
-  { href: '/#programas',  label: 'Programas' },
-  { href: '/#tecnologia', label: 'Tecnología' },
-  { href: '/#padres',     label: 'Para padres' },
-  { href: '/#seguridad',  label: 'Seguridad alimentaria' },
-  { href: '/comedores-escolares', label: 'Comedores escolares' },
+  { href: '/cafeterias-escolares', label: 'Cafeterías escolares' },
+  { href: '/comedores-escolares',  label: 'Comedores escolares' },
+  { href: '/catering-escolar',     label: 'Catering para eventos' },
+  { href: '/programas',   label: 'Programas educativos' },
+  { href: '/menus',       label: 'Menús' },
+  { href: '/nosotros',    label: 'Nosotros' },
   { href: '/diagnostico', label: 'Evalúa tu cafetería' },
-  { href: '/#escuelas',   label: 'Escuelas' },
   { href: '/blog',        label: 'Blog' },
+  { href: '/#faq',        label: 'Preguntas frecuentes' },
   { href: '/#contacto',   label: 'Contacto' },
 ]
 

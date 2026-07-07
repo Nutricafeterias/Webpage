@@ -5,15 +5,6 @@ import { ArrowRight, Star } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import Image from 'next/image'
 
-const floaters = [
-  { emoji: '🍎', size: 'text-4xl', x: '8%',  y: '15%', delay: 0,   dur: 4 },
-  { emoji: '🥗', size: 'text-3xl', x: '6%',  y: '60%', delay: 0.5, dur: 5 },
-  { emoji: '🌮', size: 'text-4xl', x: '90%', y: '20%', delay: 0.3, dur: 3.5 },
-  { emoji: '🍊', size: 'text-3xl', x: '88%', y: '65%', delay: 0.8, dur: 4.5 },
-  { emoji: '🥦', size: 'text-2xl', x: '50%', y: '8%',  delay: 0.2, dur: 5 },
-  { emoji: '🍌', size: 'text-2xl', x: '75%', y: '80%', delay: 1,   dur: 3.8 },
-]
-
 export function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-amber-50 flex items-center pt-20">
@@ -22,23 +13,6 @@ export function Hero() {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-100 rounded-full opacity-40 animate-blob blur-3xl -translate-y-32 translate-x-32 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-100 rounded-full opacity-40 animate-blob blur-3xl translate-y-24 -translate-x-24 pointer-events-none" style={{ animationDelay: '3s' }} />
       <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-orange-50 rounded-full opacity-50 blur-3xl pointer-events-none" />
-
-      {/* Floating food emojis */}
-      {floaters.map((f, i) => (
-        <motion.span
-          key={i}
-          className={`${f.size} absolute pointer-events-none select-none z-10`}
-          style={{ left: f.x, top: f.y }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: [0, -12, 0] }}
-          transition={{
-            opacity: { delay: f.delay, duration: 0.5 },
-            y: { delay: f.delay, duration: f.dur, repeat: Infinity, ease: 'easeInOut' },
-          }}
-        >
-          {f.emoji}
-        </motion.span>
-      ))}
 
       <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-16">
 
@@ -66,7 +40,7 @@ export function Hero() {
             <br />
             <span className="gradient-text-primary">que los alumnos</span>
             <br />
-            realmente aman 🎉
+            realmente aman
           </motion.h1>
 
           {/* Sub */}

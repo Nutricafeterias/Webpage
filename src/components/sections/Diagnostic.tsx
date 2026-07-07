@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
+import { track } from '@vercel/analytics'
 import { ArrowRight, ArrowLeft, Loader2, CheckCircle, Lock } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 
@@ -191,6 +192,7 @@ export function Diagnostic() {
       // No bloqueamos el resultado por un error de red — el lead ya invirtió su tiempo
     }
     setSending(false)
+    track('diagnostico_completado', { puntaje: pct, escuela: lead.escuela })
     setStage('result')
   }
 

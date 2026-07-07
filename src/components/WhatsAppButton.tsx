@@ -1,6 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
+import { track } from '@vercel/analytics'
 import { X } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { useState } from 'react'
@@ -41,6 +42,7 @@ export function WhatsAppButton() {
               href="https://wa.me/5215567034269?text=Hola!%20Me%20interesa%20conocer%20más%20sobre%20Nutri%20Cafeterías"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => track('whatsapp_click', { origen: 'boton_flotante' })}
               className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm transition-all shadow-md shadow-emerald-200 hover:scale-[1.02]"
             >
               <WhatsAppIcon className="w-4 h-4" />

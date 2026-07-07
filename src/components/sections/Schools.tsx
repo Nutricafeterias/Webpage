@@ -2,12 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { Star } from 'lucide-react'
-import Image from 'next/image'
 
 const schools = [
-  { name: 'Universidad Panamericana', location: 'CDMX', emoji: '🎓', image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=500&h=320&fit=crop&q=85' },
-  { name: 'Northridge School',        location: 'CDMX', emoji: '📚', image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500&h=320&fit=crop&q=85' },
-  { name: 'Prepa UP',                 location: 'CDMX', emoji: '🏛️', image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=320&fit=crop&q=85' },
+  { name: 'Universidad Panamericana', location: 'Ciudad de México', initials: 'UP',  gradient: 'from-emerald-600 to-teal-700' },
+  { name: 'Northridge School',        location: 'Ciudad de México', initials: 'NS',  gradient: 'from-stone-700 to-stone-900' },
+  { name: 'Prepa UP',                 location: 'Ciudad de México', initials: 'PUP', gradient: 'from-amber-500 to-orange-600' },
 ]
 
 const testimonials = [
@@ -46,7 +45,7 @@ export function Schools() {
             <span className="gradient-text-primary">más de 10 instituciones</span>
           </h2>
           <p className="mt-4 text-stone-500 max-w-xl mx-auto text-lg">
-            Escuelas privadas de primer nivel en México que transformaron su cafetería con nosotros. 🌟
+            Escuelas privadas de primer nivel en México que transformaron su cafetería con nosotros.
           </p>
         </motion.div>
 
@@ -59,23 +58,16 @@ export function Schools() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="card-lift relative rounded-2xl overflow-hidden border-2 border-stone-100 group shadow-md"
+              className={`card-lift relative rounded-2xl overflow-hidden group shadow-md bg-gradient-to-br ${school.gradient}`}
             >
-              <div className="relative h-48">
-                <Image
-                  src={school.image}
-                  alt={school.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+              <div className="relative h-44 flex items-center justify-center">
+                <span className="text-6xl font-black text-white/20 tracking-tight select-none group-hover:scale-110 transition-transform duration-500">
+                  {school.initials}
+                </span>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end gap-2">
-                <span className="text-2xl">{school.emoji}</span>
-                <div>
-                  <div className="font-black text-white text-sm">{school.name}</div>
-                  <div className="text-xs text-white/60">{school.location}</div>
-                </div>
+              <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/40 to-transparent">
+                <div className="font-black text-white">{school.name}</div>
+                <div className="text-xs text-white/70 mt-0.5">{school.location}</div>
               </div>
             </motion.div>
           ))}

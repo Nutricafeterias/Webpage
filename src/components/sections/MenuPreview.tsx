@@ -35,7 +35,7 @@ export function MenuPreview() {
           </h2>
           <p className="mt-4 text-stone-500 max-w-xl mx-auto text-lg">
             Equilibramos nutrición con preferencias reales. Diseñada con nutriólogos,
-            adaptada a cada escuela, fresca todos los días. 🥦
+            adaptada a cada escuela, fresca todos los días.
           </p>
         </motion.div>
 

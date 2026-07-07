@@ -4,16 +4,9 @@ import { Marquee } from '@/components/sections/Marquee'
 import { StatsBar } from '@/components/sections/StatsBar'
 import { Problem } from '@/components/sections/Problem'
 import { DiagnosticTeaser } from '@/components/sections/DiagnosticTeaser'
-import { Experience } from '@/components/sections/Experience'
-import { Services } from '@/components/sections/Services'
-import { MenuPreview } from '@/components/sections/MenuPreview'
-import { Programs } from '@/components/sections/Programs'
+import { ServicesSplit } from '@/components/sections/ServicesSplit'
 import { Technology } from '@/components/sections/Technology'
-import { Parents } from '@/components/sections/Parents'
-import { HowItWorks } from '@/components/sections/HowItWorks'
-import { BeforeAfter } from '@/components/sections/BeforeAfter'
 import { WhyNutri } from '@/components/sections/WhyNutri'
-import { Safety } from '@/components/sections/Safety'
 import { Schools } from '@/components/sections/Schools'
 import { FAQ } from '@/components/sections/FAQ'
 import { Contact } from '@/components/sections/Contact'
@@ -45,16 +38,9 @@ export default function Home() {
         <StatsBar />
         <Problem />
         <DiagnosticTeaser />
-        <Experience />
-        <Services />
-        <MenuPreview />
-        <Programs />
+        <ServicesSplit />
         <Technology />
-        <Parents />
-        <HowItWorks />
-        <BeforeAfter />
         <WhyNutri />
-        <Safety />
         <Schools />
         <FAQ />
         <Contact />
