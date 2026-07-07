@@ -3,17 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Minus } from 'lucide-react'
-
-const faqs = [
-  { q: '¿La escuela tiene que hacer alguna inversión?',           a: 'No. Nuestro modelo permite operar sin inversión inicial para la escuela. Nos encargamos de toda la implementación, equipo y tecnología necesaria desde el primer día.' },
-  { q: '¿La escuela tiene que involucrarse en la operación?',     a: 'Para nada. Nos encargamos completamente del día a día: personal, proveedores, calidad, tecnología y supervisión constante. La escuela puede enfocarse 100% en lo académico.' },
-  { q: '¿Qué tan rápido es el servicio?',                        a: 'Menos de 3 minutos desde que el alumno se forma hasta que recibe su pedido, incluso en horas pico. La operación está diseñada para fluidez total.' },
-  { q: '¿Cuánto tiempo tardan en implementar el servicio?',       a: 'El proceso es rápido y ordenado. Evaluamos la escuela, definimos el menú, instalamos el equipo y capacitamos al personal sin interrumpir la operación normal.' },
-  { q: '¿Qué tecnología incluye el servicio?',                   a: 'Huella digital para pagos, tótems de autoservicio, app para padres y alumnos, y un sistema centralizado de monitoreo en tiempo real. Todo integrado y fácil de usar.' },
-  { q: '¿Qué pasa si hay un problema en la operación?',          a: 'Se atiende de forma inmediata sin involucrar a la escuela. Tenemos protocolos claros para resolver cualquier situación antes de que escale.' },
-  { q: '¿Qué tipo de alimentos ofrecen?',                        a: 'Opciones balanceadas, atractivas y adaptadas a las preferencias reales de los alumnos. Diseñadas con nutriólogos y con ingredientes frescos seleccionados.' },
-  { q: '¿La escuela recibe algún beneficio económico?',          a: 'Se puede definir un esquema personalizado según la institución. En cada caso buscamos una alianza que beneficie a ambas partes.' },
-]
+import { faqs } from '@/data/faqs'
 
 function FAQItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boolean; onToggle: () => void }) {
   return (

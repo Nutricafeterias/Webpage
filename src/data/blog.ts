@@ -1,0 +1,223 @@
+export type BlogBlock =
+  | { type: 'p'; text: string }
+  | { type: 'h2'; text: string }
+  | { type: 'ul'; items: string[] }
+  | { type: 'quote'; text: string }
+
+export type BlogPost = {
+  slug: string
+  title: string
+  description: string
+  date: string
+  readTime: string
+  category: string
+  emoji: string
+  image: string
+  keywords: string[]
+  content: BlogBlock[]
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: 'como-elegir-proveedor-cafeteria-escolar',
+    title: 'Cómo elegir el mejor proveedor de cafetería escolar para tu colegio (guía 2026)',
+    description:
+      'Guía completa para directores: los 7 criterios clave para evaluar y contratar un operador de cafetería escolar en México — calidad, seguridad alimentaria, tecnología y modelo económico.',
+    date: '2026-06-15',
+    readTime: '7 min',
+    category: 'Guías para directores',
+    emoji: '🏫',
+    image: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=1200&h=630&fit=crop&q=85',
+    keywords: ['proveedor cafetería escolar', 'concesión cafetería escolar', 'operador comedor escolar', 'contratar cafetería colegio'],
+    content: [
+      { type: 'p', text: 'Elegir quién opera la cafetería de tu escuela es una de las decisiones que más impacto tiene en la experiencia diaria de los alumnos — y una de las que más dolores de cabeza puede quitar (o generar) a la dirección. En esta guía te compartimos los criterios que las escuelas privadas de primer nivel en México usan para evaluar a un operador de cafetería escolar.' },
+      { type: 'h2', text: '1. Experiencia comprobable en escuelas' },
+      { type: 'p', text: 'Operar una cafetería escolar no es lo mismo que operar un restaurante. Los horarios pico son extremos (cientos de alumnos en 30 minutos de receso), los comensales son niños y adolescentes con preferencias cambiantes, y los estándares de higiene y seguridad son más exigentes. Pide referencias de otras escuelas, visita una operación en vivo y pregunta cuántos años llevan en el sector educativo específicamente.' },
+      { type: 'h2', text: '2. Menús diseñados por nutriólogos, no solo por chefs' },
+      { type: 'p', text: 'Un buen operador combina ambos mundos: platillos que los alumnos realmente quieren comer, con el respaldo nutricional de especialistas. Pregunta si los menús cumplen los lineamientos de la SEP para venta de alimentos en escuelas, si rotan por temporada y si contemplan alergias e intolerancias alimentarias.' },
+      { type: 'h2', text: '3. Seguridad alimentaria con protocolos claros' },
+      { type: 'p', text: 'Exige protocolos alineados a la NOM-251-SSA1 (prácticas de higiene para alimentos), trazabilidad de proveedores, y supervisión constante. Un operador serio te puede mostrar sus procesos de control de temperaturas, manejo de alérgenos y capacitación del personal sin titubear.' },
+      { type: 'h2', text: '4. Tecnología que simplifica la vida de todos' },
+      { type: 'ul', items: [
+        'Pagos sin efectivo (huella digital o tarjeta) — elimina robos, pérdidas y filas lentas',
+        'App para padres — control de saldo, historial de consumo y recargas remotas',
+        'Tótems de autoservicio — reducen los tiempos de espera en hora pico',
+        'Reportes para la escuela — visibilidad total de la operación',
+      ] },
+      { type: 'h2', text: '5. Modelo económico sin inversión para la escuela' },
+      { type: 'p', text: 'Los mejores operadores asumen la inversión en equipo, tecnología y remodelación. La escuela no debería poner capital: su aportación es el espacio y la comunidad. Desconfía de esquemas donde la institución carga con el riesgo financiero.' },
+      { type: 'h2', text: '6. Velocidad de servicio medible' },
+      { type: 'p', text: 'El receso dura 30 minutos. Si un alumno pasa 15 formado, el servicio falló. Pregunta por métricas concretas: un estándar premium es menos de 3 minutos desde que el alumno se forma hasta que recibe su pedido, incluso en hora pico.' },
+      { type: 'h2', text: '7. Comunicación y resolución de problemas' },
+      { type: 'p', text: 'Los problemas van a existir — la diferencia está en cómo se resuelven. Un operador premium los resuelve sin involucrar a la dirección, con protocolos de atención inmediata y un canal directo de comunicación con la administración escolar.' },
+      { type: 'quote', text: 'En Nutri Cafeterías operamos bajo estos 7 estándares en escuelas privadas de la Ciudad de México desde hace más de 10 años, con 97% de satisfacción y más de 1,000,000 de órdenes servidas.' },
+      { type: 'p', text: '¿Estás evaluando cambiar de operador o profesionalizar la cafetería de tu escuela? Agenda una reunión sin costo y te presentamos una propuesta a la medida.' },
+    ],
+  },
+  {
+    slug: 'alimentacion-y-emociones-rendimiento-academico',
+    title: 'Alimentación y emociones: cómo la comida impacta el rendimiento académico de tus alumnos',
+    description:
+      'La ciencia es clara: lo que comen los alumnos afecta su estado de ánimo, concentración y aprendizaje. Descubre cómo funciona la conexión comida-emociones y qué hacen las mejores escuelas al respecto.',
+    date: '2026-07-01',
+    readTime: '6 min',
+    category: 'Nutrición y bienestar',
+    emoji: '🧠',
+    image: 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=1200&h=630&fit=crop&q=85',
+    keywords: ['alimentación y emociones', 'comida y rendimiento académico', 'nutrición infantil escuela', 'bienestar estudiantil'],
+    content: [
+      { type: 'p', text: 'Las escuelas líderes en el mundo ya no ven la cafetería como un servicio auxiliar: la ven como parte de su estrategia de bienestar y rendimiento académico. La razón es simple — existe una conexión directa y comprobada entre lo que un alumno come y cómo se siente, se concentra y aprende.' },
+      { type: 'h2', text: 'La ciencia detrás de la conexión comida-emociones' },
+      { type: 'p', text: 'El intestino produce cerca del 90% de la serotonina del cuerpo — el neurotransmisor asociado al estado de ánimo. Una alimentación rica en frutas, verduras, granos enteros, proteínas de calidad y omega-3 está asociada con mejor estado de ánimo, menor ansiedad y mayor capacidad de concentración en niños y adolescentes.' },
+      { type: 'p', text: 'En contraste, los picos de azúcar de los alimentos ultraprocesados generan ciclos de energía-desplome que se traducen en irritabilidad, falta de atención en clase y fatiga a media mañana.' },
+      { type: 'h2', text: 'Qué hacen los líderes globales' },
+      { type: 'p', text: 'Operadores internacionales como Chartwells K12 han desarrollado programas completos alrededor de esta conexión — su programa "Mood Boost" enseña a los alumnos qué alimentos mejoran su estado de ánimo y su energía. En México, este enfoque apenas empieza a llegar a las escuelas más innovadoras.' },
+      { type: 'h2', text: 'NutriMood: el programa de comida y emociones de Nutri Cafeterías' },
+      { type: 'p', text: 'En Nutri Cafeterías desarrollamos NutriMood, nuestro programa de alimentación y emociones para escuelas privadas de México. Combina menús diseñados por nutriólogos con activaciones educativas donde los alumnos descubren la relación entre lo que comen y cómo se sienten.' },
+      { type: 'ul', items: [
+        'Menús que integran alimentos asociados a mejor concentración y energía estable',
+        'Señalización divertida en la cafetería: qué aporta cada platillo a tu día',
+        'Activaciones mensuales con retos y degustaciones para alumnos',
+        'Contenido para padres: cómo continuar los hábitos en casa',
+      ] },
+      { type: 'h2', text: 'Resultados que las escuelas notan' },
+      { type: 'p', text: 'Las escuelas que trabajan la alimentación como parte de su propuesta educativa reportan alumnos con más energía en las últimas horas de clase, menos visitas a enfermería por malestares digestivos y — un beneficio inesperado — padres más satisfechos con la institución, porque perciben un cuidado integral de sus hijos.' },
+      { type: 'quote', text: 'La cafetería puede ser el aula más grande de la escuela: ahí los alumnos practican decisiones de salud tres veces por semana, todas las semanas, durante años.' },
+      { type: 'p', text: '¿Quieres llevar NutriMood a tu escuela? Escríbenos y te mostramos cómo funciona en las instituciones donde ya opera.' },
+    ],
+  },
+  {
+    slug: 'menu-saludable-cafeteria-escolar',
+    title: 'Menú saludable para cafeterías escolares: qué debe incluir según nutriólogos (y la SEP)',
+    description:
+      'Los elementos de un menú escolar saludable que los alumnos sí quieran comer: lineamientos SEP, balance nutricional, manejo de alergias y ejemplos reales de platillos exitosos.',
+    date: '2026-05-20',
+    readTime: '6 min',
+    category: 'Nutrición y bienestar',
+    emoji: '🥗',
+    image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=1200&h=630&fit=crop&q=85',
+    keywords: ['menú saludable escolar', 'lineamientos SEP alimentos escuelas', 'menú cafetería escolar', 'alimentación escolar saludable'],
+    content: [
+      { type: 'p', text: 'El gran reto de toda cafetería escolar es el mismo: diseñar menús que cumplan los estándares nutricionales y que al mismo tiempo los alumnos elijan voluntariamente. De nada sirve el menú perfecto en papel si termina en la basura. Después de más de un millón de órdenes servidas en escuelas privadas de México, esto es lo que funciona.' },
+      { type: 'h2', text: 'El marco: lineamientos de la SEP' },
+      { type: 'p', text: 'Desde 2010, México cuenta con lineamientos generales para el expendio de alimentos en escuelas, actualizados en años recientes para restringir alimentos ultraprocesados y bebidas azucaradas. Cualquier operador serio debe conocerlos y cumplirlos: privilegiar agua natural, frutas y verduras frescas, y limitar grasas saturadas, azúcares añadidos y sodio.' },
+      { type: 'h2', text: 'Los 5 componentes de un menú escolar exitoso' },
+      { type: 'ul', items: [
+        'Proteína de calidad en cada comida principal — huevo, pollo, res magra, leguminosas — para saciedad y desarrollo',
+        'Frutas y verduras visibles y atractivas — cortadas, listas para comer, en la zona de mayor tráfico',
+        'Carbohidratos complejos — tortilla de maíz, avena, arroz integral — que dan energía estable, no picos de azúcar',
+        'Hidratación correcta — agua natural y aguas frescas bajas en azúcar como protagonistas',
+        'El factor antojo — versiones saludables de lo que aman: tacos, sándwiches, bowls, pizzas con masa integral',
+      ] },
+      { type: 'h2', text: 'Alergias e intolerancias: no negociable' },
+      { type: 'p', text: 'Un menú escolar moderno contempla protocolos de alérgenos: identificación clara de platillos con gluten, lácteos, frutos secos y huevo, personal capacitado y alternativas disponibles. Los padres de alumnos con alergias deben poder consultar el menú con anticipación — idealmente desde una app.' },
+      { type: 'h2', text: 'La rotación importa tanto como la receta' },
+      { type: 'p', text: 'El aburrimiento es enemigo de la buena alimentación. Los menús deben rotar por ciclos (nosotros trabajamos ciclos de 4 semanas con platillos de temporada) e incorporar retroalimentación real: qué se vende, qué se queda, qué piden los alumnos.' },
+      { type: 'quote', text: 'En Nutri Cafeterías cada menú pasa por doble filtro: el nutricional (diseñado con nutriólogos, alineado a lineamientos SEP) y el del comensal real (¿los alumnos lo eligen y lo terminan?). Solo los platillos que pasan ambos se quedan.' },
+      { type: 'p', text: '¿Quieres ver un ejemplo de menú mensual para tu escuela? Solicítalo sin compromiso en nuestra página de contacto.' },
+    ],
+  },
+  {
+    slug: 'tecnologia-cafeterias-escolares',
+    title: 'Tecnología en cafeterías escolares: pago con huella digital, tótems y apps para padres',
+    description:
+      'Cómo la tecnología transformó la cafetería escolar: pagos sin efectivo con huella digital, tótems de autoservicio, apps de control parental y por qué las escuelas premium ya no operan sin ella.',
+    date: '2026-04-10',
+    readTime: '5 min',
+    category: 'Tecnología',
+    emoji: '📱',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=630&fit=crop&q=85',
+    keywords: ['tecnología cafetería escolar', 'pago huella digital escuela', 'app cafetería escolar padres', 'monedero electrónico escolar'],
+    content: [
+      { type: 'p', text: 'Hace cinco años, la cafetería escolar típica en México funcionaba con efectivo, filas largas y cero visibilidad para los padres. Hoy, las escuelas privadas de primer nivel operan cafeterías donde los alumnos pagan con su huella digital en segundos y los padres ven cada consumo desde su celular. Este es el estándar tecnológico actual.' },
+      { type: 'h2', text: 'Pago con huella digital: adiós al efectivo' },
+      { type: 'p', text: 'El pago biométrico resuelve tres problemas de golpe: elimina el efectivo (y con él robos, extravíos y "me lo gasté en otra cosa"), acelera el cobro a menos de 2 segundos por transacción, y genera un registro exacto de qué consumió cada alumno. Los niños desde preescolar lo usan sin fricción — su huella siempre va con ellos.' },
+      { type: 'h2', text: 'Tótems de autoservicio: el fin de las filas' },
+      { type: 'p', text: 'Los tótems táctiles permiten a los alumnos ordenar y pagar sin pasar por caja, distribuyendo el flujo en hora pico. El resultado medible: tiempos de espera de menos de 3 minutos incluso con cientos de alumnos en receso. Más tiempo para comer y convivir, menos tiempo formado.' },
+      { type: 'h2', text: 'App para padres: control total sin estar ahí' },
+      { type: 'ul', items: [
+        'Recargas de saldo desde el celular, sin enviar efectivo',
+        'Historial de consumo en tiempo real: qué comió, cuándo y cuánto costó',
+        'Límites de gasto diario configurables por los papás',
+        'Consulta del menú de la semana con información nutricional',
+      ] },
+      { type: 'h2', text: 'Lo que la escuela gana' },
+      { type: 'p', text: 'Para la dirección, la tecnología significa cero manejo de efectivo dentro del plantel, reportes de operación transparentes y una amenidad más que presumir en el recorrido de admisiones. La cafetería tecnológica se volvió parte del pitch de venta de las escuelas premium.' },
+      { type: 'quote', text: 'En Nutri Cafeterías la tecnología ya viene incluida: huella digital, tótems, app para padres y monitoreo central. La escuela no invierte un peso en implementarla.' },
+      { type: 'p', text: '¿Tu cafetería sigue operando con efectivo y libreta? Agenda una demo y te mostramos la diferencia en vivo.' },
+    ],
+  },
+  {
+    slug: 'normatividad-cafeterias-escolares-mexico',
+    title: 'Normatividad de cafeterías escolares en México: SEP, NOM-251 y lo que tu escuela debe exigir',
+    description:
+      'Marco normativo completo de los comedores y cafeterías escolares en México: lineamientos SEP de venta de alimentos, NOM-251 de higiene, responsabilidades de la escuela y del operador.',
+    date: '2026-03-05',
+    readTime: '8 min',
+    category: 'Guías para directores',
+    emoji: '📋',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=630&fit=crop&q=85',
+    keywords: ['normatividad cafetería escolar', 'NOM-251 escuelas', 'lineamientos SEP venta alimentos', 'regulación comedor escolar México'],
+    content: [
+      { type: 'p', text: 'La cafetería escolar es de los espacios más regulados de una escuela — y de los que más responsabilidad legal implican para la institución. Esta guía resume el marco normativo que toda dirección escolar en México debe conocer, y qué debe exigirle a su operador de alimentos.' },
+      { type: 'h2', text: 'Lineamientos de la SEP para venta de alimentos' },
+      { type: 'p', text: 'Los lineamientos generales para el expendio y distribución de alimentos y bebidas en escuelas del Sistema Educativo Nacional regulan qué se puede vender dentro de los planteles. Las reglas clave: privilegiar alimentos naturales y frescos, garantizar acceso a agua potable, y restringir alimentos y bebidas con exceso de azúcares, grasas y sodio conforme al etiquetado frontal.' },
+      { type: 'h2', text: 'NOM-251-SSA1: la norma de higiene' },
+      { type: 'p', text: 'La NOM-251-SSA1-2009 establece las prácticas de higiene para el proceso de alimentos: desde la recepción de materia prima, almacenamiento y temperaturas, hasta la higiene del personal y el control de plagas. Cualquier cocina que prepare alimentos para alumnos debe operar alineada a esta norma. Pide a tu operador evidencia de sus protocolos: bitácoras de temperatura, programas de limpieza, capacitación de manipuladores de alimentos.' },
+      { type: 'h2', text: 'Responsabilidades: ¿escuela u operador?' },
+      { type: 'ul', items: [
+        'La escuela responde ante padres y autoridades por lo que pasa en su plantel — por eso importa tanto elegir bien al operador',
+        'El operador debe responder por permisos y avisos de funcionamiento, salud e higiene de su personal, y calidad de los alimentos',
+        'El contrato debe dejar claras las obligaciones: seguros de responsabilidad, protocolos ante incidentes y estándares de servicio',
+      ] },
+      { type: 'h2', text: 'Señales de alerta en un operador' },
+      { type: 'ul', items: [
+        'No puede mostrarte bitácoras de higiene ni protocolos escritos',
+        'Su personal no tiene capacitación documentada en manejo de alimentos',
+        'No maneja protocolos de alérgenos',
+        'El contrato no especifica responsabilidades ante un incidente',
+      ] },
+      { type: 'h2', text: 'El estándar premium va más allá de la norma' },
+      { type: 'p', text: 'Cumplir la norma es el piso, no el techo. Los operadores premium añaden supervisión de calidad continua, trazabilidad de proveedores, menús avalados por nutriólogos y auditorías internas periódicas. La tranquilidad de la dirección escolar vale esa diferencia.' },
+      { type: 'quote', text: 'En Nutri Cafeterías operamos con protocolos alineados a la NOM-251 y a los lineamientos de la SEP, con supervisión continua en cada escuela. La dirección duerme tranquila — de eso se trata.' },
+      { type: 'p', text: '¿Dudas sobre el cumplimiento normativo de tu cafetería actual? Escríbenos, con gusto te orientamos sin compromiso.' },
+    ],
+  },
+  {
+    slug: 'cafeteria-escolar-premium-escuelas-privadas',
+    title: '¿Qué hace "premium" a una cafetería escolar? El estándar de las escuelas privadas top de México',
+    description:
+      'Las 8 diferencias entre una cafetería escolar común y una premium: velocidad, nutrición, tecnología, experiencia y por qué las mejores escuelas privadas de CDMX ya migraron a este modelo.',
+    date: '2026-02-12',
+    readTime: '6 min',
+    category: 'Guías para directores',
+    emoji: '⭐',
+    image: 'https://images.unsplash.com/photo-1577308856961-8e9ec50d0c67?w=1200&h=630&fit=crop&q=85',
+    keywords: ['cafetería escolar premium', 'cafetería escuelas privadas', 'comedor escolar premium CDMX', 'mejor cafetería escolar México'],
+    content: [
+      { type: 'p', text: 'En las escuelas privadas de primer nivel, la cafetería dejó de ser "la tiendita de la escuela" para convertirse en una extensión de la propuesta de valor institucional. Los padres que pagan colegiaturas premium esperan que cada espacio del plantel — incluida la cafetería — esté a la altura. ¿Qué distingue exactamente a una cafetería escolar premium?' },
+      { type: 'h2', text: '1. Velocidad medida en minutos, no en "más o menos"' },
+      { type: 'p', text: 'Estándar premium: menos de 3 minutos de la fila al platillo, incluso en hora pico. Se logra con diseño de flujo, tótems de autoservicio y pagos biométricos instantáneos.' },
+      { type: 'h2', text: '2. Menús de nutriólogo que los alumnos eligen por gusto' },
+      { type: 'p', text: 'No es imponer ensaladas: es diseñar platillos que compiten en antojo con la comida chatarra y ganan. Bowls, tacos frescos, sándwiches artesanales — con balance nutricional invisible para el alumno y evidente para el nutriólogo.' },
+      { type: 'h2', text: '3. Tecnología integrada de serie' },
+      { type: 'p', text: 'Huella digital, app para padres con control de gastos, menú en línea, cero efectivo. En 2026, operar con caja registradora y monedas es el equivalente a un salón sin proyector.' },
+      { type: 'h2', text: '4. Programas, no solo platillos' },
+      { type: 'p', text: 'Los operadores premium suman valor educativo: programas de comida y emociones (como nuestro NutriMood), educación nutricional, degustaciones y activaciones que convierten la cafetería en experiencia.' },
+      { type: 'h2', text: '5. Seguridad alimentaria auditable' },
+      { type: 'p', text: 'Protocolos alineados a NOM-251, bitácoras, trazabilidad, manejo de alérgenos. Todo documentado, todo mostrable a padres y autoridades.' },
+      { type: 'h2', text: '6. Cero carga operativa para la escuela' },
+      { type: 'p', text: 'La dirección no gestiona personal de cocina, ni proveedores, ni quejas del día a día. El operador premium resuelve todo y reporta con transparencia.' },
+      { type: 'h2', text: '7. Sin inversión inicial de la institución' },
+      { type: 'p', text: 'El operador asume equipo, tecnología y adecuaciones. La escuela aporta el espacio; el riesgo financiero es del especialista.' },
+      { type: 'h2', text: '8. Un aliado del área de admisiones' },
+      { type: 'p', text: 'La cafetería premium aparece en el recorrido de admisiones, en las fotos institucionales y en las conversaciones entre padres. Es un diferenciador tangible frente a otras escuelas de la zona.' },
+      { type: 'quote', text: 'Nutri Cafeterías es el operador premium de cafeterías escolares en México: más de 10 años de experiencia, +10 escuelas privadas, +1,000,000 de órdenes servidas y 97% de satisfacción.' },
+      { type: 'p', text: '¿Tu cafetería está a la altura de tu colegiatura? Agenda una evaluación sin costo de tu operación actual.' },
+    ],
+  },
+]
+
+export function getPost(slug: string): BlogPost | undefined {
+  return blogPosts.find(p => p.slug === slug)
+}

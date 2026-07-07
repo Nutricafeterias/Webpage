@@ -6,12 +6,13 @@ import { Menu, X, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
 const links = [
-  { href: '#servicios',  label: '🌟 Servicios' },
-  { href: '#tecnologia', label: '📱 Tecnología' },
-  { href: '#modelo',     label: '🗺️ Modelo' },
-  { href: '#por-que',    label: '🏆 ¿Por qué nosotros?' },
-  { href: '#escuelas',   label: '🏫 Escuelas' },
-  { href: '#faq',        label: '❓ FAQ' },
+  { href: '/#servicios',  label: '🌟 Servicios' },
+  { href: '/#programas',  label: '🎓 Programas' },
+  { href: '/#tecnologia', label: '📱 Tecnología' },
+  { href: '/#padres',     label: '👨‍👩‍👧 Padres' },
+  { href: '/#escuelas',   label: '🏫 Escuelas' },
+  { href: '/blog',        label: '📝 Blog' },
+  { href: '/#faq',        label: '❓ FAQ' },
 ]
 
 export function Navbar() {
@@ -34,7 +35,7 @@ export function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           <Image
             src="/logo-trimmed.png"
             alt="Nutri Cafetería"
@@ -63,7 +64,7 @@ export function Navbar() {
         {/* CTA */}
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href="#contacto"
+            href="/#contacto"
             className="group inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-bold transition-all duration-200 shadow-md shadow-emerald-200 hover:shadow-emerald-300 hover:scale-[1.03]"
           >
             ¡Agenda una reunión!
@@ -103,7 +104,7 @@ export function Navbar() {
               ))}
               <div className="pt-4">
                 <a
-                  href="#contacto"
+                  href="/#contacto"
                   onClick={() => setMobileOpen(false)}
                   className="block w-full text-center py-3.5 rounded-xl bg-emerald-500 text-white font-bold text-sm shadow-md shadow-emerald-200"
                 >

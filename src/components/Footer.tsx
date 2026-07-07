@@ -3,13 +3,14 @@ import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import Image from 'next/image'
 
 const links = [
-  { href: '#servicios',  label: 'Servicios' },
-  { href: '#tecnologia', label: 'Tecnología' },
-  { href: '#modelo',     label: 'Modelo' },
-  { href: '#por-que',    label: '¿Por qué nosotros?' },
-  { href: '#escuelas',   label: 'Escuelas' },
-  { href: '#faq',        label: 'FAQ' },
-  { href: '#contacto',   label: 'Contacto' },
+  { href: '/#servicios',  label: 'Servicios' },
+  { href: '/#programas',  label: 'Programas' },
+  { href: '/#tecnologia', label: 'Tecnología' },
+  { href: '/#padres',     label: 'Para padres' },
+  { href: '/#seguridad',  label: 'Seguridad alimentaria' },
+  { href: '/#escuelas',   label: 'Escuelas' },
+  { href: '/blog',        label: 'Blog' },
+  { href: '/#contacto',   label: 'Contacto' },
 ]
 
 export function Footer() {
@@ -21,7 +22,7 @@ export function Footer() {
           ¿Tu escuela merece una cafetería de primer nivel? 🏆
         </p>
         <a
-          href="#contacto"
+          href="/#contacto"
           className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white text-emerald-700 font-black text-base hover:bg-emerald-50 transition-all duration-200 shadow-xl hover:scale-[1.03]"
         >
           ¡Agenda tu reunión gratis hoy! →
