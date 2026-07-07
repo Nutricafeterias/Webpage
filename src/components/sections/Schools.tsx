@@ -2,11 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { Star } from 'lucide-react'
+import Image from 'next/image'
 
 const schools = [
-  { name: 'Universidad Panamericana', location: 'Ciudad de México', initials: 'UP',  gradient: 'from-emerald-600 to-teal-700' },
-  { name: 'Northridge School',        location: 'Ciudad de México', initials: 'NS',  gradient: 'from-stone-700 to-stone-900' },
-  { name: 'Prepa UP',                 location: 'Ciudad de México', initials: 'PUP', gradient: 'from-amber-500 to-orange-600' },
+  { name: 'Universidad Panamericana', location: 'Ciudad de México', initials: 'UP',  image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=400&fit=crop&q=85' },
+  { name: 'Northridge School',        location: 'Ciudad de México', initials: 'NS',  image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&h=400&fit=crop&q=85' },
+  { name: 'Prepa UP',                 location: 'Ciudad de México', initials: 'PUP', image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=600&h=400&fit=crop&q=85' },
 ]
 
 const testimonials = [
@@ -58,14 +59,21 @@ export function Schools() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`card-lift relative rounded-2xl overflow-hidden group shadow-md bg-gradient-to-br ${school.gradient}`}
+              className="card-lift relative rounded-2xl overflow-hidden group shadow-md"
             >
-              <div className="relative h-44 flex items-center justify-center">
-                <span className="text-6xl font-black text-white/20 tracking-tight select-none group-hover:scale-110 transition-transform duration-500">
-                  {school.initials}
-                </span>
+              <div className="relative h-48">
+                <Image
+                  src={school.image}
+                  alt={school.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-950/30 to-transparent" />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/40 to-transparent">
+              <div className="absolute top-4 left-4 w-11 h-11 rounded-xl bg-white/15 backdrop-blur border border-white/25 flex items-center justify-center">
+                <span className="text-white font-black text-sm tracking-tight">{school.initials}</span>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-5">
                 <div className="font-black text-white">{school.name}</div>
                 <div className="text-xs text-white/70 mt-0.5">{school.location}</div>
               </div>

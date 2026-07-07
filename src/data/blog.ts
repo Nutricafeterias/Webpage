@@ -19,6 +19,43 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'prohibicion-comida-chatarra-escuelas-lineamientos-sep',
+    title: 'Prohibición de comida chatarra en escuelas: guía de los lineamientos SEP para directivos',
+    description:
+      'Todo lo que la dirección de una escuela en México debe saber sobre los lineamientos de la SEP que prohíben la comida chatarra: qué exige la norma, quién es responsable, qué riesgos hay y cómo garantizar el cumplimiento.',
+    date: '2026-07-05',
+    readTime: '7 min',
+    category: 'Guías para directores',
+    emoji: '🛡️',
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200&h=630&fit=crop&q=85',
+    keywords: ['prohibición comida chatarra escuelas', 'lineamientos SEP alimentos escuelas', 'multas comida chatarra escuela', 'norma SEP cafetería escolar', 'sellos exceso escuelas'],
+    content: [
+      { type: 'p', text: 'La regulación de alimentos en las escuelas de México dio un giro definitivo: la venta de comida chatarra dentro de los planteles está prohibida, y la responsabilidad del cumplimiento recae directamente en la institución educativa. Para las direcciones escolares esto dejó de ser un tema de nutrición para convertirse en un tema de cumplimiento legal y reputación. Esta guía resume lo esencial.' },
+      { type: 'h2', text: '¿Qué prohíben exactamente los lineamientos?' },
+      { type: 'ul', items: [
+        'Alimentos y bebidas con sellos de exceso del etiquetado frontal (calorías, azúcares, grasas saturadas, grasas trans, sodio)',
+        'Productos ultraprocesados típicos de la "tiendita": frituras, refrescos, dulces industrializados, pastelitos',
+        'Bebidas azucaradas como oferta de hidratación — el agua natural debe ser la opción principal y accesible',
+      ] },
+      { type: 'h2', text: '¿Quién es responsable si no se cumple?' },
+      { type: 'p', text: 'La autoridad del plantel. Aunque la cafetería la opere un tercero, la escuela responde ante las autoridades educativas y de salud por lo que se vende dentro de sus instalaciones, con procedimientos de sanción y multas por incumplimiento. Por eso el contrato con el operador debe establecer con claridad quién garantiza qué — y con qué evidencia.' },
+      { type: 'h2', text: 'El riesgo real no es solo la multa' },
+      { type: 'p', text: 'El costo mayor es reputacional: una sanción por vender comida chatarra es una nota pésima frente a los padres de familia que pagan una colegiatura premium esperando que la escuela cuide a sus hijos. En el mercado de escuelas privadas, la percepción de cuidado integral es parte del producto.' },
+      { type: 'h2', text: 'Checklist de cumplimiento para tu escuela' },
+      { type: 'ul', items: [
+        'Revisa la oferta actual de tu cafetería: ¿hay productos con sellos de exceso a la venta?',
+        'Pide a tu operador la lista completa de productos y menús con su justificación nutricional',
+        'Verifica que exista agua natural gratuita o accesible como hidratación principal',
+        'Exige documentación de cumplimiento por escrito, actualizada y disponible para auditorías',
+        'Asegura en el contrato que la responsabilidad operativa del cumplimiento sea del operador',
+      ] },
+      { type: 'h2', text: 'Cómo lo resolvemos en Nutri Cafeterías' },
+      { type: 'p', text: 'Nuestros menús se diseñan por nutriólogos y se verifican contra los lineamientos vigentes antes de servirse: cero productos con sellos de exceso, alimentos frescos como base de la oferta y agua natural como hidratación principal. La documentación de cumplimiento está siempre disponible para la dirección, y cuando la norma se actualiza, el menú se actualiza sin que la escuela tenga que intervenir. El cumplimiento queda garantizado por contrato.' },
+      { type: 'quote', text: 'Con el operador correcto, los lineamientos SEP dejan de ser un riesgo y se convierten en un argumento de venta ante los padres: tu escuela cumple, lo demuestra y lo presume.' },
+      { type: 'p', text: '¿Dudas sobre si tu cafetería actual cumple? Haz nuestro diagnóstico gratuito de 2 minutos o solicita una revisión de cumplimiento sin costo en cafeteriasescolares.com.mx/lineamientos-sep.' },
+    ],
+  },
+  {
     slug: 'mejores-empresas-cafeterias-escolares-mexico',
     title: 'Las 5 mejores empresas de cafeterías escolares en México (comparativa 2026)',
     description:

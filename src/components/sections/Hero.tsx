@@ -104,30 +104,44 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* RIGHT – photo collage */}
+        {/* RIGHT – layered photo composition */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative h-[520px] hidden lg:block"
+          className="relative h-[540px] hidden lg:block"
         >
           {/* Main photo */}
-          <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl shadow-emerald-100 border-4 border-white">
+          <div className="absolute top-0 right-0 w-[82%] h-[78%] rounded-[2rem] overflow-hidden shadow-2xl shadow-emerald-200/60 border-4 border-white">
             <Image
-              src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&h=600&fit=crop&q=85"
-              alt="Alumnos felices en cafetería"
+              src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=900&h=700&fit=crop&q=85"
+              alt="Alimentación fresca y saludable en cafeterías escolares"
               fill
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
           </div>
+
+          {/* Secondary overlapping photo */}
+          <motion.div
+            initial={{ opacity: 0, y: 20, rotate: -4 }}
+            animate={{ opacity: 1, y: 0, rotate: -4 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="absolute bottom-2 left-0 w-[52%] h-[46%] rounded-3xl overflow-hidden shadow-2xl border-4 border-white"
+          >
+            <Image
+              src="https://images.unsplash.com/photo-1543353071-873f17a7a088?w=600&h=450&fit=crop&q=85"
+              alt="Ingredientes frescos de nuestros menús escolares"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
 
           {/* Floating stat card 1 */}
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -bottom-4 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 border border-emerald-100"
+            className="absolute bottom-16 -right-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 border border-emerald-100"
           >
             <span className="text-3xl">⚡</span>
             <div>
@@ -140,7 +154,7 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-            className="absolute -top-4 -right-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 border border-amber-100"
+            className="absolute top-6 -left-2 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 border border-amber-100"
           >
             <span className="text-3xl">😊</span>
             <div>
@@ -149,18 +163,19 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Floating stat card 3 */}
-          <motion.div
+          {/* Floating badge — SEP */}
+          <motion.a
+            href="/lineamientos-sep"
             animate={{ y: [0, -6, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-            className="absolute top-1/2 -right-8 bg-emerald-500 text-white rounded-2xl shadow-xl p-4 flex items-center gap-3"
+            className="absolute top-[42%] -right-2 bg-stone-900 text-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-2.5 hover:bg-stone-800 transition-colors"
           >
-            <span className="text-3xl">🏫</span>
+            <span className="text-xl">🛡️</span>
             <div>
-              <div className="text-xl font-black">+10</div>
-              <div className="text-xs opacity-80">Escuelas</div>
+              <div className="text-sm font-black leading-tight">Lineamientos SEP</div>
+              <div className="text-[11px] text-emerald-400 font-bold">Cumplimiento garantizado</div>
             </div>
-          </motion.div>
+          </motion.a>
         </motion.div>
       </div>
 

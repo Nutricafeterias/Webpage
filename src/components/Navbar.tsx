@@ -31,6 +31,8 @@ const links = [
   { href: '/nosotros',  label: 'Nosotros' },
 ]
 
+const homeLink = { href: '/', label: 'Inicio' }
+
 function Dropdown({
   menu,
   scrolled,
@@ -123,6 +125,14 @@ export function Navbar() {
 
         {/* Desktop */}
         <div className="hidden lg:flex items-center gap-1">
+          <a
+            href={homeLink.href}
+            className={`px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-emerald-50 hover:text-emerald-700 ${
+              scrolled ? 'text-stone-600' : 'text-stone-700'
+            }`}
+          >
+            {homeLink.label}
+          </a>
           <Dropdown menu={menus[0]} scrolled={scrolled} />
           {links.map(link => (
             <a
@@ -136,6 +146,12 @@ export function Navbar() {
             </a>
           ))}
           <Dropdown menu={menus[1]} scrolled={scrolled} />
+          <a
+            href="/lineamientos-sep"
+            className="ml-1 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-black bg-amber-100 text-amber-800 border border-amber-200 hover:bg-amber-200 transition-colors"
+          >
+            🛡️ Norma SEP
+          </a>
         </div>
 
         {/* CTA */}
@@ -169,6 +185,20 @@ export function Navbar() {
             className="lg:hidden border-t-2 border-emerald-100 bg-white/95 backdrop-blur-md overflow-hidden shadow-lg max-h-[80vh] overflow-y-auto"
           >
             <div className="px-6 py-4 space-y-1">
+              <a
+                href="/"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center py-3 text-stone-700 hover:text-emerald-600 text-sm font-medium transition-colors border-b border-stone-100"
+              >
+                Inicio
+              </a>
+              <a
+                href="/lineamientos-sep"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2 py-3 text-amber-800 text-sm font-black transition-colors border-b border-stone-100"
+              >
+                🛡️ Norma SEP — cumplimiento garantizado
+              </a>
               {menus.map(m => (
                 <div key={m.label}>
                   <div className="py-2 text-xs font-black text-stone-400 uppercase tracking-wider">

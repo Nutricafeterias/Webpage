@@ -1,13 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const styles = [
   {
     name: 'NutriMarket',
     tagline: 'Estilo mercado fresco',
     emoji: '🥬',
-    gradient: 'from-emerald-600 to-lime-600',
+    gradient: 'from-emerald-700/80',
+    image: 'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=700&h=460&fit=crop&q=85',
     ideal: 'Ideal para escuelas con enfoque en bienestar y naturaleza',
     features: [
       'Barras de fruta y productos frescos a la vista',
@@ -20,7 +22,8 @@ const styles = [
     name: 'NutriPop',
     tagline: 'Color y diversión',
     emoji: '🎨',
-    gradient: 'from-fuchsia-500 to-orange-500',
+    gradient: 'from-fuchsia-700/80',
+    image: 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=700&h=460&fit=crop&q=85',
     ideal: 'Ideal para primarias y secundarias con comunidades vibrantes',
     features: [
       'Colores vivos y arte tipo pop en muros',
@@ -33,7 +36,8 @@ const styles = [
     name: 'NutriStudio',
     tagline: 'Moderno minimalista',
     emoji: '✨',
-    gradient: 'from-stone-700 to-stone-900',
+    gradient: 'from-stone-900/85',
+    image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=700&h=460&fit=crop&q=85',
     ideal: 'Ideal para preparatorias y escuelas de perfil internacional',
     features: [
       'Líneas limpias estilo food hall premium',
@@ -77,12 +81,23 @@ export function CafeteriaStyles() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="card-lift rounded-3xl overflow-hidden border-2 border-stone-100 bg-white shadow-md flex flex-col"
+              className="group card-lift rounded-3xl overflow-hidden border-2 border-stone-100 bg-white shadow-md flex flex-col"
             >
-              <div className={`relative h-40 bg-gradient-to-br ${s.gradient} flex flex-col items-center justify-center`}>
-                <span className="text-5xl drop-shadow">{s.emoji}</span>
-                <span className="mt-2 text-white font-black text-2xl tracking-tight">{s.name}</span>
-                <span className="text-white/80 text-xs font-bold">{s.tagline}</span>
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={s.image}
+                  alt={`Cafetería escolar estilo ${s.name}`}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t ${s.gradient} to-transparent`} />
+                <div className="absolute bottom-4 left-5 flex items-center gap-2.5">
+                  <span className="text-3xl drop-shadow">{s.emoji}</span>
+                  <div>
+                    <div className="text-white font-black text-xl tracking-tight leading-none">{s.name}</div>
+                    <div className="text-white/80 text-xs font-bold mt-1">{s.tagline}</div>
+                  </div>
+                </div>
               </div>
               <div className="p-7 flex flex-col flex-1">
                 <ul className="space-y-2.5 flex-1">
