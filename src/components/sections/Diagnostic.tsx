@@ -175,11 +175,11 @@ export function Diagnostic() {
     setSending(true)
     try {
       const detail = QUESTIONS.map(q => `${q.area}: ${answers[q.key]?.label ?? '—'} (${answers[q.key]?.points ?? 0}/2)`).join('\n')
-      await fetch('https://formspree.io/f/xrejlppw', {
+      // Directo al CRM de Nutri: crea escuela+contacto+acción y notifica a Ricardo.
+      await fetch('https://crm.nutricafeteria.com.mx/api/quiz', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          _subject: `📊 Diagnóstico de cafetería — ${lead.escuela} (${pct}/100)`,
           nombre: lead.nombre,
           escuela: lead.escuela,
           email: lead.email,
