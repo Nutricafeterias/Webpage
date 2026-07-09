@@ -19,6 +19,43 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'regreso-a-clases-2026-2027-sep-cafeterias-multas',
+    title: 'Regreso a clases 2026-2027: qué exige la SEP a las cafeterías escolares y cómo tu escuela evita multas de hasta $113,140',
+    description:
+      'Antes del ciclo escolar 2026-2027, revisa qué prohíbe la SEP en las cafeterías escolares, las multas por vender comida chatarra (desde $113,140 y hasta cerca de $792,000) y el checklist para que tu escuela llegue en regla al primer día.',
+    date: '2026-07-08',
+    readTime: '7 min',
+    category: 'Guías para directores',
+    emoji: '⚖️',
+    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&h=630&fit=crop&q=85',
+    keywords: ['regreso a clases 2026-2027', 'multas comida chatarra escuela', 'SEP cafeterías escolares', 'sanciones venta comida chatarra escuela', 'lineamientos SEP regreso a clases', 'evitar multas cafetería escolar'],
+    content: [
+      { type: 'p', text: 'El regreso a clases del ciclo 2026-2027 es la fecha límite silenciosa para un tema que muchas direcciones escolares siguen posponiendo: el cumplimiento de la prohibición de comida chatarra en los planteles. Desde que las disposiciones entraron en vigor el 29 de marzo de 2025 como parte de la estrategia de vida saludable en las escuelas, la venta de productos ultraprocesados dentro de los colegios dejó de ser una recomendación para convertirse en una obligación con sanciones económicas serias. Esta guía te dice exactamente qué revisar antes del primer día de clases.' },
+      { type: 'h2', text: '¿De cuánto son las multas? El número que debe importarte' },
+      { type: 'p', text: 'El fundamento está en el artículo 171 de la Ley General de Educación, ligado a la fracción III del artículo 75 Bis, que prohíbe la venta y publicidad de alimentos y bebidas procesados en los planteles. La sanción va de 1,000 a 7,000 veces la Unidad de Medida y Actualización (UMA). Con el valor de la UMA de referencia (113 pesos diarios en 2025), eso se traduce en multas que arrancan en 113,140 pesos y llegan hasta cerca de 792,000 pesos, según lo reportado por medios como Expansión. No es la única consecuencia: en casos graves puede haber revocación de la autorización o retiro del Reconocimiento de Validez Oficial de Estudios (RVOE).' },
+      { type: 'quote', text: 'Una multa de seis cifras es dolorosa, pero para una escuela privada el golpe mayor es la nota: "colegio sancionado por vender comida chatarra a los niños" es exactamente el titular que ningún director quiere ver el fin de semana antes de admisiones.' },
+      { type: 'h2', text: '¿A quién aplica y quién responde?' },
+      { type: 'p', text: 'Las disposiciones aplican a escuelas de educación básica, media superior y superior, tanto públicas como privadas. Y aquí el punto crítico para las direcciones: aunque la cafetería la opere un tercero, la escuela responde ante las autoridades por lo que se vende dentro de sus instalaciones. Tercerizar la operación no terceriza la responsabilidad legal —a menos que el contrato con el operador lo establezca por escrito.' },
+      { type: 'h2', text: 'Qué prohíbe exactamente la norma' },
+      { type: 'ul', items: [
+        'Alimentos y bebidas con uno o más sellos de exceso del etiquetado frontal (calorías, azúcares, grasas saturadas, grasas trans, sodio)',
+        'Los clásicos de la "tiendita": frituras, refrescos, dulces industrializados y pastelitos ultraprocesados',
+        'Bebidas azucaradas como oferta de hidratación — el agua natural debe ser la opción principal y de acceso libre',
+      ] },
+      { type: 'h2', text: 'Checklist de cumplimiento antes del primer día de clases' },
+      { type: 'ul', items: [
+        'Audita hoy la oferta de tu cafetería: ¿queda algún producto con sellos de exceso a la venta?',
+        'Pide a tu operador la lista completa de productos y menús del ciclo 2026-2027 con su justificación nutricional',
+        'Confirma que haya agua natural gratuita o accesible como hidratación principal',
+        'Solicita la documentación de cumplimiento por escrito y actualizada, lista para cualquier auditoría',
+        'Revisa que el contrato traslade al operador la responsabilidad operativa del cumplimiento y la evidencia',
+      ] },
+      { type: 'h2', text: 'Cómo llegas en regla al ciclo con Nutri Cafeterías' },
+      { type: 'p', text: 'En Nutri Cafeterías los menús se diseñan con nutriólogos y se verifican contra los lineamientos SEP vigentes antes de servirse: cero productos con sellos de exceso, alimentos frescos como base y agua natural como hidratación principal, todo bajo protocolos alineados a la NOM-251, con Distintivo H y licencia sanitaria. La documentación de cumplimiento está siempre disponible para la dirección, y cuando la norma se actualiza, el menú se actualiza sin que la escuela tenga que intervenir. El cumplimiento queda garantizado por contrato — y sin inversión inicial para la institución.' },
+      { type: 'p', text: '¿No estás 100% seguro de que tu cafetería llegará en regla al ciclo 2026-2027? Haz nuestro diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una revisión de cumplimiento sin costo antes del regreso a clases. Más vale una llamada hoy que una multa en septiembre.' },
+    ],
+  },
+  {
     slug: 'tendencias-internacionales-food-service-escolar-2026',
     title: 'Tendencias internacionales en food service escolar 2026: qué comen los alumnos del mundo (y cómo aplicarlo en México)',
     description:
