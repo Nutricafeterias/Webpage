@@ -19,6 +19,41 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'retencion-familias-escuelas-privadas-cafeteria-admisiones',
+    title: 'Retención de familias en escuelas privadas: por qué la cafetería pesa más en admisiones de lo que crees (datos 2026)',
+    description:
+      'La cafetería es hoy un servicio diferenciador para las escuelas privadas de México y un punto clave del recorrido de admisiones. Datos 2026 sobre retención de familias, matrícula y cómo el comedor influye en la decisión de los padres.',
+    date: '2026-07-13',
+    readTime: '7 min',
+    category: 'Guías para directores',
+    emoji: '🤝',
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=630&fit=crop&q=85',
+    keywords: ['retención de familias escuela privada', 'admisiones colegio México', 'cafetería escolar diferenciador', 'matrícula escuelas privadas 2026', 'reputación institucional escuela', 'deserción escolar escuela privada'],
+    content: [
+      { type: 'p', text: 'En una escuela privada, ganar una familia cuesta caro y perderla cuesta más. Cada baja obliga a llenar de nuevo ese lugar con un alumno de nuevo ingreso —marketing, recorridos, entrevistas— mientras que retener a la familia que ya está inscrita no cuesta prácticamente nada. Por eso las direcciones que piensan en sostenibilidad financiera ya no ven la retención como un tema del área de admisiones, sino como su estrategia de crecimiento más rentable. Y en esa ecuación aparece un actor que muchos directores subestiman: la cafetería.' },
+      { type: 'h2', text: 'El mercado 2026: recuperación, pero con familias más exigentes' },
+      { type: 'p', text: 'El sector privado mexicano vive una recuperación clara. Según el estudio 2025 de Cometa —plataforma de gestión escolar que encuestó a 562 colegios privados del país entre enero y abril de 2025—, el 79% de las escuelas proyecta aumentar su matrícula para el ciclo 2025-2026, frente al 65% del ciclo anterior. El abandono por falta de recursos económicos se desplomó: pasó del 63% al 30% de un año a otro. La consecuencia es reveladora: hoy la mitad de los cambios de escuela ya no se explican por dinero, sino por mudanza de domicilio. Traducido: cuando una familia se va por razones que no son económicas ni geográficas, casi siempre es por insatisfacción. Y esa sí depende de la escuela.' },
+      { type: 'h2', text: 'La cafetería ya es un servicio diferenciador (no un extra)' },
+      { type: 'p', text: 'El mismo estudio de Cometa identifica los servicios adicionales como una herramienta clave para diferenciarse y fortalecer la sostenibilidad financiera del colegio. Entre los más comunes —ofrecidos por entre el 35% y el 58% de las escuelas— aparecen las actividades extracurriculares, los uniformes, los seguros… y la cafetería. Dicho de otro modo: para una parte importante del mercado, el servicio de alimentos ya forma parte de la propuesta de valor con la que un colegio compite, no de la logística que esconde.' },
+      { type: 'h2', text: 'El recorrido de admisiones se gana (o se pierde) en detalles visibles' },
+      { type: 'p', text: 'Cuando una familia visita un plantel, no solo evalúa el nivel académico: lee el ambiente, la cultura y la vida diaria del alumno. La investigación internacional de food service escolar es contundente al respecto: el comedor es "uno de los puntos de contacto más visibles y emocionalmente influyentes" del recorrido de admisiones, según el operador NEXDINE Hospitality. Una cafetería moderna, limpia, con menús frescos y alumnos contentos comunica en segundos algo que el folleto no puede: esta escuela cuida los detalles y a mi hijo. Una fila caótica, olor a fritura o una "tiendita" de refrescos comunica exactamente lo contrario, justo cuando los padres están decidiendo.' },
+      { type: 'h2', text: 'Por qué la comida mueve la retención el resto del año' },
+      { type: 'p', text: 'La admisión abre la puerta; la experiencia diaria decide si la familia se queda. Y el alumno come en la escuela tres o más veces por semana, todas las semanas. La calidad de los alimentos, la variedad del menú y la atención a alergias e intolerancias influyen directamente en la satisfacción cotidiana —y esa satisfacción es la que sostiene la renovación de inscripción año con año. No es casual que en Estados Unidos cerca del 80% de los padres de escuela privada se declaren muy satisfechos (datos del NCES) y que el estándar de un colegio sano sea una retención anual por encima del 90%. La cafetería es uno de los pocos servicios que el niño —y por lo tanto el papá— experimenta y comenta a diario.' },
+      { type: 'h2', text: 'Qué puede hacer la dirección con esto' },
+      { type: 'ul', items: [
+        'Trata la cafetería como parte del recorrido de admisiones: inclúyela en el tour, no la escondas al final del pasillo',
+        'Mide la satisfacción con el servicio de alimentos igual que mides la académica: es un termómetro temprano de la intención de renovar',
+        'Convierte la app para padres en un canal de confianza: que vean qué come su hijo, cuánto gasta y qué aporta cada platillo',
+        'Elige un operador que sume valor educativo (programas, nutrición avalada), no solo que "dé de comer"',
+        'Verifica cumplimiento SEP y certificaciones: un incidente sanitario es la vía más rápida de perder familias y reputación',
+      ] },
+      { type: 'quote', text: 'La cafetería es el único salón al que el alumno entra por gusto y del que el papá recibe reporte todos los días. Bien operada, es la herramienta de retención más silenciosa —y más subestimada— de una escuela privada.' },
+      { type: 'h2', text: 'Cómo lo trabajamos en Nutri Cafeterías' },
+      { type: 'p', text: 'En Nutri Cafeterías operamos la cafetería como parte de la propuesta de valor de la escuela, no como un servicio aparte. Más de 10 años especializados en escuelas privadas de la Ciudad de México, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción. Menús diseñados por nutriólogos y alineados a los lineamientos SEP; protocolos con Distintivo H, licencia sanitaria y NOM-251; pago con huella digital y una app para padres que da a las familias visibilidad total del consumo de sus hijos. Y programas como NutriMood, que convierten el comedor en experiencia educativa que los padres notan y presumen. Todo sin inversión inicial para la institución: nosotros asumimos el equipo y la operación, la escuela suma un diferenciador para admisiones y retención.' },
+      { type: 'p', text: '¿Tu cafetería está sumando o restando en la decisión de tus familias? Haz nuestro diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo y te mostramos cómo convertir el comedor en un argumento de admisiones y retención para tu escuela.' },
+    ],
+  },
+  {
     slug: 'regreso-a-clases-2026-2027-sep-cafeterias-multas',
     title: 'Regreso a clases 2026-2027: qué exige la SEP a las cafeterías escolares y cómo tu escuela evita multas de hasta $113,140',
     description:
