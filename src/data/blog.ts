@@ -19,6 +19,49 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'datos-biometricos-menores-cafeteria-escolar-ley-proteccion-datos-2025',
+    title: 'Datos biométricos de menores en la cafetería: qué exige la nueva Ley de Protección de Datos (2025) y qué debe verificar tu escuela',
+    description:
+      'La huella digital de un alumno es un dato personal sensible. Con la nueva Ley Federal de Protección de Datos Personales (marzo 2025), esto es lo que la dirección de tu escuela debe exigir al operador de la cafetería sobre el pago con huella y la app para padres.',
+    date: '2026-07-20',
+    readTime: '7 min',
+    category: 'Tecnología',
+    emoji: '🔒',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=630&fit=crop&q=85',
+    keywords: ['datos biométricos menores escuela', 'ley protección de datos 2025 México', 'pago con huella cafetería escolar', 'privacidad datos alumnos', 'LFPDPPP escuelas', 'app padres cafetería seguridad datos'],
+    content: [
+      { type: 'p', text: 'La tecnología transformó la cafetería escolar para bien: pago con huella digital en segundos, cero efectivo dentro del plantel y una app donde los papás ven qué come su hijo. Pero esa misma tecnología introdujo una responsabilidad que muchas direcciones aún no dimensionan: la cafetería recolecta datos personales de menores de edad, incluidos datos biométricos. Y desde 2025, la ley que regula esos datos en México cambió. Esta guía te dice qué revisar con tu operador antes de que sea un problema.' },
+      { type: 'h2', text: 'La nueva ley que cambió las reglas en 2025' },
+      { type: 'p', text: 'El 20 de marzo de 2025 se publicó en el Diario Oficial de la Federación una nueva Ley Federal de Protección de Datos Personales en Posesión de los Particulares, que entró en vigor al día siguiente y sustituyó a la ley de 2010. El cambio no fue menor: desapareció el INAI y la vigilancia en la materia pasó a la Secretaría Anticorrupción y Buen Gobierno. Para cualquier institución que maneje datos de sus alumnos —y para los proveedores que operan dentro de ella— es momento de revisar que sus prácticas estén al día con el nuevo marco.' },
+      { type: 'h2', text: 'La huella de un niño es un "dato personal sensible"' },
+      { type: 'p', text: 'La huella digital, el rostro y cualquier rasgo biométrico se clasifican como datos personales sensibles: la categoría de mayor protección que reconoce la ley. Como regla general, los datos sensibles no pueden tratarse sin el consentimiento expreso de su titular. Y cuando el titular es un menor de edad, aplica el principio del interés superior de la niñez: el consentimiento lo otorgan los padres o tutores conforme a la legislación civil. Traducido a la cafetería: enrolar la huella de un alumno no es un trámite operativo cualquiera, es un tratamiento de datos sensibles que exige autorización informada de la familia.' },
+      { type: 'p', text: 'El tema está más vigente que nunca. En paralelo, el decreto de la CURP biométrica —publicado en el DOF el 16 de julio de 2025— incorpora huella y fotografía al registro poblacional, con implementación gradual durante 2025 y 2026. Los datos biométricos de los menores están en el centro de la conversación regulatoria del país.' },
+      { type: 'h2', text: 'Por qué esto aterriza justo en la cafetería' },
+      { type: 'p', text: 'Una cafetería escolar moderna es, técnicamente, un sistema que recolecta y procesa varios tipos de datos de menores todos los días:' },
+      { type: 'ul', items: [
+        'Datos biométricos: la huella con la que el alumno paga (dato sensible)',
+        'Datos de consumo: qué compra cada niño, cuándo y cuánto gasta',
+        'Datos de salud: alergias e intolerancias registradas para su seguridad (también sensibles)',
+        'Datos de los padres: cuenta de la app, medio de recarga y contacto',
+      ] },
+      { type: 'p', text: 'Nada de esto es negativo —al contrario, es lo que hace segura y transparente a la operación—, pero sí obliga a que alguien lo maneje conforme a la ley. Y aunque el sistema lo opere un tercero, la escuela es la cara ante los padres si algo sale mal. Por eso la pregunta correcta no es "¿tiene tecnología mi operador?", sino "¿cómo protege los datos que esa tecnología recolecta?".' },
+      { type: 'h2', text: 'Qué está en juego si se maneja mal' },
+      { type: 'p', text: 'La nueva ley endureció la responsabilidad sobre los datos biométricos. Análisis jurídicos de la LFPDPPP publicada en marzo de 2025 advierten multas que pueden alcanzar decenas de millones de pesos para quien no proteja adecuadamente las credenciales biométricas de sus usuarios en caso de una filtración o robo. Pero, como con el tema sanitario, para una escuela privada el golpe reputacional supera a la multa: "colegio filtra las huellas de sus alumnos" es un titular que ninguna dirección quiere gestionar frente a familias que pagan una colegiatura premium esperando cuidado integral.' },
+      { type: 'quote', text: 'La confianza de un padre se construye con años de buen servicio y se pierde en un solo incidente de datos. En una escuela, la tecnología de la cafetería solo es un activo si viene con la protección de datos que la respalda.' },
+      { type: 'h2', text: 'Checklist: qué debe verificar la dirección con su operador' },
+      { type: 'ul', items: [
+        'Aviso de privacidad claro y actualizado, que la familia firma antes de enrolar la huella del alumno',
+        'Consentimiento expreso de padres o tutores para el tratamiento de datos biométricos y de salud',
+        'Uso limitado a la finalidad: los datos sirven para la cafetería, no se venden ni se comparten con terceros',
+        'Controles de gasto y acceso para los papás desde la app, con visibilidad de la información de su hijo',
+        'Responsabilidad definida por contrato: quién resguarda los datos y cómo responde ante un incidente',
+      ] },
+      { type: 'h2', text: 'Cómo lo maneja Nutri Cafeterías' },
+      { type: 'p', text: 'En Nutri Cafeterías la tecnología viene incluida —pago con huella digital, tótems de autoservicio y app para padres con historial de consumo, límites de gasto y alertas de alérgenos— y con ella, el compromiso de tratar los datos de cada alumno con el cuidado que exige la ley. La huella se usa exclusivamente para agilizar el pago dentro de la cafetería; los padres controlan el saldo, el gasto y la información de su hijo desde la app; y la escuela suma un servicio de primer nivel sin cargar con la operación ni con la inversión. Más de 10 años especializados en escuelas privadas de la Ciudad de México, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción respaldan que la tecnología, bien implementada, es un activo de confianza y no un riesgo.' },
+      { type: 'p', text: '¿Sabes exactamente cómo se protegen los datos biométricos de tus alumnos en la cafetería actual? Haz nuestro diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo y revisamos juntos que la tecnología de tu comedor cumpla con el nuevo marco de protección de datos.' },
+    ],
+  },
+  {
     slug: 'retencion-familias-escuelas-privadas-cafeteria-admisiones',
     title: 'Retención de familias en escuelas privadas: por qué la cafetería pesa más en admisiones de lo que crees (datos 2026)',
     description:
