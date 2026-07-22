@@ -19,6 +19,41 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'fallo-scjn-comida-chatarra-escuelas-prohibicion-sigue-vigente',
+    title: '¿Vuelve la comida chatarra a las escuelas tras el fallo de la SCJN? No: la prohibición sigue vigente (y esto es lo que debe hacer tu escuela)',
+    description:
+      'Los titulares sobre el fallo de la Suprema Corte generaron confusión, pero la prohibición de comida chatarra en las escuelas sigue plenamente vigente. Te explicamos qué decidió realmente la SCJN y qué debe hacer la dirección de tu escuela ahora.',
+    date: '2026-07-22',
+    readTime: '7 min',
+    category: 'Guías para directores',
+    emoji: '✅',
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&h=630&fit=crop&q=85',
+    keywords: ['fallo SCJN comida chatarra escuelas', 'prohibición comida chatarra sigue vigente', 'amparos comida chatarra escuelas', 'Suprema Corte lineamientos SEP', 'venta comida chatarra escuelas 2026', 'cumplimiento cafetería escolar'],
+    content: [
+      { type: 'p', text: 'Si en las últimas semanas viste titulares como "¿Vuelven los refrescos y las frituras a las escuelas?" a raíz de una decisión de la Suprema Corte, no estás solo: la nota generó una ola de confusión entre directores, padres y operadores. La pregunta que llega a muchas direcciones es directa: ¿ya se puede volver a vender comida chatarra en el plantel? La respuesta corta y verificada es no. La prohibición sigue plenamente vigente. Esta guía aclara qué decidió realmente la Corte y qué debe hacer tu escuela ahora.' },
+      { type: 'h2', text: 'Qué decidió realmente la SCJN (y qué NO)' },
+      { type: 'p', text: 'La Suprema Corte de Justicia de la Nación emitió el Acuerdo General Plenario 7/2026-AAG, con el que ordenó pausar temporalmente la emisión de sentencias definitivas en todos los juicios de amparo relacionados con la venta de comida chatarra en escuelas. Es fundamental entender el alcance exacto: la Corte no derogó la prohibición, no autorizó la venta de productos con sellos de exceso y no cambió ninguna regla vigente. Solo decidió esperar a resolver los casos de fondo antes de que los tribunales dicten fallos individuales que pudieran ser contradictorios entre sí.' },
+      { type: 'h2', text: 'La prohibición sigue vigente al 100%' },
+      { type: 'p', text: 'Que la Corte haya pausado la resolución de los amparos no significa que la norma se haya suspendido: la restricción a la venta de alimentos y bebidas ultraprocesados dentro de los planteles se aplica con total normalidad. De hecho, el cumplimiento va en aumento. Según reportó Expansión (5 de enero de 2026), la SEP obtuvo 26 sentencias favorables en 2025 frente a las empresas que impugnaron los lineamientos, el 86% de los planteles ya eliminó la venta de comida chatarra en sus cooperativas y solo dos de cada diez ofrecieron productos chatarra durante el año. La tendencia es clara y va en un solo sentido.' },
+      { type: 'h2', text: 'Entonces, ¿por qué tanto ruido?' },
+      { type: 'p', text: 'El origen de la confusión son los amparos promovidos por empresas —entre ellas embotelladoras del sistema Coca-Cola— que buscan que se declaren inconstitucionales las restricciones. La Corte decidió no resolverlos uno por uno, sino atraer el tema para que el Pleno fije un criterio unificado sobre si las reglas respetan la Constitución, mientras resuelve los amparos en revisión 20/2026 y 91/2026. En otras palabras: lo que se pausó fue el proceso judicial de fondo, no la obligación de cumplir. Los medios que titularon "vuelve la comida chatarra" leyeron la pausa como una victoria de las empresas, cuando en realidad la regla sigue intacta.' },
+      { type: 'quote', text: 'Una pausa en los tribunales no es una luz verde en la cafetería. Mientras la Corte define criterios, la prohibición se aplica igual que ayer — y la escuela que relaje su cumplimiento apostando a un fallo futuro es la que queda expuesta hoy.' },
+      { type: 'h2', text: 'Qué debe hacer tu escuela mientras tanto' },
+      { type: 'ul', items: [
+        'Mantén el cumplimiento sin cambios: la norma sigue vigente y las sanciones también',
+        'No te dejes llevar por titulares: verifica siempre la fuente antes de ajustar la operación de tu cafetería',
+        'Comunica con calma a tu comunidad: si algún padre pregunta, la escuela debe poder explicar que la prohibición continúa',
+        'Documenta que tu oferta no incluye productos con sellos de exceso, lista para cualquier revisión',
+        'Apóyate en tu operador para tener siempre la justificación nutricional y de cumplimiento al día',
+      ] },
+      { type: 'h2', text: 'El riesgo real de "esperar a ver qué pasa"' },
+      { type: 'p', text: 'Relajar el cumplimiento con la esperanza de que la Corte tumbe la prohibición es la peor apuesta posible para una escuela privada. Las sanciones por vender alimentos con sellos de exceso siguen firmes —con multas que, conforme al artículo 171 de la Ley General de Educación, van de 1,000 a 7,000 veces la UMA (desde cerca de 113,000 y hasta alrededor de 792,000 pesos)— y el costo reputacional de un titular tipo "colegio sancionado por vender chatarra a los niños" no lo compensa ningún ahorro. En un mercado donde las familias pagan colegiatura premium esperando cuidado integral, el cumplimiento no es una carga: es un argumento de confianza.' },
+      { type: 'h2', text: 'Cómo te da certeza Nutri Cafeterías' },
+      { type: 'p', text: 'En Nutri Cafeterías el cumplimiento no depende de cómo se muevan los titulares: nuestros menús se diseñan con nutriólogos y se verifican contra los lineamientos SEP vigentes antes de servirse —cero productos con sellos de exceso, alimentos frescos como base y agua natural como hidratación principal—, bajo protocolos alineados a la NOM-251, con Distintivo H y licencia sanitaria. Y cuando el marco cambie, si es que cambia, tu menú se actualiza sin que la escuela tenga que interpretar fallos ni mover un dedo. Más de 10 años operando cafeterías en escuelas privadas de la Ciudad de México, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción respaldan esa tranquilidad. El cumplimiento queda garantizado por contrato y sin inversión inicial para la institución.' },
+      { type: 'p', text: '¿Con dudas sobre si tu cafetería está en regla frente al marco vigente? Haz nuestro diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una revisión de cumplimiento sin costo. Ante el ruido, certeza.' },
+    ],
+  },
+  {
     slug: 'datos-biometricos-menores-cafeteria-escolar-ley-proteccion-datos-2025',
     title: 'Datos biométricos de menores en la cafetería: qué exige la nueva Ley de Protección de Datos (2025) y qué debe verificar tu escuela',
     description:
