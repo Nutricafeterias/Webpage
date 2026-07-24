@@ -4,7 +4,9 @@ import Image from 'next/image'
 
 const links = [
   { href: '/cafeterias-escolares', label: 'Cafeterías escolares' },
-  { href: '/comedores-escolares',  label: 'Comedores escolares' },
+  { href: '/cafeterias-escuelas-privadas', label: 'Cafeterías para escuelas privadas' },
+  { href: '/comedores-escolares',  label: 'Comedor escolar CDMX' },
+  { href: '/catering-escolar-cdmx', label: 'Catering escolar CDMX' },
   { href: '/catering-escolar',     label: 'Catering para eventos' },
   { href: '/programas',   label: 'Programas educativos' },
   { href: '/menus',       label: 'Menús' },

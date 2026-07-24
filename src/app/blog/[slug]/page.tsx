@@ -157,6 +157,25 @@ export default async function BlogPostPage({
             })}
           </div>
 
+          {/* Enlaces relacionados (internal linking SEO) */}
+          {post.related && post.related.length > 0 && (
+            <div className="mt-12 p-6 rounded-2xl bg-white border-2 border-stone-100 shadow-sm">
+              <h3 className="font-black text-stone-900 mb-4">También te puede interesar 🔗</h3>
+              <ul className="space-y-2.5">
+                {post.related.map(r => (
+                  <li key={r.href}>
+                    <Link
+                      href={r.href}
+                      className="text-emerald-600 font-bold hover:underline text-[1.02rem]"
+                    >
+                      {r.anchor} →
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {/* CTA */}
           <div className="mt-14 p-8 rounded-3xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-center shadow-xl shadow-emerald-200">
             <p className="text-xl md:text-2xl font-black text-white">

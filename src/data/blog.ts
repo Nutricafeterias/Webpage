@@ -4,6 +4,11 @@ export type BlogBlock =
   | { type: 'ul'; items: string[] }
   | { type: 'quote'; text: string }
 
+export type RelatedLink = {
+  href: string
+  anchor: string
+}
+
 export type BlogPost = {
   slug: string
   title: string
@@ -15,9 +20,53 @@ export type BlogPost = {
   image: string
   keywords: string[]
   content: BlogBlock[]
+  /** Enlaces internos con texto ancla exacto — señal SEO hacia las landings clave */
+  related?: RelatedLink[]
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: 'cuanto-cuesta-comedor-escolar-cdmx',
+    title: '¿Cuánto cuesta un comedor escolar en CDMX? Modelos, factores y lo que tu escuela NO debería pagar (guía 2026)',
+    description:
+      'Guía para directores de escuelas privadas en CDMX: los modelos de contratación de un comedor escolar (concesión, cuota por alumno, servicio por evento), los factores que determinan el precio y por qué el mejor modelo puede costarle cero a la institución.',
+    date: '2026-07-24',
+    readTime: '7 min',
+    category: 'Guías para directores',
+    emoji: '💰',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=630&fit=crop&q=85',
+    keywords: ['cuánto cuesta comedor escolar CDMX', 'precio comedor escolar', 'costo cafetería escolar', 'concesión comedor escolar CDMX', 'presupuesto comedor escuela privada', 'comedor escolar CDMX'],
+    related: [
+      { href: '/comedores-escolares', anchor: 'Comedor escolar en CDMX: conoce nuestra operación integral' },
+      { href: '/catering-escolar-cdmx', anchor: 'Catering escolar en CDMX: servicio diario sin cocina propia' },
+      { href: '/blog/como-elegir-proveedor-cafeteria-escolar', anchor: 'Cómo elegir el mejor proveedor de cafetería escolar (guía 2026)' },
+    ],
+    content: [
+      { type: 'p', text: 'Es la primera pregunta que hace toda dirección escolar cuando evalúa abrir o profesionalizar su comedor: ¿cuánto nos va a costar? La respuesta honesta es que depende del modelo de contratación — y que, con el modelo correcto, la respuesta puede ser cero pesos de inversión para la institución. En esta guía te explicamos cómo se estructura el costo de un comedor escolar en CDMX y qué preguntas hacer antes de firmar.' },
+      { type: 'h2', text: 'Los 3 modelos de contratación (y quién paga en cada uno)' },
+      { type: 'ul', items: [
+        'Operación propia: la escuela contrata cocineros, compra equipo, tramita permisos y absorbe todo el riesgo. Es el modelo más caro y el que más carga operativa genera — cocina, nóminas, mermas, cumplimiento sanitario y quejas recaen en la dirección.',
+        'Concesión a un operador especializado: la escuela aporta el espacio y el operador invierte en equipo, tecnología y adecuaciones. La familia paga directamente su consumo. Para la institución, la inversión inicial es cero y la carga operativa también.',
+        'Servicio contratado o catering diario: la escuela (o las familias) paga una cuota por alumno por los alimentos entregados o servidos en el plantel. Ideal para escuelas sin espacio de cocina; el costo es predecible y se ajusta al número de alumnos.',
+      ] },
+      { type: 'h2', text: 'Los factores que sí mueven el precio' },
+      { type: 'ul', items: [
+        'Número de alumnos y servicios al día: a mayor volumen, mejor costo por comida — la escala del operador trabaja a favor de la escuela.',
+        'Tipo de servicio: un lunch frío no cuesta lo mismo que una comida caliente de tres tiempos servida en comedor.',
+        'Instalaciones existentes: si el plantel ya tiene cocina equipada, el arranque es más rápido y barato; si no, importa quién asume esa inversión (pista: no debería ser la escuela).',
+        'Nivel de cumplimiento y certificaciones: menús de nutriólogos, protocolos alineados a NOM-251, Distintivo H y manejo de alérgenos tienen un costo real — pero es el costo de hacer las cosas bien, no un lujo.',
+        'Tecnología incluida: pago sin efectivo, app para padres y reportes. En un operador premium viene incluida; si te la cobran aparte, pregunta por qué.',
+      ] },
+      { type: 'h2', text: 'Lo que tu escuela NO debería pagar' },
+      { type: 'p', text: 'En el modelo de concesión bien estructurado, la institución no debería desembolsar por el equipo de cocina, las adecuaciones del espacio, la tecnología de cobro ni la nómina del personal del comedor: esa es la inversión del operador, y se recupera con la operación misma. Si un proveedor te pide inversión inicial fuerte para arrancar, o traslada a la escuela el riesgo completo del negocio, estás viendo una señal de alerta — el operador serio invierte en tu plantel porque confía en su propia operación.' },
+      { type: 'quote', text: 'La pregunta correcta no es "¿cuánto cuesta el comedor?" sino "¿quién asume la inversión y el riesgo?". En el modelo correcto, la escuela pone el espacio, el operador pone todo lo demás — y las familias reciben calidad premium a precio justo.' },
+      { type: 'h2', text: 'Y para las familias, ¿qué precio es razonable?' },
+      { type: 'p', text: 'El precio final por comida depende del formato del servicio y del perfil de cada comunidad escolar, por eso los operadores serios lo definen junto con la dirección: se acuerdan menús y rangos de precio alineados al perfil socioeconómico de las familias, y quedan por contrato. Lo importante es la transparencia — que la dirección apruebe la lista de precios, que existan opciones accesibles de menú completo y que cualquier ajuste pase por la escuela, no por decisión unilateral del operador.' },
+      { type: 'h2', text: 'Cómo lo hacemos en Nutri Cafeterías' },
+      { type: 'p', text: 'Operamos comedores y cafeterías en escuelas privadas de CDMX y área metropolitana bajo el modelo de concesión sin inversión inicial: nosotros ponemos equipo, tecnología, personal y cumplimiento (menús de nutriólogos alineados a SEP, Distintivo H, protocolos alineados a NOM-251), y la dirección aprueba menús y precios. Más de 10 años, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción. Si quieres un número concreto para TU escuela, la cotización es gratuita: visitamos tu plantel, evaluamos el espacio y te entregamos una propuesta a la medida en menos de una semana.' },
+      { type: 'p', text: '¿Quieres saber en qué punto está hoy tu comedor? Haz nuestro diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una visita sin costo.' },
+    ],
+  },
   {
     slug: 'fallo-scjn-comida-chatarra-escuelas-prohibicion-sigue-vigente',
     title: '¿Vuelve la comida chatarra a las escuelas tras el fallo de la SCJN? No: la prohibición sigue vigente (y esto es lo que debe hacer tu escuela)',
@@ -213,6 +262,11 @@ export const blogPosts: BlogPost[] = [
     emoji: '🛡️',
     image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200&h=630&fit=crop&q=85',
     keywords: ['prohibición comida chatarra escuelas', 'lineamientos SEP alimentos escuelas', 'multas comida chatarra escuela', 'norma SEP cafetería escolar', 'sellos exceso escuelas'],
+    related: [
+      { href: '/lineamientos-sep', anchor: 'Lineamientos SEP para cafeterías escolares: cumplimiento garantizado' },
+      { href: '/blog/normatividad-cafeterias-escolares-mexico', anchor: 'Normatividad de cafeterías escolares en México: SEP y NOM-251' },
+      { href: '/cafeterias-escuelas-privadas', anchor: 'Cafeterías para escuelas privadas: nuestro servicio' },
+    ],
     content: [
       { type: 'p', text: 'La regulación de alimentos en las escuelas de México dio un giro definitivo: la venta de comida chatarra dentro de los planteles está prohibida, y la responsabilidad del cumplimiento recae directamente en la institución educativa. Para las direcciones escolares esto dejó de ser un tema de nutrición para convertirse en un tema de cumplimiento legal y reputación. Esta guía resume lo esencial.' },
       { type: 'h2', text: '¿Qué prohíben exactamente los lineamientos?' },
@@ -250,6 +304,11 @@ export const blogPosts: BlogPost[] = [
     emoji: '🏆',
     image: 'https://images.unsplash.com/photo-1577308856961-8e9ec50d0c67?w=1200&h=630&fit=crop&q=85',
     keywords: ['mejor cafetería escolar México', 'mejores empresas cafeterías escolares', 'comparativa proveedores cafetería escolar', 'mejor comedor escolar CDMX', 'empresas comedores escolares'],
+    related: [
+      { href: '/blog/como-elegir-proveedor-cafeteria-escolar', anchor: 'Cómo elegir el mejor proveedor de cafetería escolar (guía 2026)' },
+      { href: '/cafeterias-escuelas-privadas', anchor: 'Cafeterías para escuelas privadas: nuestro servicio' },
+      { href: '/catering-escolar-cdmx', anchor: 'Catering escolar en CDMX: servicio diario de alimentos' },
+    ],
     content: [
       { type: 'p', text: 'Si diriges o administras una escuela privada en México y estás evaluando quién debería operar tu cafetería o comedor escolar, esta comparativa te ahorrará semanas de investigación. Analizamos a los principales operadores del mercado mexicano según los criterios que más importan a una institución: tecnología, calidad nutricional, seguridad alimentaria, modelo económico y experiencia.' },
       { type: 'h2', text: '1. Nutri Cafeterías — el operador premium para escuelas privadas' },
@@ -293,6 +352,12 @@ export const blogPosts: BlogPost[] = [
     emoji: '🏫',
     image: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=1200&h=630&fit=crop&q=85',
     keywords: ['proveedor cafetería escolar', 'concesión cafetería escolar', 'operador comedor escolar', 'contratar cafetería colegio'],
+    related: [
+      { href: '/lineamientos-sep', anchor: 'Lineamientos SEP para cafeterías escolares: guía de cumplimiento' },
+      { href: '/cafeterias-escuelas-privadas', anchor: 'Cafeterías para escuelas privadas: nuestro servicio' },
+      { href: '/comedores-escolares', anchor: 'Comedor escolar en CDMX: operación integral' },
+      { href: '/blog/mejores-empresas-cafeterias-escolares-mexico', anchor: 'Las 5 mejores empresas de cafeterías escolares en México' },
+    ],
     content: [
       { type: 'p', text: 'Elegir quién opera la cafetería de tu escuela es una de las decisiones que más impacto tiene en la experiencia diaria de los alumnos — y una de las que más dolores de cabeza puede quitar (o generar) a la dirección. En esta guía te compartimos los criterios que las escuelas privadas de primer nivel en México usan para evaluar a un operador de cafetería escolar.' },
       { type: 'h2', text: '1. Experiencia comprobable en escuelas' },
@@ -422,6 +487,11 @@ export const blogPosts: BlogPost[] = [
     emoji: '📋',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=630&fit=crop&q=85',
     keywords: ['normatividad cafetería escolar', 'NOM-251 escuelas', 'lineamientos SEP venta alimentos', 'regulación comedor escolar México'],
+    related: [
+      { href: '/lineamientos-sep', anchor: 'Lineamientos SEP para cafeterías escolares: cumplimiento garantizado' },
+      { href: '/blog/prohibicion-comida-chatarra-escuelas-lineamientos-sep', anchor: 'Prohibición de comida chatarra en escuelas: guía para directivos' },
+      { href: '/comedores-escolares', anchor: 'Comedor escolar en CDMX: operación integral' },
+    ],
     content: [
       { type: 'p', text: 'La cafetería escolar es de los espacios más regulados de una escuela — y de los que más responsabilidad legal implican para la institución. Esta guía resume el marco normativo que toda dirección escolar en México debe conocer, y qué debe exigirle a su operador de alimentos.' },
       { type: 'h2', text: 'Lineamientos de la SEP para venta de alimentos' },
@@ -458,6 +528,11 @@ export const blogPosts: BlogPost[] = [
     emoji: '⭐',
     image: 'https://images.unsplash.com/photo-1577308856961-8e9ec50d0c67?w=1200&h=630&fit=crop&q=85',
     keywords: ['cafetería escolar premium', 'cafetería escuelas privadas', 'comedor escolar premium CDMX', 'mejor cafetería escolar México'],
+    related: [
+      { href: '/cafeterias-escuelas-privadas', anchor: 'Cafeterías para escuelas privadas: conoce nuestro servicio' },
+      { href: '/blog/como-elegir-proveedor-cafeteria-escolar', anchor: 'Cómo elegir el mejor proveedor de cafetería escolar (guía 2026)' },
+      { href: '/comedores-escolares', anchor: 'Comedor escolar en CDMX: operación integral' },
+    ],
     content: [
       { type: 'p', text: 'En las escuelas privadas de primer nivel, la cafetería dejó de ser "la tiendita de la escuela" para convertirse en una extensión de la propuesta de valor institucional. Los padres que pagan colegiaturas premium esperan que cada espacio del plantel — incluida la cafetería — esté a la altura. ¿Qué distingue exactamente a una cafetería escolar premium?' },
       { type: 'h2', text: '1. Velocidad medida en minutos, no en "más o menos"' },

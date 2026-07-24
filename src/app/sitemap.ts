@@ -24,7 +24,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${base}/cafeterias-escuelas-privadas`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${base}/comedores-escolares`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${base}/catering-escolar-cdmx`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,

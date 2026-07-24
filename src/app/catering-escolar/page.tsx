@@ -142,6 +142,14 @@ export default function CateringEscolarPage() {
                 Descubre la operación integral →
               </Link>
             </p>
+            <p className="mt-3 text-center text-stone-500">
+              ¿Buscas servicio de alimentos <strong>todos los días</strong> y no solo para un
+              evento? Conoce nuestro{' '}
+              <Link href="/catering-escolar-cdmx" className="text-emerald-600 font-bold hover:underline">
+                catering escolar diario en CDMX
+              </Link>
+              .
+            </p>
           </div>
 
           {/* CTA final */}

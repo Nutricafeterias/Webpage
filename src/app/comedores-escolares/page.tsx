@@ -7,10 +7,11 @@ import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 
 export const metadata: Metadata = {
-  title: 'Comedores Escolares en CDMX y México | Operación Integral — Nutri Cafeterías',
+  title: 'Comedor Escolar en CDMX | Operación Integral de Comedores Escolares — Nutri Cafeterías',
   description:
     'Operamos comedores escolares en escuelas privadas de CDMX y área metropolitana: menús de nutriólogos alineados a SEP, Distintivo H, protocolos NOM-251, tecnología de pago sin efectivo y app para padres. Sin inversión para la escuela.',
   keywords: [
+    'comedor escolar CDMX',
     'comedor escolar',
     'comedores escolares CDMX',
     'proveedor comedor escolar',
@@ -77,7 +78,7 @@ export default function ComedoresEscolaresPage() {
               🍽️ Comedores escolares
             </span>
             <h1 className="text-4xl md:text-6xl font-black text-stone-900 leading-tight">
-              Comedores escolares{' '}
+              Comedor escolar en CDMX{' '}
               <span className="gradient-text-primary">de nivel premium</span>{' '}
               para tu escuela
             </h1>
@@ -164,6 +165,29 @@ export default function ComedoresEscolaresPage() {
               y comunicación directa con los padres de familia. Si tu escuela ya tiene comedor y
               buscas profesionalizarlo, también trabajamos tomas de operación sin interrumpir el
               ciclo escolar.
+            </p>
+            <h2 className="text-2xl md:text-3xl font-black text-stone-900 pt-4">
+              ¿Dónde operamos comedores escolares en CDMX?
+            </h2>
+            <p>
+              Atendemos escuelas privadas en todas las alcaldías de la Ciudad de México —
+              incluyendo Miguel Hidalgo, Cuajimalpa, Álvaro Obregón, Benito Juárez, Coyoacán,
+              Tlalpan y La Magdalena Contreras — así como en el área metropolitana del Valle
+              de México: Naucalpan, Huixquilucan, Interlomas, Ciudad Satélite y Atizapán.
+              Si tu colegio está en la zona metropolitana, podemos visitarte esta misma semana
+              para hacer un diagnóstico sin costo de tu comedor escolar.
+            </p>
+            <p>
+              ¿Tu escuela no necesita comedor completo sino entrega diaria de alimentos?
+              Conoce nuestro{' '}
+              <Link href="/catering-escolar-cdmx" className="text-emerald-600 hover:underline font-bold">
+                catering escolar en CDMX
+              </Link>
+              . ¿Buscas la operación completa de cafetería? Visita{' '}
+              <Link href="/cafeterias-escuelas-privadas" className="text-emerald-600 hover:underline font-bold">
+                cafeterías para escuelas privadas
+              </Link>
+              .
             </p>
             <p className="font-semibold text-stone-800">
               ¿Quieres saber cómo está tu comedor hoy?{' '}
