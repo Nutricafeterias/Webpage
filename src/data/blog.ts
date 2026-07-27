@@ -26,6 +26,49 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'alergias-alimentarias-cafeteria-escolar-protocolo-regreso-clases',
+    title: 'Alergias alimentarias en la cafetería escolar: el protocolo que tu escuela debe tener listo antes del regreso a clases',
+    description:
+      'Los lineamientos SEP obligan a considerar a los alumnos con alergias, intolerancias y restricciones dietéticas. Guía para directores: qué alérgenos importan en México, qué debe contener el protocolo de tu cafetería y cómo verificarlo antes del primer día de clases.',
+    date: '2026-07-27',
+    readTime: '7 min',
+    category: 'Nutrición y bienestar',
+    emoji: '🥜',
+    image: 'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=1200&h=630&fit=crop&q=85',
+    keywords: ['alergias alimentarias escuelas México', 'protocolo alergias cafetería escolar', 'alérgenos comedor escolar', 'anafilaxia en la escuela', 'lineamientos SEP alergias intolerancias', 'menú escolar sin alérgenos'],
+    related: [
+      { href: '/lineamientos-sep', anchor: 'Lineamientos SEP: qué exige la norma a tu cafetería escolar' },
+      { href: '/menus', anchor: 'Menús escolares diseñados por nutriólogos' },
+      { href: '/blog/menu-saludable-cafeteria-escolar', anchor: 'Menú saludable para cafeterías escolares: qué debe incluir' },
+    ],
+    content: [
+      { type: 'p', text: 'Cada agosto, las direcciones escolares revisan expedientes, horarios y protocolos de seguridad. Hay un documento que casi nunca está donde debería: el protocolo de alergias alimentarias de la cafetería. Y es curioso, porque es el único de la lista donde un descuido de treinta segundos puede terminar en una ambulancia. Si tu escuela está afinando el arranque del ciclo 2026-2027, esta es la revisión que conviene hacer antes del primer día.' },
+      { type: 'h2', text: 'La norma ya lo dice: la inclusión alimentaria no es opcional' },
+      { type: 'p', text: 'Los Lineamientos generales para la preparación, distribución y expendio de alimentos y bebidas en las escuelas del Sistema Educativo Nacional —publicados en el DOF el 30 de septiembre de 2024 y vigentes en todos los planteles, públicos y privados— incluyen entre sus principios rectores el de Equidad e inclusión, que establece textualmente: "Se considerarán las necesidades y preferencias alimentarias de las y los estudiantes, incluyendo aquellos con alergias, intolerancias o restricciones o modificaciones dietéticas". No es una recomendación amable al final del documento: es un principio del marco que rige la operación de tu cafetería. En la práctica, muy pocas escuelas pueden mostrar cómo lo cumplen.' },
+      { type: 'h2', text: 'Los alérgenos que importan en México no son los de las películas' },
+      { type: 'p', text: 'El imaginario del alumno alérgico al cacahuate viene de Estados Unidos, y adoptarlo tal cual deja huecos. Un estudio publicado en 2026 en la Revista Alergia México (Contreras Tejada y colaboradores, Hospital General de México "Dr. Eduardo Liceaga") evaluó a 90 pacientes con enfermedades alérgicas entre agosto de 2024 y mayo de 2025: 26.6% presentó sensibilización a alérgenos alimentarios, y los más frecuentes fueron nuez de nogal (21.1%), caseína —proteína de la leche— (20%), cacahuate (18.9%) y camarón (16.7%). Es decir: frutos secos y lácteos encabezan la lista, y los mariscos pesan más de lo que suele suponerse.' },
+      { type: 'p', text: 'Aquí aparece una tensión que conviene nombrar. Los propios lineamientos SEP recomiendan las oleaginosas —cacahuates, almendras, nueces, semillas de girasol— como refrigerio saludable. Son excelentes desde el punto de vista nutricional y, al mismo tiempo, son el grupo con mayor prevalencia de sensibilización. Una cafetería bien operada no elige entre nutrición y seguridad: sirve ambas, con trazabilidad de ingredientes y opciones equivalentes para quien no puede consumirlas.' },
+      { type: 'h2', text: 'Por qué la cafetería es el punto crítico del plantel' },
+      { type: 'p', text: 'Una revisión publicada en la Revista Alergia México (2023) estima que alrededor del 45% de los niños con alergia alimentaria sufre una reacción accidental cada año, y que los ingresos hospitalarios por anafilaxia alimentaria van de 4 a 20 por cada 100,000 habitantes. La mayoría de esas reacciones no ocurre por descuido de la familia: ocurre donde el niño come sin supervisión de sus padres. El Libro de las enfermedades alérgicas de la Fundación BBVA y la SEAIC lo dice sin rodeos: el comedor escolar es el lugar donde con mayor frecuencia existe riesgo de una reacción alérgica a alimentos. Cinco horas al día, cientos de charolas y un intercambio de galletas entre compañeros bastan para explicarlo.' },
+      { type: 'h2', text: 'El protocolo mínimo que debe existir antes del primer día' },
+      { type: 'ul', items: [
+        'Censo actualizado al inicio del ciclo: qué alumno, qué alérgeno, qué tipo de reacción, qué medicamento y a quién llamar. Un expediente firmado por el médico tratante y por los padres, no un correo suelto de agosto pasado.',
+        'Fichas técnicas de ingredientes por platillo, no solo el nombre del guiso. Si el operador no puede decirte qué hay dentro de cada preparación, no puede garantizar nada.',
+        'Etiquetado de alérgenos en la línea de servicio. La NOM-051 obliga a declarar alérgenos en alimentos preenvasados; en preparados, esa transparencia debe replicarse por decisión operativa.',
+        'Protocolo anticontaminación cruzada: tablas, utensilios y superficies separados, orden de preparación definido y lavado de manos entre procesos.',
+        'Personal capacitado para reconocer una reacción y actuar: quién avisa a enfermería, quién llama a emergencias, quién acompaña al alumno. Con nombres, no con cargos genéricos.',
+        'Menú alternativo garantizado. El alumno alérgico no debe comer aparte ni comer menos: debe tener una opción completa y equivalente ese mismo día.',
+        'Bitácora de simulacros y revisiones. Un protocolo que nadie ha ensayado es un documento, no un protocolo.',
+      ] },
+      { type: 'quote', text: 'La seguridad alimentaria de un alumno alérgico no se resuelve con un letrero de "contiene nueces". Se resuelve con trazabilidad de ingredientes, cocina organizada para evitar contacto cruzado y personal que sabe exactamente qué hacer en los primeros dos minutos.' },
+      { type: 'h2', text: 'Lo que no basta (y suele pasar por protocolo)' },
+      { type: 'p', text: 'Pedirle a la familia que mande lunch de casa no es una solución: traslada el problema a los padres y no elimina el riesgo del contacto cruzado dentro del plantel. Tampoco basta con "avísanos y le hacemos algo distinto" el día que ocurre, porque una cocina que improvisa es exactamente donde se producen los errores. Y confiar en que el alumno mayor "ya sabe qué no puede comer" ignora que la adolescencia es la etapa de mayor conducta de riesgo alimentario. El estándar correcto es al revés: el sistema protege al alumno aunque el alumno se distraiga.' },
+      { type: 'h2', text: 'Cómo lo trabajamos en Nutri Cafeterías' },
+      { type: 'p', text: 'Nuestros menús los diseñan nutriólogos y se verifican contra los lineamientos SEP vigentes antes de servirse, bajo protocolos alineados a la NOM-251, con Distintivo H y licencia sanitaria. Eso significa control de ingredientes, orden de preparación y limpieza documentados —la misma disciplina que exige el manejo de alérgenos— y personal capacitado en la operación diaria de la cocina. Sumamos además herramientas que dan visibilidad a la familia: la app para padres, con la que pueden ver y acotar el consumo de sus hijos, y el pago con huella, que elimina el efectivo y deja registro de cada consumo. Más de 10 años operando cafeterías en escuelas privadas de CDMX, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción.' },
+      { type: 'p', text: 'Si quieres llegar al regreso a clases con este punto resuelto, empieza por saber dónde estás parado: haz nuestro diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una visita sin costo para revisar contigo el protocolo de alérgenos de tu cafetería. Antes de agosto, todavía da tiempo.' },
+    ],
+  },
+  {
     slug: 'cuanto-cuesta-comedor-escolar-cdmx',
     title: '¿Cuánto cuesta un comedor escolar en CDMX? Modelos, factores y lo que tu escuela NO debería pagar (guía 2026)',
     description:
