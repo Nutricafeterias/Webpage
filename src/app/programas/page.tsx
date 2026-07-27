@@ -36,7 +36,7 @@ export default function ProgramasPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-28 bg-[#FFFEF7]">
+      <main className="pt-28 bg-[#F7F3EA]">
         {/* Hero */}
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center pb-6">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-100 text-rose-700 font-bold text-sm mb-6 border border-rose-200">

@@ -87,7 +87,7 @@ export default async function BlogPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <Navbar />
-      <main className="pt-24 pb-24 bg-[#FFFEF7] min-h-screen">
+      <main className="pt-24 pb-24 bg-[#F7F3EA] min-h-screen">
         <article className="max-w-3xl mx-auto px-6 lg:px-8">
           {/* Breadcrumb */}
           <nav className="pt-8 mb-8 text-sm text-stone-400 font-medium">

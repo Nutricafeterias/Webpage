@@ -28,7 +28,7 @@ export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-24 pb-24 bg-[#FFFEF7] min-h-screen">
+      <main className="pt-24 pb-24 bg-[#F7F3EA] min-h-screen">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-14 pt-8">

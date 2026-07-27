@@ -1,12 +1,116 @@
 @import "tailwindcss";
 
+/* ============================================================
+   IDENTIDAD DE MARCA — Nutri Cafeterías «Energía Natural» 1.0
+   Fuente: Nutri Brand Identity/Colores/tokens.json
+   Se remapean los tokens de color de Tailwind v4 a la paleta de
+   marca (60% neutros cálidos / 30% verdes / 10% naranja):
+     · emerald · green · teal  → verdes Nutri (verde-nutri #1F5D3B)
+     · amber · orange · yellow → naranja amanecer #F39C12
+     · stone                   → neutros cálidos (Carbón #26241F)
+   Regla: sobre naranja el texto va en Carbón, nunca blanco.
+   ============================================================ */
+@theme {
+  /* ── Verdes de marca ─────────────────────────────────────── */
+  --color-emerald-50:  #EDF5E7;
+  --color-emerald-100: #C7E3B4;
+  --color-emerald-200: #A9D48C;
+  --color-emerald-300: #6EAF4A; /* verde-hoja */
+  --color-emerald-400: #3E8B54; /* verde-500 */
+  --color-emerald-500: #1F5D3B; /* verde-nutri (principal) */
+  --color-emerald-600: #17492E;
+  --color-emerald-700: #123B25;
+  --color-emerald-800: #0E3421; /* verde-900 */
+  --color-emerald-900: #0A2417;
+  --color-emerald-950: #06170E;
+
+  --color-green-50:  #EDF5E7;
+  --color-green-100: #C7E3B4;
+  --color-green-200: #A9D48C;
+  --color-green-300: #6EAF4A;
+  --color-green-400: #3E8B54;
+  --color-green-500: #1F5D3B;
+  --color-green-600: #17492E;
+  --color-green-700: #123B25;
+  --color-green-800: #0E3421;
+  --color-green-900: #0A2417;
+  --color-green-950: #06170E;
+
+  --color-teal-50:  #EDF5E7;
+  --color-teal-100: #C7E3B4;
+  --color-teal-200: #A9D48C;
+  --color-teal-300: #6EAF4A;
+  --color-teal-400: #3E8B54;
+  --color-teal-500: #1F5D3B;
+  --color-teal-600: #17492E;
+  --color-teal-700: #123B25;
+  --color-teal-800: #0E3421;
+  --color-teal-900: #0A2417;
+  --color-teal-950: #06170E;
+
+  /* ── Naranja de marca (texto Carbón encima, nunca blanco) ── */
+  --color-amber-50:  #FEF6E8;
+  --color-amber-100: #FCE7C4;
+  --color-amber-200: #F9D79A;
+  --color-amber-300: #F7C566;
+  --color-amber-400: #F5B942;
+  --color-amber-500: #F39C12; /* naranja amanecer */
+  --color-amber-600: #D9860C;
+  --color-amber-700: #A9670A;
+  --color-amber-800: #7A4E08;
+  --color-amber-900: #5C3B07;
+  --color-amber-950: #3D2705;
+
+  --color-orange-50:  #FEF6E8;
+  --color-orange-100: #FCE7C4;
+  --color-orange-200: #F9D79A;
+  --color-orange-300: #F7C566;
+  --color-orange-400: #F5B942;
+  --color-orange-500: #F39C12;
+  --color-orange-600: #D9860C;
+  --color-orange-700: #A9670A;
+  --color-orange-800: #7A4E08;
+  --color-orange-900: #5C3B07;
+  --color-orange-950: #3D2705;
+
+  --color-yellow-50:  #FEF6E8;
+  --color-yellow-100: #FCE7C4;
+  --color-yellow-200: #F9D79A;
+  --color-yellow-300: #F7C566;
+  --color-yellow-400: #F5B942;
+  --color-yellow-500: #F39C12;
+  --color-yellow-600: #D9860C;
+  --color-yellow-700: #A9670A;
+  --color-yellow-800: #7A4E08;
+  --color-yellow-900: #5C3B07;
+  --color-yellow-950: #3D2705;
+
+  /* ── Neutros cálidos de marca ────────────────────────────── */
+  --color-stone-50:  #F7F3EA; /* crema-avena */
+  --color-stone-100: #EDE7D8; /* lino */
+  --color-stone-200: #D8CDB6; /* arena */
+  --color-stone-300: #C9BCA0;
+  --color-stone-400: #A79B82; /* piedra */
+  --color-stone-500: #7A7060;
+  --color-stone-600: #5B5346; /* cacao (cuerpo) */
+  --color-stone-700: #443E33;
+  --color-stone-800: #37342C;
+  --color-stone-900: #26241F; /* carbón (titulares) */
+  --color-stone-950: #1A1814;
+
+  /* ── Tokens de conveniencia ──────────────────────────────── */
+  --color-primary: #1F5D3B;
+  --color-primary-light: #6EAF4A;
+  --color-brand-orange: #F39C12;
+}
+
 :root {
-  --background: #FFFEF7;
-  --foreground: #1c1917;
-  --color-primary: #16a34a;
-  --color-primary-light: #22c55e;
-  --color-orange: #f97316;
-  --color-yellow: #fbbf24;
+  --background: #F7F3EA;   /* crema-avena */
+  --foreground: #26241F;   /* carbón */
+  --color-primary: #1F5D3B;       /* verde-nutri */
+  --color-primary-light: #6EAF4A; /* verde-hoja  */
+  --color-orange: #F39C12;        /* naranja amanecer */
+  --color-yellow: #F5B942;
   --color-coral: #ef4444;
 }
 
@@ -19,17 +123,17 @@ html {
 }
 
 body {
-  background: #FFFEF7;
-  color: #1c1917;
+  background: #F7F3EA;
+  color: #26241F;
   font-family: var(--font-geist-sans, 'Plus Jakarta Sans', sans-serif);
   -webkit-font-smoothing: antialiased;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f5f5f0; }
-::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #15803d; }
+::-webkit-scrollbar-track { background: #EDE7D8; }
+::-webkit-scrollbar-thumb { background: #1F5D3B; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #0E3421; }
 
 /* Marquee */
 @keyframes marquee {
@@ -77,19 +181,19 @@ body {
 
 /* Gradient text */
 .gradient-text-primary {
-  background: linear-gradient(135deg, #16a34a, #22c55e);
+  background: linear-gradient(135deg, #1F5D3B, #6EAF4A);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .gradient-text-orange {
-  background: linear-gradient(135deg, #f97316, #fbbf24);
+  background: linear-gradient(135deg, #F39C12, #F5B942);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .gradient-text-warm {
-  background: linear-gradient(135deg, #16a34a, #f97316);
+  background: linear-gradient(135deg, #1F5D3B, #F39C12);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -97,7 +201,7 @@ body {
 
 /* Doodle bg pattern */
 .doodle-bg {
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2316a34a' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231F5D3B' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* Card hover lift */
@@ -106,7 +210,7 @@ body {
 }
 .card-lift:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 60px -10px rgba(22, 163, 74, 0.2);
+  box-shadow: 0 20px 60px -10px rgba(31, 93, 59, 0.2);
 }
 
 /* Wavy divider */
