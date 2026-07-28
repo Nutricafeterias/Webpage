@@ -112,8 +112,8 @@ const ANALYZING_STEPS = [
 ]
 
 function scoreLabel(pct: number) {
-  if (pct >= 80) return { title: '¡Tu cafetería va muy bien! 🎉', color: 'text-emerald-600', ring: '#10b981', desc: 'Estás por encima del promedio. Aun así, detectamos áreas donde podrías llegar a nivel premium.' }
-  if (pct >= 50) return { title: 'Tu cafetería está en zona amarilla ⚠️', color: 'text-amber-500', ring: '#f59e0b', desc: 'Hay varias áreas importantes por mejorar. La buena noticia: todas tienen solución probada.' }
+  if (pct >= 80) return { title: '¡Tu cafetería va muy bien! 🎉', color: 'text-emerald-600', ring: '#1F5D3B', desc: 'Estás por encima del promedio. Aun así, detectamos áreas donde podrías llegar a nivel premium.' }
+  if (pct >= 50) return { title: 'Tu cafetería está en zona amarilla ⚠️', color: 'text-amber-500', ring: '#F39C12', desc: 'Hay varias áreas importantes por mejorar. La buena noticia: todas tienen solución probada.' }
   return { title: 'Tu cafetería necesita atención urgente 🚨', color: 'text-rose-500', ring: '#f43f5e', desc: 'Los puntos débiles detectados afectan la experiencia de tus alumnos y la reputación de tu escuela — hoy.' }
 }
 
@@ -397,7 +397,7 @@ export function Diagnostic() {
           <div className="text-center">
             <div className="relative w-48 h-48 mx-auto mb-6">
               <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-                <circle cx="50" cy="50" r="42" fill="none" stroke="#e7e5e4" strokeWidth="10" />
+                <circle cx="50" cy="50" r="42" fill="none" stroke="#D8CDB6" strokeWidth="10" />
                 <circle
                   cx="50" cy="50" r="42" fill="none"
                   stroke={result.ring} strokeWidth="10" strokeLinecap="round"

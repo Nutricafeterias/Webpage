@@ -71,7 +71,7 @@ export default function CafeteriasEscuelasPrivadasPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <Navbar />
-      <main className="pt-28 pb-24 bg-[#FFFEF7] min-h-screen">
+      <main className="pt-28 pb-24 bg-[#F7F3EA] min-h-screen">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Hero */}
           <div className="text-center max-w-3xl mx-auto">

@@ -29,7 +29,7 @@ export default function MenusPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-28 pb-24 bg-[#FFFEF7] min-h-screen">
+      <main className="pt-28 pb-24 bg-[#F7F3EA] min-h-screen">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-700 font-bold text-sm mb-6 border border-amber-200">

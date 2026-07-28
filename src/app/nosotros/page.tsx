@@ -45,7 +45,7 @@ export default function NosotrosPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-28 bg-[#FFFEF7]">
+      <main className="pt-28 bg-[#F7F3EA]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Hero */}
           <div className="text-center max-w-3xl mx-auto pb-14">

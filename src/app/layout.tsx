@@ -142,12 +142,13 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${jakarta.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
+        <meta name="theme-color" content="#1F5D3B" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#FFFEF7]" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-[#F7F3EA]" suppressHydrationWarning>
         {children}
         <Analytics />
       </body>

@@ -51,8 +51,8 @@ export function DiagnosticTeaser() {
             >
               <div className="relative w-44 h-44">
                 <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-                  <circle cx="50" cy="50" r="42" fill="none" stroke="#292524" strokeWidth="10" />
-                  <circle cx="50" cy="50" r="42" fill="none" stroke="#f59e0b" strokeWidth="10" strokeLinecap="round" strokeDasharray="150 264" />
+                  <circle cx="50" cy="50" r="42" fill="none" stroke="#26241F" strokeWidth="10" />
+                  <circle cx="50" cy="50" r="42" fill="none" stroke="#F39C12" strokeWidth="10" strokeLinecap="round" strokeDasharray="150 264" />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <span className="text-4xl font-black text-white">57</span>
