@@ -26,6 +26,51 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'agua-simple-escuelas-hidratacion-lineamientos-sep-cafeteria',
+    title: 'Agua simple en la escuela: la regla de los lineamientos SEP que casi ninguna cafetería cumple bien',
+    description:
+      'Los lineamientos SEP establecen el agua como el medio de hidratación en las escuelas y limitan el agua de fruta natural a dos veces por semana. Guía para directores: qué dice la norma exactamente, por qué la hidratación afecta el rendimiento en el aula y cómo auditar tu cafetería antes del ciclo 2026-2027.',
+    date: '2026-08-03',
+    readTime: '7 min',
+    category: 'Nutrición y bienestar',
+    emoji: '💧',
+    image: 'https://images.unsplash.com/photo-1523362628745-0c100150b504?w=1200&h=630&fit=crop&q=85',
+    keywords: ['agua simple escuelas México', 'hidratación escolar lineamientos SEP', 'bebidas azucaradas escuelas prohibición', 'bebederos escolares normativa', 'agua de fruta natural cafetería escolar', 'hidratación y rendimiento académico'],
+    related: [
+      { href: '/lineamientos-sep', anchor: 'Lineamientos SEP: qué exige la norma a tu cafetería escolar' },
+      { href: '/menus', anchor: 'Menús escolares diseñados por nutriólogos' },
+      { href: '/blog/prohibicion-comida-chatarra-escuelas-lineamientos-sep', anchor: 'Prohibición de comida chatarra en escuelas: guía de los lineamientos SEP' },
+    ],
+    content: [
+      { type: 'p', text: 'Cuando una escuela revisa su cafetería antes del arranque de ciclo, la conversación gira alrededor de los platillos: el menú, las porciones, los sellos de advertencia, el proveedor. Casi nunca se habla de lo que el alumno bebe. Y ahí está una de las reglas más explícitas —y más incumplidas— de los lineamientos vigentes. Si tu plantel está afinando detalles para el ciclo 2026-2027, vale la pena dedicarle diez minutos a la bebida.' },
+      { type: 'h2', text: 'Lo que la norma dice, con sus palabras' },
+      { type: 'p', text: 'Los Lineamientos generales para la preparación, distribución y expendio de alimentos y bebidas en las escuelas del Sistema Educativo Nacional (DOF, 30 de septiembre de 2024) son directos. En su lineamiento Séptimo, fracción IV, establecen que las escuelas "promoverán el agua para uso y consumo humano como la opción saludable de hidratación". Y en el Anexo Único, donde viven los criterios técnicos, la redacción se endurece: "Sólo se permitirá ofrecer agua para consumo humano, de preferencia sin saborizante, como medio de hidratación".' },
+      { type: 'p', text: 'La única excepción está acotada con precisión quirúrgica, y es la parte que casi nadie conoce. Para la comida escolar, el Anexo permite incluir "agua de fruta natural sin azúcar máximo dos veces por semana", y solo si se prepara con fruta fresca, disponible en la región y de temporada, sin azúcar añadida. Además, en los distintos tiempos de comida el Anexo repite tres candados: no está permitida la inclusión de jugos ni néctares, no se permite la adición de edulcorantes ni de fuentes de cafeína, y no se puede añadir azúcar a ninguna preparación.' },
+      { type: 'p', text: 'Traducido a la operación diaria: el agua de sabor todos los días no cumple. El jugo del refrigerio no cumple. El agua "sin azúcar" endulzada con edulcorante no cumple. Y el mismo Anexo remite al Acuerdo de bebederos publicado en el DOF el 23 de diciembre de 2015 para asegurar la disponibilidad de agua en el plantel: la norma no solo restringe lo que se vende, obliga a que haya agua disponible.' },
+      { type: 'h2', text: 'Por qué esto importa más de lo que parece' },
+      { type: 'p', text: 'No es un tecnicismo administrativo. Según la ENSANUT Continua 2023, el exceso de peso alcanza 36.5% en edad escolar y ronda 40.4% en la adolescencia, y las bebidas azucaradas aportan alrededor de la mitad del azúcar total que consume un escolar mexicano al día. El monitoreo que la propia SEP realizó en 10,533 escuelas durante el ciclo 2023-2024 encontró que 95% vendía bebidas azucaradas y 79% vendía refrescos. La bebida no es el detalle del menú: es el principal vehículo de azúcar en la jornada escolar.' },
+      { type: 'p', text: 'Del lado académico, la evidencia sobre hidratación y cognición es consistente: déficits leves de hidratación —del orden de 1 a 2%— se asocian con peor desempeño en atención, concentración y memoria a corto plazo en niños, y varios estudios muestran que los alumnos que reciben agua adicional durante la jornada rinden mejor en pruebas cognitivas. Un alumno mal hidratado a las 11 de la mañana no está distraído por falta de disciplina.' },
+      { type: 'h2', text: 'Tener agua no es lo mismo que que la beban' },
+      { type: 'p', text: 'Aquí está el error más común: la escuela instala el bebedero, marca la casilla y da el tema por cerrado. Un estudio publicado en Salud Pública de México (Jiménez-Aguilar y colaboradores) entrevistó a 617 estudiantes de secundarias de la Ciudad de México incorporadas al Programa Nacional de Bebederos Escolares y encontró que 37.1% nunca usó los bebederos, y solo 8.3% los usaba todos los días. La razón principal no era el olvido: era la desconfianza en el agua —higiene percibida, sabor, temperatura, falta de claridad sobre el mantenimiento—. La infraestructura sin operación visible no cambia el hábito.' },
+      { type: 'h2', text: 'La auditoría de siete puntos, antes del primer día' },
+      { type: 'ul', items: [
+        'Recorre la línea de servicio y anota todas las bebidas disponibles, incluidas las de máquinas y refrigeradores. Si alguna trae sello de advertencia, no debería estar ahí.',
+        'Revisa jugos y néctares embotellados: el Anexo Único los excluye explícitamente, aunque sean "100% natural".',
+        'Cuenta los días de agua de fruta natural a la semana. El tope es dos, sin azúcar y con fruta fresca de temporada.',
+        'Verifica que no se usen edulcorantes no calóricos como sustituto del azúcar en aguas y preparaciones: la norma los prohíbe, no los recomienda con reservas.',
+        'Confirma que haya agua disponible y accesible sin costo durante toda la jornada, no solo en el horario de comida.',
+        'Pide la bitácora de mantenimiento y análisis del sistema de agua o bebederos. Si no existe, el alumno tiene razón en desconfiar.',
+        'Mide el consumo real, no la oferta: cuántos vasos o litros se sirven por día. Es el único dato que dice si la regla se volvió hábito.',
+      ] },
+      { type: 'quote', text: 'Cumplir la norma del agua no es quitar el refresco del refrigerador. Es que el alumno llegue a la tercera clase de la tarde hidratado, porque el agua estuvo disponible, sabía bien y alguien se ocupó de que así fuera todos los días.' },
+      { type: 'h2', text: 'El contexto: el tema ya está en la agenda nacional' },
+      { type: 'p', text: 'La estrategia federal Vive Saludable, Vive Feliz cerró el ciclo escolar 2025-2026 con 10.8 millones de alumnos evaluados en peso, talla, salud visual y bucal, y continúa en el nuevo ciclo con el fomento del consumo de agua simple como uno de sus ejes. En la Ciudad de México, el gobierno local se sumó a la estrategia con el objetivo explícito de generar el hábito de beber agua en las escuelas. Las escuelas privadas no aparecen en esos conteos, pero sí están sujetas a los mismos lineamientos: la norma aplica a todos los planteles del Sistema Educativo Nacional. La diferencia es que en una escuela privada el estándar lo pone la institución, no un programa federal.' },
+      { type: 'h2', text: 'Cómo lo resolvemos en Nutri Cafeterías' },
+      { type: 'p', text: 'Nuestros menús los diseñan nutriólogos y se verifican contra los lineamientos SEP vigentes antes de servirse, con operación alineada a la NOM-251, Distintivo H y licencia sanitaria. La bebida entra en esa revisión con el mismo peso que el platillo: qué se ofrece, con qué frecuencia y cómo se prepara. Además, la app para padres permite a cada familia ver y acotar lo que su hijo consume —incluidas las bebidas—, y el pago con huella deja registro de cada consumo sin necesidad de efectivo. Más de 10 años operando cafeterías en escuelas privadas de CDMX, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción, sin inversión para la escuela.' },
+      { type: 'p', text: 'Si quieres empezar el ciclo sabiendo exactamente en qué punto está tu cafetería, haz nuestro diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una visita sin costo: revisamos contigo la oferta de bebidas de tu plantel y qué habría que ajustar. Es la clase de detalle que no cuesta dinero corregir, y que un padre de familia nota de inmediato.' },
+    ],
+  },
+  {
     slug: 'alergias-alimentarias-cafeteria-escolar-protocolo-regreso-clases',
     title: 'Alergias alimentarias en la cafetería escolar: el protocolo que tu escuela debe tener listo antes del regreso a clases',
     description:
