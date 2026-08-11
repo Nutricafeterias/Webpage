@@ -26,6 +26,56 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'desperdicio-alimentos-cafeteria-escolar-como-medirlo',
+    title: 'Desperdicio de alimentos en la cafetería escolar: el indicador que casi ninguna escuela mide (y cómo auditarlo en una semana)',
+    description:
+      'Una de cada cinco porciones servidas en un comedor escolar termina en la basura. Guía para directores: qué dice la evidencia internacional, por qué la fruta y la verdura son lo más desperdiciado y cómo hacer una auditoría de charolas en tu plantel en cinco días.',
+    date: '2026-08-10',
+    readTime: '7 min',
+    category: 'Guías para directores',
+    emoji: '🗑️',
+    image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=1200&h=630&fit=crop&q=85',
+    keywords: ['desperdicio de alimentos cafetería escolar', 'auditoría de desperdicio comedor escolar', 'plate waste escuelas', 'aceptación del menú escolar', 'sustentabilidad en escuelas México', 'gestión de comedores escolares'],
+    related: [
+      { href: '/menus', anchor: 'Menús escolares diseñados por nutriólogos' },
+      { href: '/comedores-escolares', anchor: 'Comedores escolares operados de forma integral' },
+      { href: '/blog/menu-saludable-cafeteria-escolar', anchor: 'Menú saludable para cafeterías escolares: qué debe incluir según nutriólogos' },
+    ],
+    content: [
+      { type: 'p', text: 'Una escuela mide casi todo lo que pasa en su cafetería: órdenes vendidas, tiempo de fila, quejas, encuestas de satisfacción, cumplimiento de la norma. Y casi ninguna mide el único dato que dice si la comida realmente funcionó: cuánto regresa a la basura. El bote de la cafetería es el reporte más honesto que tiene tu plantel, y nadie lo lee.' },
+      { type: 'h2', text: 'Una de cada cinco porciones no se come' },
+      { type: 'p', text: 'La mejor evidencia disponible viene de auditorías estandarizadas hechas en Estados Unidos. Un estudio publicado en PLOS One en 2024 analizó casi 500 mediciones en 134 escuelas de 24 estados entre 2018 y 2023, y encontró un promedio de 0.29 libras de desperdicio por alumno por comida: unos 130 gramos de comida servida que terminan en el bote. El desperdicio es mayor en primaria (0.34 lb) que en secundaria y preparatoria (0.23 lb). La cifra coincide con la estimación del USDA de que alrededor de 21% de las calorías servidas en comidas escolares nunca se comen.' },
+      { type: 'p', text: 'A escala, el número deja de ser abstracto. El reporte Food Waste Warriors del World Wildlife Fund midió el desperdicio posterior al servicio en 46 escuelas de ocho estados y calculó un promedio de 39.2 libras de comida y 19.4 cartones de leche desperdiciados por alumno al año, equivalentes a unas 530,000 toneladas anuales y alrededor de 1,700 millones de dólares en presupuesto escolar. Es dinero que la institución ya pagó por comida que nadie comió.' },
+      { type: 'h2', text: 'En México el contexto lo vuelve más incómodo' },
+      { type: 'p', text: 'La Secretaría de Agricultura y Desarrollo Rural (SADER) estima que en México se desperdician más de 13 millones de toneladas de alimentos al año —cerca de 76 mil toneladas diarias, alrededor de 28% de la producción nacional—. La FAO calcula 20.4 millones de toneladas (34%) y la Red de Bancos de Alimentos de México habla de más de 40% de la producción. Las metodologías difieren, pero ninguna versión es pequeña. Del total, los hogares aportan 61% y el sector comercial y de servicios el 39% restante: un comedor escolar cae, por definición, en el segundo grupo.' },
+      { type: 'h2', text: 'La paradoja de la verdura' },
+      { type: 'p', text: 'Aquí está el hallazgo que más debería interesarle a un director mexicano. En el estudio de PLOS One, la fruta y la verdura representan 0.10 de esas 0.29 libras: alrededor de un tercio de todo lo desperdiciado. Y es justamente la categoría que los lineamientos SEP obligan a ofrecer todos los días.' },
+      { type: 'p', text: 'Es decir: la escuela invierte en cumplir la norma, la cafetería sirve la verdura, el inspector la vería en la línea de servicio… y el alumno la deja en la charola. Un menú que cumple en el papel y termina en el bote no alimentó a nadie; solo documentó cumplimiento. La aceptación no es un extra del menú saludable: es la condición para que exista.' },
+      { type: 'h2', text: 'Tres palancas que bajan el número sin subir el presupuesto' },
+      { type: 'ul', items: [
+        'El horario del turno. En el mismo estudio, los periodos de comida programados entre las 12 y la 1 de la tarde desperdiciaron cerca de 25% menos que los programados antes de las 11. Un alumno que come cuando no tiene hambre no come: tira.',
+        'Porción elegida contra porción impuesta. Las escuelas donde el alumno se sirve la cantidad de leche que va a tomar reportaron 76% menos desperdicio de leche que las que entregan el cartón individual completo. El principio se traslada directo a guarniciones y sopas: dejar que el alumno decida el tamaño casi siempre reduce el sobrante.',
+        'El tiempo real para comer, no el que dice el horario. La fila cuenta como tiempo de comida. Si el alumno tarda ocho minutos en sentarse dentro de un receso de veinticinco, la charola paga la diferencia.',
+      ] },
+      { type: 'p', text: 'Un cuarto factor es el más barato de corregir y el que más se ignora. Un estudio en comedores escolares de la zona centro-sur de Chile, publicado en la Revista Chilena de Nutrición, documentó que quienes manipulan los alimentos identifican el aspecto, el olor y el sabor del platillo y la repetición del menú como los factores críticos de rechazo. No es falta de apetito: es que el platillo, tal como llegó a la charola, no invitaba a comerse.' },
+      { type: 'h2', text: 'La auditoría de charolas: cinco días y una báscula' },
+      { type: 'p', text: 'No necesitas contratar a nadie para tener este dato. Necesitas una semana y disciplina.' },
+      { type: 'ul', items: [
+        'Consigue una báscula de piso y dos botes rotulados: uno para comida sólida y otro para leche y líquidos. Pesa los botes vacíos y anota la tara.',
+        'Durante cinco días hábiles, pesa lo que regresa después de cada servicio y registra también cuántas comidas se sirvieron ese día.',
+        'Divide: gramos desperdiciados entre comidas servidas. Ese es tu indicador. La referencia internacional ronda los 130 gramos por comida; si estás por debajo, vas bien.',
+        'Separa fruta y verdura del resto del sólido. Si representan más de un tercio, el problema no es el menú completo: es cómo se presenta y se sirve la guarnición.',
+        'Anota el horario de cada turno y cuánto tarda el último alumno de la fila en sentarse. Son las dos variables que puedes cambiar sin gastar un peso.',
+        'Cierra con diez minutos de conversación con los alumnos: qué no se comieron y por qué. Te dará más información que un mes de suposiciones en la oficina.',
+        'Vuelve a medir un mes después del ajuste. Sin la segunda medición, la primera es una anécdota, no un indicador.',
+      ] },
+      { type: 'quote', text: 'El indicador que importa no es lo que la escuela sirve, es lo que el alumno se come. En Nutri Cafeterías tratamos el plato que regresa lleno como lo que es: una falla de operación, no un capricho del niño.' },
+      { type: 'h2', text: 'Cómo lo trabajamos en Nutri Cafeterías' },
+      { type: 'p', text: 'La reducción de desperdicio, los proveedores locales y los ingredientes de temporada son el eje de Planeta Sano, uno de nuestros programas educativos. Y el mejor antídoto contra la charola llena es anterior a la cocina: en Tú Eliges, los alumnos votan los platillos que quieren ver en el menú, porque un menú que el alumno ayudó a construir se come. A eso se suman menús diseñados por nutriólogos y alineados a los lineamientos SEP, operación con Distintivo H, licencia sanitaria y protocolos NOM-251, pago con huella digital que deja registro de cada consumo y app para padres con visibilidad de lo que su hijo compró. Más de 10 años operando cafeterías en escuelas privadas de CDMX, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción, sin inversión inicial para la escuela.' },
+      { type: 'p', text: 'Si quieres saber en qué punto está tu cafetería antes de arrancar el ciclo, haz nuestro diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una visita sin costo: revisamos contigo la operación de tu plantel, incluido lo que hoy termina en la basura. Es el ajuste que baja costo y sube satisfacción al mismo tiempo, y casi nadie lo está mirando.' },
+    ],
+  },
+  {
     slug: 'agua-simple-escuelas-hidratacion-lineamientos-sep-cafeteria',
     title: 'Agua simple en la escuela: la regla de los lineamientos SEP que casi ninguna cafetería cumple bien',
     description:
