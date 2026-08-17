@@ -26,6 +26,60 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'registro-nacional-salud-escolar-escuelas-privadas-linea-base',
+    title: 'Salud escolar 2026: el registro nacional dejó fuera a las escuelas privadas (y cómo levantar tu propia línea base antes del 31 de agosto)',
+    description:
+      'La SEP cerró el ciclo con 10.8 millones de alumnos de primaria valorados en peso, talla, vista y salud bucal. Ninguno estudia en una escuela particular. Guía para directores: qué reveló ese registro y qué puede medir tu plantel desde la cafetería sin convertirse en clínica.',
+    date: '2026-08-17',
+    readTime: '7 min',
+    category: 'Nutrición y bienestar',
+    emoji: '🩺',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=630&fit=crop&q=85',
+    keywords: ['salud escolar México 2026', 'Vive Saludable Vive Feliz', 'obesidad infantil escuelas privadas', 'línea base nutrición escolar', 'cafetería escolar indicadores', 'lineamientos SEP alimentación'],
+    related: [
+      { href: '/lineamientos-sep', anchor: 'Cumplimiento de los lineamientos SEP en la cafetería' },
+      { href: '/cafeterias-escuelas-privadas', anchor: 'Cafeterías para escuelas privadas' },
+      { href: '/blog/menu-saludable-cafeteria-escolar', anchor: 'Menú saludable para cafeterías escolares: qué debe incluir según nutriólogos' },
+    ],
+    content: [
+      { type: 'p', text: 'Por primera vez en la historia del país existe un registro nacional de salud infantil construido escuela por escuela. La estrategia Vive Saludable, Vive Feliz cerró el ciclo 2025-2026 con 10.8 millones de alumnos de primaria valorados en peso, talla, agudeza visual y salud bucal, en más de 83 mil planteles, con brigadas del IMSS, la Secretaría de Salud y las autoridades educativas. La SEP ya confirmó que el programa deja de ser una jornada y se vuelve permanente, integrado al trabajo de los Consejos Técnicos Escolares. Hay un dato que casi nadie ha señalado: todos esos planteles son públicos. Si diriges una escuela particular, tu matrícula no está en ese registro.' },
+      { type: 'h2', text: 'Qué encontraron cuando midieron de verdad' },
+      { type: 'p', text: 'Al presentar los resultados en abril de 2026, el titular de la SEP, Mario Delgado, subrayó que no se trataba de una encuesta sino de mediciones directas sobre casi 10 millones de estudiantes, el 88.5% de la matrícula nacional de primaria. Los hallazgos:' },
+      { type: 'ul', items: [
+        '4 de cada 10 alumnos de primaria viven con sobrepeso u obesidad.',
+        '1 de cada 10 presenta bajo peso: el mismo comedor convive con dos problemas opuestos al mismo tiempo.',
+        '6 de cada 10 tienen caries, y más de la mitad de los detectados nunca había ido al dentista.',
+        '4 de cada 10 tienen algún problema de agudeza visual; se entregaron más de 145 mil lentes gratuitos.',
+        'Más del 86% de las primarias y secundarias reportan aplicando la prohibición de alimentos ultraprocesados y bebidas azucaradas vigente desde marzo de 2025.',
+      ] },
+      { type: 'p', text: 'La cifra de bajo peso es la que suele sorprender a los directivos. La conversación pública sobre alimentación escolar se organizó durante quince años alrededor de la obesidad, y el registro muestra una doble carga de malnutrición: en el mismo salón hay niños que comen de más y niños que no están comiendo suficiente. Un menú diseñado solo para restringir no atiende a la mitad del problema.' },
+      { type: 'h2', text: 'Por qué le importa a una escuela privada que no fue medida' },
+      { type: 'p', text: 'Por tres razones muy concretas. La primera es que la evidencia disponible no sugiere que la colegiatura proteja: los determinantes del sobrepeso infantil en México son estructurales y familiares, no exclusivos del sistema público. La segunda es que ahora existe un estándar público de comparación. Cuando una familia recibió en la escuela de un sobrino una hoja de resultados con diagnóstico y recomendaciones, la pregunta en la junta de padres de tu plantel deja de ser hipotética. La tercera es de gestión: el programa es permanente y hay ya iniciativas en el Congreso para ampliarlo a secundarias y preparatorias. La escuela que llegue con datos propios va a estar en otra posición que la que empiece a improvisar cuando la midan.' },
+      { type: 'h2', text: 'Lo que tu escuela sí puede medir (y lo que no debería)' },
+      { type: 'p', text: 'Empecemos por lo que no. Un colegio particular no debería montar por su cuenta una jornada de pesaje y talla de alumnos. Esos son datos personales sensibles de menores, exigen aviso de privacidad, consentimiento de los padres, resguardo y una interpretación clínica que la escuela no está obligada a tener. Medir mal la salud de un niño y devolverle una etiqueta a la familia hace más daño que no medir. Eso se hace con un profesional de la salud y con reglas claras, o no se hace.' },
+      { type: 'p', text: 'Lo que sí está totalmente en tu cancha es el ambiente alimentario: lo que la escuela ofrece, lo que el alumno realmente elige y lo que se come. Cuatro indicadores que puedes levantar en dos semanas, con los datos que la cafetería ya genera:' },
+      { type: 'ul', items: [
+        'Mezcla real de consumo. Qué porcentaje de las órdenes del mes fue plato fuerte completo, qué porcentaje snack y qué porcentaje bebida sola. Es el retrato más honesto de cómo come tu escuela y casi ninguna dirección lo ha visto.',
+        'Cobertura de agua simple. Puntos de acceso gratuito por cada 100 alumnos y litros servidos por semana. Los lineamientos la exigen; la operación es la que decide si de verdad está al alcance en el receso.',
+        'Cumplimiento del menú contra lineamientos SEP, medido por día servido y no por el menú planeado en papel. La diferencia entre ambos suele ser la historia completa.',
+        'Aceptación. Cuánto de lo que se sirve regresa a la basura, en especial fruta y verdura. Un menú que cumple la norma y termina en el bote documentó cumplimiento, no alimentó a nadie.',
+      ] },
+      { type: 'p', text: 'Ninguno de los cuatro toca el cuerpo de un alumno y los cuatro juntos te dan una línea base defendible frente a un consejo o una familia.' },
+      { type: 'quote', text: 'El gobierno acaba de demostrar que cuando mides, aparecen problemas que llevaban años invisibles. En Nutri Cafeterías partimos del mismo principio: una cafetería que no genera datos no se puede mejorar, solo se puede defender con opiniones.' },
+      { type: 'h2', text: 'Un calendario que cabe antes del regreso a clases' },
+      { type: 'p', text: 'El ciclo 2026-2027 arranca el lunes 31 de agosto, y los docentes entran una semana antes, del 24 al 28 de agosto, para el Consejo Técnico Escolar de fase intensiva. Esa semana es la ventana natural.' },
+      { type: 'ul', items: [
+        'Esta semana: pide a tu operador el desglose de consumo de los últimos tres meses del ciclo anterior por categoría de producto. Si no puede entregarlo, ese ya es un hallazgo.',
+        'Semana del 24 de agosto: cuenta puntos de agua, revisa el menú del primer mes contra los lineamientos y define quién será el responsable del indicador dentro de la escuela.',
+        'Primeras dos semanas de clases: pesa lo que regresa en las charolas y registra órdenes servidas. Con diez días hábiles tienes una base.',
+        'Antes de octubre: presenta los cuatro números al consejo directivo y fija la meta del ciclo. Una medición sin segunda medición es una anécdota.',
+      ] },
+      { type: 'h2', text: 'Cómo lo trabajamos en Nutri Cafeterías' },
+      { type: 'p', text: 'Nuestra operación produce estos datos como subproducto natural, no como proyecto especial: el pago con huella digital deja registro de cada consumo, la app para padres da visibilidad de lo que compró su hijo y NutriMood conecta alimentación con el estado de ánimo del alumno. Los menús los diseñan nutriólogos y están alineados a los lineamientos SEP, con Distintivo H, licencia sanitaria y protocolos NOM-251. Son más de 10 años operando cafeterías en escuelas privadas de CDMX, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción, sin inversión inicial para la escuela.' },
+      { type: 'p', text: 'Si quieres entrar al ciclo con tu propia línea base en lugar de esperar a que alguien más la levante por ti, haz el diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo: revisamos contigo qué datos genera hoy tu cafetería y cuáles te faltan para poder sostener una conversación seria con tus familias.' },
+    ],
+  },
+  {
     slug: 'desperdicio-alimentos-cafeteria-escolar-como-medirlo',
     title: 'Desperdicio de alimentos en la cafetería escolar: el indicador que casi ninguna escuela mide (y cómo auditarlo en una semana)',
     description:
