@@ -26,6 +26,58 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'inteligencia-artificial-cafeteria-escolar-datos-chartwells-sodexo',
+    title: 'IA en la cafetería escolar: lo que Chartwells y Sodexo ya automatizan en 2026 (y las 5 preguntas que tu cafetería debería contestar sin comprar software)',
+    description:
+      'Los dos operadores escolares más grandes del mundo dejaron de decidir el menú por intuición: hoy lo deciden con plataformas de datos y checkout sin fricción. Qué están haciendo exactamente, qué de eso aplica a una escuela privada mexicana y cómo saber si tu cafetería genera información o solo vende comida.',
+    date: '2026-08-24',
+    readTime: '8 min',
+    category: 'Tecnología',
+    emoji: '📊',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&q=85',
+    keywords: ['inteligencia artificial cafetería escolar', 'datos cafetería escolar', 'tecnología comedor escolar México', 'Chartwells AI Appetite Intelligence', 'Sodexo Food Hive', 'digitalización escuelas privadas México'],
+    related: [
+      { href: '/blog/tecnologia-cafeterias-escolares', anchor: 'Tecnología en cafeterías escolares: pago con huella digital, tótems y apps para padres' },
+      { href: '/blog/tendencias-internacionales-food-service-escolar-2026', anchor: 'Tendencias internacionales en food service escolar 2026' },
+      { href: '/cafeterias-escuelas-privadas', anchor: 'Cafeterías para escuelas privadas' },
+    ],
+    content: [
+      { type: 'p', text: 'Durante décadas, el menú de una cafetería escolar se decidió igual en todo el mundo: alguien con experiencia proponía platillos, el director aprobaba y, si algo no gustaba, se enteraban por una queja. Ese modelo se está acabando en los operadores grandes, y no por moda tecnológica. Se está acabando porque los datos que la propia cafetería genera todos los días —qué se pidió, qué se dejó, a qué hora se formó la fila— resultaron ser mejores para decidir que la opinión de cualquier adulto en la sala. Vale la pena ver qué hicieron con eso Chartwells K12 y Sodexo, y separar con honestidad qué parte aplica a una escuela privada mexicana y qué parte es ruido.' },
+      { type: 'h2', text: '1. Chartwells convirtió el gusto de los alumnos en una plataforma' },
+      { type: 'p', text: 'Chartwells K12 —que opera comedores en unas 4,800 escuelas de Estados Unidos con más de 18,000 colaboradores— publica cada año su lista de tendencias de menú. Lo nuevo no es la lista: es de dónde sale. Desde la edición 2026 la construyen con Chartwells AI: Appetite Intelligence, una plataforma que combina la investigación de mercado de su socio analítico E15 con la retroalimentación diaria de los alumnos en las cafeterías. Es decir, el menú nacional del año siguiente lo define, en parte, lo que los estudiantes respondieron ayer en la fila.' },
+      { type: 'p', text: 'En su comunicado del 25 de febrero de 2026, la compañía describió cómo esa retroalimentación se conecta con programas donde los alumnos votan conceptos nuevos de cafetería antes de que existan. El resultado de leer ese dato con método es específico y a veces contraintuitivo: 98% de los estudiantes ponen la pizza como su comida favorita, 88% de la Generación Alfa prefiere la cocina italiana y 80% de la Generación Z coloca la mexicana en primer lugar. Ninguno de esos números lo habría adivinado un chef en una junta.' },
+      { type: 'h2', text: '2. Sodexo apostó por el otro extremo: la fila' },
+      { type: 'p', text: 'Sodexo atacó un problema distinto y, para una escuela, más reconocible: el tiempo. Su formato Food Hive —anunciado el 2 de enero de 2025, con cerca de 100 puntos modulares proyectados hacia 2026 en campus como Morehouse College, University of Illinois Chicago, Northern Arizona University, Texas Christian University y Hamline— se construyó alrededor del pago sin fricción y sin efectivo; la prensa especializada del sector reportó que estas unidades pueden incorporar autopago con reconocimiento visual asistido por IA. Drew Nannis, responsable de marketing de Sodexo Campus, resumió el porqué: la Generación Z quiere obtener lo que busca lo más rápido posible, con un cobro sin fricción.' },
+      { type: 'p', text: 'Traducido al receso de una escuela mexicana, donde cientos de alumnos pasan por la cafetería en 30 minutos, el aprendizaje no es "instalen un escáner". Es que el cuello de botella de la experiencia casi nunca está en la cocina: está en el cobro. Y cada minuto de fila es un minuto que el alumno no está comiendo ni jugando.' },
+      { type: 'h2', text: '3. El contexto mexicano: el problema no es la IA, es la medición' },
+      { type: 'p', text: 'Antes de importar cualquiera de las dos cosas conviene ver dónde está parada la educación privada en México. El reporte "Estado Actual de la Educación Privada en México", de la plataforma de gestión escolar Cometa, difundido por Expansión en junio de 2025, encontró que alrededor de una de cada tres escuelas privadas no tiene siquiera sitio web propio, que apenas 10% ha implementado un CRM y —el dato que más importa para esta conversación— que solo 24% mide de forma sistemática la satisfacción de sus familias.' },
+      { type: 'p', text: 'Ese último número explica por qué hablar de inteligencia artificial en la cafetería puede sonar prematuro: tres de cada cuatro escuelas todavía no tienen el primer eslabón, que es preguntar y registrar. Y el contexto competitivo aprieta. En agosto de 2026, en la antesala del CIMEDU9, el sector reconoció públicamente que enfrenta caída de matrícula por baja natalidad, presión al presupuesto familiar y competencia de modelos híbridos, sobre más de 20,000 instituciones privadas y más de 5 millones de alumnos en el país. Rafael Agüero Meixueiro, CEO de KPTA Educational Strategy, lo planteó en una frase incómoda: la decisión de inscribir empieza mucho antes de que la familia visite la escuela, y depende de reputación digital, atención personalizada y rapidez de respuesta.' },
+      { type: 'p', text: 'La cafetería entra justo ahí. Es el servicio con el que la familia interactúa todos los días del ciclo, y es el único que genera un registro transaccional del comportamiento real del alumno. Si esa información no se está usando, la escuela está tirando su fuente de datos más frecuente.' },
+      { type: 'h2', text: '4. Las 5 preguntas que no requieren comprar nada' },
+      { type: 'p', text: 'No hace falta una plataforma de IA para empezar. Hace falta que la cafetería pueda contestar cinco preguntas con números y no con impresiones. Pídeselas a tu operador actual esta semana:' },
+      { type: 'ul', items: [
+        '¿Cuáles son los 10 platillos más y menos vendidos del último trimestre, y qué se hizo con los 10 de abajo? Un menú que nunca retira nada no está escuchando.',
+        '¿Cuánto tarda un alumno desde que se forma hasta que paga, en el peor momento del receso? Si nadie lo ha cronometrado, nadie lo está administrando.',
+        '¿Qué porcentaje de las órdenes fue plato fuerte completo y qué porcentaje fue solo snack o bebida? Es el retrato más honesto de cómo come tu escuela.',
+        '¿Qué proporción de lo servido termina en el bote, en especial fruta y verdura? Un menú que cumple la norma y se desperdicia documentó cumplimiento, no alimentó a nadie.',
+        '¿Cómo se recoge la opinión de los alumnos y con qué frecuencia cambia algo por ella? Sin ese ciclo de vuelta, encuestar solo genera resentimiento.',
+      ] },
+      { type: 'p', text: 'Si tu proveedor no puede entregar las cinco, ese es el hallazgo del mes: no tienes un problema de tecnología, tienes un problema de visibilidad. Y ninguna herramienta lo arregla si la operación no está diseñada para registrar.' },
+      { type: 'quote', text: 'Chartwells no ganó ventaja por comprar inteligencia artificial: la ganó porque llevaba años capturando lo que sus alumnos elegían. El dato viene primero; el algoritmo solo lo lee más rápido.' },
+      { type: 'h2', text: '5. Lo que sí conviene copiar (y lo que no)' },
+      { type: 'ul', items: [
+        'Sí: cerrar el ciclo de retroalimentación. Preguntar, cambiar algo visible y avisar que cambió por lo que pidieron. Es gratis y es lo que más mueve la percepción.',
+        'Sí: medir el tiempo de fila como indicador formal del servicio, con meta y responsable, igual que se mide cualquier otro proceso del plantel.',
+        'Sí: usar el registro de consumo que ya existe para detectar al alumno que solo compra snack, y convertir eso en conversación con la familia.',
+        'Con cuidado: cualquier tecnología que capture datos de menores exige aviso de privacidad, consentimiento y resguardo. La velocidad nunca justifica saltarse eso.',
+        'No: comprar una plataforma antes de tener claro qué decisión vas a tomar con el número que arroje. Software sin decisión asociada es gasto, no gestión.',
+      ] },
+      { type: 'h2', text: 'Cómo lo trabajamos en Nutri Cafeterías' },
+      { type: 'p', text: 'Nuestra operación está diseñada para que estos datos existan sin proyectos especiales: el pago con huella digital deja registro de cada consumo y elimina el manejo de efectivo en la fila, la app para padres da visibilidad de lo que compró su hijo, y NutriMood conecta la alimentación con el estado de ánimo del alumno. Los menús los diseñan nutriólogos y se verifican contra los lineamientos SEP vigentes, bajo protocolos alineados a la NOM-251, con Distintivo H y licencia sanitaria. Son más de 10 años operando cafeterías en escuelas privadas de la Ciudad de México, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción, sin inversión inicial para la institución.' },
+      { type: 'p', text: 'Si quieres saber cuántas de las cinco preguntas puede contestar hoy la cafetería de tu escuela, haz el diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo: revisamos contigo qué información genera tu operación actual y cuál te falta para tomar decisiones con datos en lugar de anécdotas.' },
+    ],
+  },
+  {
     slug: 'regreso-clases-2026-multa-real-director-reglas-2028',
     title: 'Regreso a clases 2026: lo que tu escuela sí puede vender, la multa real que arriesga el director y por qué las reglas no cambian hasta 2028',
     description:
