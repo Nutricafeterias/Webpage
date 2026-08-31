@@ -26,6 +26,56 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'sobrepeso-infantil-escuelas-privadas-ensanut-escolaridad-materna',
+    title: 'Sobrepeso infantil y escuelas privadas: el dato de ENSANUT que contradice lo que casi todo director asume (y qué hacer desde la cafetería)',
+    description:
+      'La última medición nacional del INSP encontró que el sobrepeso y la obesidad en escolares son más frecuentes cuando la madre tiene licenciatura o más: el doble que en hogares de baja escolaridad. Qué significa ese dato para una escuela privada de CDMX y qué se puede corregir desde la cafetería este ciclo.',
+    date: '2026-08-31',
+    readTime: '7 min',
+    category: 'Nutrición y bienestar',
+    emoji: '⚖️',
+    image: 'https://images.unsplash.com/photo-1543353071-873f17a7a088?w=1200&h=630&fit=crop&q=85',
+    keywords: ['sobrepeso infantil escuelas privadas', 'obesidad infantil México ENSANUT', 'nutrición escolar rendimiento académico', 'cafetería escolar saludable CDMX', 'escolaridad materna obesidad', 'comedor escolar escuelas privadas'],
+    related: [
+      { href: '/blog/menu-saludable-cafeteria-escolar', anchor: 'Menú saludable para cafeterías escolares: qué debe incluir según nutriólogos' },
+      { href: '/blog/alimentacion-y-emociones-rendimiento-academico', anchor: 'Alimentación y emociones: cómo la comida impacta el rendimiento académico' },
+      { href: '/menus', anchor: 'Menús escolares diseñados por nutriólogos' },
+    ],
+    content: [
+      { type: 'p', text: 'Hay una idea que circula sin decirse en voz alta en muchas juntas de dirección: que la obesidad infantil es un problema de escuelas públicas, de comunidades marginadas, de familias sin información. Que en un colegio privado de la Ciudad de México, con papás profesionistas y acceso a nutriólogos, ese tema simplemente no aplica. La medición nacional más reciente dice exactamente lo contrario, y vale la pena leerla completa antes de que arranque el ciclo.' },
+      { type: 'h2', text: '1. El dato base: más de uno de cada tres escolares mexicanos' },
+      { type: 'p', text: 'En diciembre de 2025, Salud Pública de México publicó el análisis de Shamah-Levy, Gaona-Pineda, Cuevas-Nasu y colaboradores, del Instituto Nacional de Salud Pública, con datos de la ENSANUT Continua 2020-2024 sobre 10,979 escolares de 5 a 11 años y 9,142 adolescentes de 12 a 19. El resultado nacional: 36.6% de los escolares vive con sobrepeso (19.0%) u obesidad (17.6%), y entre adolescentes la cifra sube a 40.1% (23.1% sobrepeso, 17.0% obesidad). Quintana Roo y Baja California encabezan la lista, con prevalencias cercanas al 50% en población escolar.' },
+      { type: 'p', text: 'Ese es el promedio del país. Lo interesante empieza cuando el estudio desagrega por perfil de hogar.' },
+      { type: 'h2', text: '2. El hallazgo incómodo: la prevalencia sube con la escolaridad de la madre' },
+      { type: 'p', text: 'El mismo análisis encontró que el sobrepeso y la obesidad en escolares fueron más frecuentes en hijos de madres con licenciatura o más, comparados con hijos de madres con primaria o menos: una razón de momios de 2.10 (IC 95%: 1.60-2.76). Es decir, en el grupo de mayor escolaridad materna la probabilidad fue más del doble. En la misma línea, la prevalencia combinada en adolescentes fue mayor en localidades urbanas (41.0%) que rurales (37.2%), y tener un padre o una madre con obesidad triplicó la probabilidad de que el hijo tuviera exceso de peso.' },
+      { type: 'p', text: 'Conviene interpretarlo con honestidad: nadie está diciendo que estudiar una carrera cause obesidad en los hijos. Lo que ese número describe es un entorno. Mayor escolaridad correlaciona con hogar urbano, mayor poder de compra, más comida preparada fuera de casa, más disponibilidad permanente de productos ultraprocesados y menos tiempo para cocinar y para moverse. Ese entorno —no la falta de información— es el que engorda. Y es, casi punto por punto, la descripción del hogar promedio de una escuela privada en CDMX.' },
+      { type: 'p', text: 'Dicho de otro modo: el perfil de familia que muchas escuelas privadas consideran una garantía de buena alimentación es, en los datos nacionales, el de mayor riesgo.' },
+      { type: 'h2', text: '3. Por qué esto es un asunto académico, no solo de salud' },
+      { type: 'p', text: 'Un director puede escuchar todo lo anterior y concluir, razonablemente, que es responsabilidad de la familia. La razón por la que no conviene quedarse ahí es que el peso de los alumnos aparece en los indicadores que sí son responsabilidad de la escuela. Un estudio publicado en el Boletín Médico del Hospital Infantil de México (2018) con 566 estudiantes de secundaria en Mérida encontró que las adolescentes de 12 a 15 años con obesidad tuvieron un riesgo significativamente mayor de bajo desempeño en matemáticas (RM 3.07; IC 95%: 1.39-6.80) y en lenguaje (RM 2.55; IC 95%: 1.14-5.71) frente a sus compañeras con peso saludable. En los varones de la misma edad no se encontró asociación significativa en ninguna de las tres áreas evaluadas.' },
+      { type: 'p', text: 'Es una asociación, no una relación de causa y efecto, y así hay que citarla. Pero es suficiente para mover la conversación de lugar: el estado nutricional de los alumnos deja de ser un tema de enfermería y pasa a ser un tema de resultados. Y la escuela es el único actor que sirve alimentos a ese alumno alrededor de 180 días al año, todos los años, con reglas que puede escribir.' },
+      { type: 'quote', text: 'Ninguna escuela decide qué cena un alumno el sábado. Toda escuela decide qué encuentra ese mismo alumno el lunes a las 11 de la mañana, y esa decisión se repite 180 veces al año.' },
+      { type: 'h2', text: '4. Cinco correcciones que caben en este ciclo escolar' },
+      { type: 'p', text: 'No hace falta un programa institucional nuevo. Casi todo lo que mueve la aguja está en la operación diaria de la cafetería:' },
+      { type: 'ul', items: [
+        'Revisar qué es lo más fácil de comprar. Si el producto más accesible en la barra —por precio, por posición, por rapidez— es un snack, el entorno está empujando en contra aunque el menú del día sea impecable.',
+        'Separar cumplimiento de resultado. Un menú puede cumplir los lineamientos SEP y aun así terminar en el bote. Medir cuánto se sirve contra cuánto se come es lo que convierte la norma en nutrición real.',
+        'Poner agua simple al frente, no al fondo. La bebida azucarada es el vehículo calórico más subestimado del receso y el más fácil de desplazar por disponibilidad.',
+        'Usar el registro de consumo para detectar patrones. Un alumno que lleva semanas comprando solo snack es información accionable hoy, no un hallazgo del examen médico de mayo.',
+        'Involucrar a la familia con datos, no con circulares. Cuando el papá ve qué compró su hijo en la semana, la conversación en casa cambia sola; una infografía sobre el plato del bien comer no logra eso.',
+      ] },
+      { type: 'h2', text: '5. Tres preguntas para tu proveedor actual' },
+      { type: 'ul', items: [
+        '¿Qué porcentaje de las ventas del último trimestre fue plato fuerte completo y qué porcentaje fue snack o bebida? Si no hay número, no hay gestión.',
+        '¿Quién diseña el menú, con qué credencial, y contra qué criterio nutricional se valida antes de publicarse?',
+        '¿Qué información recibe la familia sobre lo que consume su hijo, y con qué frecuencia?',
+      ] },
+      { type: 'p', text: 'Las tres se pueden contestar esta semana. Si tu operador no puede, el problema no es el menú: es que nadie está midiendo lo que la escuela sirve.' },
+      { type: 'h2', text: 'Cómo lo trabajamos en Nutri Cafeterías' },
+      { type: 'p', text: 'Nuestros menús los diseñan nutriólogos y se verifican contra los lineamientos SEP vigentes, bajo protocolos alineados a la NOM-251, con Distintivo H y licencia sanitaria. El pago con huella digital deja registro de cada consumo y la app para padres convierte ese registro en visibilidad real para la familia; NutriMood conecta la alimentación con el estado de ánimo del alumno. Son más de 10 años operando cafeterías en escuelas privadas de la Ciudad de México, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción, sin inversión inicial para la institución.' },
+      { type: 'p', text: 'Si quieres saber qué está comiendo realmente tu comunidad escolar —y no lo que dice el menú publicado—, haz el diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo: revisamos contigo el perfil de consumo de tu cafetería actual y qué se puede corregir antes de que termine el primer trimestre.' },
+    ],
+  },
+  {
     slug: 'inteligencia-artificial-cafeteria-escolar-datos-chartwells-sodexo',
     title: 'IA en la cafetería escolar: lo que Chartwells y Sodexo ya automatizan en 2026 (y las 5 preguntas que tu cafetería debería contestar sin comprar software)',
     description:
