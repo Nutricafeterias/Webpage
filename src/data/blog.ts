@@ -26,6 +26,54 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'ultraprocesados-comedor-escolar-cocina-desde-cero-tendencia-2026',
+    title: 'De prohibir a cocinar: el giro global de 2026 en comedores escolares (y qué puede copiar hoy una escuela privada en México)',
+    description:
+      'Estados Unidos y Brasil dejaron de discutir qué prohibir y empezaron a exigir cuánto se cocina desde cero. Los datos del reporte 2026 de la School Nutrition Association, el nuevo tope brasileño de 10% de ultraprocesados y qué significa todo eso para la cafetería de tu escuela en México.',
+    date: '2026-09-07',
+    readTime: '7 min',
+    category: 'Guías para directores',
+    emoji: '🍳',
+    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=630&fit=crop&q=85',
+    keywords: ['ultraprocesados cafetería escolar', 'cocina desde cero comedor escolar', 'tendencias food service escolar 2026', 'lineamientos SEP cafeterías escolares', 'comedor escolar escuelas privadas CDMX', 'alimentación escolar PNAE Brasil'],
+    related: [
+      { href: '/blog/tendencias-internacionales-food-service-escolar-2026', anchor: 'Tendencias internacionales en food service escolar 2026' },
+      { href: '/blog/prohibicion-comida-chatarra-escuelas-lineamientos-sep', anchor: 'Prohibición de comida chatarra en escuelas: guía de los lineamientos SEP' },
+      { href: '/menus', anchor: 'Menús escolares diseñados por nutriólogos' },
+    ],
+    content: [
+      { type: 'p', text: 'Durante una década, la política de alimentación escolar en casi todo el mundo se escribió en forma de lista negra: qué no se puede vender, qué sello descalifica a un producto, qué se retira de la tiendita. México llegó a esa etapa en marzo de 2025, cuando entraron en vigor los lineamientos que prohíben vender en escuelas alimentos y bebidas con sellos de advertencia. Lo interesante es que los países que arrancaron antes ya se movieron a la siguiente pregunta, y no es qué prohibir: es cuánto de lo que se sirve se cocina de verdad.' },
+      { type: 'h2', text: '1. Estados Unidos dejó de discutir el menú y empezó a discutir la cocina' },
+      { type: 'p', text: 'El 6 de enero de 2026, la School Nutrition Association publicó su School Nutrition Trends Report del ciclo 2025-26, con respuestas de 1,240 directores de programas de alimentos escolares levantadas en octubre de 2025. El hallazgo de portada: 71% ya ofrece platos fuertes preparados desde cero (scratch cooking) al menos una vez por semana. El de letra chica es más revelador: 99% pidió más financiamiento y 79% lo calificó como una necesidad extrema, específicamente para ampliar la cocina desde cero y reducir la dependencia de ultraprocesados. Junto a eso, 94% reportó necesitar más personal, 95% más capacitación culinaria y 94% más equipo e infraestructura.' },
+      { type: 'p', text: 'La conclusión operativa es incómoda y muy útil: el obstáculo para servir comida real no está en el menú publicado, está en la cocina, la gente y el equipo. Un día después, el 7 de enero de 2026, se anunciaron las nuevas Guías Alimentarias 2025-2030 de Estados Unidos, que ponen los alimentos enteros o mínimamente procesados como base de la dieta y que eventualmente bajarán a los estándares de las escuelas. Es decir: la exigencia va a subir sobre un sistema que ya sabe que no tiene la cocina lista.' },
+      { type: 'h2', text: '2. Brasil le puso número a la meta' },
+      { type: 'p', text: 'Brasil tomó el camino más medible. La Resolución FNDE nº 3, del 4 de febrero de 2025, redujo el tope de productos ultraprocesados en el Programa Nacional de Alimentación Escolar de 20% a 15% durante 2025 y a 10% a partir de 2026, y mantuvo la obligación de destinar al menos 30% de la compra a agricultura familiar. No prohíbe una lista de marcas: fija un porcentaje del gasto y obliga a demostrarlo. Es la diferencia entre una regla que se cumple con un letrero y una regla que se cumple con facturas.' },
+      { type: 'h2', text: '3. Dónde está México en esa curva' },
+      { type: 'p', text: 'La foto nacional del consumo la publicó Salud Pública de México en su número de noviembre-diciembre de 2025: Gaona-Pineda y colaboradores, del Instituto Nacional de Salud Pública, analizaron la dieta de 14,340 personas de 5 años o más de la ENSANUT Continua 2020-2024 y clasificaron los alimentos con el sistema NOVA. El porcentaje de energía proveniente de productos ultraprocesados osciló entre 16.9% y 26.4%, y fue mayor en localidades urbanas y en la región Norte. Los alimentos mínimamente procesados aportaron entre 38.9% y 44.1%, con mayor peso en zonas rurales y en el Sur. El estudio señala que estas asociaciones fueron consistentes entre grupos de edad.' },
+      { type: 'p', text: 'Traducido al contexto de una escuela privada de la Ciudad de México: el alumno promedio de tu colegio vive del lado urbano de esa estadística, el lado donde el ultraprocesado pesa más. Y la normativa mexicana vigente resuelve la mitad del problema —lo que no se puede vender— pero no dice nada sobre cuánto de lo que sí se vende se cocinó ese día en la escuela. Ese espacio en blanco es exactamente el que Estados Unidos y Brasil ya están llenando.' },
+      { type: 'quote', text: 'Un menú puede cumplir la norma al 100% y estar hecho casi todo de producto que solo se calienta. Cumplir es no vender lo prohibido; cocinar es otra cosa, y es la que se nota en el plato.' },
+      { type: 'h2', text: '4. Cinco cosas que una escuela mexicana puede copiar este ciclo' },
+      { type: 'ul', items: [
+        'Medir el porcentaje cocinado en sitio. Es el indicador brasileño traducido a tu operación: qué proporción de las órdenes servidas en un mes salió de una preparación hecha en la cocina de la escuela y qué proporción solo se calentó o se abrió. Sin ese número, la conversación sobre calidad es opinión.',
+        'Auditar la cocina antes que el menú. El dato de la SNA es claro en que el cuello de botella es equipo, personal y capacitación. Antes de pedir un menú más ambicioso, revisa si la cocina de tu plantel puede producirlo cinco días seguidos.',
+        'Poner el número en el contrato. Un compromiso de porcentaje mínimo cocinado en sitio, revisable cada trimestre, convierte una promesa comercial en un entregable verificable.',
+        'Separar cumplimiento normativo de calidad real. Los sellos son un piso legal, no un estándar de cocina. Conviene reportarlos por separado en el informe que ve el consejo directivo.',
+        'Fijar una meta de reducción, no una prohibición nueva. Brasil no eliminó el ultraprocesado: lo bajó por escalones y con fecha. Una meta anual explícita es más fácil de sostener que un anuncio absoluto que nadie audita.',
+      ] },
+      { type: 'h2', text: '5. Cuatro preguntas para tu operador actual' },
+      { type: 'ul', items: [
+        '¿Qué porcentaje de lo que servimos el mes pasado se preparó en la cocina de la escuela y qué porcentaje llegó listo?',
+        '¿Qué equipo o personal falta hoy para subir ese porcentaje diez puntos, y cuánto cuesta?',
+        '¿Quién valida el menú contra los lineamientos vigentes y con qué evidencia documental?',
+        '¿Cómo se verá ese indicador dentro de un año si no cambiamos nada?',
+      ] },
+      { type: 'p', text: 'Si tu proveedor puede contestar las cuatro con números, vas bien. Si las cuatro se contestan con adjetivos, ya sabes dónde está el trabajo del trimestre.' },
+      { type: 'h2', text: 'Cómo lo trabajamos en Nutri Cafeterías' },
+      { type: 'p', text: 'Nuestros menús los diseñan nutriólogos y se verifican contra los lineamientos SEP vigentes, con protocolos alineados a la NOM-251, Distintivo H y licencia sanitaria. El pago con huella digital deja registro de cada consumo, la app para padres convierte ese registro en visibilidad para la familia y NutriMood conecta la alimentación con el estado de ánimo del alumno. Son más de 10 años operando cafeterías en escuelas privadas de la Ciudad de México, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción, sin inversión inicial para la institución.' },
+      { type: 'p', text: 'Si quieres saber cuánto de lo que come hoy tu comunidad escolar se cocina realmente en tu plantel, haz el diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo: revisamos contigo la operación de tu cafetería actual y qué se puede mover antes de que cierre el primer trimestre.' },
+    ],
+  },
+  {
     slug: 'sobrepeso-infantil-escuelas-privadas-ensanut-escolaridad-materna',
     title: 'Sobrepeso infantil y escuelas privadas: el dato de ENSANUT que contradice lo que casi todo director asume (y qué hacer desde la cafetería)',
     description:
