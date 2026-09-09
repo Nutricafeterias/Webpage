@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Así comerán los Halcones · Propuesta Nutri para la UVAQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#F7F3EA; --lino:#EDE7D8; --arena:#D8CDB6; --piedra:#A79B82; --cacao:#5B5346; --carbon:#26241F;
+    --v900:#0E3421; --v700:#1F5D3B; --v500:#3E8B54; --v300:#6EAF4A; --v100:#C7E3B4;
+    --naranja:#F39C12; --amber:#F7B24C; --uvaq:#1F3F9C; --blanco:#FFFDF8;
+    --panelW:400px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:var(--v900);color:var(--carbon);font-family:'Montserrat',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+  button{font-family:inherit;cursor:pointer;border:0;background:none}
+  img{display:block;max-width:100%}
+
+  /* ---------- top bar ---------- */
+  .top{position:fixed;top:0;left:0;right:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:50;pointer-events:none}
+  .top img{height:26px}
+  .top .center{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cacao);background:rgba(247,243,234,.88);padding:6px 8px 6px 14px;border-radius:100px;backdrop-filter:blur(6px)}
+  .top .center .uv{background:#fff;border-radius:100px;padding:4px 10px}
+  .top .center .uv img{height:16px}
+  .top.light #topLogo{background:rgba(247,243,234,.9);padding:6px 10px;border-radius:10px;height:36px}
+  .top .btn-menu{pointer-events:auto;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--crema);border:1px solid rgba(247,243,234,.4);border-radius:100px;padding:8px 14px;background:rgba(14,52,33,.35);backdrop-filter:blur(6px)}
+  .top.light .btn-menu{color:var(--v700);border-color:var(--v700)}
+
+  /* ---------- scenes ---------- */
+  .scene{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .55s ease,visibility 0s .55s}
+  .scene.active{opacity:1;visibility:visible;transition:opacity .55s ease}
+  .scene.light{background:var(--crema)}
+  .kicker{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--naranja)}
+  h1{font-weight:800;line-height:1.08;letter-spacing:-.015em}
+  .lead{font-weight:500;line-height:1.5}
+
+  /* cover */
+  #cover .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);animation:kb 14s ease-in-out infinite alternate}
+  @keyframes kb{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.12) translate(-1.5%,-1%)}}
+  #cover .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,52,33,.95) 0%,rgba(14,52,33,.75) 45%,rgba(14,52,33,.25) 100%)}
+  #cover .content{position:absolute;left:6vw;right:6vw;top:50%;transform:translateY(-50%);max-width:760px;color:var(--crema)}
+  #cover h1{font-size:clamp(34px,6vw,74px)}
+  #cover .lead{margin-top:18px;font-size:clamp(15px,1.6vw,20px);color:#D7E3D2;max-width:560px}
+  .cta{display:inline-flex;align-items:center;gap:12px;background:var(--naranja);color:var(--carbon);font-weight:800;font-size:15px;border-radius:100px;padding:16px 26px;margin-top:28px;transition:transform .2s}
+  .cta:hover{transform:translateY(-2px)}
+  .cta .arrow{width:26px;height:26px;border-radius:50%;background:var(--carbon);color:var(--naranja);display:grid;place-items:center;font-size:14px}
+  #cover .foot{position:absolute;left:6vw;bottom:28px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,243,234,.55)}
+
+  /* ecosystem */
+  #eco .wrap{position:absolute;inset:56px 0 70px;display:grid;grid-template-columns:1fr 1.25fr;gap:24px;padding:0 5vw;align-items:center}
+  #eco h1{font-size:clamp(28px,3.6vw,46px);color:var(--v700);margin-top:12px}
+  #eco .lead{color:var(--cacao);margin-top:14px;font-size:15px;max-width:440px}
+  .nodes{display:grid;gap:10px;margin-top:22px}
+  .node{display:flex;align-items:center;gap:14px;background:var(--blanco);border:1px solid var(--lino);border-radius:14px;padding:12px 14px;text-align:left;transition:transform .2s,box-shadow .2s;width:100%}
+  .node:hover{transform:translateX(4px);box-shadow:0 8px 24px rgba(38,36,31,.08)}
+  .node .dot{width:34px;height:34px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:800;font-size:12px;color:var(--crema)}
+  .node b{display:block;font-size:14px;color:var(--v700)}
+  .node span{font-size:12px;color:var(--cacao);font-weight:500}
+  .map{width:100%;max-height:70vh}
+
+  /* hero scene (cafetería) */
+  .stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#0b2318}
+  .heroBox{position:relative;width:100%;height:100%;overflow:hidden}
+  .heroBox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 50%;transition:transform 1s cubic-bezier(.65,0,.25,1)}
+  .hs{position:absolute;transform:translate(-50%,-50%);z-index:5;transition:opacity .4s}
+  .hs button{position:relative;width:46px;height:46px;border-radius:50%;background:rgba(247,243,234,.92);color:var(--v700);font-weight:800;font-size:13px;box-shadow:0 6px 18px rgba(0,0,0,.35);display:grid;place-items:center}
+  .hs button::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(247,243,234,.7);animation:pulse 2s infinite}
+  @keyframes pulse{0%{transform:scale(.8);opacity:1}100%{transform:scale(1.6);opacity:0}}
+  .hs label{position:absolute;left:56px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--crema);background:rgba(14,52,33,.72);padding:7px 12px;border-radius:100px;backdrop-filter:blur(6px);pointer-events:none}
+  .hs.left label{left:auto;right:56px}
+  .zoomed .hs{opacity:0;pointer-events:none}
+  .sceneTitle{position:absolute;left:24px;bottom:84px;z-index:6;color:var(--crema);max-width:520px;transition:opacity .4s}
+  .sceneTitle .kicker{color:var(--amber)}
+  .sceneTitle h1{font-size:clamp(26px,3.4vw,44px);margin-top:8px;text-shadow:0 4px 24px rgba(0,0,0,.45)}
+  .sceneTitle p{font-size:13.5px;font-weight:600;margin-top:10px;color:#D7E3D2}
+  .zoomed .sceneTitle{opacity:0;pointer-events:none}
+  .badge{position:absolute;right:20px;top:66px;z-index:6;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,243,234,.85);background:rgba(14,52,33,.55);padding:6px 12px;border-radius:100px}
+
+  /* panel */
+  .panel{position:absolute;top:56px;right:0;bottom:0;width:var(--panelW);background:var(--crema);z-index:20;transform:translateX(105%);transition:transform .6s cubic-bezier(.65,0,.25,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.35)}
+  .zoomed .panel{transform:translateX(0)}
+  .panel .inner{padding:26px 28px 20px;overflow:auto;flex:1}
+  .panel .close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:var(--lino);color:var(--cacao);font-size:16px;font-weight:800}
+  .brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .brand .ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;flex:none}
+  .brand .ico svg{width:30px;height:30px}
+  .brand .nm{font-weight:900;font-size:26px;letter-spacing:-.02em;line-height:1}
+  .brand .sub{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--piedra);margin-top:4px}
+  .panel .tag{font-size:17px;font-weight:700;color:var(--v700);line-height:1.3}
+  .panel ul{list-style:none;margin-top:14px}
+  .panel li{position:relative;padding-left:20px;font-size:13px;font-weight:500;color:var(--cacao);line-height:1.45;margin-bottom:8px}
+  .panel li::before{content:'';position:absolute;left:0;top:7px;width:9px;height:9px;border-radius:50%;background:var(--v300)}
+  .menu{margin-top:16px;border-top:1px solid var(--lino);padding-top:12px}
+  .menu .h{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--naranja);margin-bottom:8px}
+  .menu .row{display:flex;justify-content:space-between;gap:12px;font-size:13px;font-weight:600;color:var(--carbon);padding:5px 0;border-bottom:1px dashed var(--lino)}
+  .menu .row span:last-child{color:var(--v700);font-weight:800;white-space:nowrap}
+  .menu .note{font-size:10px;color:var(--piedra);margin-top:8px;font-weight:500}
+  .panel .acts{display:flex;gap:10px;padding:14px 28px 22px;border-top:1px solid var(--lino);background:var(--crema)}
+  .b1,.b2{flex:1;border-radius:100px;padding:13px 14px;font-weight:800;font-size:13px;text-align:center}
+  .b1{background:var(--v700);color:var(--crema)}
+  .b2{background:var(--lino);color:var(--v700)}
+
+  /* generic split scene */
+  .split{position:absolute;inset:0;display:grid;grid-template-columns:1.15fr .85fr}
+  .split .pic{position:relative;overflow:hidden}
+  .split .pic img{width:100%;height:100%;object-fit:cover}
+  .split .txt{padding:90px 5vw 90px 4vw;display:flex;flex-direction:column;justify-content:center;overflow:auto}
+  .split h1{font-size:clamp(26px,3.2vw,42px);color:var(--v700);margin-top:10px}
+  .split .lead{color:var(--cacao);margin-top:14px;font-size:15px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+  .fact{background:var(--blanco);border:1px solid var(--lino);border-radius:14px;padding:14px 12px;text-align:center}
+  .fact b{display:block;font-size:22px;font-weight:800;color:var(--naranja);letter-spacing:-.02em}
+  .fact span{display:block;font-size:11px;font-weight:600;color:var(--cacao);margin-top:4px;line-height:1.3}
+  .mini{margin-top:18px;background:var(--blanco);border:1px solid var(--lino);border-radius:14px;padding:12px 16px}
+  .mini .h{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--naranja);margin-bottom:6px}
+  .mini .row{display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;color:var(--carbon);padding:4px 0}
+  .mini .row span:last-child{color:var(--v700);font-weight:800}
+  .link{margin-top:14px;font-size:12px;font-weight:800;color:var(--v700);text-decoration:underline;text-underline-offset:4px;background:none;text-align:left}
+
+  /* café brand picker */
+  .cafeBrand{display:flex;align-items:center;gap:14px;margin-top:6px}
+  .cafeBrand .logo{padding:14px 20px;border-radius:14px;color:#fff;font-weight:900;letter-spacing:-.01em;line-height:1;display:inline-flex;flex-direction:column;gap:4px}
+  .cafeBrand .logo small{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;opacity:.85}
+  .picker{margin-top:16px;padding:12px 14px;border:1px dashed var(--piedra);border-radius:12px;display:none}
+  .review .picker{display:block}
+  .picker .h{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--uvaq);margin-bottom:8px}
+  .picker .opts{display:flex;gap:8px;flex-wrap:wrap}
+  .picker button{border-radius:10px;padding:10px 12px;font-weight:900;font-size:13px;color:#fff;opacity:.55}
+  .picker button.on{opacity:1;outline:3px solid var(--carbon)}
+  .prelim{display:none;position:absolute;left:20px;top:66px;z-index:6;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--carbon);background:var(--amber);padding:6px 12px;border-radius:100px}
+  .review .prelim{display:block}
+  body.zoomed .nav{display:none}
+  .chips{display:none;position:absolute;left:0;right:0;bottom:210px;z-index:6;padding:0 16px;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .chips button{flex:none;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--v700);background:rgba(247,243,234,.94);padding:9px 12px;border-radius:100px}
+
+  /* vending illustration */
+  .vend{width:100%;max-height:78vh}
+
+  /* cierre */
+  #cierre{background:linear-gradient(135deg,var(--v900),var(--v700))}
+  #cierre .wrap{position:absolute;inset:56px 0 70px;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;color:var(--crema);max-width:1100px}
+  #cierre h1{font-size:clamp(30px,4.4vw,58px)}
+  .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px;max-width:820px}
+  .num{background:rgba(247,243,234,.08);border:1px solid rgba(247,243,234,.18);border-radius:16px;padding:20px 22px}
+  .num b{display:block;font-size:clamp(26px,3.2vw,42px);font-weight:800;color:var(--amber);letter-spacing:-.02em;line-height:1;white-space:nowrap}
+  .num span{display:block;font-size:12.5px;font-weight:600;margin-top:8px;color:#D7E3D2}
+  .ctas{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+  .ctas a{text-decoration:none;border-radius:100px;padding:15px 24px;font-weight:800;font-size:14px}
+  .ctas .p{background:var(--naranja);color:var(--carbon)}
+  .ctas .s{border:1px solid rgba(247,243,234,.5);color:var(--crema)}
+  #cierre .contact{margin-top:26px;font-size:12.5px;color:#B9CCB3;font-weight:500;line-height:1.6}
+  #cierre .contact b{color:var(--crema);font-size:14px}
+
+  /* nav */
+  .nav{position:fixed;left:0;right:0;bottom:0;height:70px;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:0 20px;pointer-events:none}
+  .nav > *{pointer-events:auto}
+  .dots{display:flex;gap:8px;position:absolute;left:50%;transform:translateX(-50%)}
+  .dots button{width:8px;height:8px;border-radius:50%;background:rgba(247,243,234,.35);transition:all .3s}
+  .dots button.on{width:26px;border-radius:4px;background:var(--naranja)}
+  .nav.light .dots button{background:rgba(38,36,31,.2)}
+  .nav.light .dots button.on{background:var(--naranja)}
+  .arrows{display:flex;gap:8px;margin-left:auto}
+  .arrows button{width:44px;height:44px;border-radius:50%;background:rgba(247,243,234,.92);color:var(--v700);font-size:18px;font-weight:800;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+  .nav .step{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,243,234,.7)}
+  .nav.light .step{color:var(--piedra)}
+
+  /* modal menú */
+  .modal{position:fixed;inset:0;z-index:80;background:rgba(14,52,33,.72);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.open{display:flex}
+  .sheet{background:var(--crema);border-radius:20px;width:min(980px,100%);max-height:88vh;overflow:auto;padding:28px 30px;position:relative}
+  .sheet .close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:var(--lino);color:var(--cacao);font-weight:800}
+  .sheet h2{font-size:24px;font-weight:800;color:var(--v700)}
+  .sheet .sub{font-size:12px;color:var(--piedra);font-weight:600;margin-top:4px}
+  .cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:18px}
+  .sec .h{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--naranja);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .sec .row{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;font-weight:600;padding:5px 0;border-bottom:1px dashed var(--lino)}
+  .sec .row span:last-child{color:var(--v700);font-weight:800;white-space:nowrap}
+  .sec .row small{display:block;font-size:10.5px;color:var(--piedra);font-weight:500}
+
+  /* responsive */
+  @media (max-width:900px){
+    :root{--panelW:100%}
+    #cover .foot{bottom:92px;right:6vw}
+    #eco .wrap{grid-template-columns:1fr;gap:8px;overflow:auto;align-content:start;padding-top:10px}
+    .map{max-height:34vh}
+    .split{grid-template-columns:1fr;grid-template-rows:40vh 1fr}
+    .split .txt{padding:18px 6vw 90px;justify-content:flex-start}
+    .panel{top:auto;height:74vh;border-radius:20px 20px 0 0;transform:translateY(110%)}
+    .zoomed .panel{transform:translateY(0)}
+    .heroBox{position:absolute;left:0;right:0;top:44%;height:auto;aspect-ratio:1448/1086;transform:translateY(-50%)}
+    .hs button{width:34px;height:34px;font-size:11px}
+    .hs label{display:none}
+    .chips{display:flex}
+    .sceneTitle{left:16px;bottom:90px;max-width:88vw}
+    .sceneTitle h1{font-size:26px}
+    .top .center{display:none}
+    .facts{grid-template-columns:repeat(3,1fr)}
+    #cierre .wrap{overflow:auto;justify-content:flex-start;padding-top:20px;padding-bottom:40px}
+    .nums{grid-template-columns:1fr;gap:10px;margin-top:20px}
+    .num{padding:14px 18px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="top" id="top">
+  <img src="img/logo_nutri_blanco.png" alt="Nutri Cafeterías" id="topLogo">
+  <div class="center"><span>Propuesta para la</span><span class="uv"><img src="img/logo_uvaq.png" alt="UVAQ"></span></div>
+  <button class="btn-menu" onclick="openMenu('all')">Ver menú</button>
+</div>
+
+<!-- ===== 0 · COVER ===== -->
+<section class="scene" id="cover">
+  <img class="bg" src="img/hero_cafeteria.jpg" alt="">
+  <div class="veil"></div>
+  <div class="content">
+    <div class="kicker" style="color:var(--amber)">Universidad Vasco de Quiroga · Campus Santa María</div>
+    <h1 style="margin-top:14px">Así comerán<br>los Halcones</h1>
+    <p class="lead">Un recorrido de dos minutos por la nueva experiencia gastronómica del campus: cafetería principal, café de especialidad, kioscos y vending — operados por un solo aliado.</p>
+    <button class="cta" onclick="go(1)">Recorrer el proyecto <span class="arrow">→</span></button>
+  </div>
+  <div class="foot">Nutri Cafeterías · Septiembre 2026 · Documento confidencial</div>
+  <div class="prelim">Render preliminar · se sustituye por el definitivo</div>
+</section>
+
+<!-- ===== 1 · ECOSISTEMA ===== -->
+<section class="scene light" id="eco">
+  <div class="wrap">
+    <div>
+      <div class="kicker">El proyecto</div>
+      <h1>Cuatro conceptos,<br>un solo campus</h1>
+      <p class="lead">Cada punto tiene su propia marca y personalidad. Todo lo opera Nutri, con un solo estándar y un solo responsable.</p>
+      <div class="nodes">
+        <button class="node" onclick="go(2)"><span class="dot" style="background:var(--v700)">01</span><div><b>Cafetería principal</b><span>Comer, convivir y estudiar · en el nuevo edificio</span></div></button>
+        <button class="node" onclick="go(3)"><span class="dot" style="background:#FF5A5F">02</span><div><b>Café &amp; jugos <span style="font-weight:600;color:var(--piedra)">(marca propia)</span></b><span>Café de especialidad y bowls · en la entrada</span></div></button>
+        <button class="node" onclick="go(4)"><span class="dot" style="background:var(--v300)">03</span><div><b>NutriExpress ×2</b><span>Saludable, listo en 90 segundos</span></div></button>
+        <button class="node" onclick="go(5)"><span class="dot" style="background:var(--naranja)">04</span><div><b>Red de vending</b><span>12+ máquinas, snacks y café en cada edificio</span></div></button>
+      </div>
+    </div>
+    <div>
+      <svg class="map" viewBox="0 0 640 420" xmlns="http://www.w3.org/2000/svg">
+        <defs><filter id="sh"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#26241F" flood-opacity=".12"/></filter></defs>
+        <rect x="0" y="0" width="640" height="420" rx="24" fill="#EDF2E4"/>
+        <!-- caminos -->
+        <path d="M60 330 C 180 300, 220 220, 330 210 S 520 150, 590 90" stroke="#D8CDB6" stroke-width="14" fill="none" stroke-linecap="round"/>
+        <path d="M330 210 C 300 280, 250 330, 200 380" stroke="#D8CDB6" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M330 210 C 420 240, 470 300, 520 350" stroke="#D8CDB6" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <!-- edificios -->
+        <g filter="url(#sh)">
+          <rect x="90" y="120" width="150" height="90" rx="10" fill="#FFFDF8" stroke="#D8CDB6"/>
+          <rect x="400" y="40" width="130" height="80" rx="10" fill="#FFFDF8" stroke="#D8CDB6"/>
+          <rect x="420" y="250" width="150" height="90" rx="10" fill="#FFFDF8" stroke="#D8CDB6"/>
+          <rect x="120" y="270" width="120" height="80" rx="10" fill="#FFFDF8" stroke="#D8CDB6"/>
+          <rect x="270" y="120" width="120" height="70" rx="10" fill="#FFFDF8" stroke="#D8CDB6"/>
+        </g>
+        <!-- árboles -->
+        <g fill="#C7E3B4"><circle cx="40" cy="60" r="18"/><circle cx="600" cy="380" r="22"/><circle cx="330" cy="380" r="16"/><circle cx="560" cy="180" r="14"/><circle cx="60" cy="240" r="14"/></g>
+        <!-- puntos -->
+        <g style="cursor:pointer" onclick="go(2)"><circle cx="330" cy="150" r="30" fill="#1F5D3B"/><text x="330" y="146" text-anchor="middle" font-size="9" font-weight="800" fill="#F7F3EA" font-family="Montserrat">CAFETERÍA</text><text x="330" y="158" text-anchor="middle" font-size="9" font-weight="800" fill="#F7F3EA" font-family="Montserrat">PRINCIPAL</text></g>
+        <g style="cursor:pointer" onclick="go(3)"><circle cx="60" cy="330" r="24" fill="#FF5A5F"/><text x="60" y="334" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="Montserrat">CAFÉ</text><text x="60" y="372" text-anchor="middle" font-size="9" font-weight="700" fill="#5B5346" font-family="Montserrat">Entrada</text></g>
+        <g style="cursor:pointer" onclick="go(4)"><circle cx="465" cy="80" r="20" fill="#6EAF4A"/><text x="465" y="84" text-anchor="middle" font-size="8.5" font-weight="900" fill="#0E3421" font-family="Montserrat">90 s</text></g>
+        <g style="cursor:pointer" onclick="go(4)"><circle cx="180" cy="310" r="20" fill="#6EAF4A"/><text x="180" y="314" text-anchor="middle" font-size="8.5" font-weight="900" fill="#0E3421" font-family="Montserrat">90 s</text></g>
+        <g style="cursor:pointer" onclick="go(5)" fill="#F39C12"><circle cx="165" cy="165" r="12"/><circle cx="495" cy="295" r="12"/><circle cx="240" cy="290" r="12"/><circle cx="355" cy="130" r="12"/></g>
+        <g font-size="8.5" font-weight="900" fill="#26241F" font-family="Montserrat" text-anchor="middle"><text x="165" y="168">V</text><text x="495" y="298">V</text><text x="240" y="293">V</text><text x="355" y="133">V</text></g>
+        <text x="320" y="405" text-anchor="middle" font-size="9" font-weight="700" fill="#A79B82" font-family="Montserrat" letter-spacing="1">ESQUEMA CONCEPTUAL · UBICACIONES A DEFINIR CON LA UVAQ · TOCA UN PUNTO</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2 · CAFETERÍA PRINCIPAL (hero + hotspots) ===== -->
+<section class="scene" id="cafeteria">
+  <div class="stage">
+    <div class="heroBox" id="heroBox">
+      <img src="img/hero_cafeteria.jpg" id="heroImg" alt="Cafetería principal" data-w="1448" data-h="1086">
+      <div id="hotspots"></div>
+    </div>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="badge">Render conceptual</div>
+  <div class="sceneTitle">
+    <div class="kicker">01 · Cafetería principal · ~200 m²</div>
+    <h1>El corazón del campus</h1>
+    <p>Toca una estación para conocerla</p>
+  </div>
+  <div class="prelim">Render preliminar · se sustituye por el definitivo</div>
+  <aside class="panel" id="panel">
+    <button class="close" onclick="unzoom()">✕</button>
+    <div class="inner" id="panelInner"></div>
+    <div class="acts"><button class="b2" onclick="openMenu(currentStation)">Ver menú</button><button class="b1" onclick="nextStation()">Siguiente estación →</button></div>
+  </aside>
+</section>
+
+<!-- ===== 3 · CAFÉ & JUGOS (marca propia) ===== -->
+<section class="scene light" id="cafe">
+  <div class="split">
+    <div class="pic"><img src="img/cafe_interior.jpg" alt="Café y jugos"><div class="badge">Render conceptual</div><div class="prelim">Render preliminar · llega en estilo Joe &amp; The Juice</div></div>
+    <div class="txt">
+      <div class="kicker">02 · La entrada del campus · marca propia</div>
+      <div class="cafeBrand" id="cafeBrand"></div>
+      <h1>Café de especialidad, jugos y bowls</h1>
+      <p class="lead">El local más visible del campus se convierte en un concepto de barra estilo Joe &amp; The Juice: café, jugos al momento, bowls y paninis. Se ve como otra marca; lo opera Nutri.</p>
+      <div class="facts"><div class="fact"><b>6:30</b><span>abre antes de la primera clase</span></div><div class="fact"><b>90 s</b><span>jugo o café al momento</span></div><div class="fact"><b>+</b><span>terraza y música: punto de encuentro</span></div></div>
+      <div class="mini"><div class="h">Menú de referencia</div><div class="row"><span>Latte / cappuccino</span><span>~$45–55</span></div><div class="row"><span>Jugo natural 16 oz</span><span>~$40</span></div><div class="row"><span>Smoothie / bowl de açaí</span><span>~$45–75</span></div><div class="row"><span>Panini de pavo</span><span>~$59</span></div></div>
+      <div class="picker"><div class="h">Modo revisión · elige el nombre de la marca</div><div class="opts" id="cafeOpts"></div></div>
+      <button class="link" onclick="openMenu('cafe')">Ver menú completo del café →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4 · NUTRIEXPRESS ===== -->
+<section class="scene light" id="express">
+  <div class="split">
+    <div class="pic"><img src="img/express.jpg" alt="NutriExpress" style="object-position:center 30%"><div class="badge">Render conceptual</div></div>
+    <div class="txt">
+      <div class="kicker">03 · NutriExpress · 2 kioscos</div>
+      <h1>Healthy Food.<br>Ready in 90 Seconds.</h1>
+      <p class="lead">Dos kioscos en puntos estratégicos para que nadie se quede sin comer entre clases: menú corto, saludable y listo en menos de 90 segundos.</p>
+      <div class="facts"><div class="fact"><b>2</b><span>kioscos en el campus</span></div><div class="fact"><b>&lt;90 s</b><span>por producto</span></div><div class="fact"><b>1 día</b><span>de instalación</span></div></div>
+      <div class="mini"><div class="h">Menú de referencia</div><div class="row"><span>Fresh Cup (fruta)</span><span>~$45</span></div><div class="row"><span>Crunch Bowl (yogurt, fruta, granola)</span><span>~$55</span></div><div class="row"><span>Turkey Club (Hot &amp; Ready)</span><span>~$80</span></div><div class="row"><span>Blend Bar smoothie</span><span>~$75</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5 · VENDING ===== -->
+<section class="scene light" id="vending">
+  <div class="split">
+    <div class="pic" style="background:#EDF2E4;display:grid;place-items:center;padding:60px 40px 40px">
+      <svg class="vend" viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="300" width="520" height="60" fill="#D8CDB6"/>
+        <rect x="40" y="40" width="440" height="270" rx="16" fill="#1F5D3B"/>
+        <text x="260" y="76" text-anchor="middle" font-size="14" font-weight="900" fill="#F7F3EA" font-family="Montserrat" letter-spacing="3">NUTRI · A CUALQUIER HORA</text>
+        <!-- máquina snacks -->
+        <rect x="70" y="95" width="170" height="215" rx="10" fill="#26241F"/>
+        <rect x="82" y="107" width="146" height="150" rx="6" fill="#0b2318"/>
+        <g fill="#F39C12"><rect x="92" y="118" width="26" height="18" rx="3"/><rect x="124" y="118" width="26" height="18" rx="3"/><rect x="156" y="118" width="26" height="18" rx="3"/><rect x="188" y="118" width="26" height="18" rx="3"/></g>
+        <g fill="#6EAF4A"><rect x="92" y="150" width="26" height="18" rx="3"/><rect x="124" y="150" width="26" height="18" rx="3"/><rect x="156" y="150" width="26" height="18" rx="3"/><rect x="188" y="150" width="26" height="18" rx="3"/></g>
+        <g fill="#C7E3B4"><rect x="92" y="182" width="26" height="18" rx="3"/><rect x="124" y="182" width="26" height="18" rx="3"/><rect x="156" y="182" width="26" height="18" rx="3"/><rect x="188" y="182" width="26" height="18" rx="3"/></g>
+        <g fill="#F7B24C"><rect x="92" y="214" width="26" height="30" rx="3"/><rect x="124" y="214" width="26" height="30" rx="3"/><rect x="156" y="214" width="26" height="30" rx="3"/><rect x="188" y="214" width="26" height="30" rx="3"/></g>
+        <rect x="82" y="268" width="146" height="28" rx="6" fill="#3E8B54"/>
+        <text x="155" y="286" text-anchor="middle" font-size="10" font-weight="800" fill="#F7F3EA" font-family="Montserrat">SNACKS · BEBIDAS</text>
+        <!-- máquina café -->
+        <rect x="280" y="95" width="120" height="215" rx="10" fill="#26241F"/>
+        <rect x="292" y="107" width="96" height="70" rx="6" fill="#F39C12"/>
+        <text x="340" y="148" text-anchor="middle" font-size="12" font-weight="900" fill="#26241F" font-family="Montserrat">CAFÉ</text>
+        <rect x="300" y="190" width="80" height="60" rx="6" fill="#0b2318"/>
+        <circle cx="340" cy="220" r="12" fill="#F7F3EA"/>
+        <rect x="292" y="262" width="96" height="34" rx="6" fill="#3E8B54"/>
+        <text x="340" y="283" text-anchor="middle" font-size="9" font-weight="800" fill="#F7F3EA" font-family="Montserrat">CASHLESS</text>
+        <!-- microondas y mesa -->
+        <rect x="416" y="150" width="50" height="34" rx="5" fill="#A79B82"/><rect x="424" y="158" width="26" height="18" rx="2" fill="#0b2318"/>
+        <rect x="412" y="200" width="60" height="6" rx="3" fill="#D8CDB6"/><rect x="438" y="206" width="6" height="100" fill="#D8CDB6"/>
+      </svg>
+      <div class="badge">Esquema conceptual</div>
+    </div>
+    <div class="txt">
+      <div class="kicker">04 · Red de vending</div>
+      <h1>Snacks y café en cada edificio</h1>
+      <p class="lead">Dos máquinas por edificio (snacks y bebidas + café), pago sin efectivo y servicio en horario extendido, cerca de los salones. La red crece o se reubica según los datos de uso.</p>
+      <div class="facts"><div class="fact"><b>12+</b><span>máquinas iniciales, en fases</span></div><div class="fact"><b>2×</b><span>por edificio: snacks + café</span></div><div class="fact"><b>24/7</b><span>disponibilidad extendida</span></div></div>
+      <div class="mini"><div class="h">Referencia</div><div class="row"><span>Snacks saludables</span><span>~$15–35</span></div><div class="row"><span>Bebidas</span><span>~$18–35</span></div><div class="row"><span>Café de máquina</span><span>~$25–35</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6 · TECNOLOGÍA ===== -->
+<section class="scene light" id="tech">
+  <div class="split">
+    <div class="pic"><img src="img/totems.jpg" alt="Tótems" style="object-position:82% center"><div class="badge">Render conceptual</div></div>
+    <div class="txt">
+      <div class="kicker">Cómo funciona · sin filas</div>
+      <h1>Pedir, pagar y disfrutar con la huella</h1>
+      <p class="lead">El alumno paga apoyando el dedo: sin efectivo, sin tarjeta. Los tótems y la app permiten pedir antes de llegar. Todo queda registrado para la universidad.</p>
+      <div class="facts"><div class="fact"><b>68%</b><span>de pagos ya digitales en nuestras operaciones</span></div><div class="fact"><b>&lt;3 min</b><span>objetivo de espera</span></div><div class="fact"><b>~285</b><span>transacciones al día por campus</span></div></div>
+      <div class="mini"><div class="h">Lo que ve el alumno</div><div class="row"><span>Pago con huella y monedero digital</span><span>✓</span></div><div class="row"><span>Tótems de autoservicio y app</span><span>✓</span></div><div class="row"><span>Saldo, consumo y alergias en el sistema</span><span>✓</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7 · CIERRE ===== -->
+<section class="scene" id="cierre">
+  <div class="wrap">
+    <div class="kicker" style="color:var(--amber)">Lo que recibe la UVAQ</div>
+    <h1 style="margin-top:12px">Todo esto, sin inversión<br>para la universidad</h1>
+    <div class="nums">
+      <div class="num"><b>+$7 MDP</b><span>de inversión de Nutri en infraestructura, equipo e imagen</span></div>
+      <div class="num"><b>$0</b><span>de inversión y cero carga operativa para la UVAQ</span></div>
+      <div class="num"><b>Ago 2027</b><span>ecosistema completo; vending y kioscos a 90 días de la firma</span></div>
+    </div>
+    <div class="ctas">
+      <a class="p" href="mailto:r.krasovsky@nutricafeteria.com.mx?subject=Degustaci%C3%B3n%20Nutri%20en%20la%20UVAQ">Agendar una degustación en el campus</a>
+      <a class="s" href="https://wa.me/525567034269" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <div class="contact"><b>Ricardo Krasovsky</b> · Director General, Nutri Cafeterías<br>r.krasovsky@nutricafeteria.com.mx · 55 6703 4269 · cafeteriasescolares.com.mx</div>
+  </div>
+</section>
+
+<!-- ===== NAV ===== -->
+<div class="nav" id="nav">
+  <div class="step" id="step">1 / 8</div>
+  <div class="dots" id="dots"></div>
+  <div class="arrows"><button onclick="go(idx-1)" aria-label="Anterior">←</button><button onclick="go(idx+1)" aria-label="Siguiente">→</button></div>
+</div>
+
+<!-- ===== MODAL MENÚ ===== -->
+<div class="modal" id="modal" onclick="if(event.target===this)closeMenu()">
+  <div class="sheet">
+    <button class="close" onclick="closeMenu()">✕</button>
+    <h2 id="mTitle">Menú de referencia</h2>
+    <div class="sub">Productos y precios aproximados, tomados de nuestras cartas actuales · la carta final se define con la UVAQ</div>
+    <div class="cols" id="mCols"></div>
+  </div>
+</div>
+
+<script>
+/* ========= CONFIG (cámbialo por escuela) ========= */
+const SCHOOL = { name:'UVAQ', mascot:'Halcones', color:'#1F3F9C' };
+const CAFE_BRANDS = {
+  sipbowl:{ name:'SIP & BOWL', sub:'coffee · juice · bowls', bg:'#FF5A5F', style:'letter-spacing:-.03em;font-size:26px' },
+  grano:  { name:'GRANO & JUGO', sub:'café de especialidad', bg:'#F2A93B', style:'font-size:22px;letter-spacing:.02em' },
+  lab:    { name:'JUICE LAB', sub:'fresh · fast · fuel', bg:'#3A7CA5', style:'font-size:26px;letter-spacing:.06em' },
+};
+let cafeBrand = localStorage.getItem('cafeBrand') || 'sipbowl';
+
+/* ========= ESTACIONES (hotspots en % sobre el render hero) ========= */
+const ICONS = {
+  leaf:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20c0-8 6-14 16-16-1 10-7 16-16 16z"/><path d="M4 20l8-8"/></svg>',
+  flame:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-6 1-9z"/></svg>',
+  sand:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18M3 13h18M5 17h14M4 9c0-3 4-5 8-5s8 2 8 5"/></svg>',
+  drop:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s6 6 6 11a6 6 0 0 1-12 0c0-5 6-11 6-11z"/></svg>',
+  basket:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18l-2 10H5L3 10zM8 10l3-6M16 10l-3-6"/></svg>',
+  finger:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 20c-1-3-1-6 0-9a6 6 0 0 1 11 2c0 3-1 5-2 7M10 20c-1-3 0-7 2-9M13 20c0-2 1-4 1-6"/></svg>',
+  sofa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11V8a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v3M3 12a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5H3v-5z"/></svg>',
+};
+const STATIONS = [
+  { id:'verde', x:14, y:60, n:'01', brand:'VERDE', sub:'barra de ensaladas', ico:'leaf', bg:'#C7E3B4', fg:'#1F5D3B',
+    tag:'Arma tu ensalada como quieras, en dos minutos.',
+    bullets:['Barra refrigerada con 20+ ingredientes frescos del día','Bases, proteínas, toppings y aderezos a elegir','Bowls listos para quien va de paso'],
+    menu:[['Arma tu ensalada (base + 4 ingredientes)','desde ~$79'],['Ensalada de pollo a la parrilla · 400 g','~$89'],['Pokebowl con proteína a elegir','~$89'],['Ensalada de garbanzos · 250 g','~$32'],['Crudités con hummus','~$39'],['Bowl de açaí','~$45']] },
+  { id:'cocina', x:33, y:57, n:'02', brand:'LA COCINA', sub:'comida caliente del día', ico:'flame', bg:'#F39C12', fg:'#26241F',
+    tag:'Comida de verdad, hecha aquí esa mañana.',
+    bullets:['Menú del día completo: sopa, plato fuerte, guarnición, agua y postre','Desayunos calientes desde temprano','Rota con el calendario; los favoritos se quedan'],
+    menu:[['Combo Halcón · menú del día completo','~$65–75'],['Menú ejecutivo · docentes y staff','~$85'],['Milanesa de res o pollo con guarnición','~$79'],['Enchiladas verdes o rojas','~$69'],['Pasta del día (boloñesa, alfredo, pesto)','~$69'],['Chilaquiles con pollo','~$69'],['Huevos al gusto con frijoles','~$59'],['Hotcakes / waffles','~$59–69']] },
+  { id:'arma', x:47, y:55, n:'03', brand:'ARMA', sub:'baguettes & paninis', ico:'sand', bg:'#5B5346', fg:'#F7F3EA',
+    tag:'Tu baguette o panini, paso a paso, a la plancha.',
+    bullets:['Pan artesanal del día y proteínas a elegir','Se arma frente al alumno y sale caliente','Opciones vegetarianas siempre'],
+    menu:[['Arma tu baguette (pan + proteína + 3 extras)','desde ~$79'],['Panini de pavo, panela y espinaca','~$59'],['Club sándwich triple con papas','~$89'],['Wrap vegetariano de hummus','~$85'],['Cuernito de pavo','~$49'],['Pita mediterránea','~$45']] },
+  { id:'fresco', x:52, y:47, n:'04', brand:'FRESCO', sub:'bebidas naturales', ico:'drop', bg:'#6EAF4A', fg:'#0E3421',
+    tag:'Jugos, smoothies y aguas frescas al momento.',
+    bullets:['Fruta de temporada, sin azúcar añadida','Licuadoras profesionales, servicio en 90 segundos','Café de barra para empezar el día'],
+    menu:[['Agua del día 16 oz (jamaica, limón, horchata)','~$22'],['Jugo natural 16 oz (verde, naranja, combinado)','~$40'],['Licuado 16 oz','~$40'],['Smoothie (berry, mango, green)','~$65–75'],['Café americano','~$29'],['Té e infusiones','~$19']] },
+  { id:'mercadito', x:79, y:52, n:'05', brand:'MERCADITO', sub:'grab & go', ico:'basket', bg:'#1F5D3B', fg:'#F7F3EA',
+    tag:'Listo para llevar entre clases.',
+    bullets:['Refrigeradores con bowls, sándwiches y fruta cortada esa mañana','Snacks saludables y bebidas','Cero fila: tomas, pagas con la huella y te vas'],
+    menu:[['Vaso de fruta 16 oz','~$39'],['Parfait de yogurt griego','~$45'],['Sándwich de jamón tostado','~$45'],['Fruta de mano','~$19'],['Galleta de la casa / brownie','~$36–40'],['Snacks horneados y barras','~$25–35']] },
+  { id:'cajas', x:61, y:66, n:'06', brand:'PAGA CON TU HUELLA', sub:'cajas y tótems', ico:'finger', bg:'#1F3F9C', fg:'#F7F3EA',
+    tag:'Sin efectivo, sin tarjeta, sin fila.',
+    bullets:['Lector de huella en cada caja: el alumno paga con el dedo','Tótems de autoservicio y app para pedir antes de llegar','Saldo, consumo y alergias registrados en el sistema'],
+    menu:[['Recarga de saldo por app o en caja','—'],['Pedido anticipado desde el celular','—'],['Reporte de consumo para la universidad','—']] },
+  { id:'sala', x:91, y:82, n:'07', brand:'LA SALA', sub:'comedor & lounge', ico:'sofa', bg:'#D8CDB6', fg:'#26241F',
+    tag:'Un lugar para comer — y para quedarse.',
+    bullets:['Mesas comunales, lounge y zonas de estudio informal','Pantallas, música y buena conexión','Abierto entre clases, no solo a la hora de comer'],
+    menu:[['Comedor y lounge para ~120 personas','—'],['Zona de estudio con conexión','—'],['Eventos y activaciones de la universidad','—']] },
+];
+const CAFE_MENU = [['Espresso / americano','~$29–35'],['Latte / cappuccino / flat white','~$45–55'],['Cold brew','~$45'],['Jugo natural 16 oz','~$40'],['Smoothies (berry, mango, green, protein)','~$65–75'],['Bowl de açaí / yogurt bowl','~$45–65'],['Panini de pavo / pepperoni','~$59'],['Pan tostado con aguacate','~$36'],['Repostería del día','~$25–40'],['Agua / mineral','~$22–28']];
+const ALL_MENU = { cafe:{title:'Café & jugos · marca propia', rows:CAFE_MENU} };
+
+/* ========= ESCENAS ========= */
+const SCENES = ['cover','eco','cafeteria','cafe','express','vending','tech','cierre'];
+const LIGHT = { eco:1, cafe:1, express:1, vending:1, tech:1 };
+let idx = 0, currentStation = null;
+const $ = s => document.querySelector(s);
+
+function go(i){
+  if(i<0||i>=SCENES.length) return;
+  unzoom(true);
+  document.querySelectorAll('.scene').forEach(s=>s.classList.remove('active'));
+  idx=i; const id=SCENES[i]; $('#'+id).classList.add('active');
+  const light = !!LIGHT[id];
+  $('#top').classList.toggle('light', light); $('#nav').classList.toggle('light', light);
+  $('#topLogo').src = light ? 'img/logo_nutri.png' : 'img/logo_nutri_blanco.png';
+  $('#step').textContent = (i+1)+' / '+SCENES.length;
+  document.querySelectorAll('#dots button').forEach((b,j)=>b.classList.toggle('on', j===i));
+  history.replaceState(null,'','#'+id);
+  if(id==='cafeteria') requestAnimationFrame(layoutHotspots);
+}
+function buildDots(){ $('#dots').innerHTML = SCENES.map((s,i)=>`<button onclick="go(${i})" aria-label="${s}"></button>`).join(''); }
+
+/* ========= HOTSPOTS ========= */
+function buildHotspots(){
+  $('#hotspots').innerHTML = STATIONS.map(s=>`
+    <div class="hs ${s.x>70?'left':''}" data-id="${s.id}">
+      <button onclick="focusStation('${s.id}')">${s.n}</button><label>${s.brand}</label>
+    </div>`).join('');
+  $('#chips').innerHTML = STATIONS.map(s=>`<button onclick="focusStation('${s.id}')">${s.n} ${s.brand}</button>`).join('');
+  layoutHotspots();
+}
+/* Coordenadas en % de la IMAGEN → px dentro de la caja (object-fit: cover) */
+function imgRect(){
+  const box=$('#heroBox'), img=$('#heroImg'); const bw=box.clientWidth, bh=box.clientHeight;
+  const iw=+img.dataset.w, ih=+img.dataset.h; const sc=Math.max(bw/iw, bh/ih);
+  const rw=iw*sc, rh=ih*sc; return {ox:(bw-rw)/2, oy:(bh-rh)/2, rw, rh};
+}
+function layoutHotspots(){
+  const r=imgRect(); if(!r.rw) return;
+  document.querySelectorAll('#hotspots .hs').forEach(el=>{
+    const s=STATIONS.find(x=>x.id===el.dataset.id);
+    el.style.left=(r.ox + s.x/100*r.rw)+'px'; el.style.top=(r.oy + s.y/100*r.rh)+'px';
+  });
+}
+window.addEventListener('resize', layoutHotspots);
+function focusStation(id){
+  const s = STATIONS.find(x=>x.id===id); currentStation=id;
+  const r=imgRect(); const img=$('#heroImg');
+  img.style.transformOrigin=`${r.ox + s.x/100*r.rw}px ${r.oy + s.y/100*r.rh}px`; img.style.transform='scale(2.1)';
+  $('#cafeteria').classList.add('zoomed'); document.body.classList.add('zoomed');
+  $('#panelInner').innerHTML = `
+    <div class="brand"><div class="ico" style="background:${s.bg};color:${s.fg}">${ICONS[s.ico]}</div><div><div class="nm" style="color:${s.bg==='#C7E3B4'||s.bg==='#D8CDB6'?'#1F5D3B':s.bg}">${s.brand}</div><div class="sub">${s.n} · ${s.sub}</div></div></div>
+    <div class="tag">${s.tag}</div>
+    <ul>${s.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
+    <div class="menu"><div class="h">Menú de referencia</div>${s.menu.slice(0,4).map(r=>`<div class="row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join('')}<div class="note">Precios aproximados de referencia; la carta final se define con la UVAQ.</div></div>`;
+}
+function unzoom(silent){
+  const img=$('#heroImg'); if(!img) return;
+  img.style.transform='scale(1)'; $('#cafeteria').classList.remove('zoomed'); document.body.classList.remove('zoomed'); currentStation=null;
+}
+function nextStation(){
+  const i = STATIONS.findIndex(s=>s.id===currentStation);
+  if(i<STATIONS.length-1) focusStation(STATIONS[i+1].id); else { unzoom(); go(3); }
+}
+
+/* ========= CAFÉ BRAND ========= */
+function renderCafeBrand(){
+  const b = CAFE_BRANDS[cafeBrand];
+  $('#cafeBrand').innerHTML = `<div class="logo" style="background:${b.bg}"><span style="${b.style}">${b.name}</span><small>${b.sub}</small></div>`;
+  $('#cafeOpts').innerHTML = Object.entries(CAFE_BRANDS).map(([k,v])=>`<button class="${k===cafeBrand?'on':''}" style="background:${v.bg}" onclick="setCafe('${k}')">${v.name}</button>`).join('');
+  document.querySelectorAll('#eco .node')[1].querySelector('b').innerHTML = `${b.name} <span style="font-weight:600;color:var(--piedra)">(marca propia)</span>`;
+}
+function setCafe(k){ cafeBrand=k; localStorage.setItem('cafeBrand',k); renderCafeBrand(); }
+
+/* ========= MENÚ MODAL ========= */
+function openMenu(which){
+  let secs=[];
+  if(which==='all'){ secs = STATIONS.filter(s=>s.menu[0][1]!=='—').map(s=>({h:s.brand+' · '+s.sub, rows:s.menu, bg:s.bg})); secs.push({h:CAFE_BRANDS[cafeBrand].name+' · café & jugos', rows:CAFE_MENU, bg:CAFE_BRANDS[cafeBrand].bg}); $('#mTitle').textContent='Menú de referencia · todo el ecosistema'; }
+  else if(which==='cafe'){ secs=[{h:CAFE_BRANDS[cafeBrand].name+' · café & jugos', rows:CAFE_MENU, bg:CAFE_BRANDS[cafeBrand].bg}]; $('#mTitle').textContent=CAFE_BRANDS[cafeBrand].name; }
+  else { const s=STATIONS.find(x=>x.id===which); secs=[{h:s.brand+' · '+s.sub, rows:s.menu, bg:s.bg}]; $('#mTitle').textContent=s.brand; }
+  $('#mCols').innerHTML = secs.map(sec=>`<div class="sec"><div class="h"><span style="width:10px;height:10px;border-radius:50%;background:${sec.bg};display:inline-block"></span>${sec.h}</div>${sec.rows.map(r=>`<div class="row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join('')}</div>`).join('');
+  $('#modal').classList.add('open');
+}
+function closeMenu(){ $('#modal').classList.remove('open'); }
+
+/* ========= INPUT ========= */
+document.addEventListener('keydown', e=>{
+  if($('#modal').classList.contains('open')){ if(e.key==='Escape') closeMenu(); return; }
+  if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); if(currentStation) nextStation(); else go(idx+1); }
+  if(e.key==='ArrowLeft'){ e.preventDefault(); go(idx-1); }
+  if(e.key==='Escape'){ unzoom(); }
+});
+let tx=0; document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{ const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>70 && !$('#modal').classList.contains('open') && !currentStation){ dx<0?go(idx+1):go(idx-1);} },{passive:true});
+
+/* ========= AUTOPLAY (para el video) ========= */
+const params = new URLSearchParams(location.search);
+if(params.get('review')==='1') document.body.classList.add('review');
+async function autoplay(){
+  const wait = ms => new Promise(r=>setTimeout(r,ms));
+  document.body.classList.add('auto');
+  go(0); await wait(3500);
+  go(1); await wait(4000);
+  go(2); await wait(2500);
+  for(const s of STATIONS){ focusStation(s.id); await wait(3200); }
+  unzoom(); await wait(1200);
+  go(3); await wait(4500);
+  go(4); await wait(4000);
+  go(5); await wait(3500);
+  go(6); await wait(4000);
+  go(7); await wait(5000);
+}
+
+/* ========= INIT ========= */
+buildDots(); buildHotspots(); renderCafeBrand();
+const start = SCENES.indexOf(location.hash.replace('#','')); go(start>=0?start:0);
+if(params.get('auto')==='1') autoplay();
+</script>
+</body>
+</html>
