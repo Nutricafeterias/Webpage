@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: ['/propuestas/'],
     },
     sitemap: 'https://cafeteriasescolares.com.mx/sitemap.xml',
   }
