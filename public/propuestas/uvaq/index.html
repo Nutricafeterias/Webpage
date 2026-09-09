@@ -208,14 +208,14 @@
 
 <!-- ===== TOP BAR ===== -->
 <div class="top" id="top">
-  <img src="img/logo_nutri_blanco.png" alt="Nutri Cafeterías" id="topLogo">
-  <div class="center"><span>Propuesta para la</span><span class="uv"><img src="img/logo_uvaq.png" alt="UVAQ"></span></div>
+  <img src="/propuestas/uvaq/img/logo_nutri_blanco.png" alt="Nutri Cafeterías" id="topLogo">
+  <div class="center"><span>Propuesta para la</span><span class="uv"><img src="/propuestas/uvaq/img/logo_uvaq.png" alt="UVAQ"></span></div>
   <button class="btn-menu" onclick="openMenu('all')">Ver menú</button>
 </div>
 
 <!-- ===== 0 · COVER ===== -->
 <section class="scene" id="cover">
-  <img class="bg" src="img/hero_cafeteria.jpg" alt="">
+  <img class="bg" src="/propuestas/uvaq/img/hero_cafeteria.jpg" alt="">
   <div class="veil"></div>
   <div class="content">
     <div class="kicker" style="color:var(--amber)">Universidad Vasco de Quiroga · Campus Santa María</div>
@@ -276,7 +276,7 @@
 <section class="scene" id="cafeteria">
   <div class="stage">
     <div class="heroBox" id="heroBox">
-      <img src="img/hero_cafeteria.jpg" id="heroImg" alt="Cafetería principal" data-w="1448" data-h="1086">
+      <img src="/propuestas/uvaq/img/hero_cafeteria.jpg" id="heroImg" alt="Cafetería principal" data-w="1448" data-h="1086">
       <div id="hotspots"></div>
     </div>
   </div>
@@ -298,7 +298,7 @@
 <!-- ===== 3 · CAFÉ & JUGOS (marca propia) ===== -->
 <section class="scene light" id="cafe">
   <div class="split">
-    <div class="pic"><img src="img/cafe_interior.jpg" alt="Café y jugos"><div class="badge">Render conceptual</div><div class="prelim">Render preliminar · llega en estilo Joe &amp; The Juice</div></div>
+    <div class="pic"><img src="/propuestas/uvaq/img/cafe_interior.jpg" alt="Café y jugos"><div class="badge">Render conceptual</div><div class="prelim">Render preliminar · llega en estilo Joe &amp; The Juice</div></div>
     <div class="txt">
       <div class="kicker">02 · La entrada del campus · marca propia</div>
       <div class="cafeBrand" id="cafeBrand"></div>
@@ -315,7 +315,7 @@
 <!-- ===== 4 · NUTRIEXPRESS ===== -->
 <section class="scene light" id="express">
   <div class="split">
-    <div class="pic"><img src="img/express.jpg" alt="NutriExpress" style="object-position:center 30%"><div class="badge">Render conceptual</div></div>
+    <div class="pic"><img src="/propuestas/uvaq/img/express.jpg" alt="NutriExpress" style="object-position:center 30%"><div class="badge">Render conceptual</div></div>
     <div class="txt">
       <div class="kicker">03 · NutriExpress · 2 kioscos</div>
       <h1>Healthy Food.<br>Ready in 90 Seconds.</h1>
@@ -370,7 +370,7 @@
 <!-- ===== 6 · TECNOLOGÍA ===== -->
 <section class="scene light" id="tech">
   <div class="split">
-    <div class="pic"><img src="img/totems.jpg" alt="Tótems" style="object-position:82% center"><div class="badge">Render conceptual</div></div>
+    <div class="pic"><img src="/propuestas/uvaq/img/totems.jpg" alt="Tótems" style="object-position:82% center"><div class="badge">Render conceptual</div></div>
     <div class="txt">
       <div class="kicker">Cómo funciona · sin filas</div>
       <h1>Pedir, pagar y disfrutar con la huella</h1>
@@ -482,7 +482,7 @@ function go(i){
   idx=i; const id=SCENES[i]; $('#'+id).classList.add('active');
   const light = !!LIGHT[id];
   $('#top').classList.toggle('light', light); $('#nav').classList.toggle('light', light);
-  $('#topLogo').src = light ? 'img/logo_nutri.png' : 'img/logo_nutri_blanco.png';
+  $('#topLogo').src = light ? '/propuestas/uvaq/img/logo_nutri.png' : '/propuestas/uvaq/img/logo_nutri_blanco.png';
   $('#step').textContent = (i+1)+' / '+SCENES.length;
   document.querySelectorAll('#dots button').forEach((b,j)=>b.classList.toggle('on', j===i));
   history.replaceState(null,'','#'+id);
