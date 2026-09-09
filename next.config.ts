@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async rewrites() {
     return [
-      { source: '/propuestas/uvaq', destination: '/propuestas/uvaq/index.html' },
+      { source: '/propuestas/uvaq-halcones', destination: '/propuestas/uvaq-halcones/index.html' },
     ];
   },
   images: {
