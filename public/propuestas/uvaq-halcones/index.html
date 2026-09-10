@@ -69,6 +69,8 @@
   .stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#0b2318}
   .heroBox{position:relative;width:100%;height:100%;overflow:hidden}
   .heroBox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 50%;transition:transform 1s cubic-bezier(.65,0,.25,1)}
+  #closeImg{opacity:0;transform:scale(1.06);transition:opacity .7s ease .35s,transform 1.2s ease .35s;pointer-events:none}
+  .zoomed #closeImg{opacity:1;transform:scale(1)}
   .hs{position:absolute;transform:translate(-50%,-50%);z-index:5;transition:opacity .4s}
   .hs button{position:relative;width:46px;height:46px;border-radius:50%;background:rgba(247,243,234,.92);color:var(--v700);font-weight:800;font-size:13px;box-shadow:0 6px 18px rgba(0,0,0,.35);display:grid;place-items:center}
   .hs button::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(247,243,234,.7);animation:pulse 2s infinite}
@@ -194,7 +196,7 @@
     .split .txt{padding:18px 6vw 90px;justify-content:flex-start}
     .panel{top:auto;height:74vh;border-radius:20px 20px 0 0;transform:translateY(110%)}
     .zoomed .panel{transform:translateY(0)}
-    .heroBox{position:absolute;left:0;right:0;top:44%;height:auto;aspect-ratio:1448/1086;transform:translateY(-50%)}
+    .heroBox{position:absolute;left:0;right:0;top:44%;height:auto;aspect-ratio:1672/941;transform:translateY(-50%)}
     .hs button{width:34px;height:34px;font-size:11px}
     .hs label{display:none}
     .chips{display:flex}
@@ -219,7 +221,7 @@
 
 <!-- ===== 0 · COVER ===== -->
 <section class="scene" id="cover">
-  <img class="bg" src="/propuestas/uvaq-halcones/img/hero_cafeteria.jpg" alt="">
+  <img class="bg" src="/propuestas/uvaq-halcones/img/R01_hero.jpg" alt="">
   <div class="veil"></div>
   <div class="content">
     <div class="kicker" style="color:var(--amber)">Universidad Vasco de Quiroga · Campus Santa María</div>
@@ -228,7 +230,6 @@
     <button class="cta" onclick="go(1)">Recorrer el proyecto <span class="arrow">→</span></button>
   </div>
   <div class="foot">Nutri Cafeterías · Septiembre 2026 · Documento confidencial</div>
-  <div class="prelim">Render preliminar · se sustituye por el definitivo</div>
 </section>
 
 <!-- ===== 1 · ECOSISTEMA ===== -->
@@ -281,7 +282,8 @@
 <section class="scene" id="cafeteria">
   <div class="stage">
     <div class="heroBox" id="heroBox">
-      <img src="/propuestas/uvaq-halcones/img/hero_cafeteria.jpg" id="heroImg" alt="Cafetería principal" data-w="1448" data-h="1086">
+      <img src="/propuestas/uvaq-halcones/img/R01_hero.jpg" id="heroImg" alt="Cafetería principal" data-w="1672" data-h="941">
+      <img id="closeImg" alt="">
       <div id="hotspots"></div>
     </div>
   </div>
@@ -292,7 +294,6 @@
     <h1>El corazón del campus</h1>
     <p>Toca una estación para conocerla</p>
   </div>
-  <div class="prelim">Render preliminar · se sustituye por el definitivo</div>
   <aside class="panel" id="panel">
     <button class="close" onclick="unzoom()">✕</button>
     <div class="inner" id="panelInner"></div>
@@ -444,31 +445,31 @@ const ICONS = {
   sofa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11V8a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v3M3 12a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v5H3v-5z"/></svg>',
 };
 const STATIONS = [
-  { id:'verde', x:14, y:60, n:'01', brand:'VERDE', sub:'barra de ensaladas', ico:'leaf', bg:'#C7E3B4', fg:'#1F5D3B',
+  { id:'verde', x:9, y:62, img:'/propuestas/uvaq-halcones/img/R02_verde.jpg', n:'01', brand:'VERDE', sub:'barra de ensaladas', ico:'leaf', bg:'#C7E3B4', fg:'#1F5D3B',
     tag:'Arma tu ensalada como quieras, en dos minutos.',
     bullets:['Barra refrigerada con +20 ingredientes frescos del día','Bases, proteínas, toppings y aderezos a elegir','Bowls listos para quien va de paso'],
     menu:[['Arma tu ensalada (base + 4 ingredientes)','desde ~$79'],['Ensalada de pollo a la parrilla · 400 g','~$89'],['Poke bowl con proteína a elegir','~$89'],['Ensalada de garbanzos · 250 g','~$32'],['Crudités con hummus','~$39'],['Bowl de açaí','~$45']] },
-  { id:'cocina', x:33, y:57, n:'02', brand:'LA COCINA', sub:'comida caliente del día', ico:'flame', bg:'#F39C12', fg:'#26241F',
+  { id:'cocina', x:26, y:46, img:'/propuestas/uvaq-halcones/img/R03_cocina.jpg', n:'02', brand:'LA COCINA', sub:'comida caliente del día', ico:'flame', bg:'#F39C12', fg:'#26241F',
     tag:'Comida casera, hecha aquí cada mañana.',
     bullets:['Menú del día completo: sopa, plato fuerte, guarnición, agua y postre','Desayunos calientes desde temprano','El menú cambia con el calendario; los favoritos se quedan'],
     menu:[['Combo Halcón · menú del día completo','~$65–75'],['Menú ejecutivo · docentes y personal','~$85'],['Milanesa de res o pollo con guarnición','~$79'],['Enchiladas verdes o rojas','~$69'],['Pasta del día (boloñesa, Alfredo, pesto)','~$69'],['Chilaquiles con pollo','~$69'],['Huevos al gusto con frijoles','~$59'],['Hotcakes / waffles','~$59–69']] },
-  { id:'arma', x:47, y:55, n:'03', brand:'ÁRMALO', sub:'baguettes & paninis', ico:'sand', bg:'#5B5346', fg:'#F7F3EA',
+  { id:'arma', x:36, y:33, img:'/propuestas/uvaq-halcones/img/R04_armalo.jpg', n:'03', brand:'ÁRMALO', sub:'baguettes & paninis', ico:'sand', bg:'#5B5346', fg:'#F7F3EA',
     tag:'Tu baguette o panini, paso a paso, a la plancha.',
     bullets:['Pan artesanal del día y proteínas a elegir','Se arma frente al alumno y sale caliente','Opciones vegetarianas siempre'],
     menu:[['Arma tu baguette (pan + proteína + 3 extras)','desde ~$79'],['Panini de pavo, panela y espinaca','~$59'],['Club sándwich triple con papas','~$89'],['Wrap vegetariano de hummus','~$85'],['Cuernito de pavo','~$49'],['Pita mediterránea','~$45']] },
-  { id:'fresco', x:52, y:47, n:'04', brand:'FRESCO', sub:'bebidas naturales', ico:'drop', bg:'#6EAF4A', fg:'#0E3421',
+  { id:'fresco', x:44, y:42, img:'/propuestas/uvaq-halcones/img/R05_fresco.jpg', n:'04', brand:'FRESCO', sub:'bebidas naturales', ico:'drop', bg:'#6EAF4A', fg:'#0E3421',
     tag:'Jugos, smoothies y aguas frescas al momento.',
     bullets:['Jugos y smoothies 100 % fruta, sin azúcar añadida','Licuadoras profesionales, todo al momento','Café de barra para empezar el día'],
     menu:[['Agua del día 16 oz (jamaica, limón, horchata)','~$22'],['Jugo natural 16 oz (verde, naranja, combinado)','~$40'],['Licuado 16 oz','~$40'],['Smoothie (frutos rojos, mango, verde)','~$65–75'],['Café americano','~$29'],['Té e infusiones','~$19']] },
-  { id:'mercadito', x:79, y:52, n:'05', brand:'MERCADITO', sub:'para llevar', ico:'basket', bg:'#1F5D3B', fg:'#F7F3EA',
+  { id:'mercadito', x:88, y:38, img:'/propuestas/uvaq-halcones/img/R06_mercadito.jpg', n:'05', brand:'MERCADITO', sub:'para llevar', ico:'basket', bg:'#1F5D3B', fg:'#F7F3EA',
     tag:'Listo para llevar entre clases.',
     bullets:['Refrigeradores con bowls, sándwiches y fruta cortada cada mañana','Snacks saludables y bebidas','Sin fila: tomas, pagas con la huella y te vas'],
     menu:[['Vaso de fruta 16 oz','~$39'],['Parfait de yogurt griego','~$45'],['Sándwich de jamón tostado','~$45'],['Pieza de fruta','~$19'],['Galleta de la casa / brownie','~$36–40'],['Snacks horneados y barras','~$25–35']] },
-  { id:'cajas', x:61, y:66, n:'06', brand:'PAGA CON TU HUELLA', sub:'cajas y tótems', ico:'finger', bg:'#1F3F9C', fg:'#F7F3EA',
+  { id:'cajas', x:80, y:62, img:'/propuestas/uvaq-halcones/img/R07_cajas.jpg', n:'06', brand:'PAGA CON TU HUELLA', sub:'cajas y tótems', ico:'finger', bg:'#1F3F9C', fg:'#F7F3EA',
     tag:'Sin cartera, sin fila: paga con la huella.',
     bullets:['Lector de huella en cada caja: el alumno paga con el dedo','Tótems de autoservicio y app para pedir antes de llegar','Saldo, consumo y alergias registrados en el sistema'],
     menu:[['Recarga de saldo por app o en caja','—'],['Pedido anticipado desde el celular','—'],['Reportes de ventas y consumo para la universidad','—']] },
-  { id:'sala', x:91, y:82, n:'07', brand:'LA SALA', sub:'comedor & lounge', ico:'sofa', bg:'#D8CDB6', fg:'#26241F',
+  { id:'sala', x:62, y:52, img:'/propuestas/uvaq-halcones/img/R08_sala.jpg', n:'07', brand:'LA SALA', sub:'comedor & lounge', ico:'sofa', bg:'#D8CDB6', fg:'#26241F',
     tag:'Un lugar para comer… y para quedarse.',
     bullets:['Mesas comunales, lounge y zonas de estudio informal','Pantallas, música y wifi','Abierto entre clases, no solo a la hora de comer'],
     menu:[['Comedor y lounge · aforo por definir con el plano','—'],['Zona de estudio con conexión','—'],['Eventos y activaciones de la universidad','—']] },
@@ -524,6 +525,7 @@ function focusStation(id){
   const s = STATIONS.find(x=>x.id===id); currentStation=id;
   const r=imgRect(); const img=$('#heroImg');
   img.style.transformOrigin=`${r.ox + s.x/100*r.rw}px ${r.oy + s.y/100*r.rh}px`; img.style.transform='scale(2.1)';
+  const ci=$('#closeImg'); if(s.img){ ci.src=s.img; }
   $('#cafeteria').classList.add('zoomed'); document.body.classList.add('zoomed');
   document.querySelector('.panel .acts .b2').style.display = (s.menu[0][1]==='—') ? 'none' : 'block';
   $('#panelInner').innerHTML = `
@@ -590,6 +592,7 @@ async function autoplay(){
 
 /* ========= INIT ========= */
 buildDots(); buildHotspots(); renderCafeBrand();
+STATIONS.forEach(s=>{ if(s.img){ const i=new Image(); i.src=s.img; } });
 const start = SCENES.indexOf(location.hash.replace('#','')); go(start>=0?start:0);
 if(params.get('auto')==='1') autoplay();
 </script>
