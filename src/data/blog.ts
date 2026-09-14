@@ -26,6 +26,58 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'menos-alumnos-colegiaturas-mas-caras-retencion-escuelas-privadas-2026',
+    title: 'Menos alumnos y colegiaturas más caras: la pinza que enfrenta tu escuela en 2026 (y por qué la retención se juega en la operación diaria)',
+    description:
+      'Los nacimientos en México cayeron 20% entre 2019 y 2024, el preescolar privado perdió 23.7% de su matrícula y las colegiaturas llevan tres años subiendo por encima de la inflación. Qué significa esa pinza para una escuela privada de CDMX y por qué los servicios que la familia usa todos los días pesan más que nunca.',
+    date: '2026-09-14',
+    readTime: '7 min',
+    category: 'Guías para directores',
+    emoji: '📉',
+    image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1200&h=630&fit=crop&q=85',
+    keywords: ['retención de familias escuelas privadas', 'matrícula escuelas privadas México 2026', 'colegiaturas aumento 2026-2027', 'admisiones colegios privados CDMX', 'cafetería escolar escuelas privadas', 'natalidad matrícula escolar México'],
+    related: [
+      { href: '/blog/retencion-familias-escuelas-privadas-cafeteria-admisiones', anchor: 'Retención de familias en escuelas privadas: por qué la cafetería pesa más en admisiones de lo que crees' },
+      { href: '/blog/cafeteria-escolar-premium-escuelas-privadas', anchor: '¿Qué hace "premium" a una cafetería escolar?' },
+      { href: '/diagnostico', anchor: 'Diagnóstico gratuito de tu cafetería escolar' },
+    ],
+    content: [
+      { type: 'p', text: 'Durante años, el plan de crecimiento de una escuela privada en la Ciudad de México se pudo escribir en una sola línea: llenar los lugares nuevos con las familias que van llegando. Ese supuesto dejó de ser cierto, y no por un cambio pedagógico ni por una reforma. Cambió la aritmética: hay menos niños cada año, y cada familia que sí llega paga más por estar ahí. Las dos cosas a la vez aprietan desde lados opuestos, y el ciclo 2026-2027 es el primero en el que casi ningún director puede ignorarlo.' },
+      { type: 'h2', text: '1. El lado que casi nadie mide: hay menos niños' },
+      { type: 'p', text: 'Los nacimientos registrados en México pasaron de alrededor de 2 millones en 2019 a 1.6 millones en 2024, una caída de 20% —unos 419 mil niños menos— según el INEGI. Ese hueco ya llegó a las aulas. Entre los ciclos 2019-2020 y 2024-2025, la matrícula de educación básica cayó 7.5%, con la baja concentrada en preescolar (-15.6%) y primaria (-7.4%), de acuerdo con datos de la SEP.' },
+      { type: 'p', text: 'El golpe no se repartió parejo. El preescolar privado perdió 23.7% de sus alumnos en ese periodo, al pasar de 744 mil a 568 mil estudiantes, y 2,229 preescolares particulares cerraron operaciones. En la Ciudad de México la cifra es todavía más dura: una pérdida cercana al 41% de la matrícula de preescolar privado y 551 planteles cerrados. Y en agosto de 2026, alrededor de 23 millones de alumnos iniciaron educación básica: la cifra más baja de la última década.' },
+      { type: 'p', text: 'Traducido a la junta de admisiones: el embudo de tu escuela no se está angostando por tu culpa. Se está angostando para todos. Lo que sí es responsabilidad de cada plantel es qué tan rápido se le escapan las familias que ya están adentro.' },
+      { type: 'h2', text: '2. El otro lado de la pinza: cada familia paga más' },
+      { type: 'p', text: 'Mientras el mercado se achica, el precio sube. El índice de precios de la educación privada en México creció alrededor de 6% anual entre junio de 2024 y junio de 2026, y acumuló cerca de 19.2% entre junio de 2023 y junio de 2026, por encima de la inflación general. Desde 2020, la inflación acumulada de los servicios educativos ronda el 30%. Del lado del costo, la nómina pasó de representar 42.8% del gasto operativo de las escuelas en 2013 a 55.1% en 2023: el aumento no es margen, es estructura.' },
+      { type: 'p', text: 'El dato que cierra el cuadro viene del hogar. El gasto mensual real de las familias mexicanas en educación pasó de 1,761 pesos en 2016 a 1,531 pesos en 2024: 13% menos, descontando inflación. Es decir, el precio subió mientras la capacidad real de pago bajó. Esa tijera no se resuelve con un descuento de inscripción; se resuelve con una razón para quedarse.' },
+      { type: 'quote', text: 'Cuando hay menos niños en el mercado, cada familia que se va no se reemplaza: se resta. La retención dejó de ser un indicador de servicio y se volvió el principal renglón del plan financiero.' },
+      { type: 'h2', text: '3. Lo que sí está moviendo la matrícula' },
+      { type: 'p', text: 'Hay una señal útil en el estudio que la plataforma de gestión escolar Cometa levantó entre noviembre de 2024 y abril de 2025 con 562 escuelas privadas mexicanas. Dos hallazgos: la deserción por motivos económicos bajó de 63% a 30% de un año a otro, y hoy alrededor de la mitad de los cambios de escuela se atribuyen a mudanza de la familia, no a dinero. O sea: el problema de retención ya no es principalmente de precio.' },
+      { type: 'p', text: 'El otro hallazgo es el que conviene leer dos veces: las escuelas que ofrecen cinco o más servicios complementarios atraen 33% más alumnos y muestran un crecimiento de matrícula 43% superior. Los servicios complementarios —comedor, transporte, extraescolares, tecnología para padres— dejaron de ser un anexo del folleto y se volvieron parte de la decisión.' },
+      { type: 'h2', text: '4. Por qué la cafetería aparece en esta conversación' },
+      { type: 'p', text: 'De todos los servicios complementarios, el comedor es el único que la familia consume 180 veces al año y del que recibe reporte todos los días, en la voz del propio alumno. Un laboratorio nuevo se ve en la visita de admisiones; la comida se evalúa cada tarde en la mesa de la casa. Esa asimetría es la que casi nunca se contabiliza: la cafetería es el punto de contacto más frecuente entre la escuela y la familia, y por lo tanto el que más rápido construye —o erosiona— la percepción de que la colegiatura vale lo que cuesta.' },
+      { type: 'p', text: 'Y en un entorno donde la familia ya está pagando 6% más que el año pasado con menos ingreso real, la pregunta no es si la comida está rica. Es si el gasto extra del comedor se siente como parte del valor del colegio o como un cobro más encima de la colegiatura.' },
+      { type: 'h2', text: '5. Cinco decisiones que caben en este ciclo' },
+      { type: 'ul', items: [
+        'Medir retención por generación, no en total. Un 95% global puede esconder una fuga concentrada en el paso de preescolar a primaria, que es justo donde la demografía pega más fuerte.',
+        'Preguntar por qué se van, con una salida estructurada. Media hoja al momento de la baja vale más que la suposición del año siguiente; si la mitad de las salidas son por mudanza, conviene saberlo con datos propios y no por promedio nacional.',
+        'Revisar los servicios complementarios como parte de la oferta, no como proveedores sueltos. Comedor, transporte y extraescolares se venden juntos en la decisión de la familia aunque se contraten por separado.',
+        'Hacer visible lo que la familia ya está pagando. Si el papá no sabe qué comió su hijo esta semana, el gasto del comedor se percibe como costo; si lo sabe, se percibe como servicio.',
+        'No subir precio del comedor el mismo mes que la colegiatura. Dos aumentos en la misma quincena se leen como uno solo, y más grande.',
+      ] },
+      { type: 'h2', text: '6. Tres preguntas para la próxima junta directiva' },
+      { type: 'ul', items: [
+        '¿Cuál fue nuestra tasa de retención por grado el ciclo pasado y en qué transición perdimos más familias?',
+        '¿Qué servicios complementarios ofrecemos hoy, y cuáles de ellos generan información que podamos mostrarle a la familia?',
+        'Si una familia comparara nuestra escuela con la de enfrente esta semana, ¿qué parte de la experiencia diaria estaría viendo, y quién la opera?',
+      ] },
+      { type: 'p', text: 'Ninguna de las tres exige presupuesto. Las tres exigen que alguien tenga el número a la mano.' },
+      { type: 'h2', text: 'Cómo lo trabajamos en Nutri Cafeterías' },
+      { type: 'p', text: 'Operamos la cafetería como parte de la experiencia institucional, no como una concesión aparte. Los menús los diseñan nutriólogos y se verifican contra los lineamientos SEP vigentes, con protocolos alineados a la NOM-251, Distintivo H y licencia sanitaria. El pago con huella digital deja registro de cada consumo, la app para padres convierte ese registro en visibilidad diaria para la familia y NutriMood conecta la alimentación con el estado de ánimo del alumno. Son más de 10 años operando cafeterías en escuelas privadas de la Ciudad de México, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción, sin inversión inicial para la institución.' },
+      { type: 'p', text: 'Si este ciclo vas a defender matrícula con lo que ya tienes, empieza por lo que tu comunidad usa todos los días: haz el diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo y revisamos juntos qué está viendo hoy la familia de tu cafetería actual.' },
+    ],
+  },
+  {
     slug: 'ultraprocesados-comedor-escolar-cocina-desde-cero-tendencia-2026',
     title: 'De prohibir a cocinar: el giro global de 2026 en comedores escolares (y qué puede copiar hoy una escuela privada en México)',
     description:
