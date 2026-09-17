@@ -241,7 +241,7 @@
       <p class="lead">Cada punto tiene su propia marca y personalidad. Todo lo opera Nutri, con un solo estándar y un solo responsable.</p>
       <div class="nodes">
         <button class="node" onclick="go(2)"><span class="dot" style="background:var(--v700)">01</span><div><b>Cafetería principal</b><span>Comer, convivir y estudiar · en el nuevo edificio</span></div></button>
-        <button class="node" onclick="go(3)"><span class="dot" style="background:#FF5A5F">02</span><div><b>Café &amp; jugos <span style="font-weight:600;color:var(--piedra)">(marca propia)</span></b><span>Café de especialidad y bowls · en la entrada</span></div></button>
+        <button class="node" onclick="go(3)"><span class="dot" style="background:#C8862B;color:#26241F">02</span><div><b>Nutri Bakery &amp; Coffee</b><span>Pan artesanal, repostería y café de especialidad · en la entrada</span></div></button>
         <button class="node" onclick="go(4)"><span class="dot" style="background:var(--v300)">03</span><div><b>NutriExpress ×2</b><span>Saludable, listo en 90 segundos</span></div></button>
         <button class="node" onclick="go(5)"><span class="dot" style="background:var(--naranja)">04</span><div><b>Red de vending</b><span>+12 máquinas, snacks y café en cada edificio</span></div></button>
       </div>
@@ -297,10 +297,10 @@
           <circle cx="198" cy="138" r="13" fill="#6EAF4A"/><text x="198" y="141" font-size="7.5" font-weight="900" fill="#0E3421" text-anchor="middle">90 s</text>
           <circle cx="310" cy="182" r="13" fill="#6EAF4A"/><text x="310" y="185" font-size="7.5" font-weight="900" fill="#0E3421" text-anchor="middle">90 s</text>
         </g>
-        <!-- café & jugos (marca propia) -->
+        <!-- Nutri Bakery & Coffee -->
         <g style="cursor:pointer" onclick="go(3)">
-          <circle cx="434" cy="158" r="15" fill="#FF5A5F"/><text x="434" y="161" font-size="7.5" font-weight="900" fill="#fff" text-anchor="middle">CAFÉ</text>
-          <text x="454" y="161" font-size="6.5" font-weight="700" fill="#5B5346">CAFÉ &amp; JUGOS</text>
+          <circle cx="434" cy="158" r="15" fill="#C8862B"/><text x="434" y="160.5" font-size="6" font-weight="900" fill="#26241F" text-anchor="middle">BAKERY</text>
+          <text x="454" y="161" font-size="6.5" font-weight="700" fill="#5B5346">NUTRI BAKERY &amp; COFFEE</text>
         </g>
         <!-- cafetería principal (nuevo edificio) -->
         <g style="cursor:pointer" onclick="go(2)">
@@ -312,7 +312,7 @@
         </g>
         <text x="331" y="371" text-anchor="middle" font-size="7.5" font-weight="700" fill="#A79B82" letter-spacing="1">PLANO DEL CAMPUS SANTA MARÍA · UBICACIONES PROPUESTAS, A VALIDAR CON LA UVAQ · TOCA UN PUNTO</text>
       </svg>
-      <div class="dia"><div><b>7:00</b><span>café y jugo en la entrada</span></div><div><b>10:30</b><span>NutriExpress entre clases</span></div><div><b>14:00</b><span>Combo Halcón en la cafetería</span></div><div><b>18:00</b><span>vending en tu edificio</span></div></div>
+      <div class="dia"><div><b>7:00</b><span>pan y café en la entrada</span></div><div><b>10:30</b><span>NutriExpress entre clases</span></div><div><b>14:00</b><span>Combo Halcón en la cafetería</span></div><div><b>18:00</b><span>vending en tu edificio</span></div></div>
     </div>
   </div>
 </section>
@@ -340,19 +340,18 @@
   </aside>
 </section>
 
-<!-- ===== 3 · CAFÉ & JUGOS (marca propia) ===== -->
+<!-- ===== 3 · NUTRI BAKERY & COFFEE ===== -->
 <section class="scene light" id="cafe">
   <div class="split">
-    <div class="pic"><img src="/propuestas/uvaq-halcones/img/cafe_interior.jpg" alt="Café y jugos"><div class="badge">Render conceptual</div><div class="prelim">Render preliminar · llega en estilo Joe &amp; The Juice</div></div>
+    <div class="pic"><img src="/propuestas/uvaq-halcones/img/R09_bakery.jpg" alt="Nutri Bakery &amp; Coffee" style="object-position:center 40%"><div class="badge">Render conceptual</div></div>
     <div class="txt">
-      <div class="kicker">02 · La entrada del campus · marca propia</div>
+      <div class="kicker">02 · La entrada del campus</div>
       <div class="cafeBrand" id="cafeBrand"></div>
-      <h1>Café de especialidad, jugos y bowls</h1>
-      <p class="lead">El local más visible del campus se convierte en una barra de café y jugos con energía urbana (estilo Joe &amp; The Juice): café, jugos al momento, bowls y paninis. Se ve como otra marca; lo opera Nutri.</p>
-      <div class="facts"><div class="fact"><b>Ene 2027</b><span>apertura, antes de la primera clase</span></div><div class="fact"><b>Al momento</b><span>café y jugos recién hechos</span></div><div class="fact"><b>Marca propia</b><span>se ve distinto; lo opera Nutri</span></div></div>
-      <div class="mini"><div class="h">Menú de referencia</div><div class="row"><span>Latte / capuchino</span><span>~$45–55</span></div><div class="row"><span>Jugo natural 16 oz</span><span>~$40</span></div><div class="row"><span>Smoothie / bowl de açaí</span><span>~$45–75</span></div><div class="row"><span>Panini de pavo</span><span>~$59</span></div></div>
-      <div class="picker"><div class="h">Modo revisión · elige el nombre de la marca</div><div class="opts" id="cafeOpts"></div></div>
-      <button class="link" onclick="openMenu('cafe')">Ver menú completo del café →</button>
+      <h1>Pan recién horneado y café de especialidad</h1>
+      <p class="lead">El local más visible del campus se convierte en una panadería-café con terraza (estilo Artemisa / Joe &amp; The Juice): pan artesanal y repostería horneados ahí mismo, café de especialidad, y jugos y smoothies como complemento. Identidad propia; lo opera Nutri.</p>
+      <div class="facts"><div class="fact"><b>Ene 2027</b><span>apertura, antes de la primera clase</span></div><div class="fact"><b>Horneado aquí</b><span>pan y repostería del día</span></div><div class="fact"><b>Terraza</b><span>para estudiar y convivir</span></div></div>
+      <div class="mini"><div class="h">Menú de referencia</div><div class="row"><span>Espresso / americano</span><span>~$35–40</span></div><div class="row"><span>Latte / capuchino</span><span>~$55</span></div><div class="row"><span>Croissant / pan artesanal</span><span>~$45–50</span></div><div class="row"><span>Muffins / cookies</span><span>~$40–45</span></div></div>
+      <button class="link" onclick="openMenu('cafe')">Ver menú completo →</button>
     </div>
   </div>
 </section>
@@ -439,12 +438,10 @@
 /* ========= CONFIG (cámbialo por escuela) ========= */
 const SCHOOL = { name:'UVAQ', mascot:'Halcones', color:'#1F3F9C' };
 const CAFE_BRANDS = {
-  sipbowl:{ name:'SIP & BOWL', sub:'coffee · juice · bowls', bg:'#FF5A5F', style:'letter-spacing:-.03em;font-size:26px' },
-  grano:  { name:'GRANO & JUGO', sub:'café de especialidad', bg:'#F2A93B', style:'font-size:22px;letter-spacing:.02em' },
-  lab:    { name:'JUICE LAB', sub:'fresh · fast · fuel', bg:'#3A7CA5', style:'font-size:26px;letter-spacing:.06em' },
+  bakery:{ name:'NUTRI BAKERY & COFFEE', sub:'pan · pastelería · café de especialidad', bg:'#C8862B', fg:'#26241F', style:'font-size:20px;letter-spacing:.04em' },
 };
-let cafeBrand = localStorage.getItem('cafeBrand') || 'sipbowl';
-const CAFE_NAME_FINAL = false; // cambiar a true cuando Ricardo elija el nombre
+let cafeBrand = 'bakery';
+const CAFE_NAME_FINAL = true;
 
 /* ========= ESTACIONES (hotspots en % sobre el render hero) ========= */
 const ICONS = {
@@ -486,8 +483,8 @@ const STATIONS = [
     bullets:['Mesas comunales, lounge y zonas de estudio informal','Pantallas, música y wifi','Abierto entre clases, no solo a la hora de comer'],
     menu:[['Comedor y lounge · aforo por definir con el plano','—'],['Zona de estudio con conexión','—'],['Eventos y activaciones de la universidad','—']] },
 ];
-const CAFE_MENU = [['Espresso / americano','~$29–35'],['Latte / capuchino / flat white','~$45–55'],['Cold brew','~$45'],['Jugo natural 16 oz','~$40'],['Smoothies (frutos rojos, mango, verde, proteína)','~$65–75'],['Bowl de açaí / yogurt bowl','~$45–65'],['Panini de pavo / pepperoni','~$59'],['Pan tostado con aguacate','~$36'],['Repostería del día','~$25–40'],['Agua / mineral','~$22–28']];
-const ALL_MENU = { cafe:{title:'Café & jugos · marca propia', rows:CAFE_MENU} };
+const CAFE_MENU = [['Espresso','~$35'],['Americano','~$40'],['Latte / capuchino','~$55'],['Matcha latte','~$60'],['Cold brew','~$50'],['Croissants y bollería','~$45'],['Pan artesanal','~$50'],['Pasteles y rebanadas','~$55'],['Muffins','~$45'],['Cookies','~$40'],['Jugo natural 16 oz','~$40'],['Smoothies','~$65–75'],['Panini / sándwich','~$59']];
+const ALL_MENU = { cafe:{title:'Nutri Bakery & Coffee', rows:CAFE_MENU} };
 
 /* ========= ESCENAS ========= */
 const SCENES = ['cover','eco','cafeteria','cafe','express','vending','tech','cierre'];
@@ -558,16 +555,15 @@ function nextStation(){
 /* ========= CAFÉ BRAND ========= */
 function renderCafeBrand(){
   const b = CAFE_BRANDS[cafeBrand];
-  $('#cafeBrand').innerHTML = `<div class="logo" style="background:${b.bg}"><span style="${b.style}">${b.name}</span><small>${b.sub}</small></div>${CAFE_NAME_FINAL?'':'<span style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--piedra)">nombre provisional</span>'}`;
-  $('#cafeOpts').innerHTML = Object.entries(CAFE_BRANDS).map(([k,v])=>`<button class="${k===cafeBrand?'on':''}" style="background:${v.bg}" onclick="setCafe('${k}')">${v.name}</button>`).join('');
+  $('#cafeBrand').innerHTML = `<div class="logo" style="background:${b.bg};color:${b.fg||'#fff'}"><span style="${b.style}">${b.name}</span><small>${b.sub}</small></div>`;
 }
 function setCafe(k){ cafeBrand=k; localStorage.setItem('cafeBrand',k); renderCafeBrand(); }
 
 /* ========= MENÚ MODAL ========= */
 function openMenu(which){
   let secs=[];
-  if(which==='all'){ secs = STATIONS.filter(s=>s.menu[0][1]!=='—').map(s=>({h:s.brand+' · '+s.sub, rows:s.menu, bg:s.bg})); secs.push({h:CAFE_BRANDS[cafeBrand].name+' · café & jugos', rows:CAFE_MENU, bg:CAFE_BRANDS[cafeBrand].bg}); $('#mTitle').textContent='Menú de referencia · todo el ecosistema'; }
-  else if(which==='cafe'){ secs=[{h:CAFE_BRANDS[cafeBrand].name+' · café & jugos', rows:CAFE_MENU, bg:CAFE_BRANDS[cafeBrand].bg}]; $('#mTitle').textContent=CAFE_BRANDS[cafeBrand].name; }
+  if(which==='all'){ secs = STATIONS.filter(s=>s.menu[0][1]!=='—').map(s=>({h:s.brand+' · '+s.sub, rows:s.menu, bg:s.bg})); secs.push({h:CAFE_BRANDS[cafeBrand].name+' · pan y café', rows:CAFE_MENU, bg:CAFE_BRANDS[cafeBrand].bg}); $('#mTitle').textContent='Menú de referencia · todo el ecosistema'; }
+  else if(which==='cafe'){ secs=[{h:CAFE_BRANDS[cafeBrand].name+' · pan y café', rows:CAFE_MENU, bg:CAFE_BRANDS[cafeBrand].bg}]; $('#mTitle').textContent=CAFE_BRANDS[cafeBrand].name; }
   else { const s=STATIONS.find(x=>x.id===which); secs=[{h:s.brand+' · '+s.sub, rows:s.menu, bg:s.bg}]; $('#mTitle').textContent=s.brand; }
   $('#mCols').innerHTML = secs.map(sec=>`<div class="sec"><div class="h"><span style="width:10px;height:10px;border-radius:50%;background:${sec.bg};display:inline-block"></span>${sec.h}</div>${sec.rows.map(r=>`<div class="row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join('')}</div>`).join('');
   $('#modal').classList.add('open');
