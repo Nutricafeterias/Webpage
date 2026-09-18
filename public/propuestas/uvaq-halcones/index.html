@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Así comerán los Halcones · Propuesta Nutri para la UVAQ</title>
+<!-- Vista previa al compartir el link (WhatsApp, iMessage, correo): la imagen debe pesar menos de 300 KB -->
+<meta name="description" content="Recorrido visual de dos minutos por la nueva experiencia gastronómica del Campus Santa María.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Así comerán los Halcones · Propuesta Nutri para la UVAQ">
+<meta property="og:description" content="Recorrido visual de dos minutos por la nueva experiencia gastronómica del Campus Santa María.">
+<meta property="og:url" content="https://cafeteriasescolares.com.mx/propuestas/uvaq-halcones">
+<meta property="og:image" content="https://cafeteriasescolares.com.mx/propuestas/uvaq-halcones/img/og_uvaq.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Así comerán los Halcones: render de la nueva cafetería del campus">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -28,6 +40,40 @@
   .top.light #topLogo{background:rgba(247,243,234,.9);padding:6px 10px;border-radius:10px;height:36px}
   .top .btn-menu{pointer-events:auto;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--crema);border:1px solid rgba(247,243,234,.4);border-radius:100px;padding:8px 14px;background:rgba(14,52,33,.35);backdrop-filter:blur(6px)}
   .top.light .btn-menu{color:var(--v700);border-color:var(--v700)}
+  /* Botón "Ver menú" destacado: naranja sólido como el CTA principal, con ícono y un pulso al cambiar de pantalla */
+  .top .btn-menu,.top.light .btn-menu{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.07em;color:var(--carbon);background:var(--naranja);border:0;padding:11px 20px 11px 16px;box-shadow:0 8px 22px rgba(0,0,0,.28);backdrop-filter:none;transition:transform .2s,box-shadow .2s}
+  .top .btn-menu:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.32)}
+  .top .btn-menu svg{width:17px;height:17px;flex:none}
+  .top .btn-menu:focus:not(:focus-visible){outline:none}
+  /* Menú del ecosistema en páginas: pestañas arriba y flechas grandes a los lados */
+  .mtabs{display:none;gap:8px;flex-wrap:wrap;margin-right:46px}
+  .modal.carta .mtabs{display:flex}
+  .modal.carta #mTitle{display:none}
+  .modal.carta .sheet .sub{margin-top:10px}
+  .mtabs button{border:1.5px solid var(--arena);border-radius:100px;padding:8px 16px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--cacao);background:transparent;transition:border-color .2s,color .2s,box-shadow .2s}
+  .mtabs button.on{box-shadow:0 6px 16px rgba(0,0,0,.14)}
+  .mtabs button:not(.on):hover{border-color:var(--v300);color:var(--v700)}
+  .mnav{display:none;position:fixed;top:50%;transform:translateY(-50%);z-index:82;flex-direction:column;align-items:center;gap:9px;color:var(--crema);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;max-width:120px;text-align:center}
+  .modal.carta .mnav{display:flex}
+  .mnav.off{visibility:hidden}
+  .mnav .arr{width:60px;height:60px;border-radius:50%;background:var(--naranja);color:var(--carbon);display:grid;place-items:center;font-size:26px;font-weight:900;box-shadow:0 10px 28px rgba(0,0,0,.38);transition:transform .2s}
+  .mnav:hover .arr{transform:scale(1.08)}
+  .mnav.prev{left:max(14px,calc(50% - 490px - 130px))}
+  .mnav.next{right:max(14px,calc(50% - 490px - 130px))}
+  #mCols.in-next{animation:mIn .35s ease both}
+  #mCols.in-prev{animation:mInPrev .35s ease both}
+  @keyframes mIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+  @keyframes mInPrev{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:none}}
+  @media (max-width:1200px){
+    .modal.carta{padding-bottom:96px}
+    .mnav{top:auto;bottom:14px;transform:none;flex-direction:row;max-width:none}
+    .mnav .arr{width:52px;height:52px;font-size:22px}
+    .mnav.next{flex-direction:row-reverse}
+  }
+  @media (max-width:900px){ .top .btn-menu .bm-long{display:none} }
+  @media (max-width:600px){ .mtabs{gap:6px} .mtabs button{font-size:10px;padding:6px 10px;letter-spacing:.04em} }
+  .top .btn-menu.pulse{animation:menuPulse 1.8s ease-out .6s 2}
+  @keyframes menuPulse{0%{box-shadow:0 8px 22px rgba(0,0,0,.28),0 0 0 0 rgba(243,156,18,.7)}75%{box-shadow:0 8px 22px rgba(0,0,0,.28),0 0 0 14px rgba(243,156,18,0)}100%{box-shadow:0 8px 22px rgba(0,0,0,.28),0 0 0 0 rgba(243,156,18,0)}}
 
   /* ---------- scenes ---------- */
   .scene{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .55s ease,visibility 0s .55s}
@@ -89,6 +135,7 @@
   .panel{position:absolute;top:56px;right:0;bottom:0;width:var(--panelW);background:var(--crema);z-index:20;transform:translateX(105%);transition:transform .6s cubic-bezier(.65,0,.25,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.35)}
   .zoomed .panel{transform:translateX(0)}
   .panel .inner{padding:26px 28px 20px;overflow:auto;flex:1}
+  .panel .inner.more{-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 56px),transparent);mask-image:linear-gradient(to bottom,#000 calc(100% - 56px),transparent)}
   .panel .close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:var(--lino);color:var(--cacao);font-size:16px;font-weight:800}
   .brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
   .brand .ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;flex:none}
@@ -104,6 +151,19 @@
   .menu .row{display:flex;justify-content:space-between;gap:12px;font-size:13px;font-weight:600;color:var(--carbon);padding:5px 0;border-bottom:1px dashed var(--lino)}
   .menu .row span:last-child{color:var(--v700);font-weight:800;white-space:nowrap}
   .menu .note{font-size:10px;color:var(--piedra);margin-top:8px;font-weight:500}
+  .menu .row small,.sec .row small{display:block;font-size:11px;color:var(--piedra);font-weight:500;line-height:1.35;margin-top:2px}
+  .tier .row{border-bottom:0 !important;padding-bottom:1px !important}
+  .tier .row span:first-child{color:var(--v700);font-weight:800}
+  .tier .items{font-size:12px;font-weight:500;color:var(--cacao);line-height:1.5;padding:1px 0 7px;border-bottom:1px dashed var(--lino)}
+  .tier .items span:not(:last-child)::after{content:' · ';color:var(--v300);font-weight:800}
+  .menu .cat{display:flex;align-items:center;gap:12px;width:100%;margin-top:6px;padding:7px 10px 7px 14px;border-radius:12px;background:var(--blanco);border:1px solid var(--lino);text-align:left;transition:border-color .2s,box-shadow .2s}
+  .menu .cat:hover{border-color:var(--v300);box-shadow:0 6px 18px rgba(31,93,59,.10)}
+  .menu .cat .n{flex:1;font-size:14px;font-weight:800;color:var(--v700)}
+  .menu .cat .n small{display:block;font-size:11px;font-weight:600;color:var(--piedra);margin-top:1px}
+  .menu .cat .p{font-size:14px;font-weight:800;color:var(--v700);white-space:nowrap}
+  .menu .cat .go{width:26px;height:26px;border-radius:50%;background:var(--naranja);color:var(--carbon);display:grid;place-items:center;font-size:17px;font-weight:900;line-height:1;padding-bottom:2px}
+  .menu .cat + .row{margin-top:4px}
+  .lnk{margin-top:7px;font-size:12.5px;font-weight:800;color:var(--v700);border-bottom:2px solid var(--v300);padding:0 0 1px}
   .panel .acts{display:flex;gap:10px;padding:14px 28px 22px;border-top:1px solid var(--lino);background:var(--crema)}
   .b1,.b2{flex:1;border-radius:100px;padding:13px 14px;font-weight:800;font-size:13px;text-align:center}
   .b1{background:var(--v700);color:var(--crema)}
@@ -151,12 +211,21 @@
 
   /* cierre */
   #cierre{background:linear-gradient(135deg,var(--v900),var(--v700))}
-  #cierre .wrap{position:absolute;inset:56px 0 70px;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;color:var(--crema);max-width:1100px}
+  #cierre .wrap{position:absolute;inset:56px 0 70px;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;color:var(--crema);max-width:1200px}
   #cierre h1{font-size:clamp(30px,4.4vw,58px)}
-  .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px;max-width:820px}
+  .nums{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:14px;margin-top:30px;max-width:920px}
+  .num.plan{grid-column:2;grid-row:1 / span 2}
   .num{background:rgba(247,243,234,.08);border:1px solid rgba(247,243,234,.18);border-radius:16px;padding:20px 22px}
-  .num b{display:block;font-size:clamp(26px,3.2vw,42px);font-weight:800;color:var(--amber);letter-spacing:-.02em;line-height:1;white-space:nowrap}
-  .num span{display:block;font-size:12.5px;font-weight:600;margin-top:8px;color:#D7E3D2}
+  .num > b{display:block;font-size:clamp(26px,3.2vw,42px);font-weight:800;color:var(--amber);letter-spacing:-.02em;line-height:1;white-space:nowrap}
+  .num > span{display:block;font-size:12.5px;font-weight:600;margin-top:8px;color:#D7E3D2}
+  /* Calendario de aperturas dentro del recuadro de Ago. 2027 */
+  .hitos{list-style:none;margin-top:10px;border-top:1px solid rgba(247,243,234,.16)}
+  .hitos li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:6px 0;border-bottom:1px dashed rgba(247,243,234,.14);font-size:12.5px;line-height:1.3}
+  .hitos i{font-style:normal;font-weight:700;color:var(--crema)}
+  .hitos em{font-style:normal;font-weight:700;color:var(--amber);white-space:nowrap}
+  .num .meta{margin-top:10px;font-size:12px;font-weight:600;color:#D7E3D2;line-height:1.4}
+  .num .meta strong{color:var(--crema);font-weight:800}
+  @media (max-height:780px) and (min-width:901px){ #cierre h1{font-size:clamp(28px,3.5vw,46px)} .nums{margin-top:20px} #cierre .contact{margin-top:18px !important} }
   .ctas{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
   .ctas a{text-decoration:none;border-radius:100px;padding:15px 24px;font-weight:800;font-size:14px}
   .ctas .p{background:var(--naranja);color:var(--carbon)}
@@ -184,7 +253,20 @@
   .sheet .close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:var(--lino);color:var(--cacao);font-weight:800}
   .sheet h2{font-size:24px;font-weight:800;color:var(--v700)}
   .sheet .sub{font-size:12px;color:var(--piedra);font-weight:600;margin-top:4px}
-  .cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:18px}
+  .cols{columns:3 250px;column-gap:26px;margin-top:14px}
+  .cols .sec{break-inside:avoid;display:inline-block;width:100%;margin-bottom:20px}
+  .cols.mas{columns:auto;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));column-gap:26px;align-items:start}
+  .cols.mas .sec{display:block;margin-bottom:16px}
+  .sheet.one{width:min(760px,100%)}
+  .sheet.one .cols{columns:1}
+  .sheet.one .cols .sec{display:block;columns:2 250px;column-gap:34px;margin-bottom:0}
+  .sheet.one .sec .h{display:none}
+  .sheet.one .sec .row,.dish{break-inside:avoid}
+  .dish{display:inline-block;width:100%;padding:10px 0;border-bottom:1px dashed var(--lino)}
+  .dish .t{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .dish b{font-size:14px;font-weight:700;color:var(--carbon)}
+  .dish em{font-style:normal;font-size:11px;font-weight:700;color:var(--piedra);white-space:nowrap}
+  .dish span{display:block;font-size:12px;color:var(--cacao);font-weight:500;line-height:1.4;margin-top:3px}
   .sec .h{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--naranja);margin-bottom:6px;display:flex;align-items:center;gap:8px}
   .sec .row{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;font-weight:600;padding:5px 0;border-bottom:1px dashed var(--lino)}
   .sec .row span:last-child{color:var(--v700);font-weight:800;white-space:nowrap}
@@ -212,7 +294,20 @@
     .facts{grid-template-columns:repeat(3,1fr)}
     #cierre .wrap{overflow:auto;justify-content:flex-start;padding-top:20px;padding-bottom:40px}
     .nums{grid-template-columns:1fr;gap:10px;margin-top:20px}
+    .num.plan{grid-column:auto;grid-row:auto}
     .num{padding:14px 18px}
+    /* Celular: menos foto y datos más compactos para que el texto quepa sobre la navegación */
+    .split{grid-template-rows:30vh 1fr}
+    .split .txt .lead{font-size:14px;margin-top:10px}
+    .split .txt h1{font-size:26px}
+    .facts{gap:8px;margin-top:14px}
+    .fact{padding:9px 6px}
+    .fact b{font-size:17px}
+    .fact span{font-size:10px}
+    .mini{margin-top:12px}
+    /* Cafetería en celular: el render ocupa todo el ancho; el fondo es el mismo render desenfocado, sin franjas vacías */
+    #cafeteria .stage{overflow:hidden}
+    #cafeteria .stage::before{content:'';position:absolute;inset:-30px;background:url('/propuestas/uvaq-halcones/img/R01_hero.jpg') center/cover;filter:blur(18px) brightness(.42) saturate(1.1)}
   }
 </style>
 </head>
@@ -222,7 +317,7 @@
 <div class="top" id="top">
   <img src="/propuestas/uvaq-halcones/img/logo_nutri_blanco.png" alt="Nutri Cafeterías" id="topLogo">
   <div class="center"><span>Propuesta para la</span><span class="uv"><img src="/propuestas/uvaq-halcones/img/logo_uvaq.png" alt="UVAQ"></span></div>
-  <button class="btn-menu" onclick="openMenu('all')">Ver menú</button>
+  <button class="btn-menu" onclick="openMenuHere()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 3c-2 1.5-3 4-3 7h3v11"/></svg><span>Ver menú<span class="bm-long"> completo del ecosistema</span></span></button>
 </div>
 
 <!-- ===== 0 · COVER ===== -->
@@ -246,10 +341,10 @@
       <h1>Cuatro conceptos,<br>un solo campus</h1>
       <p class="lead">Cada punto tiene su propia marca y personalidad. Todo lo opera Nutri, con un solo estándar y un solo responsable.</p>
       <div class="nodes">
-        <button class="node" onclick="go(2)"><span class="dot" style="background:var(--v700)">01</span><div><b>Cafetería principal</b><span>Comer, convivir y estudiar · en el nuevo edificio</span></div></button>
-        <button class="node" onclick="go(3)"><span class="dot" style="background:#C8862B;color:#26241F">02</span><div><b>Nutri Bakery &amp; Coffee</b><span>Pan artesanal, repostería y café de especialidad · en la entrada</span></div></button>
+        <button class="node" onclick="go(2)"><span class="dot" style="background:var(--v700)">01</span><div><b>Nutri Cafetería</b><span>Comer, convivir y estudiar · en el nuevo edificio</span></div></button>
+        <button class="node" onclick="go(3)"><span class="dot" style="background:#C8862B;color:#26241F">02</span><div><b>Nutri Bakery &amp; Coffee</b><span>Pan artesanal, repostería y café de especialidad</span></div></button>
         <button class="node" onclick="go(4)"><span class="dot" style="background:var(--v300)">03</span><div><b>NutriExpress ×2</b><span>Saludable, listo en 90 segundos</span></div></button>
-        <button class="node" onclick="go(5)"><span class="dot" style="background:var(--naranja)">04</span><div><b>Red de vending</b><span>+12 máquinas y tótems de pedido en cada edificio</span></div></button>
+        <button class="node" onclick="go(5)"><span class="dot" style="background:var(--naranja)">04</span><div><b>Red de vending</b><span>10 máquinas y 5 tótems de pedido en 5 edificios</span></div></button>
       </div>
     </div>
     <div>
@@ -291,7 +386,6 @@
           <rect x="347" y="197" width="120" height="30" rx="4" transform="rotate(12 407 212)"/>
           <rect x="527" y="155" width="86" height="86" rx="4" fill="#FFF6E3" transform="rotate(12 570 198)"/>
         </g>
-        <text x="386" y="152" font-size="6.5" font-weight="700" fill="#A79B82" text-anchor="middle" transform="rotate(12 386 152)">CENTRO DE MEDIOS</text>
         <text x="570" y="205" font-size="6.5" font-weight="700" fill="#A79B82" text-anchor="middle" transform="rotate(12 570 205)">AUDITORIO</text>
         <!-- vending: 5 edificios -->
         <g style="cursor:pointer" onclick="go(5)">
@@ -305,20 +399,21 @@
         </g>
         <!-- Nutri Bakery & Coffee -->
         <g style="cursor:pointer" onclick="go(3)">
-          <circle cx="434" cy="158" r="15" fill="#C8862B"/><text x="434" y="160.5" font-size="6" font-weight="900" fill="#26241F" text-anchor="middle">BAKERY</text>
-          <text x="454" y="161" font-size="6.5" font-weight="700" fill="#5B5346">NUTRI BAKERY &amp; COFFEE</text>
+          <circle cx="434" cy="158" r="20" fill="#C8862B"/>
+          <text x="434" y="156.3" font-size="5.6" font-weight="900" fill="#26241F" text-anchor="middle">BAKERY</text>
+          <text x="434" y="163.6" font-size="5.6" font-weight="900" fill="#26241F" text-anchor="middle">&amp; COFFEE</text>
         </g>
         <!-- cafetería principal (nuevo edificio) -->
         <g style="cursor:pointer" onclick="go(2)">
           <circle cx="36" cy="162" r="22" fill="#1F5D3B"/>
-          <text x="36" y="160" font-size="6" font-weight="900" fill="#F7F3EA" text-anchor="middle">CAFETERÍA</text>
-          <text x="36" y="168" font-size="6" font-weight="900" fill="#F7F3EA" text-anchor="middle">PRINCIPAL</text>
+          <text x="36" y="160" font-size="6" font-weight="900" fill="#F7F3EA" text-anchor="middle">NUTRI</text>
+          <text x="36" y="168" font-size="6" font-weight="900" fill="#F7F3EA" text-anchor="middle">CAFETERÍA</text>
           <text x="62" y="148" font-size="6.5" font-weight="700" fill="#5B5346">NUEVO EDIFICIO</text>
           <text x="62" y="157" font-size="6.5" font-weight="600" fill="#A79B82">~200 m²</text>
         </g>
         <text x="331" y="371" text-anchor="middle" font-size="7.5" font-weight="700" fill="#A79B82" letter-spacing="1">PLANO DEL CAMPUS SANTA MARÍA · UBICACIONES PROPUESTAS, A VALIDAR CON LA UVAQ · TOCA UN PUNTO</text>
       </svg>
-      <div class="dia"><div><b>7:00</b><span>pan y café en la entrada</span></div><div><b>10:30</b><span>NutriExpress entre clases</span></div><div><b>14:00</b><span>Combo Halcón en la cafetería</span></div><div><b>18:00</b><span>vending en tu edificio</span></div></div>
+      <div class="dia"><div><b>7:00</b><span>pan y café en el Bakery</span></div><div><b>10:30</b><span>NutriExpress entre clases</span></div><div><b>14:00</b><span>Combo Halcón en la cafetería</span></div><div><b>18:00</b><span>vending en tu edificio</span></div></div>
     </div>
   </div>
 </section>
@@ -327,7 +422,7 @@
 <section class="scene" id="cafeteria">
   <div class="stage">
     <div class="heroBox" id="heroBox">
-      <img src="/propuestas/uvaq-halcones/img/R01_hero.jpg" id="heroImg" alt="Cafetería principal" data-w="1672" data-h="941">
+      <img src="/propuestas/uvaq-halcones/img/R01_hero.jpg" id="heroImg" alt="Nutri Cafetería" data-w="1672" data-h="941">
       <img id="closeImg" alt="">
       <div id="hotspots"></div>
     </div>
@@ -335,14 +430,14 @@
   <div class="chips" id="chips"></div>
   <div class="badge">Render conceptual</div>
   <div class="sceneTitle">
-    <div class="kicker">01 · Cafetería principal · ~200 m²</div>
+    <div class="kicker">01 · Nutri Cafetería · ~200 m²</div>
     <h1>El corazón del campus</h1>
     <p>Toca una estación para conocerla</p>
   </div>
   <aside class="panel" id="panel">
     <button class="close" onclick="unzoom()">✕</button>
     <div class="inner" id="panelInner"></div>
-    <div class="acts"><button class="b2" onclick="openMenu(currentStation)">Ver menú</button><button class="b1" onclick="nextStation()">Siguiente estación →</button></div>
+    <div class="acts"><button class="b1" onclick="nextStation()">Siguiente estación →</button></div>
   </aside>
 </section>
 
@@ -351,12 +446,12 @@
   <div class="split">
     <div class="pic"><img src="/propuestas/uvaq-halcones/img/R09_bakery.jpg" alt="Nutri Bakery &amp; Coffee" style="object-position:center 40%"><div class="badge">Render conceptual</div></div>
     <div class="txt">
-      <div class="kicker">02 · La entrada del campus</div>
+      <div class="kicker">02 · Café de especialidad</div>
       <div class="cafeBrand" id="cafeBrand"></div>
       <h1>Pan recién horneado y café de especialidad</h1>
-      <p class="lead">El local más visible del campus se convierte en una panadería-café con terraza (estilo Artemisa / Joe &amp; The Juice): pan artesanal y repostería horneados ahí mismo, café de especialidad, y jugos y smoothies como complemento. Identidad propia; lo opera Nutri.</p>
+      <p class="lead">Café de especialidad con horno propio y terraza: pan y repostería artesanal recién horneados cada mañana, espresso de barra, sándwiches y empanadas. Identidad propia; lo opera Nutri.</p>
       <div class="facts"><div class="fact"><b>Ene 2027</b><span>apertura, antes de la primera clase</span></div><div class="fact"><b>Horneado aquí</b><span>pan y repostería del día</span></div><div class="fact"><b>Terraza</b><span>para estudiar y convivir</span></div></div>
-      <div class="mini"><div class="h">Menú de referencia</div><div class="row"><span>Espresso / americano</span><span>~$35–40</span></div><div class="row"><span>Latte / capuchino</span><span>~$55</span></div><div class="row"><span>Croissant / pan artesanal</span><span>~$45–50</span></div><div class="row"><span>Muffins / cookies</span><span>~$40–45</span></div></div>
+      <div class="mini"><div class="h">Menú de referencia</div><div class="row"><span>Americano · caliente o frío</span><span>~$44–59</span></div><div class="row"><span>Latte o capuchino</span><span>~$59–75</span></div><div class="row"><span>Croissants y pan artesanal</span><span>~$45–50</span></div><div class="row"><span>Sándwiches y empanadas</span><span>desde ~$49</span></div></div>
       <button class="link" onclick="openMenu('cafe')">Ver menú completo →</button>
     </div>
   </div>
@@ -373,9 +468,10 @@
     <div class="txt">
       <div class="kicker">03 · NutriExpress · 2 kioscos</div>
       <h1>Healthy Food.<br>Ready in 90 Seconds.</h1>
-      <p class="lead">Dos kioscos en puntos estratégicos para comer bien entre clases sin perder tiempo: menú corto, saludable y listo en menos de 90 segundos.</p>
+      <p class="lead">Dos kioscos en puntos estratégicos para comer bien entre clases sin perder tiempo: menú saludable y listo en menos de 90 segundos.</p>
       <div class="facts"><div class="fact"><b>60–90 días</b><span>operando tras la firma</span></div><div class="fact"><b>&lt;90 s</b><span>por producto</span></div><div class="fact"><b>1 día</b><span>de instalación</span></div></div>
-      <div class="mini"><div class="h">Menú de referencia</div><div class="row"><span>Fresh Cup (fruta)</span><span>~$45</span></div><div class="row"><span>Crunch Bowl (yogurt, fruta, granola)</span><span>~$55</span></div><div class="row"><span>Turkey Club (Hot &amp; Ready)</span><span>~$80</span></div><div class="row"><span>Blend Bar smoothie</span><span>~$75–90</span></div></div>
+      <div class="mini"><div class="h">Menú de referencia</div><div class="row"><span>Fresh Cup · fruta de temporada</span><span>~$45</span></div><div class="row"><span>Crunch Bowl · yogurt, fruta y granola</span><span>~$55</span></div><div class="row"><span>Smoothies Blend Bar</span><span>~$69–90</span></div><div class="row"><span>Hot &amp; Ready · pan caliente</span><span>~$75–82</span></div></div>
+      <button class="link" onclick="openMenu('express')">Ver menú completo →</button>
     </div>
   </div>
 </section>
@@ -388,7 +484,7 @@
       <div class="kicker">04 · Red de vending</div>
       <h1>Snacks, café y pedidos en cada edificio</h1>
       <p class="lead">Cada estación tiene tres módulos: máquina de café, máquina de snacks y bebidas, y un <b>tótem de pedidos</b> para ordenar a la cafetería o al NutriExpress y recoger sin fila. Pago sin efectivo y horario extendido, cerca de los salones. La red crece o se reubica según los datos de uso.</p>
-      <div class="facts"><div class="fact"><b>+12</b><span>máquinas, instaladas en fases</span></div><div class="fact"><b>3</b><span>módulos: café, snacks y tótem de pedidos</span></div><div class="fact"><b>60–90 días</b><span>primeras máquinas tras la firma</span></div></div>
+      <div class="facts"><div class="fact"><b>10</b><span>máquinas de café y snacks en 5 edificios</span></div><div class="fact"><b>5</b><span>tótems de pedidos, uno por edificio</span></div><div class="fact"><b>60–90 días</b><span>primeras máquinas tras la firma</span></div></div>
       <div class="mini"><div class="h">Referencia</div><div class="row"><span>Snacks saludables</span><span>~$15–35</span></div><div class="row"><span>Bebidas</span><span>~$18–35</span></div><div class="row"><span>Americano / capuchino</span><span>~$25–35</span></div><div class="row"><span>Pedido por tótem (combos, bowls, sándwiches)</span><span>recoge sin fila</span></div></div>
     </div>
   </div>
@@ -400,16 +496,19 @@
     <div class="kicker" style="color:var(--amber)">Lo que recibe la UVAQ</div>
     <h1 style="margin-top:12px">Todo esto, sin inversión<br>para la universidad</h1>
     <div class="nums">
-      <div class="num"><b>+$7 MDP</b><span>de inversión de Nutri en infraestructura, equipo e imagen</span></div>
+      <div class="num"><b>$8 MDP</b><span>de inversión de Nutri en infraestructura, equipo e imagen</span></div>
       <div class="num"><b>$0</b><span>de inversión y cero carga operativa para la UVAQ</span></div>
-      <div class="num"><b>Ago. 2027</b><span>ecosistema completo · kioscos y vending a 60–90 días de la firma · café en enero 2027</span></div>
+      <div class="num plan"><b>Ago. 2027</b><span>ecosistema completo</span>
+        <ul class="hitos">
+          <li><i>Red de vending</i><em>60–90 días después de la firma</em></li>
+          <li><i>NutriExpress</i><em>60–90 días después de la firma</em></li>
+          <li><i>Nutri Bakery &amp; Coffee</i><em>enero 2027</em></li>
+          <li><i>Nutri Cafetería</i><em>agosto 2027</em></li>
+        </ul>
+      </div>
     </div>
-    <div style="margin-top:18px;font-size:13px;font-weight:600;color:#D7E3D2;max-width:820px;line-height:1.6">Un solo aliado responsable de todos los alimentos y bebidas del campus · contrato de largo plazo (7–10 años) · modelo económico a construir juntos.<br><span style="color:var(--amber)">+10 años</span> operando cafeterías escolares · <span style="color:var(--amber)">+1M</span> órdenes servidas · <span style="color:var(--amber)">68 %</span> de pagos digitales · aliados de la Universidad Panamericana e IPADE · <span style="color:rgba(247,243,234,.5)">cifras preliminares estimadas</span></div>
-    <div class="ctas">
-      <a class="p" href="mailto:r.krasovsky@nutricafeteria.com.mx?subject=Degustaci%C3%B3n%20Nutri%20en%20la%20UVAQ">Agendar una degustación en el campus</a>
-      <a class="s" href="https://wa.me/525567034269" target="_blank" rel="noopener">WhatsApp</a>
-    </div>
-    <div class="contact"><b>Ricardo Krasovsky</b> · Director General, Nutri Cafeterías<br>r.krasovsky@nutricafeteria.com.mx · 55 6703 4269 · cafeteriasescolares.com.mx</div>
+    <div style="margin-top:18px;font-size:13px;font-weight:600;color:#D7E3D2;max-width:920px;line-height:1.6">Para cumplir estas fechas, la meta es firmar el contrato en <span style="color:var(--amber)">octubre de 2026</span>.<br>Un solo aliado responsable de todos los alimentos y bebidas del campus · contrato de largo plazo (~10 años) · modelo económico a construir juntos.<br><span style="color:var(--amber)">+10 años</span> operando cafeterías escolares · <span style="color:var(--amber)">+1M</span> órdenes servidas · <span style="color:var(--amber)">68 %</span> de pagos digitales · aliados de la Universidad Panamericana e IPADE · <span style="color:rgba(247,243,234,.5)">cifras preliminares estimadas</span></div>
+    <div class="contact" style="margin-top:34px"><b>Ricardo Krasovsky</b> · Director General, Nutri Cafeterías<br>r.krasovsky@nutricafeteria.com.mx · 55 6703 4269 · cafeteriasescolares.com.mx</div>
   </div>
 </section>
 
@@ -422,10 +521,13 @@
 
 <!-- ===== MODAL MENÚ ===== -->
 <div class="modal" id="modal" onclick="if(event.target===this)closeMenu()">
+  <button class="mnav prev" id="mPrev" onclick="menuPaso(-1)" aria-label="Menú anterior"><span class="arr">←</span><span class="lbl"></span></button>
+  <button class="mnav next" id="mNext" onclick="menuPaso(1)" aria-label="Menú siguiente"><span class="arr">→</span><span class="lbl"></span></button>
   <div class="sheet">
-    <button class="close" onclick="closeMenu()">✕</button>
+    <button class="close" onclick="closeMenu()" aria-label="Cerrar">✕</button>
+    <div class="mtabs" id="mTabs"></div>
     <h2 id="mTitle">Menú de referencia</h2>
-    <div class="sub">Productos y precios aproximados, tomados de nuestras cartas actuales</div>
+    <div class="sub" id="mSub">Productos y precios aproximados</div>
     <div class="cols" id="mCols"></div>
   </div>
 </div>
@@ -453,11 +555,40 @@ const STATIONS = [
   { id:'verde', x:9, y:62, img:'/propuestas/uvaq-halcones/img/R02_verde.jpg', n:'01', brand:'VERDE', sub:'barra de ensaladas', ico:'leaf', bg:'#C7E3B4', fg:'#1F5D3B',
     tag:'Arma tu ensalada como quieras, en dos minutos.',
     bullets:['Barra refrigerada con +20 ingredientes frescos del día','Bases, proteínas, toppings y aderezos a elegir','Bowls listos para quien va de paso'],
-    menu:[['Arma tu ensalada (base + 4 ingredientes)','desde ~$79'],['Ensalada de pollo a la parrilla · 400 g','~$89'],['Poke bowl con proteína a elegir','~$89'],['Ensalada de garbanzos · 250 g','~$32'],['Crudités con hummus','~$39'],['Bowl de açaí','~$45']] },
+    menu:[['Arma tu ensalada (base + 4 ingredientes)','desde ~$79'],['Ensalada de pollo a la parrilla · 400 g','~$89'],['Poke bowl con proteína a elegir','~$89'],['Crudités con hummus','~$39'],['Bowl de açaí','~$95']] },
   { id:'cocina', x:26, y:46, img:'/propuestas/uvaq-halcones/img/R03_cocina.jpg', n:'02', brand:'LA COCINA', sub:'comida caliente del día', ico:'flame', bg:'#F39C12', fg:'#26241F',
     tag:'Comida casera, hecha aquí cada mañana.',
     bullets:['Menú del día completo: sopa, plato fuerte, guarnición, agua y postre','Desayunos calientes desde temprano','El menú cambia con el calendario; los favoritos se quedan'],
-    menu:[['Combo Halcón · menú del día completo','~$65–75'],['Menú ejecutivo · docentes y personal','~$85'],['Milanesa de res o pollo con guarnición','~$79'],['Enchiladas verdes o rojas','~$69'],['Pasta del día (boloñesa, Alfredo, pesto)','~$69'],['Chilaquiles con pollo','~$69'],['Huevos al gusto con frijoles','~$59'],['Hotcakes / waffles','~$59–69']] },
+    menu:[
+      ['Combo Halcón · menú del día completo','~$85'],
+      ['Menú ejecutivo · docentes y personal','~$75'],
+      {tier:'Premium', price:'~$79', items:[
+        {n:'Mr. Burro', g:'350 g', d:'Burrito de bistec, chorizo, pastor o campechano, con queso Oaxaca, frijoles y aderezo de la casa'},
+        {n:'Enchiladas verdes o rojas', g:'250 g', d:'Tres enchiladas rellenas de pollo'},
+        {n:'Enchiladas suizas', g:'200 g', d:'Tres enchiladas de pollo gratinadas con manchego'},
+        {n:'Enchiladas placeras', d:'Al estilo de Morelia, con pollo, papa y zanahoria'},
+        {n:'Enfrijoladas', g:'250 g', d:'Tres enfrijoladas de pollo con crema, queso y cebolla'},
+        {n:'Flautas ahogadas', g:'300 g', d:'Tres flautas en salsa verde o roja, con la proteína a elegir'},
+        {n:'Orden de tacos', d:'Tres tacos de bistec o pastor, con salsa fresca y limón'},
+        {n:'Milanesa de res o pollo', d:'Con guarnición del día'},
+        {n:'Carne asada con ensalada', d:'Carne de res asada con ensalada fresca de la casa'},
+        {n:'Hamburguesa con papas', d:'Res, queso americano, lechuga, jitomate y aderezo de la casa'},
+        {n:'Chilamolletes', g:'400 g', d:'Molletes cubiertos de chilaquiles, con queso y crema'},
+        {n:'Omelette', g:'275 g', d:'Con la proteína y las verduras frescas a elegir'}]},
+      {tier:'Clásicos', price:'~$69', items:[
+        {n:'Tacos dorados', d:'Tres tacos de pollo con crema, queso, lechuga, jitomate y salsa'},
+        {n:'Chilaquiles con pollo', d:'Verdes o rojos, con crema, queso y cebolla'},
+        {n:'Huevos al gusto', d:'Revueltos con jamón, estrellados, rancheros o a la mexicana'},
+        {n:'Pasta del día', d:'Boloñesa, Alfredo o pesto'},
+        {n:'Nuggets con papas', d:'Seis piezas de pollo con papas a la francesa'},
+        {n:'Hotcakes con crema de avellana', d:'Tres piezas rellenas, con mantequilla y miel'}]},
+      {tier:'Antojitos', price:'~$49', items:[
+        {n:'Mega quesadilla', d:'Tortilla de harina con queso Oaxaca o manchego y la proteína a elegir'},
+        {n:'Molletes', g:'275 g', d:'Pan artesanal con frijoles y manchego gratinado'},
+        {n:'Corundas con crema', d:'Tres piezas con crema, queso y salsa'},
+        {n:'Hotcakes', d:'Tres piezas con mantequilla y miel'},
+        {n:'Papas a la francesa', g:'120 g', d:'Crujientes, recién hechas'}]},
+      ['Agrega café, jugo, té o fruta','+~$20']] },
   { id:'arma', x:36, y:33, img:'/propuestas/uvaq-halcones/img/R04_armalo.jpg', n:'03', brand:'ÁRMALO', sub:'baguettes & paninis', ico:'sand', bg:'#5B5346', fg:'#F7F3EA',
     tag:'Tu baguette o panini, paso a paso, a la plancha.',
     bullets:['Pan artesanal del día y proteínas a elegir','Se arma frente al alumno y sale caliente','Opciones vegetarianas siempre'],
@@ -479,8 +610,79 @@ const STATIONS = [
     bullets:['Mesas comunales, lounge y zonas de estudio informal','Pantallas, música y wifi','Abierto entre clases, no solo a la hora de comer'],
     menu:[['Comedor y lounge · aforo por definir con el plano','—'],['Zona de estudio con conexión','—'],['Eventos y activaciones de la universidad','—']] },
 ];
-const CAFE_MENU = [['Espresso','~$35'],['Americano','~$40'],['Latte / capuchino','~$55'],['Matcha latte','~$60'],['Cold brew','~$50'],['Croissants y bollería','~$45'],['Pan artesanal','~$50'],['Pasteles y rebanadas','~$55'],['Muffins','~$45'],['Cookies','~$40'],['Jugo natural 16 oz','~$40'],['Smoothies','~$65–75'],['Panini / sándwich','~$59']];
-const ALL_MENU = { cafe:{title:'Nutri Bakery & Coffee', rows:CAFE_MENU} };
+/* Carta del Bakery & Coffee por secciones; los rangos van del tamaño chico (12 oz) al grande (20 oz) */
+const CAFE_MENU = [
+  {h:'Café · 12, 16 y 20 oz', rows:[
+    ['Espresso · 2 oz','~$35'],
+    ['Americano · caliente o frío','~$44–59'],
+    ['Latte · caliente o frío','~$59–75'],
+    ['Capuchino · caliente o frío','~$59–75'],
+    ['Flat white · 8 oz','~$59'],
+    ['Latte de caramelo o moka','~$65–82'],
+    ['Dirty chai · chai con espresso','~$75–95'],
+    ['Horchata con espresso','~$70–89'],
+    ['Frappé de latte, caramelo o moka','~$65–89']]},
+  {h:'Sin café', rows:[
+    ['Chocolate · caliente, frío o frappé','~$65–85'],
+    ['Chai latte · caliente, frío o frappé','~$65–85'],
+    ['Matcha latte · caliente, frío o frappé','~$65–89'],
+    ['Tés e infusiones','~$39–49'],
+    ['Horchata de fresa','~$60–79'],
+    ['Frutos rojos con lichi','~$59–75']]},
+  {h:'Sándwiches', rows:[
+    ['Croissant de pavo y gruyere','~$89','Arúgula, jitomate y mostaza dulce'],
+    ['Sándwich verde de pavo','~$99','Aguacate, pepino, espinaca, arúgula y pesto'],
+    ['Baguette de pavo y gruyere','~$109','Arúgula, jitomate y pesto'],
+    ['Brioche de pavo y gruyere','~$75','Arúgula, jitomate y mostaza'],
+    ['Grilled cheese de tres quesos','~$145','Gouda, mozzarella y gruyere con mayo-chipotle'],
+    ['Focaccia de serrano y mozzarella','~$155','Arúgula, jitomate y pesto']]},
+  {h:'Empanadas horneadas', rows:[
+    ['Empanada · 1 pieza','~$49','Dos quesos · jamón, tocino y queso · carne con pimiento · rajas con elote · papa con chorizo · pastor con queso']]},
+  {h:'Recién horneado', rows:[
+    ['Croissants y bollería','~$45'],['Pan artesanal','~$50'],['Pasteles y rebanadas','~$55'],['Muffins','~$45'],['Cookies','~$40']]},
+  {h:'Extras', rows:[
+    ['Leche vegetal o deslactosada','+~$8–12'],['Shot extra o jarabe','+~$10–15'],['Scoop de proteína','+~$20']]},
+];
+/* Carta NutriExpress: base = carta oficial del deck NutriExpress + ideas nuevas (espresso y lattes, boba, smoothies de avena, toppings, melts mexicanos) */
+const NX_MENU = [
+  {h:'Blend Bar · smoothies', rows:[
+    ['Berry Boost','~$75','Fresa, frutos rojos y yogurt'],
+    ['Mango Rush','~$75','Mango, piña y naranja'],
+    ['Green Fuel','~$78','Espinaca, piña y manzana'],
+    ['Matcha Fit','~$85','Matcha, plátano, avena y crema de almendra'],
+    ['Chai Oat','~$85','Chai, plátano, avena y miel'],
+    ['Choco Banana','~$85','Plátano, cacao y leche'],
+    ['Protein Power','~$90','Plátano, cacahuate y proteína'],
+    ['Watermelon Refresh','~$69','Sandía y limón'],
+    ['Proteína extra','+~$20']]},
+  {h:'Healthy Bowls', rows:[
+    ['Classic Overnight','~$65','Avena, canela y fruta'],
+    ['Crunch Yogurt Bowl','~$68','Yogurt, granola y miel'],
+    ['Açaí Energy Bowl','~$95','Plátano y frutos rojos'],
+    ['Topping extra','+~$10','Fresa, blueberry, mango, crema de cacahuate o de almendra, miel']]},
+  {h:'Hot & Ready · pan caliente', rows:[
+    ['Classic Ham','~$75','Jamón de pierna y manchego'],
+    ['Turkey Club','~$80','Pavo, manchego y espinaca'],
+    ['Pepperoni Melt','~$80','Mozzarella y salsa italiana'],
+    ['Four Cheese','~$82','Cuatro quesos gratinados'],
+    ['Green Veggie','~$78','Espinaca, panela y pesto'],
+    ['Chilaquil Melt','~$80','Chilaquiles verdes con queso'],
+    ['Rajas Melt','~$78','Rajas poblanas, elote y queso'],
+    ['Aguacate extra','+~$10']]},
+  {h:'Grab & Go', rows:[
+    ['Fresh Cup','~$45','Fruta de temporada'],
+    ['Nutri Cup','~$40','Pepino, jícama y zanahoria'],
+    ['Crunch Bowl','~$55','Yogurt griego, fruta y granola'],
+    ['Nut Mix, Pop Light u Oat Bites','~$25–35']]},
+  {h:'Café y bebidas', rows:[
+    ['Espresso','~$30'],
+    ['Americano · chico o grande','~$35–45'],
+    ['Latte o capuchino · chico o grande','~$45–55'],
+    ['Boba tea','~$49'],
+    ['Infusión fría de sabores','~$39'],
+    ['Jugo natural del día','~$40'],
+    ['Agua, mineral o electrolitos','~$22–35']]},
+];
 
 /* ========= ESCENAS ========= */
 const SCENES = ['cover','eco','cafeteria','cafe','express','vending','cierre'];
@@ -500,6 +702,8 @@ function go(i){
   document.querySelectorAll('#dots button').forEach((b,j)=>b.classList.toggle('on', j===i));
   history.replaceState(null,'','#'+id);
   if(id==='cafeteria') requestAnimationFrame(layoutHotspots);
+  const bm = document.querySelector('.btn-menu'); bm.classList.remove('pulse'); void bm.offsetWidth; bm.classList.add('pulse');   // pulso para que se note el menú
+  bm.querySelector('.bm-long').textContent = ' completo ' + (MENU_DE[id] || 'del ecosistema');
 }
 function buildDots(){ $('#dots').innerHTML = SCENES.map((s,i)=>`<button onclick="go(${i})" aria-label="${s}"></button>`).join(''); }
 
@@ -532,12 +736,39 @@ function focusStation(id){
   img.style.transformOrigin=`${r.ox + s.x/100*r.rw}px ${r.oy + s.y/100*r.rh}px`; img.style.transform='scale(2.1)';
   const ci=$('#closeImg'); if(s.img){ ci.src=s.img; }
   $('#cafeteria').classList.add('zoomed'); document.body.classList.add('zoomed');
-  document.querySelector('.panel .acts .b2').style.display = (s.menu[0][1]==='—') ? 'none' : 'block';
+  const soloIncluye = s.menu.every(r=>Array.isArray(r) && r[1]==='—');
   $('#panelInner').innerHTML = `
     <div class="brand"><div class="ico" style="background:${s.bg};color:${s.fg}">${ICONS[s.ico]}</div><div><div class="nm" style="color:${s.bg==='#C7E3B4'||s.bg==='#D8CDB6'?'#1F5D3B':s.bg}">${s.brand}</div><div class="sub">${s.n} · ${s.sub}</div></div></div>
     <div class="tag">${s.tag}</div>
     <ul>${s.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
-    <div class="menu"><div class="h">Menú de referencia</div>${s.menu.slice(0,4).map(r=>`<div class="row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join('')}</div>`;
+    <div class="menu"><div class="h">${soloIncluye ? 'Incluye' : 'Menú de referencia'}</div>${menuRows(s.menu, s.id)}</div>`;
+  $('#panelInner').scrollTop = 0; panelFade();
+}
+/* Desvanecido inferior cuando el panel tiene más contenido abajo */
+function panelFade(){ const i=$('#panelInner'); i.classList.toggle('more', i.scrollTop + i.clientHeight < i.scrollHeight - 6); }
+$('#panelInner').addEventListener('scroll', panelFade);
+window.addEventListener('resize', ()=>{ if(currentStation) panelFade(); });
+/* Filas de menú: [platillo, precio, descripción opcional] o {tier, price, items} para los niveles de la carta */
+function menuRows(rows, sid){
+  return rows.map((r,i)=>{
+    if(r.link) return `<button class="lnk" onclick="${r.fn}">${r.link}</button>`;
+    if(!Array.isArray(r)){
+      // En la tarjeta de la estación, cada categoría es un botón que abre sus platillos
+      if(sid) return `<button class="cat" onclick="openCat('${sid}',${i})"><span class="n">${r.tier}<small>${r.items.length} platillos</small></span><span class="p">${r.price}</span><span class="go">›</span></button>`;
+      return `<div class="tier"><div class="row"><span>${r.tier}</span><span>${r.price}</span></div><div class="items">${r.items.map(it=>`<span>${it.n}</span>`).join('')}</div></div>`;
+    }
+    return `<div class="row"><span>${r[0]}${r[2] ? `<small>${r[2]}</small>` : ''}</span><span>${r[1]==='—' ? '' : r[1]}</span></div>`;
+  }).join('');
+}
+/* Ventana con los platillos de una categoría (Premium, Clásicos, Antojitos) */
+function openCat(sid, i){
+  const s = STATIONS.find(x=>x.id===sid), t = s.menu[i];
+  $('#mTitle').textContent = `${t.tier} · ${t.price}`;
+  $('#mSub').textContent = `${s.brand.toLowerCase().replace(/(^|\s)\S/g, c=>c.toUpperCase())} · precio aproximado por platillo`;
+  $('#modal').classList.remove('carta'); $('.sheet').classList.add('one');
+  $('#mCols').classList.remove('mas','in-next','in-prev');
+  $('#mCols').innerHTML = `<div class="sec">${t.items.map(it=>`<div class="dish"><div class="t"><b>${it.n}</b>${it.g ? `<em>${it.g}</em>` : ''}</div>${it.d ? `<span>${it.d}</span>` : ''}</div>`).join('')}</div>`;
+  $('#modal').classList.add('open');
 }
 function unzoom(silent){
   const img=$('#heroImg'); if(!img) return;
@@ -556,25 +787,75 @@ function renderCafeBrand(){
 function setCafe(k){ cafeBrand=k; localStorage.setItem('cafeBrand',k); renderCafeBrand(); }
 
 /* ========= MENÚ MODAL ========= */
-function openMenu(which){
-  let secs=[];
-  if(which==='all'){ secs = STATIONS.filter(s=>s.menu[0][1]!=='—').map(s=>({h:s.brand+' · '+s.sub, rows:s.menu, bg:s.bg})); secs.push({h:CAFE_BRANDS[cafeBrand].name+' · pan y café', rows:CAFE_MENU, bg:CAFE_BRANDS[cafeBrand].bg}); $('#mTitle').textContent='Menú de referencia · todo el ecosistema'; }
-  else if(which==='cafe'){ secs=[{h:CAFE_BRANDS[cafeBrand].name+' · pan y café', rows:CAFE_MENU, bg:CAFE_BRANDS[cafeBrand].bg}]; $('#mTitle').textContent=CAFE_BRANDS[cafeBrand].name; }
-  else { const s=STATIONS.find(x=>x.id===which); secs=[{h:s.brand+' · '+s.sub, rows:s.menu, bg:s.bg}]; $('#mTitle').textContent=s.brand; }
-  $('#mCols').innerHTML = secs.map(sec=>`<div class="sec"><div class="h"><span style="width:10px;height:10px;border-radius:50%;background:${sec.bg};display:inline-block"></span>${sec.h}</div>${sec.rows.map(r=>`<div class="row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join('')}</div>`).join('');
-  $('#modal').classList.add('open');
+/* Menú del ecosistema: tres páginas (cafetería → Bakery → NutriExpress) con pestañas y flechas para avanzar o regresar */
+const CARTAS = [
+  {id:'cafeteria', tab:'Nutri Cafetería', corto:'Nutri Cafetería', bg:'#1F5D3B', fg:'#F7F3EA', sub:'Productos y precios aproximados · cinco estaciones'},
+  {id:'cafe', tab:'Nutri Bakery & Coffee', corto:'Bakery & Coffee', bg:'#C8862B', fg:'#26241F', sub:'Productos y precios aproximados · bebidas en tamaño chico, mediano y grande'},
+  {id:'express', tab:'NutriExpress', corto:'NutriExpress', bg:'#6EAF4A', fg:'#0E3421', sub:'Productos y precios aproximados · todo listo en menos de 90 segundos'},
+];
+let cartaIdx = 0;
+function seccionesDe(id){
+  if(id==='cafe') return CAFE_MENU.map(g=>({h:g.h, rows:g.rows, bg:CAFE_BRANDS[cafeBrand].bg}));
+  if(id==='express') return NX_MENU.map(g=>({h:g.h, rows:g.rows, bg:'#6EAF4A'}));
+  // Cafetería: La Cocina (carta por niveles) va primero; ocupa su propia columna y todo cabe sin scroll
+  const conNiveles = s => s.menu.some(r=>!Array.isArray(r));
+  return STATIONS.filter(s=>s.menu[0][1]!=='—').sort((a,b)=>conNiveles(b)-conNiveles(a)).map(s=>({h:s.brand+' · '+s.sub, rows:s.menu, bg:s.bg}));
+}
+function openMenu(which){ mostrarCarta(Math.max(0, CARTAS.findIndex(c=>c.id===which)), 0); }
+function mostrarCarta(i, dir){
+  cartaIdx = i; const c = CARTAS[i], m = $('#modal');
+  m.classList.add('carta'); $('.sheet').classList.remove('one');
+  $('#mTabs').innerHTML = CARTAS.map((x,j)=>`<button class="${j===i?'on':''}" style="${j===i?`background:${x.bg};border-color:${x.bg};color:${x.fg}`:''}" onclick="mostrarCarta(${j},${j>i?1:-1})">${x.tab}</button>`).join('');
+  $('#mTitle').textContent = c.tab; $('#mSub').textContent = c.sub;
+  const secs = seccionesDe(c.id), cols = $('#mCols');
+  cols.classList.remove('mas','in-next','in-prev');
+  cols.innerHTML = secs.map(sec=>`<div class="sec"><div class="h"><span style="width:10px;height:10px;border-radius:50%;background:${sec.bg};display:inline-block"></span>${sec.h}</div>${menuRows(sec.rows)}</div>`).join('');
+  m.classList.add('open'); $('.sheet').scrollTop = 0;
+  repartirColumnas();
+  const prev = CARTAS[i-1], next = CARTAS[i+1];
+  $('#mPrev').classList.toggle('off', !prev); $('#mPrev .lbl').textContent = prev ? prev.corto : '';
+  $('#mNext').classList.toggle('off', !next); $('#mNext .lbl').textContent = next ? next.corto : '';
+  if(dir){ void cols.offsetWidth; cols.classList.add(dir>0 ? 'in-next' : 'in-prev'); }
+}
+function menuPaso(d){ const j = cartaIdx + d; if(j>=0 && j<CARTAS.length) mostrarCarta(j, d); }
+/* Reparte las secciones en columnas SIN cambiar su orden (se lee de arriba abajo y de izquierda a derecha):
+   prueba todos los cortes posibles y se queda con el que deja la columna más alta lo más baja posible */
+function repartirColumnas(){
+  const c = $('#mCols'), ancho = c.clientWidth, secs = [...c.children], k = secs.length;
+  const n = Math.min(ancho >= 760 ? 3 : ancho >= 500 ? 2 : 1, k);
+  if(n < 2) return;
+  const hs = secs.map(s=>s.offsetHeight + 20);
+  const suma = (a,b)=>hs.slice(a,b).reduce((x,y)=>x+y,0);
+  let mejor = null;
+  if(n === 2){ for(let i=1;i<k;i++){ const m = Math.max(suma(0,i), suma(i,k)); if(!mejor || m < mejor.m) mejor = {m, cortes:[i]}; } }
+  else { for(let i=1;i<k-1;i++) for(let j=i+1;j<k;j++){ const m = Math.max(suma(0,i), suma(i,j), suma(j,k)); if(!mejor || m < mejor.m) mejor = {m, cortes:[i,j]}; } }
+  const lim = [0, ...mejor.cortes, k];
+  c.classList.add('mas'); c.style.setProperty('--n', lim.length-1);
+  c.innerHTML = '';
+  for(let x=0; x<lim.length-1; x++){ const d = document.createElement('div'); d.className = 'mcol'; secs.slice(lim[x], lim[x+1]).forEach(s=>d.appendChild(s)); c.appendChild(d); }
 }
 function closeMenu(){ $('#modal').classList.remove('open'); }
+/* Botón "Ver menú" de arriba: muestra el menú de la pantalla actual */
+function openMenuHere(){ const sc = SCENES[idx]; openMenu(sc==='cafe' ? 'cafe' : sc==='express' ? 'express' : 'cafeteria'); }
+/* Texto del botón de arriba según la pantalla */
+const MENU_DE = { cafeteria:'de Nutri Cafetería', cafe:'del Bakery', express:'de NutriExpress' };
 
 /* ========= INPUT ========= */
 document.addEventListener('keydown', e=>{
-  if($('#modal').classList.contains('open')){ if(e.key==='Escape') closeMenu(); return; }
+  if($('#modal').classList.contains('open')){
+    if(e.key==='Escape') closeMenu();
+    else if($('#modal').classList.contains('carta') && (e.key==='ArrowRight'||e.key==='ArrowLeft')){ e.preventDefault(); menuPaso(e.key==='ArrowRight'?1:-1); }
+    return;
+  }
   if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); if(currentStation) nextStation(); else go(idx+1); }
   if(e.key==='ArrowLeft'){ e.preventDefault(); go(idx-1); }
   if(e.key==='Escape'){ unzoom(); }
 });
 let tx=0; document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
-document.addEventListener('touchend',e=>{ const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>70 && !$('#modal').classList.contains('open') && !currentStation){ dx<0?go(idx+1):go(idx-1);} },{passive:true});
+document.addEventListener('touchend',e=>{ const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)<=70) return;
+  const m=$('#modal');
+  if(m.classList.contains('open')){ if(m.classList.contains('carta')) menuPaso(dx<0?1:-1); return; }   // deslizar cambia de menú
+  if(!currentStation){ dx<0?go(idx+1):go(idx-1);} },{passive:true});
 
 /* ========= AUTOPLAY (para el video) ========= */
 const params = new URLSearchParams(location.search);
