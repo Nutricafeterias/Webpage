@@ -425,7 +425,7 @@
   <div class="sheet">
     <button class="close" onclick="closeMenu()">✕</button>
     <h2 id="mTitle">Menú de referencia</h2>
-    <div class="sub">Productos y precios aproximados, tomados de nuestras cartas actuales · la carta final se define con la UVAQ</div>
+    <div class="sub">Productos y precios aproximados, tomados de nuestras cartas actuales</div>
     <div class="cols" id="mCols"></div>
   </div>
 </div>
@@ -537,7 +537,7 @@ function focusStation(id){
     <div class="brand"><div class="ico" style="background:${s.bg};color:${s.fg}">${ICONS[s.ico]}</div><div><div class="nm" style="color:${s.bg==='#C7E3B4'||s.bg==='#D8CDB6'?'#1F5D3B':s.bg}">${s.brand}</div><div class="sub">${s.n} · ${s.sub}</div></div></div>
     <div class="tag">${s.tag}</div>
     <ul>${s.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
-    <div class="menu"><div class="h">Menú de referencia</div>${s.menu.slice(0,4).map(r=>`<div class="row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join('')}<div class="note">Precios aproximados de referencia; la carta final se define con la UVAQ.</div></div>`;
+    <div class="menu"><div class="h">Menú de referencia</div>${s.menu.slice(0,4).map(r=>`<div class="row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join('')}</div>`;
 }
 function unzoom(silent){
   const img=$('#heroImg'); if(!img) return;
