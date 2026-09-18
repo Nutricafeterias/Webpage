@@ -114,6 +114,10 @@
   .split .pic{position:relative;overflow:hidden}
   .split .pic img{width:100%;height:100%;object-fit:cover}
   .split .txt{padding:90px 5vw 90px 4vw;display:flex;flex-direction:column;justify-content:center;overflow:auto}
+  .pic2{display:grid;grid-template-rows:1fr 1fr;gap:4px;background:#0b2318}
+  .pic2 .half{position:relative;overflow:hidden}
+  .pic2 .half img{width:100%;height:100%;object-fit:cover;display:block}
+  .pic2 .chip{position:absolute;left:16px;bottom:14px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--crema);background:rgba(14,52,33,.72);padding:6px 12px;border-radius:100px;backdrop-filter:blur(6px)}
   .split h1{font-size:clamp(26px,3.2vw,42px);color:var(--v700);margin-top:10px}
   .split .lead{color:var(--cacao);margin-top:14px;font-size:15px}
   .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
@@ -193,6 +197,8 @@
     #eco .wrap{grid-template-columns:1fr;gap:8px;overflow:auto;align-content:start;padding-top:10px}
     .map{max-height:34vh}
     .split{grid-template-columns:1fr;grid-template-rows:40vh 1fr}
+    .pic2{grid-template-rows:1fr;grid-template-columns:1fr 1fr}
+    .pic2 .chip{left:8px;bottom:8px;font-size:8px;padding:4px 8px}
     .split .txt{padding:18px 6vw 90px;justify-content:flex-start}
     .panel{top:auto;height:74vh;border-radius:20px 20px 0 0;transform:translateY(110%)}
     .zoomed .panel{transform:translateY(0)}
@@ -359,7 +365,11 @@
 <!-- ===== 4 · NUTRIEXPRESS ===== -->
 <section class="scene light" id="express">
   <div class="split">
-    <div class="pic"><img src="/propuestas/uvaq-halcones/img/express.jpg" alt="NutriExpress" style="object-position:center 30%"><div class="badge">Render conceptual</div></div>
+    <div class="pic pic2">
+      <div class="half"><img src="/propuestas/uvaq-halcones/img/R11_express_izq.jpg" alt="NutriExpress kiosco 1" style="object-position:center 60%"><span class="chip">Kiosco 1 · edificios del poniente</span></div>
+      <div class="half"><img src="/propuestas/uvaq-halcones/img/R11_express_der.jpg" alt="NutriExpress kiosco 2" style="object-position:center 45%"><span class="chip">Kiosco 2 · junto al Centro de Medios</span></div>
+      <div class="badge">Renders conceptuales</div>
+    </div>
     <div class="txt">
       <div class="kicker">03 · NutriExpress · 2 kioscos</div>
       <h1>Healthy Food.<br>Ready in 90 Seconds.</h1>
