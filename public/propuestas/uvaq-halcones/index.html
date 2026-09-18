@@ -394,20 +394,6 @@
   </div>
 </section>
 
-<!-- ===== 6 · TECNOLOGÍA ===== -->
-<section class="scene light" id="tech">
-  <div class="split">
-    <div class="pic"><img src="/propuestas/uvaq-halcones/img/R07_cajas.jpg" alt="Pago con huella" style="object-position:55% center"><div class="badge">Render conceptual</div></div>
-    <div class="txt">
-      <div class="kicker">Cómo funciona · sin filas</div>
-      <h1>Pide y paga con la huella.<br>Disfruta sin fila.</h1>
-      <p class="lead">El alumno paga apoyando el dedo (también hay efectivo y tarjeta). Los tótems y la app permiten pedir antes de llegar. La universidad recibe reportes de ventas y consumo, sin manejar efectivo.</p>
-      <div class="facts"><div class="fact"><b>68 %</b><span>de pagos ya digitales en nuestras operaciones</span></div><div class="fact"><b>&lt;3 min</b><span>objetivo de espera</span></div><div class="fact"><b>+1M</b><span>órdenes servidas</span></div></div>
-      <div class="mini"><div class="h">Lo que recibe la universidad</div><div class="row"><span>Reportes de ventas y consumo</span><span>✓</span></div><div class="row"><span>Cero manejo de efectivo en campus</span><span>✓</span></div><div class="row"><span>Apoyos y becas alimentarias cargados al monedero</span><span>✓</span></div></div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== 7 · CIERRE ===== -->
 <section class="scene" id="cierre">
   <div class="wrap">
@@ -418,7 +404,7 @@
       <div class="num"><b>$0</b><span>de inversión y cero carga operativa para la UVAQ</span></div>
       <div class="num"><b>Ago. 2027</b><span>ecosistema completo · kioscos y vending a 60–90 días de la firma · café en enero 2027</span></div>
     </div>
-    <div style="margin-top:18px;font-size:13px;font-weight:600;color:#D7E3D2;max-width:820px;line-height:1.6">Un solo aliado responsable de todos los alimentos y bebidas del campus · contrato de largo plazo (7–10 años) · modelo económico a construir juntos.<br><span style="color:var(--amber)">+10 años</span> operando cafeterías escolares · <span style="color:var(--amber)">+1M</span> órdenes servidas · aliados de la Universidad Panamericana e IPADE · <span style="color:rgba(247,243,234,.5)">cifras preliminares estimadas</span></div>
+    <div style="margin-top:18px;font-size:13px;font-weight:600;color:#D7E3D2;max-width:820px;line-height:1.6">Un solo aliado responsable de todos los alimentos y bebidas del campus · contrato de largo plazo (7–10 años) · modelo económico a construir juntos.<br><span style="color:var(--amber)">+10 años</span> operando cafeterías escolares · <span style="color:var(--amber)">+1M</span> órdenes servidas · <span style="color:var(--amber)">68 %</span> de pagos digitales · aliados de la Universidad Panamericana e IPADE · <span style="color:rgba(247,243,234,.5)">cifras preliminares estimadas</span></div>
     <div class="ctas">
       <a class="p" href="mailto:r.krasovsky@nutricafeteria.com.mx?subject=Degustaci%C3%B3n%20Nutri%20en%20la%20UVAQ">Agendar una degustación en el campus</a>
       <a class="s" href="https://wa.me/525567034269" target="_blank" rel="noopener">WhatsApp</a>
@@ -497,8 +483,8 @@ const CAFE_MENU = [['Espresso','~$35'],['Americano','~$40'],['Latte / capuchino'
 const ALL_MENU = { cafe:{title:'Nutri Bakery & Coffee', rows:CAFE_MENU} };
 
 /* ========= ESCENAS ========= */
-const SCENES = ['cover','eco','cafeteria','cafe','express','vending','tech','cierre'];
-const LIGHT = { eco:1, cafe:1, express:1, vending:1, tech:1 };
+const SCENES = ['cover','eco','cafeteria','cafe','express','vending','cierre'];
+const LIGHT = { eco:1, cafe:1, express:1, vending:1 };
 let idx = 0, currentStation = null;
 const $ = s => document.querySelector(s);
 
@@ -604,8 +590,7 @@ async function autoplay(){
   go(3); await wait(4500);
   go(4); await wait(4000);
   go(5); await wait(3500);
-  go(6); await wait(4000);
-  go(7); await wait(5000);
+  go(6); await wait(5000);
 }
 
 /* ========= INIT ========= */
