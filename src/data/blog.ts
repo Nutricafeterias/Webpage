@@ -26,6 +26,50 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'omision-desayuno-rendimiento-academico-recreo-cafeteria-escolar',
+    title: 'El alumno que llegó sin desayunar ya está en tu salón: qué puede hacer la escuela a las 10:30 de la mañana',
+    description:
+      'Un metaanálisis de 24 estudios asocia saltarse el desayuno con más del doble de riesgo de bajo rendimiento académico. Qué dicen los datos, por qué el desayuno es un tema de casa que aterriza en la escuela, y cómo el recreo se vuelve la única palanca real que tiene un director.',
+    date: '2026-09-23',
+    readTime: '7 min',
+    category: 'Nutrición y bienestar',
+    emoji: '🍳',
+    image: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=1200&h=630&fit=crop&q=85',
+    keywords: ['omisión del desayuno rendimiento académico', 'desayuno escolar y aprendizaje', 'nutrición infantil y calificaciones', 'recreo cafetería escolar', 'alimentación y concentración en clase', 'cafetería escolar escuelas privadas'],
+    related: [
+      { href: '/blog/alimentacion-y-emociones-rendimiento-academico', anchor: 'Alimentación, emociones y rendimiento académico' },
+      { href: '/blog/menu-saludable-cafeteria-escolar', anchor: 'Cómo diseñar un menú saludable para la cafetería escolar' },
+      { href: '/diagnostico', anchor: 'Diagnóstico gratuito de tu cafetería escolar' },
+    ],
+    content: [
+      { type: 'p', text: 'Hay una conversación que las escuelas evitan porque parece territorio de la casa: si el alumno desayunó o no antes de salir. Es cierto que la escuela no controla lo que pasa a las 6:40 de la mañana en la cocina de cada familia. Pero también es cierto que las consecuencias de esa hora aterrizan completas en el salón de clases, y que la escuela sí controla lo que ocurre a las 10:30, cuando suena el recreo. Vale la pena mirar la evidencia antes de decidir que el tema no nos toca.' },
+      { type: 'h2', text: '1. Lo que dice la evidencia (y con qué tamaño)' },
+      { type: 'p', text: 'En septiembre de 2026 volvió a circular en medios de salud un metaanálisis que reunió 24 estudios observacionales sobre omisión del desayuno y desempeño escolar en niños y adolescentes. El resultado combinado: quienes se saltan el desayuno tienen alrededor del doble de probabilidad de presentar bajo rendimiento académico (razón de momios de 2.08, IC 95%: 1.82–2.37).' },
+      { type: 'p', text: 'El estudio individual más sólido de los últimos años viene de Australia del Sur y se publicó en 2025 en Public Health Nutrition. Cruzó los hábitos de desayuno de 28,651 alumnos de tres grados escolares con sus resultados en NAPLAN, la prueba nacional estandarizada de lectura y matemáticas. Dos datos de ahí valen para cualquier plantel: 57.6% de los alumnos reportó saltarse el desayuno algunos días de la semana y 10.1% dijo no desayunar nunca. No es una minoría marginal; es la mitad del salón en alguna mañana de la semana.' },
+      { type: 'p', text: 'En ese estudio, los alumnos que nunca desayunaban tenían más riesgo de bajo logro en todas las áreas evaluadas, y el efecto no se repartió parejo: fue mayor en matemáticas (riesgo relativo de 1.78) y lectura (1.63) que en escritura (1.25). Es decir, pega más fuerte justo donde la tarea cognitiva es más demandante. Los alumnos que solo "a veces" se saltaban el desayuno también mostraron riesgo elevado, aunque menor.' },
+      { type: 'h2', text: '2. El dato mexicano' },
+      { type: 'p', text: 'En México la investigación es más dispersa, pero apunta en la misma dirección. Un estudio en escuelas públicas de Morelos encontró omisión del desayuno en 20% de los niños y adolescentes evaluados, asociada con mayor edad, mayor índice de masa corporal y peor balance proteico-energético. Y un estudio transversal publicado en 2024 en la Revista Española de Nutrición Humana y Dietética, con 498 estudiantes de la Benemérita Universidad Autónoma de Puebla, encontró que quienes nunca desayunaban tenían 6.88 veces más probabilidad de tener peor rendimiento académico (IC 95%: 1.42–33.32). El intervalo es amplio —la muestra de "nunca desayuna" era pequeña—, pero la asociación es consistente con la literatura internacional.' },
+      { type: 'p', text: 'Conviene decirlo con honestidad, porque es lo que un director preguntaría: todos estos son estudios observacionales. No prueban causalidad. El sueño, el ingreso familiar, la inseguridad alimentaria y el acompañamiento en casa influyen tanto en el desayuno como en las calificaciones, y es difícil separarlos. Lo que sí está bien establecido es la dirección: el alumno que llega sin comer llega en desventaja, y esa desventaja se nota antes del mediodía.' },
+      { type: 'h2', text: '3. Por qué en una escuela privada tampoco es un tema resuelto' },
+      { type: 'p', text: 'Es fácil suponer que en un colegio particular el desayuno está cubierto. Pero la omisión del desayuno en secundaria y preparatoria rara vez tiene que ver con no tener qué comer: tiene que ver con levantarse tarde, con trayectos largos en una ciudad como la Ciudad de México, con adolescentes que prefieren diez minutos más de sueño, y con la mañana apurada de familias donde ambos padres salen temprano. Un alumno puede tener despensa llena en casa y aun así llegar a las 7:30 con el estómago vacío.' },
+      { type: 'p', text: 'Ahí es donde la escuela deja de ser espectadora. Si el alumno no desayunó, su primera comida del día es la que compre en el recreo. Lo que esté disponible en la barra a esa hora no es un detalle logístico: es, literalmente, el desayuno de una parte de tu comunidad.' },
+      { type: 'quote', text: 'La escuela no puede decidir qué desayuna un alumno en su casa. Sí decide qué es lo primero que va a comer ese día a las 10:30, y con qué va a entrar a la clase siguiente.' },
+      { type: 'h2', text: '4. Cinco decisiones que caben en el recreo' },
+      { type: 'ul', items: [
+        'Asegurar que en la primera media hora de servicio haya opciones con proteína y fibra, no solo pan dulce y jugo. Un huevo, un yogur, una fruta entera o un sándwich integral sostienen el resto de la mañana; un azúcar rápido no llega a la tercera clase.',
+        'Revisar la fila del recreo como un problema de tiempo, no de menú. Si al alumno le toman 12 minutos de sus 20 formarse, va a comprar lo que salga más rápido, que casi siempre es lo menos nutritivo.',
+        'Ubicar las opciones de desayuno al inicio del recorrido, no al fondo. El orden físico de la barra decide más consumo que cualquier cartel.',
+        'Diferenciar el primer recreo del segundo. Para muchos alumnos el primero es desayuno y el segundo es comida; ofrecer exactamente lo mismo en ambos desperdicia la oportunidad.',
+        'Medir. Un reporte de qué se consumió en el primer recreo, por grado, dice más sobre los hábitos de tu comunidad que cualquier encuesta a los padres.',
+      ] },
+      { type: 'h2', text: '5. Lo que los padres no ven (y podrían ver)' },
+      { type: 'p', text: 'El punto ciego más común no es el menú: es que la familia no sabe qué comió su hijo. Un padre que se entera de que su hija lleva tres semanas desayunando galletas a las 10:30 puede cambiar la rutina de su casa. Un padre que no se entera, no puede hacer nada. Convertir el consumo en información visible para la familia es la forma más barata que tiene una escuela de influir en un hábito que ocurre fuera de sus muros.' },
+      { type: 'h2', text: 'Cómo lo trabajamos en Nutri Cafeterías' },
+      { type: 'p', text: 'Operamos la cafetería como parte del proyecto educativo, no como una concesión aparte. Los menús los diseñan nutriólogos y se verifican contra los lineamientos SEP vigentes, con protocolos alineados a la NOM-251, Distintivo H y licencia sanitaria. El pago con huella digital deja registro de cada consumo, la app para padres convierte ese registro en visibilidad diaria para la familia —incluido lo que el alumno compra en el primer recreo— y NutriMood conecta la alimentación con el estado de ánimo del alumno. Son más de 10 años operando cafeterías en escuelas privadas de la Ciudad de México, +10 colegios, más de 1,000,000 de órdenes servidas y 97% de satisfacción, sin inversión inicial para la institución.' },
+      { type: 'p', text: 'Si quieres saber qué está desayunando realmente tu comunidad a media mañana, empieza por ahí: haz el diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo y revisamos juntos qué se está vendiendo hoy en tu primer recreo y qué se podría ofrecer en su lugar.' },
+    ],
+  },
+  {
     slug: 'menos-alumnos-colegiaturas-mas-caras-retencion-escuelas-privadas-2026',
     title: 'Menos alumnos y colegiaturas más caras: la pinza que enfrenta tu escuela en 2026 (y por qué la retención se juega en la operación diaria)',
     description:
