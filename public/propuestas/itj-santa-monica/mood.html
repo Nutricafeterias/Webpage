@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es-MX"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>¿Cuál es tu mood? · NutriMood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Montserrat,sans-serif;background:#0d0d0d;color:#fff;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font-family:inherit;cursor:pointer;border:0}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px 20px}
+.top img{height:30px}.back{font-size:13px;font-weight:800;color:#fff;text-decoration:none;background:rgba(255,255,255,.1);border-radius:99px;padding:9px 16px}
+.wrap{max-width:720px;margin:0 auto;padding:10px 20px 60px;text-align:center}
+.logo{font-size:clamp(44px,9vw,76px);font-weight:900;line-height:.9;letter-spacing:-.02em;margin-top:10px}
+.logo .m{background:linear-gradient(90deg,#F28C28,#7BC043,#E0457B,#3FA9DC);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{letter-spacing:.3em;font-size:12px;font-weight:700;color:#bbb;margin-top:10px}
+.pers{display:flex;justify-content:center;gap:6px;margin:26px 0 8px;flex-wrap:wrap}
+.pers img{width:74px;height:74px;object-fit:cover;border-radius:50%;animation:flota 3s ease-in-out infinite}
+.pers img:nth-child(2n){animation-delay:.5s}.pers img:nth-child(3n){animation-delay:1s}
+@keyframes flota{50%{transform:translateY(-8px)}}
+.q{margin-top:24px;animation:entra .4s ease}
+@keyframes entra{from{opacity:0;transform:translateY(16px)}}
+.q .n{font-size:12px;letter-spacing:.2em;font-weight:800;color:#F7B24C}
+.q h2{font-size:clamp(24px,4.5vw,34px);font-weight:900;margin:10px 0 20px;letter-spacing:-.01em}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ops button{background:#1c1c1c;color:#fff;border-radius:22px;padding:20px 14px;font-size:15px;font-weight:800;border:2px solid #2a2a2a;transition:transform .15s,border-color .15s}
+.ops button:hover{transform:translateY(-3px);border-color:#F7B24C}
+.ops button span{display:block;font-size:32px;margin-bottom:6px}
+.bar{height:6px;background:#222;border-radius:9px;margin:26px auto 0;max-width:300px;overflow:hidden}.bar i{display:block;height:100%;background:#F39C12;transition:width .3s}
+.empieza{margin-top:26px;background:#F39C12;color:#1a1a1a;font-weight:900;font-size:18px;border-radius:99px;padding:18px 40px;box-shadow:0 12px 30px rgba(243,156,18,.35)}
+.res{animation:pop .5s cubic-bezier(.3,1.5,.5,1)}
+@keyframes pop{from{transform:scale(.7);opacity:0}}
+.res .pic{width:210px;height:210px;border-radius:50%;object-fit:cover;margin:18px auto 0;display:block;border:6px solid var(--c);box-shadow:0 0 60px var(--c)}
+.res h2{font-size:clamp(34px,7vw,52px);font-weight:900;margin-top:16px;color:var(--c);letter-spacing:-.02em}
+.res .fr{font-size:18px;font-weight:700;color:#ddd;margin-top:4px}
+.res .rec{background:#F7F3EA;color:#26241F;border-radius:26px;padding:22px;margin-top:22px;text-align:left}
+.res .rec b{font-size:11px;letter-spacing:.2em;color:#1F5D3B}.res .rec h3{font-size:22px;font-weight:900;margin:6px 0 4px}.res .rec p{font-size:14px;color:#5B5346;font-weight:600}
+.res .bt{display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.res .bt button,.res .bt a{background:#fff;color:#1a1a1a;font-weight:800;border-radius:99px;padding:14px 22px;text-decoration:none;font-size:14px}
+.conf{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.conf i{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.nota{font-size:11px;color:#888;margin-top:22px}
+</style></head><body>
+<div class="top"><img src="img/logo_nutri_blanco.png" alt="Nutri"><a class="back" href="index.html#nutrimood">← Volver al recorrido</a></div>
+<div class="wrap" id="app"></div>
+<div class="conf" id="conf"></div>
+<script>
+const M={
+ fuerza:{n:'Nutri Fuerza',c:'#E4322B',f:'Me muevo, me alimento, soy imparable.',p:'Burrito de pollo',d:'Proteína, frijol y arroz para aguantar el entrenamiento.'},
+ alegria:{n:'Nutri Alegría',c:'#F5C518',f:'Disfruto lo que hago.',p:'Smoothie de fruta',d:'Fresa, mango y plátano, sin azúcar. Puro buen humor.'},
+ alerta:{n:'Nutri Alerta',c:'#F28C28',f:'¡Elige despierto!',p:'Parfait',d:'Yogurt, granola de la casa y frutos rojos para arrancar la mañana.'},
+ calma:{n:'Nutri Calma',c:'#7BC043',f:'Respira, disfruta, equilibra.',p:'Licuado de plátano',d:'Leche descremada y plátano, sin azúcar añadida. Tranquilo y rico.'},
+ mente:{n:'Nutri Mente',c:'#3FA9DC',f:'Aprendo, pienso, evoluciono.',p:'Açaí bowl',d:'Frutos morados, plátano y granola: energía estable para concentrarte.'},
+ confianza:{n:'Nutri Confianza',c:'#E0457B',f:'Creo en mí, elijo bien.',p:'Arma tu panini',d:'Tú decides cada capa. Nadie lo arma mejor que tú.'}
+};
+const Q=[
+ {t:'¿Cómo amaneciste hoy?',o:[['😴','Con sueño',{alerta:2}],['😄','De buenas',{alegria:2}],['😬','Un poco nervioso',{calma:2}],['💪','Con pila',{fuerza:2}]]},
+ {t:'¿Qué te toca hoy?',o:[['📝','Examen',{mente:2,alerta:1}],['⚽','Deporte',{fuerza:2}],['🎤','Exponer frente al grupo',{confianza:2}],['🎨','Algo creativo',{alegria:1,mente:1}]]},
+ {t:'¿Qué se te antoja?',o:[['🍓','Algo fresco',{alegria:1,mente:1}],['🌮','Algo que llene',{fuerza:1,confianza:1}],['🥛','Algo tranquilo',{calma:2}],['⚡','Algo que me despierte',{alerta:2}]]}
+];
+let i=-1,pts={};const app=document.getElementById('app');
+const pers=Object.keys(M).map(k=>`<img src="img/mood_${k}.jpg" alt="${M[k].n}">`).join('');
+function inicio(){app.innerHTML=`<div class="logo">NUTRI<br><span class="m">MOOD</span></div><div class="tag">COME BIEN, VIVE MEJOR</div><div class="pers">${pers}</div><div class="q"><h2>¿Cuál es tu mood hoy?</h2><p style="color:#bbb;font-weight:600">3 preguntas y te decimos tu personaje y tu platillo.</p><button class="empieza" onclick="sig()">Descúbrelo ✨</button></div>`;}
+function sig(){i++;if(i>=Q.length) return fin();const q=Q[i];
+ app.innerHTML=`<div class="q"><div class="n">PREGUNTA ${i+1} DE ${Q.length}</div><h2>${q.t}</h2><div class="ops">${q.o.map((o,j)=>`<button onclick="elige(${j})"><span>${o[0]}</span>${o[1]}</button>`).join('')}</div><div class="bar"><i style="width:${(i/Q.length)*100}%"></i></div></div>`;}
+function elige(j){for(const [k,v] of Object.entries(Q[i].o[j][2])) pts[k]=(pts[k]||0)+v;sig();}
+function fin(){const k=Object.keys(M).sort((a,b)=>(pts[b]||0)-(pts[a]||0))[0],m=M[k];
+ app.innerHTML=`<div class="res" style="--c:${m.c}"><div class="n" style="font-size:12px;letter-spacing:.2em;font-weight:800;color:#bbb;margin-top:10px">HOY ERES</div><img class="pic" src="img/mood_${k}.jpg" alt="${m.n}"><h2>${m.n}</h2><div class="fr">${m.f}</div>
+ <div class="rec"><b>TU PLATILLO NUTRIMOOD</b><h3>${m.p}</h3><p>${m.d}</p></div>
+ <div class="bt"><button onclick="i=-1;pts={};sig()">Otra vez</button><a href="index.html#nutrimood">Volver al recorrido</a></div>
+ <p class="nota">Un juego para elegir rico; no sustituye la orientación de un profesional de la salud.</p></div>`;confeti(m.c);}
+function confeti(c1){const c=document.getElementById('conf');const cols=[c1,'#F39C12','#7BC043','#E0457B','#3FA9DC','#F5C518'];
+ for(let n=0;n<100;n++){const e=document.createElement('i');e.style.left=Math.random()*100+'vw';e.style.background=cols[n%6];e.style.animationDuration=(1.6+Math.random()*1.8)+'s';e.style.animationDelay=Math.random()*.4+'s';c.appendChild(e);setTimeout(()=>e.remove(),4200);}}
+inicio();
+</script></body></html>
