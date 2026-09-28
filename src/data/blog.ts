@@ -26,6 +26,51 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'prohibicion-celulares-escuelas-sep-3-noviembre-recreo-cafeteria',
+    title: 'Adiós al celular en el recreo desde el 3 de noviembre: 5 cosas que tu cafetería escolar debe resolver antes (guía SEP 2026)',
+    description:
+      'La SEP publicó en el DOF la restricción de celulares en escuelas públicas y particulares de educación básica, incluido el recreo. Qué dice el acuerdo, a quién aplica y por qué la cafetería es uno de los primeros lugares donde se va a notar el cambio.',
+    date: '2026-09-28',
+    readTime: '6 min',
+    category: 'Tecnología',
+    emoji: '📵',
+    image: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1200&h=630&fit=crop&q=85',
+    keywords: ['prohibición celulares escuelas SEP', 'celulares en el recreo 3 de noviembre', 'acuerdo SEP dispositivos digitales escuelas particulares', 'pago sin celular cafetería escolar', 'tecnología cafetería escolar', 'recreo sin pantallas'],
+    related: [
+      { href: '/blog/tecnologia-cafeterias-escolares', anchor: 'Tecnología en cafeterías escolares: pago con huella digital, tótems y apps para padres' },
+      { href: '/blog/datos-biometricos-menores-cafeteria-escolar-ley-proteccion-datos-2025', anchor: 'Datos biométricos de menores en la cafetería escolar' },
+      { href: '/diagnostico', anchor: 'Diagnóstico gratuito de tu cafetería escolar' },
+    ],
+    content: [
+      { type: 'p', text: 'El 22 de septiembre de 2026 la SEP publicó en el Diario Oficial de la Federación el acuerdo nacional sobre el uso responsable y seguro de los dispositivos digitales personales en las escuelas. La parte que más conversación ha generado es simple: a partir del 3 de noviembre, los alumnos de educación inicial, preescolar, primaria y secundaria no podrán usar el celular durante la jornada escolar. Toda la jornada, recreo incluido. Y aplica por igual a escuelas públicas y particulares.' },
+      { type: 'p', text: 'La mayoría de los análisis se han enfocado en el salón de clases. Pero el recreo es donde el cambio se va a sentir primero, y el recreo, en buena medida, ocurre alrededor de la cafetería. Vale la pena revisar qué partes de tu operación dependen hoy, sin que nadie lo haya decidido formalmente, de que el alumno traiga un teléfono en la mano.' },
+      { type: 'h2', text: 'Qué dice el acuerdo (lo esencial para un director)' },
+      { type: 'ul', items: [
+        'Entra en vigor el 3 de noviembre de 2026. Antes, las escuelas deben informar a docentes, madres, padres y tutores; la SEP contempló asambleas durante octubre.',
+        'Aplica en educación inicial, preescolar, primaria y secundaria, públicas y particulares. En media superior cada institución define sus propias limitaciones; en educación superior se promueve el uso responsable.',
+        'La restricción cubre clases y recreo. Según lo reportado por medios, el alumno puede traer el teléfono apagado o guardado, pero no usarlo.',
+        'Hay excepciones: actividades pedagógicas planeadas y guiadas por el docente, emergencias, salud, discapacidad, accesibilidad e inclusión.',
+        'Las autoridades educativas estatales tienen 180 días para emitir o armonizar sus instrumentos jurídicos, y cada escuela construye sus acuerdos con su comunidad.',
+      ] },
+      { type: 'p', text: 'El contexto: la medida alcanza a más de 34 millones de estudiantes, y México se suma a países de la región como Brasil y Chile, que ya aplican restricciones similares. De acuerdo con lo publicado por FayerWayer, 81% de los docentes encuestados consideró la restricción necesaria y urgente.' },
+      { type: 'h2', text: '1. ¿Tus alumnos pagan con el celular?' },
+      { type: 'p', text: 'Es la pregunta más práctica y la que casi nadie se ha hecho. En muchas cafeterías escolares, sobre todo en secundaria, una parte de los alumnos ya paga con transferencia, código QR o una cartera digital en el teléfono. Desde el 3 de noviembre, en básica, ese método deja de estar disponible justo en el momento en que más se usa: la fila del recreo. Si no hay alternativa, el alumno regresa al efectivo —con cambio, billetes perdidos y filas más lentas— o simplemente no compra.' },
+      { type: 'p', text: 'La salida es un método de pago que no dependa del dispositivo del alumno: identificación biométrica o credencial ligada a una cuenta que los padres recargan desde fuera de la escuela. Si tu escuela va por la huella, revisa también que el tratamiento de esos datos cumpla con la ley de protección de datos vigente.' },
+      { type: 'h2', text: '2. El padre ya no recibirá el "¿qué comiste?" por WhatsApp' },
+      { type: 'p', text: 'Muchas familias se enteraban de lo que su hijo comía porque el hijo se lo contaba por mensaje, o porque le pedía una transferencia a media mañana. Ese canal informal desaparece. Si la escuela no lo sustituye con información directa hacia la familia, los padres pierden visibilidad justo cuando se les está pidiendo más confianza en el entorno escolar.' },
+      { type: 'h2', text: '3. El recreo vuelve a ser un espacio social' },
+      { type: 'p', text: 'Ese es precisamente el objetivo del acuerdo, y es una buena noticia para la cafetería. Sin pantallas, los alumnos se sientan juntos, platican y pasan más tiempo en el área de mesas. Conviene anticiparlo: más alumnos buscando dónde sentarse, más tiempo de permanencia y, probablemente, una fila más concentrada en los primeros minutos. Revisa mobiliario, flujo de la barra y supervisión del área de consumo antes de noviembre, no después.' },
+      { type: 'quote', text: 'La SEP le quitó el celular al recreo. La pregunta para cada escuela es qué va a ocupar ese espacio: la fila, el efectivo y la incertidumbre, o una cafetería pensada para que el alumno compre rápido y la familia sepa qué comió.' },
+      { type: 'h2', text: '4. Alergias y emergencias: el protocolo ya no puede depender del teléfono del alumno' },
+      { type: 'p', text: 'El acuerdo contempla excepciones por salud y emergencia, pero la lógica cambia: el alumno ya no es el primer canal de aviso. Si un estudiante con alergia alimentaria tiene una reacción en el recreo, el protocolo debe descansar en el personal de la cafetería y en la escuela, con restricciones registradas y un procedimiento claro, no en que el alumno le escriba a su mamá.' },
+      { type: 'h2', text: '5. Incluye la cafetería en las asambleas de octubre' },
+      { type: 'p', text: 'Las escuelas van a reunir a las familias para explicar las nuevas reglas. Es el momento ideal para comunicar, en la misma sesión, cómo se va a pagar en la cafetería, cómo pueden los padres ver el consumo de sus hijos y qué pasa en una emergencia. Una duda resuelta en octubre es una queja menos en noviembre. Y si tu escuela tiene preparatoria, define ya si sus reglas serán las mismas o distintas, porque en media superior la decisión es de cada institución.' },
+      { type: 'h2', text: 'Cómo lo resolvemos en Nutri Cafeterías' },
+      { type: 'p', text: 'En las escuelas que operamos, el alumno no necesita celular para comprar: paga con su huella digital, y los padres recargan saldo, consultan cada consumo y reciben información desde la app para padres. Los menús siguen los lineamientos SEP, con protocolos alineados a la NOM-251, Distintivo H y licencia sanitaria, y NutriMood conecta la alimentación con el bienestar del alumno. Son más de 10 años operando en escuelas privadas de la Ciudad de México, +10 colegios, más de 1,000,000 de órdenes y 97% de satisfacción, sin inversión para la escuela.' },
+      { type: 'p', text: 'Si quieres saber si tu cafetería está lista para un recreo sin celulares, haz el diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo y revisamos juntos pagos, filas y comunicación con las familias antes del 3 de noviembre.' },
+    ],
+  },
+  {
     slug: 'omision-desayuno-rendimiento-academico-recreo-cafeteria-escolar',
     title: 'El alumno que llegó sin desayunar ya está en tu salón: qué puede hacer la escuela a las 10:30 de la mañana',
     description:
