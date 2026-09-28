@@ -85,7 +85,7 @@ const jsonLd = {
   logo: 'https://cafeteriasescolares.com.mx/logo.png',
   image: 'https://cafeteriasescolares.com.mx/logo.png',
   telephone: '+52-55-6703-4269',
-  email: 'contacto@nutricafeterias.com',
+  email: 'contacto@nutricafeteria.com.mx',
   foundingDate: '2014',
   address: {
     '@type': 'PostalAddress',

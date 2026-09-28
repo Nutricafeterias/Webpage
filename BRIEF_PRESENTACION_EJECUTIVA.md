@@ -10,7 +10,7 @@
 **Posicionamiento:** Operador integral #1 de cafeterías escolares en México  
 **Mercado objetivo:** Escuelas privadas de nivel primaria, secundaria, preparatoria y universidad en México  
 **Experiencia:** Más de 10 años en el sector  
-**Contacto:** contacto@nutricafeterias.com  
+**Contacto:** contacto@nutricafeteria.com.mx  
 
 ---
 
@@ -219,7 +219,7 @@ Se puede definir un esquema personalizado según la institución. En cada caso b
 ## 15. INFORMACIÓN DE CONTACTO
 
 - **Web:** localhost:3000 (en producción: nutricafeterias.com)
-- **Email:** contacto@nutricafeterias.com
+- **Email:** contacto@nutricafeteria.com.mx
 - **WhatsApp:** disponible en botón flotante del sitio web
 - **CTA principal:** "¡Agenda tu reunión gratis hoy!"
 
