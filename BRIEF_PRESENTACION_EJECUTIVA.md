@@ -9,7 +9,7 @@
 **Tagline:** "La cafetería, el lugar favorito de tu escuela"  
 **Posicionamiento:** Operador integral #1 de cafeterías escolares en México  
 **Mercado objetivo:** Escuelas privadas de nivel primaria, secundaria, preparatoria y universidad en México  
-**Experiencia:** Más de 10 años en el sector  
+**Experiencia:** Desde 2018 en el sector (fundada en agosto de 2018; primera cafetería en agosto de 2019)  
 **Contacto:** contacto@nutricafeteria.com.mx  
 
 ---
@@ -24,14 +24,11 @@
 
 | Indicador | Valor |
 |---|---|
-| Órdenes servidas | +1,000,000 |
-| Años de experiencia | +10 años |
-| Escuelas operando actualmente | +10 instituciones |
-| Satisfacción de alumnos | 97% |
+| Año de fundación | 2018 |
+| Máximo de cafeterías simultáneas | 11 (durante un año) |
 | Tiempo máximo de espera | Menos de 3 minutos |
 | Inversión requerida a la escuela | $0 |
 | Carga operativa para la escuela | Cero |
-| Alumnos atendidos diariamente | 10,000+ |
 
 ---
 
@@ -70,7 +67,7 @@ La cafetería de una escuela privada genera sistemáticamente estos 6 problemas:
 ### Pilar 3 — Tecnología que lo hace fácil (Tecnología)
 - **Pago con huella digital** — Los alumnos pagan en segundos. Sin efectivo, sin filas.
 - **Tótems de autoservicio** — Pantallas táctiles intuitivas que agilizan el flujo.
-- **App para padres y alumnos** — Control de saldo, historial de compras y recargas desde el celular.
+- **App para padres y alumnos (próximamente, en desarrollo)** — Control de saldo, historial de compras y recargas desde el celular.
 - **Dashboard de reportes en tiempo real** — Visibilidad total de ventas, inventario y operación.
 
 ### Pilar 4 — Cero carga para la escuela (Sin estrés)
@@ -103,7 +100,7 @@ Diseñado con nutriólogos, con ingredientes frescos y adaptado a cada instituci
 |---|---|
 | Huella digital | Pago en segundos, sin efectivo ni filas |
 | Tótems de autoservicio | Pedidos desde pantalla táctil intuitiva |
-| App móvil | Para padres y alumnos. Saldo, historial, recargas |
+| App móvil (próximamente) | Para padres y alumnos. Saldo, historial, recargas |
 | Dashboard en tiempo real | Reportes de ventas, inventario y operación para la dirección |
 
 ---
@@ -114,7 +111,7 @@ El proceso completo, sin costo ni inversión para la escuela:
 
 1. **Evaluamos tu escuela** — Visita, diagnóstico y plan personalizado. Sin costo.
 2. **Diseñamos el menú** — Con nutriólogos y considerando las preferencias reales de tus alumnos.
-3. **Instalamos la tecnología** — Tótems, huella y app. Todo configurado antes del primer día.
+3. **Instalamos la tecnología** — Tótems y huella. Todo configurado antes del primer día.
 4. **Capacitamos al equipo** — Seleccionamos, contratamos y entrenamos al personal. La escuela no interviene.
 5. **¡Arrancamos!** — Desde el primer día con servicio completo, fluido y al nivel de la institución.
 6. **Mejora continua** — Supervisión constante. La cafetería mejora cada ciclo escolar.
@@ -126,7 +123,7 @@ El proceso completo, sin costo ni inversión para la escuela:
 | Característica | Nutri Cafeterías | Modelo tradicional |
 |---|---|---|
 | Operación consistente todos los días | ✅ | ❌ |
-| Tecnología (huella, app, tótems) | ✅ | ❌ |
+| Tecnología (huella, tótems) | ✅ | ❌ |
 | Cero carga operativa para la escuela | ✅ | ❌ |
 | Gestión de personal incluida | ✅ | ❌ |
 | Menos de 3 minutos de espera | ✅ | ❌ |
@@ -151,7 +148,6 @@ El proceso completo, sin costo ni inversión para la escuela:
 ### Con Nutri Cafeterías:
 - Menos de 3 minutos de espera
 - Servicio rápido, ordenado y consistente
-- 97% de satisfacción de alumnos
 - Menús equilibrados que los alumnos aman
 - Cero carga operativa para la escuela
 - Procesos claros que funcionan siempre

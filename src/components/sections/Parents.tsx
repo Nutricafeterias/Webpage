@@ -24,7 +24,7 @@ export function Parents() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-100 text-sky-700 font-bold text-sm mb-6 border border-sky-200">
-              👨‍👩‍👧‍👦 Para papás y mamás
+              👨‍👩‍👧‍👦 Para papás y mamás · App próximamente
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-stone-900 leading-tight">
               Transparencia total,{' '}
@@ -32,8 +32,8 @@ export function Parents() {
             </h2>
             <p className="mt-5 text-stone-500 text-lg leading-relaxed">
               Sabemos lo que es dejar a tus hijos en la escuela y preguntarte si comieron bien.
-              Por eso nuestra app te da visibilidad completa de su alimentación — algo que
-              ninguna cafetería tradicional te puede ofrecer.
+              Por eso estamos desarrollando nuestra app para padres (próximamente), que te dará
+              visibilidad de su alimentación — algo que ninguna cafetería tradicional te ofrece.
             </p>
             <div className="mt-8 p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-200">
               <p className="text-sm text-emerald-900 leading-relaxed">

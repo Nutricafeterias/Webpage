@@ -64,8 +64,8 @@ export function Experience() {
             className="flex flex-wrap gap-3 mt-10"
           >
             {[
-              { icon: '👩‍🎓', text: '+10,000 alumnos felices' },
-              { icon: '⭐', text: '97% de satisfacción' },
+              { icon: '📅', text: 'Desde 2018' },
+              { icon: '🏫', text: 'Hasta 11 cafeterías a la vez' },
               { icon: '⚡', text: 'Menos de 3 min' },
             ].map(s => (
               <div key={s.text} className="px-4 py-2.5 rounded-xl bg-white/15 backdrop-blur-sm border border-white/25 flex items-center gap-2">

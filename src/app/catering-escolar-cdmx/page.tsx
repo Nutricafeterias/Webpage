@@ -9,7 +9,7 @@ import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 export const metadata: Metadata = {
   title: 'Catering Escolar en CDMX | Servicio Diario de Alimentos para Escuelas — Nutri Cafeterías',
   description:
-    'Catering escolar en CDMX: servicio diario de alimentos para escuelas privadas — desayunos, comidas y lunch escolar con menús de nutriólogos alineados a SEP, Distintivo H y protocolos NOM-251. Sin inversión para la escuela.',
+    'Catering escolar en CDMX: servicio diario de alimentos para escuelas privadas — desayunos, comidas y lunch escolar con menús de nutriólogos alineados a SEP y protocolos de higiene NOM-251. Sin inversión para la escuela.',
   keywords: [
     'catering escolar CDMX',
     'catering para escuelas',
@@ -44,7 +44,7 @@ const serviceJsonLd = {
     { '@type': 'AdministrativeArea', name: 'Área Metropolitana del Valle de México' },
   ],
   description:
-    'Servicio diario de alimentos para escuelas privadas en la Ciudad de México: desayunos, comidas y lunch escolar con menús diseñados por nutriólogos alineados a lineamientos SEP, Distintivo H y protocolos alineados a NOM-251.',
+    'Servicio diario de alimentos para escuelas privadas en la Ciudad de México: desayunos, comidas y lunch escolar con menús diseñados por nutriólogos alineados a lineamientos SEP y protocolos de higiene alineados a NOM-251.',
 }
 
 const servicios = [
@@ -57,9 +57,9 @@ const servicios = [
 ]
 
 const porQue = [
-  { emoji: '🏅', text: 'Distintivo H, licencia sanitaria y protocolos de higiene alineados a NOM-251 — los mismos estándares de nuestras cafeterías premium' },
+  { emoji: '🏅', text: 'Protocolos de higiene alineados a NOM-251 — los mismos estándares de nuestras cafeterías premium' },
   { emoji: '👩‍⚕️', text: 'Menús firmados por nutriólogos y alineados a los lineamientos SEP vigentes, con justificación nutricional documentada' },
-  { emoji: '🏫', text: 'Más de 10 años sirviendo a escuelas privadas de CDMX: +10 colegios, +1,000,000 de órdenes y 97% de satisfacción' },
+  { emoji: '🏫', text: 'Sirviendo a escuelas privadas de CDMX desde 2018; llegamos a operar 11 cafeterías al mismo tiempo' },
   { emoji: '💰', text: 'Modelos flexibles: por alumno, por servicio o concesión completa — sin inversión inicial para la institución' },
 ]
 

@@ -182,7 +182,7 @@ export default async function BlogPostPage({
               ¿Quieres una cafetería escolar de primer nivel? 🏆
             </p>
             <p className="mt-2 text-emerald-100 text-sm">
-              Agenda una reunión gratis y conoce cómo trabajamos en +10 escuelas privadas de México.
+              Agenda una reunión gratis y conoce cómo trabajamos en escuelas privadas de México desde 2018.
             </p>
             <a
               href="/#contacto"

@@ -4,11 +4,10 @@ import { useCounter } from '@/hooks/useCounter'
 import { motion } from 'framer-motion'
 
 const stats = [
-  { value: 1000000, prefix: '+', suffix: '',      label: 'Órdenes servidas',    emoji: '🍽️', color: 'text-emerald-600', bg: 'bg-emerald-50' },
-  { value: 10,      prefix: '+', suffix: ' años', label: 'De experiencia',      emoji: '🏆', color: 'text-amber-600',   bg: 'bg-amber-50' },
-  { value: 10,      prefix: '+', suffix: '',       label: 'Escuelas operando',   emoji: '🏫', color: 'text-orange-600',  bg: 'bg-orange-50' },
-  { value: 97,      prefix: '',  suffix: '%',      label: 'Satisfacción',        emoji: '😊', color: 'text-rose-600',    bg: 'bg-rose-50' },
-  { value: 3,       prefix: '<', suffix: ' min',   label: 'Tiempo de espera',   emoji: '⚡', color: 'text-blue-600',    bg: 'bg-blue-50' },
+  { value: 2018, prefix: '',  suffix: '',      label: 'Año de fundación',     emoji: '🏆', color: 'text-amber-600',   bg: 'bg-amber-50',   plain: true },
+  { value: 11,   prefix: '',  suffix: '',      label: 'Cafeterías a la vez (máximo)', emoji: '🏫', color: 'text-orange-600',  bg: 'bg-orange-50',  plain: false },
+  { value: 0,    prefix: '$', suffix: '',      label: 'Inversión para la escuela', emoji: '🛡️', color: 'text-emerald-600', bg: 'bg-emerald-50', plain: false },
+  { value: 3,    prefix: '<', suffix: ' min',  label: 'Tiempo de espera',     emoji: '⚡', color: 'text-blue-600',    bg: 'bg-blue-50',    plain: false },
 ]
 
 function StatItem({ s, delay }: { s: typeof stats[0]; delay: number }) {
@@ -24,7 +23,7 @@ function StatItem({ s, delay }: { s: typeof stats[0]; delay: number }) {
     >
       <span className="text-3xl group-hover:animate-wiggle inline-block">{s.emoji}</span>
       <div className={`text-3xl md:text-4xl font-black tabular-nums ${s.color}`}>
-        {s.prefix}{count.toLocaleString()}{s.suffix}
+        {s.prefix}{s.plain ? s.value : count.toLocaleString()}{s.suffix}
       </div>
       <div className="text-xs text-stone-500 uppercase tracking-widest font-medium">{s.label}</div>
     </motion.div>

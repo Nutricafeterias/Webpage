@@ -17,7 +17,7 @@ import { Safety } from '@/components/sections/Safety'
 export const metadata: Metadata = {
   title: 'Cafeterías Escolares Premium en CDMX | Operación Integral — Nutri Cafeterías',
   description:
-    'Operamos la cafetería de tu escuela de forma integral: menús de nutriólogos alineados a SEP, Distintivo H, pago con huella digital, app para padres y programas educativos como NutriMood. Sin inversión para la escuela.',
+    'Operamos la cafetería de tu escuela de forma integral: menús de nutriólogos alineados a SEP, protocolos NOM-251, pago con huella digital y programas educativos como NutriMood; app para padres próximamente. Sin inversión para la escuela.',
   keywords: [
     'cafetería escolar',
     'cafeterías escolares CDMX',
@@ -52,7 +52,7 @@ const serviceJsonLd = {
     { '@type': 'AdministrativeArea', name: 'Área Metropolitana del Valle de México' },
   ],
   description:
-    'Operación completa de cafeterías escolares para escuelas privadas: menús de nutriólogos alineados a SEP, Distintivo H, pago con huella digital, tótems de autoservicio, app para padres y programas educativos exclusivos. Sin inversión inicial para la institución.',
+    'Operación completa de cafeterías escolares para escuelas privadas: menús de nutriólogos alineados a SEP, protocolos NOM-251, pago con huella digital, tótems de autoservicio y programas educativos exclusivos; app para padres próximamente. Sin inversión inicial para la institución.',
 }
 
 export default function CafeteriasEscolaresPage() {

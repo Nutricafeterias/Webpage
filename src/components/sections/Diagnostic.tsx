@@ -52,7 +52,7 @@ const QUESTIONS: Question[] = [
       { label: 'De vez en cuando', emoji: '😐', points: 1 },
       { label: 'Con frecuencia', emoji: '😤', points: 0 },
     ],
-    fix: 'Nuestro modelo resuelve los problemas antes de que lleguen a dirección — 97% de satisfacción en +10 escuelas.',
+    fix: 'Nuestro modelo resuelve los problemas antes de que lleguen a dirección — así operamos en escuelas privadas desde 2018.',
   },
   {
     key: 'menu',
@@ -76,7 +76,7 @@ const QUESTIONS: Question[] = [
       { label: 'Solo pueden consultar el menú', emoji: '📋', points: 1 },
       { label: 'No tienen visibilidad', emoji: '🙈', points: 0 },
     ],
-    fix: 'La app Nutri da a los papás historial de consumo, límites de gasto, recargas y alertas de alérgenos.',
+    fix: 'La app Nutri para papás (próximamente) dará historial de consumo, límites de gasto, recargas y alertas de alérgenos.',
   },
   {
     key: 'higiene',
@@ -106,7 +106,7 @@ const QUESTIONS: Question[] = [
 
 const ANALYZING_STEPS = [
   'Analizando tiempos de servicio…',
-  'Comparando con +10 escuelas premium…',
+  'Comparando con escuelas premium…',
   'Evaluando estándares de seguridad alimentaria…',
   'Generando tu diagnóstico personalizado…',
 ]

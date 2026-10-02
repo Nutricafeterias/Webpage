@@ -53,8 +53,8 @@ export default function MenusPage() {
             <p className="text-sm text-emerald-900 leading-relaxed">
               <strong>Este es un menú de muestra.</strong> Cada escuela recibe un ciclo de
               menús personalizado de 4 semanas, adaptado a su comunidad, con rotación de
-              temporada y manejo documentado de alérgenos. Los padres lo consultan desde
-              la app con la información nutricional completa.
+              temporada y manejo documentado de alérgenos. Próximamente los padres podrán
+              consultarlo desde la app con la información nutricional completa.
             </p>
           </div>
 
