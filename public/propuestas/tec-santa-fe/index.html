@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Así se va a comer en el Tec · Propuesta Nutri</title>
+<!-- Vista previa al compartir el link (WhatsApp, iMessage, correo): la imagen debe pesar menos de 300 KB -->
+<meta name="description" content="Recorrido de dos minutos por la nueva Nutri Cafetería del food court, NutriExpress en la prepa, tres tótems y una app para pedir sin fila. Abiertos de 6:30 a 22:00.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Así se va a comer en el Tec · Propuesta Nutri">
+<meta property="og:description" content="Recorrido de dos minutos por la nueva Nutri Cafetería del food court, NutriExpress en la prepa, tres tótems y una app para pedir sin fila. Abiertos de 6:30 a 22:00.">
+<meta property="og:url" content="https://cafeteriasescolares.com.mx/propuestas/tec-santa-fe">
+<meta property="og:image" content="https://cafeteriasescolares.com.mx/propuestas/tec-santa-fe/img/og_tec.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Así se va a comer en el Tec: la nueva Nutri Cafetería del food court">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#F7F3EA; --lino:#EDE7D8; --arena:#D8CDB6; --piedra:#A79B82; --cacao:#5B5346; --carbon:#26241F;
+    --v900:#0E3421; --v700:#1F5D3B; --v500:#3E8B54; --v300:#6EAF4A; --v100:#C7E3B4;
+    --naranja:#F39C12; --amber:#F7B24C; --escuela:#0039A6; --blanco:#FFFDF8;
+    --panelW:400px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:var(--v900);color:var(--carbon);font-family:'Montserrat',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+  button{font-family:inherit;cursor:pointer;border:0;background:none}
+  img{display:block;max-width:100%}
+
+  /* ---------- top bar ---------- */
+  .top{position:fixed;top:0;left:0;right:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:50;pointer-events:none}
+  .top img{height:26px}
+  .top .center{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cacao);background:rgba(247,243,234,.88);padding:6px 8px 6px 14px;border-radius:100px;backdrop-filter:blur(6px)}
+  .top .center .uv{background:#fff;border-radius:100px;padding:4px 10px}
+  .top .center .uv img{height:16px}
+  .top.light #topLogo{background:rgba(247,243,234,.9);padding:6px 10px;border-radius:10px;height:36px}
+  .top .btn-menu{pointer-events:auto;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--crema);border:1px solid rgba(247,243,234,.4);border-radius:100px;padding:8px 14px;background:rgba(14,52,33,.35);backdrop-filter:blur(6px)}
+  .top.light .btn-menu{color:var(--v700);border-color:var(--v700)}
+  /* Botón "Ver menú" destacado: naranja sólido como el CTA principal, con ícono y un pulso al cambiar de pantalla */
+  .top .btn-menu,.top.light .btn-menu{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.07em;color:var(--carbon);background:var(--naranja);border:0;padding:11px 20px 11px 16px;box-shadow:0 8px 22px rgba(0,0,0,.28);backdrop-filter:none;transition:transform .2s,box-shadow .2s}
+  .top .btn-menu:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.32)}
+  .top .btn-menu svg{width:17px;height:17px;flex:none}
+  .top .btn-menu:focus:not(:focus-visible){outline:none}
+  /* Menú del ecosistema en páginas: pestañas arriba y flechas grandes a los lados */
+  .mtabs{display:none;gap:8px;flex-wrap:wrap;margin-right:46px}
+  .modal.carta .mtabs{display:flex}
+  .modal.carta #mTitle{display:none}
+  .modal.carta .sheet .sub{margin-top:10px}
+  .mtabs button{border:1.5px solid var(--arena);border-radius:100px;padding:8px 16px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--cacao);background:transparent;transition:border-color .2s,color .2s,box-shadow .2s}
+  .mtabs button.on{box-shadow:0 6px 16px rgba(0,0,0,.14)}
+  .mtabs button:not(.on):hover{border-color:var(--v300);color:var(--v700)}
+  .mnav{display:none;position:fixed;top:50%;transform:translateY(-50%);z-index:82;flex-direction:column;align-items:center;gap:9px;color:var(--crema);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;max-width:120px;text-align:center}
+  .modal.carta .mnav{display:flex}
+  .mnav.off{visibility:hidden}
+  .mnav .arr{width:60px;height:60px;border-radius:50%;background:var(--naranja);color:var(--carbon);display:grid;place-items:center;font-size:26px;font-weight:900;box-shadow:0 10px 28px rgba(0,0,0,.38);transition:transform .2s}
+  .mnav:hover .arr{transform:scale(1.08)}
+  .mnav.prev{left:max(14px,calc(50% - 490px - 130px))}
+  .mnav.next{right:max(14px,calc(50% - 490px - 130px))}
+  #mCols.in-next{animation:mIn .35s ease both}
+  #mCols.in-prev{animation:mInPrev .35s ease both}
+  @keyframes mIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+  @keyframes mInPrev{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:none}}
+  @media (max-width:1200px){
+    .modal.carta{padding-bottom:96px}
+    .mnav{top:auto;bottom:14px;transform:none;flex-direction:row;max-width:none}
+    .mnav .arr{width:52px;height:52px;font-size:22px}
+    .mnav.next{flex-direction:row-reverse}
+  }
+  @media (max-width:900px){ .top .btn-menu .bm-long{display:none} }
+  @media (max-width:600px){ .mtabs{gap:6px} .mtabs button{font-size:10px;padding:6px 10px;letter-spacing:.04em} }
+  .top .btn-menu.pulse{animation:menuPulse 1.8s ease-out .6s 2}
+  @keyframes menuPulse{0%{box-shadow:0 8px 22px rgba(0,0,0,.28),0 0 0 0 rgba(243,156,18,.7)}75%{box-shadow:0 8px 22px rgba(0,0,0,.28),0 0 0 14px rgba(243,156,18,0)}100%{box-shadow:0 8px 22px rgba(0,0,0,.28),0 0 0 0 rgba(243,156,18,0)}}
+
+  /* ---------- scenes ---------- */
+  .scene{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .55s ease,visibility 0s .55s}
+  .scene.active{opacity:1;visibility:visible;transition:opacity .55s ease}
+  .scene.light{background:var(--crema)}
+  .kicker{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--naranja)}
+  h1{font-weight:800;line-height:1.08;letter-spacing:-.015em}
+  .lead{font-weight:500;line-height:1.5}
+  /* Resaltados que se pueden usar dentro de los textos de tour.json */
+  .resaltado{color:var(--amber)}
+  .tenue{color:rgba(247,243,234,.5)}
+  .scene.light .resaltado{color:var(--naranja)}
+  .scene.light .tenue{color:var(--piedra)}
+
+  /* cover */
+  #cover .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);animation:kb 14s ease-in-out infinite alternate}
+  /* portada en carrusel: cada imagen extra entra por turnos con fundido */
+  #cover .bg.carr{opacity:0;animation:kb 14s ease-in-out infinite alternate,carr calc(var(--n)*5s) linear infinite;animation-delay:0s,calc(var(--i)*5s - 1s)}
+  @keyframes carr{0%{opacity:0}6%{opacity:1}20%{opacity:1}26%{opacity:0}100%{opacity:0}}
+  /* animaciones extra (portada.animado) */
+  body.anim .scene.active .split .pic > img:not(.fondo){animation:kb 16s ease-in-out infinite alternate}
+  body.anim .scene.active .fact{animation:subir .6s cubic-bezier(.3,1.4,.5,1) both}
+  body.anim .scene.active .fact:nth-child(2){animation-delay:.12s}
+  body.anim .scene.active .fact:nth-child(3){animation-delay:.24s}
+  body.anim .scene.active .split h1,body.anim .scene.active .cafeBrand{animation:subir .6s ease both}
+  body.anim .scene.active .xbtn.uno{animation:latido 2.4s ease-in-out 1s infinite}
+  @keyframes subir{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes latido{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  @keyframes kb{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.12) translate(-1.5%,-1%)}}
+  #cover .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,52,33,.95) 0%,rgba(14,52,33,.75) 45%,rgba(14,52,33,.25) 100%)}
+  #cover .content{position:absolute;left:6vw;right:6vw;top:50%;transform:translateY(-50%);max-width:760px;color:var(--crema)}
+  #cover h1{font-size:clamp(34px,6vw,74px)}
+  #cover .lead{margin-top:18px;font-size:clamp(15px,1.6vw,20px);color:#D7E3D2;max-width:560px}
+  .cta{display:inline-flex;align-items:center;gap:12px;background:var(--naranja);color:var(--carbon);font-weight:800;font-size:15px;border-radius:100px;padding:16px 26px;margin-top:28px;transition:transform .2s}
+  .cta:hover{transform:translateY(-2px)}
+  .cta .arrow{width:26px;height:26px;border-radius:50%;background:var(--carbon);color:var(--naranja);display:grid;place-items:center;font-size:14px}
+  #cover .foot{position:absolute;left:6vw;bottom:28px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,243,234,.55)}
+
+  /* ecosystem */
+  #eco .wrap{position:absolute;inset:56px 0 70px;display:grid;grid-template-columns:1fr 1.25fr;gap:24px;padding:0 5vw;align-items:center}
+  #eco .wrap.sinmapa{grid-template-columns:minmax(0,760px)}
+  #eco h1{font-size:clamp(28px,3.6vw,46px);color:var(--v700);margin-top:12px}
+  #eco .lead{color:var(--cacao);margin-top:14px;font-size:15px;max-width:440px}
+  .nodes{display:grid;gap:10px;margin-top:22px}
+  .node{display:flex;align-items:center;gap:14px;background:var(--blanco);border:1px solid var(--lino);border-radius:14px;padding:12px 14px;text-align:left;transition:transform .2s,box-shadow .2s;width:100%}
+  .node:hover{transform:translateX(4px);box-shadow:0 8px 24px rgba(38,36,31,.08)}
+  .node .dot{width:34px;height:34px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:800;font-size:12px;color:var(--crema)}
+  .node b{display:block;font-size:14px;color:var(--v700)}
+  .node span{font-size:12px;color:var(--cacao);font-weight:500}
+  .map{width:100%;max-height:62vh}
+  .map.mapimg{height:auto;object-fit:contain;border-radius:20px}
+  .dia{display:flex;gap:8px;margin-top:12px}
+  .dia div{flex:1;background:var(--blanco);border:1px solid var(--lino);border-radius:12px;padding:10px 12px}
+  .dia b{display:block;font-size:13px;font-weight:800;color:var(--naranja)}
+  .dia span{display:block;font-size:11px;font-weight:600;color:var(--cacao);margin-top:2px;line-height:1.3}
+
+  /* hero scene (cafetería) */
+  .stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#0b2318}
+  .heroBox{position:relative;width:100%;height:100%;overflow:hidden}
+  .heroBox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 50%;transition:transform 1s cubic-bezier(.65,0,.25,1)}
+  #closeImg{opacity:0;transform:scale(1.06);transition:opacity .7s ease .35s,transform 1.2s ease .35s;pointer-events:none}
+  .zoomed #closeImg{opacity:1;transform:scale(1)}
+  .hs{position:absolute;transform:translate(-50%,-50%);z-index:5;transition:opacity .4s}
+  .hs button{position:relative;width:46px;height:46px;border-radius:50%;background:rgba(247,243,234,.92);color:var(--v700);font-weight:800;font-size:13px;box-shadow:0 6px 18px rgba(0,0,0,.35);display:grid;place-items:center}
+  .hs button::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(247,243,234,.7);animation:pulse 2s infinite}
+  @keyframes pulse{0%{transform:scale(.8);opacity:1}100%{transform:scale(1.6);opacity:0}}
+  .hs label{position:absolute;left:56px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--crema);background:rgba(14,52,33,.72);padding:7px 12px;border-radius:100px;backdrop-filter:blur(6px);pointer-events:none}
+  .hs.left label{left:auto;right:56px}
+  .zoomed .hs{opacity:0;pointer-events:none}
+  .sceneTitle{position:absolute;left:24px;bottom:84px;z-index:6;color:var(--crema);max-width:520px;transition:opacity .4s}
+  .sceneTitle .kicker{color:var(--amber)}
+  .sceneTitle h1{font-size:clamp(26px,3.4vw,44px);margin-top:8px;text-shadow:0 4px 24px rgba(0,0,0,.45)}
+  .sceneTitle p{font-size:13.5px;font-weight:600;margin-top:10px;color:#D7E3D2}
+  .zoomed .sceneTitle{opacity:0;pointer-events:none}
+  .badge{position:absolute;right:20px;top:66px;z-index:6;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,243,234,.85);background:rgba(14,52,33,.55);padding:6px 12px;border-radius:100px}
+
+  /* panel */
+  .panel{position:absolute;top:56px;right:0;bottom:0;width:var(--panelW);background:var(--crema);z-index:20;transform:translateX(105%);transition:transform .6s cubic-bezier(.65,0,.25,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.35)}
+  .zoomed .panel{transform:translateX(0)}
+  .panel .inner{padding:26px 28px 20px;overflow:auto;flex:1}
+  .panel .inner.more{-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 56px),transparent);mask-image:linear-gradient(to bottom,#000 calc(100% - 56px),transparent)}
+  .panel .close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:var(--lino);color:var(--cacao);font-size:16px;font-weight:800}
+  .brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .brand .ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;flex:none}
+  .brand .ico svg{width:30px;height:30px}
+  .brand .nm{font-weight:900;font-size:26px;letter-spacing:-.02em;line-height:1}
+  .brand .sub{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--piedra);margin-top:4px}
+  .panel .tag{font-size:17px;font-weight:700;color:var(--v700);line-height:1.3}
+  .panel ul{list-style:none;margin-top:14px}
+  .panel li{position:relative;padding-left:20px;font-size:13px;font-weight:500;color:var(--cacao);line-height:1.45;margin-bottom:8px}
+  .panel li::before{content:'';position:absolute;left:0;top:7px;width:9px;height:9px;border-radius:50%;background:var(--v300)}
+  .menu{margin-top:16px;border-top:1px solid var(--lino);padding-top:12px}
+  .menu .h{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--naranja);margin-bottom:8px}
+  .menu .row{display:flex;justify-content:space-between;gap:12px;font-size:13px;font-weight:600;color:var(--carbon);padding:5px 0;border-bottom:1px dashed var(--lino)}
+  .menu .row span:last-child{color:var(--v700);font-weight:800;white-space:nowrap}
+  .menu .note{font-size:10px;color:var(--piedra);margin-top:8px;font-weight:500}
+  .menu .row small,.sec .row small{display:block;font-size:11px;color:var(--piedra);font-weight:500;line-height:1.35;margin-top:2px}
+  .tier .row{border-bottom:0 !important;padding-bottom:1px !important}
+  .tier .row span:first-child{color:var(--v700);font-weight:800}
+  .tier .items{font-size:12px;font-weight:500;color:var(--cacao);line-height:1.5;padding:1px 0 7px;border-bottom:1px dashed var(--lino)}
+  .tier .items span:not(:last-child)::after{content:' · ';color:var(--v300);font-weight:800}
+  .menu .cat{display:flex;align-items:center;gap:12px;width:100%;margin-top:6px;padding:7px 10px 7px 14px;border-radius:12px;background:var(--blanco);border:1px solid var(--lino);text-align:left;transition:border-color .2s,box-shadow .2s}
+  .menu .cat:hover{border-color:var(--v300);box-shadow:0 6px 18px rgba(31,93,59,.10)}
+  .menu .cat .n{flex:1;font-size:14px;font-weight:800;color:var(--v700)}
+  .menu .cat .n small{display:block;font-size:11px;font-weight:600;color:var(--piedra);margin-top:1px}
+  .menu .cat .p{font-size:14px;font-weight:800;color:var(--v700);white-space:nowrap}
+  .menu .cat .go{width:26px;height:26px;border-radius:50%;background:var(--naranja);color:var(--carbon);display:grid;place-items:center;font-size:17px;font-weight:900;line-height:1;padding-bottom:2px}
+  .menu .cat + .row{margin-top:4px}
+  .lnk{margin-top:7px;font-size:12.5px;font-weight:800;color:var(--v700);border-bottom:2px solid var(--v300);padding:0 0 1px}
+  .panel .acts{display:flex;gap:10px;padding:14px 28px 22px;border-top:1px solid var(--lino);background:var(--crema)}
+  .b1,.b2{flex:1;border-radius:100px;padding:13px 14px;font-weight:800;font-size:13px;text-align:center}
+  .b1{background:var(--v700);color:var(--crema)}
+  .b2{background:var(--lino);color:var(--v700)}
+
+  /* generic split scene */
+  .split{position:absolute;inset:0;display:grid;grid-template-columns:1.15fr .85fr}
+  .split .pic{position:relative;overflow:hidden}
+  .split .pic img{width:100%;height:100%;object-fit:cover}
+  /* "completa": el render se ve entero (sin recorte) sobre un fondo difuminado de sí mismo */
+  .split .pic.completa{background:#0b2318}
+  .split .pic.completa img{position:absolute;inset:0;object-fit:contain}
+  .split .pic.completa img.fondo{object-fit:cover;filter:blur(22px) brightness(.55);transform:scale(1.1)}
+  .split .txt{padding:90px 5vw 90px 4vw;display:flex;flex-direction:column;justify-content:center;overflow:auto}
+  .pic2{display:grid;grid-template-rows:1fr 1fr;gap:4px;background:#0b2318}
+  .pic2 .half{position:relative;overflow:hidden}
+  .pic2 .half img{width:100%;height:100%;object-fit:cover;display:block}
+  .pic .chip{position:absolute;left:16px;bottom:14px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--crema);background:rgba(14,52,33,.72);padding:6px 12px;border-radius:100px;backdrop-filter:blur(6px)}
+  .split h1{font-size:clamp(26px,3.2vw,42px);color:var(--v700);margin-top:10px}
+  .split .lead{color:var(--cacao);margin-top:14px;font-size:15px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+  .fact{background:var(--blanco);border:1px solid var(--lino);border-radius:14px;padding:14px 12px;text-align:center}
+  .fact b{display:block;font-size:22px;font-weight:800;color:var(--naranja);letter-spacing:-.02em}
+  .fact span{display:block;font-size:11px;font-weight:600;color:var(--cacao);margin-top:4px;line-height:1.3}
+  .mini{margin-top:18px;background:var(--blanco);border:1px solid var(--lino);border-radius:14px;padding:12px 16px}
+  .mini .h{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--naranja);margin-bottom:6px}
+  .mini .row{display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;color:var(--carbon);padding:4px 0}
+  .mini .row span:last-child{color:var(--v700);font-weight:800}
+  .xbtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .xbtn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:100px;font-size:13px;font-weight:800;text-decoration:none;background:var(--v700);color:var(--crema);box-shadow:0 8px 22px rgba(14,52,33,.18);transition:transform .2s}
+  .xbtn.uno{background:var(--naranja);color:#26241F}
+  .xbtn:hover{transform:translateY(-2px)}
+  .link{margin-top:14px;font-size:12px;font-weight:800;color:var(--v700);text-decoration:underline;text-underline-offset:4px;background:none;text-align:left}
+
+  /* marca propia de un concepto (p. ej. el café) y selector de opciones en ?review=1 */
+  .cafeBrand{display:flex;align-items:center;gap:14px;margin-top:6px}
+  .cafeBrand .logo{padding:14px 20px;border-radius:14px;color:#fff;font-weight:900;letter-spacing:-.01em;line-height:1;display:inline-flex;flex-direction:column;gap:4px}
+  .cafeBrand .logo small{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;opacity:.85}
+  .picker{margin-top:16px;padding:12px 14px;border:1px dashed var(--piedra);border-radius:12px;display:none}
+  .review .picker{display:block}
+  .picker .h{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--escuela);margin-bottom:8px}
+  .picker .opts{display:flex;gap:8px;flex-wrap:wrap}
+  .picker button{border-radius:10px;padding:10px 12px;font-weight:900;font-size:13px;color:#fff;opacity:.55}
+  .picker button.on{opacity:1;outline:3px solid var(--carbon)}
+  .prelim{display:none;position:absolute;left:20px;top:66px;z-index:6;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--carbon);background:var(--amber);padding:6px 12px;border-radius:100px}
+  .review .prelim{display:block}
+  body.zoomed .nav{display:none}
+  .chips{display:none;position:absolute;left:0;right:0;bottom:210px;z-index:6;padding:0 16px;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .chips button{flex:none;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--v700);background:rgba(247,243,234,.94);padding:9px 12px;border-radius:100px}
+
+  /* vending illustration */
+  .vend{width:100%;max-height:78vh}
+
+  /* cierre */
+  #cierre{background:linear-gradient(135deg,var(--v900),var(--v700))}
+  #cierre .wrap{position:absolute;inset:56px 0 70px;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;color:var(--crema);max-width:1200px}
+  #cierre h1{font-size:clamp(30px,4.4vw,58px)}
+  /* cierre con imagen (opcional): render a la derecha fundido con el verde */
+  #cierre .cimg{position:absolute;top:0;right:0;bottom:0;width:58%;background-size:cover;background-position:center}
+  #cierre .cimg:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#123d26 0%,rgba(18,61,38,.85) 18%,rgba(18,61,38,.35) 45%,rgba(18,61,38,0) 75%)}
+  #cierre.conimg{background:#123d26}
+  #cierre.conimg .wrap{max-width:60%}
+  #cierre.conimg .nums{max-width:780px}
+  #cierre .cchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative}
+  #cierre .cchips span{font-size:12px;white-space:nowrap;font-weight:700;color:var(--crema);background:rgba(247,243,234,.1);border:1px solid rgba(247,243,234,.2);border-radius:99px;padding:6px 12px}
+  @media (max-width:900px){ #cierre .cimg{display:none} #cierre.conimg .wrap{max-width:none} }
+  .nums{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:14px;margin-top:30px;max-width:920px}
+  .num.plan{grid-column:2;grid-row:1 / span var(--filas,2)}
+  .nums.sinplan{grid-template-columns:repeat(var(--n,3),minmax(0,1fr))}
+  .nums.soloplan{grid-template-columns:minmax(0,1fr)}
+  .nums.soloplan .num.plan{grid-column:auto;grid-row:auto}
+  .num{background:rgba(247,243,234,.08);border:1px solid rgba(247,243,234,.18);border-radius:16px;padding:20px 22px}
+  .num > b{display:block;font-size:clamp(26px,3.2vw,42px);font-weight:800;color:var(--amber);letter-spacing:-.02em;line-height:1;white-space:nowrap}
+  .num > span{display:block;font-size:12.5px;font-weight:600;margin-top:8px;color:#D7E3D2}
+  /* Calendario de aperturas dentro del recuadro del plan */
+  .hitos{list-style:none;margin-top:10px;border-top:1px solid rgba(247,243,234,.16)}
+  .hitos li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:6px 0;border-bottom:1px dashed rgba(247,243,234,.14);font-size:12.5px;line-height:1.3}
+  .hitos i{font-style:normal;font-weight:700;color:var(--crema)}
+  .hitos em{font-style:normal;font-weight:700;color:var(--amber);white-space:nowrap}
+  .num .meta{margin-top:10px;font-size:12px;font-weight:600;color:#D7E3D2;line-height:1.4}
+  .num .meta strong{color:var(--crema);font-weight:800}
+  @media (max-height:780px) and (min-width:901px){ #cierre h1{font-size:clamp(28px,3.5vw,46px)} .nums{margin-top:20px} #cierre .contact{margin-top:18px !important} }
+  .ctas{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+  .ctas a{text-decoration:none;border-radius:100px;padding:15px 24px;font-weight:800;font-size:14px}
+  .ctas .p{background:var(--naranja);color:var(--carbon)}
+  .ctas .s{border:1px solid rgba(247,243,234,.5);color:var(--crema)}
+  #cierre.conimg .ctas a{padding:13px 20px;font-size:13px}
+  #cierre .contact{margin-top:26px;font-size:12.5px;color:#B9CCB3;font-weight:500;line-height:1.6}
+  #cierre .contact b{color:var(--crema);font-size:14px}
+
+  /* nav */
+  .nav{position:fixed;left:0;right:0;bottom:0;height:70px;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:0 20px;pointer-events:none}
+  .nav > *{pointer-events:auto}
+  .dots{display:flex;gap:8px;position:absolute;left:50%;transform:translateX(-50%)}
+  .dots button{width:8px;height:8px;border-radius:50%;background:rgba(247,243,234,.35);transition:all .3s}
+  .dots button.on{width:26px;border-radius:4px;background:var(--naranja)}
+  .nav.light .dots button{background:rgba(38,36,31,.2)}
+  .nav.light .dots button.on{background:var(--naranja)}
+  .arrows{display:flex;gap:8px;margin-left:auto}
+  .arrows button{width:44px;height:44px;border-radius:50%;background:rgba(247,243,234,.92);color:var(--v700);font-size:18px;font-weight:800;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+  .nav .step{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,243,234,.7)}
+  .nav.light .step{color:var(--piedra)}
+
+  /* modal menú */
+  .modal{position:fixed;inset:0;z-index:80;background:rgba(14,52,33,.72);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.open{display:flex}
+  .sheet{background:var(--crema);border-radius:20px;width:min(980px,100%);max-height:88vh;overflow:auto;padding:28px 30px;position:relative}
+  .sheet .close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:var(--lino);color:var(--cacao);font-weight:800}
+  .sheet h2{font-size:24px;font-weight:800;color:var(--v700)}
+  .sheet .sub{font-size:12px;color:var(--piedra);font-weight:600;margin-top:4px}
+  .cols{columns:3 250px;column-gap:26px;margin-top:14px}
+  .cols .sec{break-inside:avoid;display:inline-block;width:100%;margin-bottom:20px}
+  .cols.mas{columns:auto;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));column-gap:26px;align-items:start}
+  .cols.mas .sec{display:block;margin-bottom:16px}
+  .sheet.one{width:min(760px,100%)}
+  .sheet.one .cols{columns:1}
+  .sheet.one .cols .sec{display:block;columns:2 250px;column-gap:34px;margin-bottom:0}
+  .sheet.one .sec .h{display:none}
+  .sheet.one .sec .row,.dish{break-inside:avoid}
+  .dish{display:inline-block;width:100%;padding:10px 0;border-bottom:1px dashed var(--lino)}
+  .dish .t{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .dish b{font-size:14px;font-weight:700;color:var(--carbon)}
+  .dish em{font-style:normal;font-size:11px;font-weight:700;color:var(--piedra);white-space:nowrap}
+  .dish span{display:block;font-size:12px;color:var(--cacao);font-weight:500;line-height:1.4;margin-top:3px}
+  .sec .h{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--naranja);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .sec .row{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;font-weight:600;padding:5px 0;border-bottom:1px dashed var(--lino)}
+  .sec .row span:last-child{color:var(--v700);font-weight:800;white-space:nowrap}
+  .sec .row small{display:block;font-size:10.5px;color:var(--piedra);font-weight:500}
+
+  /* responsive */
+  @media (max-width:900px){
+    :root{--panelW:100%}
+    #cover .foot{bottom:92px;right:6vw}
+    #eco .wrap{grid-template-columns:1fr;gap:8px;overflow:auto;align-content:start;padding-top:10px}
+    .map{max-height:34vh}
+    .split{grid-template-columns:1fr;grid-template-rows:40vh 1fr}
+    .pic2{grid-template-rows:1fr;grid-template-columns:1fr 1fr}
+    .pic .chip{left:8px;bottom:8px;font-size:8px;padding:4px 8px}
+    .split .txt{padding:18px 6vw 130px;justify-content:flex-start}
+    .panel{top:auto;height:74vh;border-radius:20px 20px 0 0;transform:translateY(110%)}
+    .zoomed .panel{transform:translateY(0)}
+    .heroBox{position:absolute;left:0;right:0;top:44%;height:auto;aspect-ratio:3200/1899;transform:translateY(-50%)}
+    .hs button{width:34px;height:34px;font-size:11px}
+    .hs label{display:none}
+    .chips{display:flex}
+    .sceneTitle{left:16px;bottom:90px;max-width:88vw}
+    .sceneTitle h1{font-size:26px}
+    .top .center{display:none}
+    .facts{grid-template-columns:repeat(3,1fr)}
+    #cierre .wrap{overflow:auto;justify-content:flex-start;padding-top:20px;padding-bottom:40px}
+    .nums,.nums.sinplan{grid-template-columns:1fr;gap:10px;margin-top:20px}
+    .num.plan{grid-column:auto;grid-row:auto}
+    .num{padding:14px 18px}
+    /* Celular: menos foto y datos más compactos para que el texto quepa sobre la navegación */
+    .split{grid-template-rows:30vh 1fr}
+    .split .txt .lead{font-size:14px;margin-top:10px}
+    .split .txt h1{font-size:26px}
+    .facts{gap:8px;margin-top:14px}
+    .fact{padding:9px 6px}
+    .fact b{font-size:17px}
+    .fact span{font-size:10px}
+    .mini{margin-top:12px}
+    /* Cafetería en celular: el render ocupa todo el ancho; el fondo es el mismo render desenfocado, sin franjas vacías */
+    #cafeteria .stage{overflow:hidden}
+    #cafeteria .stage::before{content:'';position:absolute;inset:-30px;background:url('/propuestas/tec-santa-fe/img/R01_foodcourt_lateral.jpg') center/cover;filter:blur(18px) brightness(.42) saturate(1.1)}
+  }
+</style>
+</head>
+<body class="anim">
+
+<!-- ===== BARRA SUPERIOR ===== -->
+<div class="top" id="top">
+  <img src="/propuestas/tec-santa-fe/img/logo_nutri_blanco.png" alt="Nutri Cafeterías" id="topLogo">
+  <div class="center"><span>Propuesta para el</span><span class="uv"><img src="/propuestas/tec-santa-fe/img/logo_tec.png" alt="TEC"></span></div>
+  <button class="btn-menu" onclick="openMenuHere()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 3c-2 1.5-3 4-3 7h3v11"/></svg><span>Ver menú<span class="bm-long"> completo </span></span></button>
+</div>
+
+<!-- ===== PORTADA ===== -->
+<section class="scene" id="cover">
+  <img class="bg" src="/propuestas/tec-santa-fe/img/R01_foodcourt_lateral.jpg" alt="">
+  <img class="bg carr" src="/propuestas/tec-santa-fe/img/R02_foodcourt_frente.jpg" alt="" style="--i:1;--n:4">
+  <img class="bg carr" src="/propuestas/tec-santa-fe/img/R04_prepa.jpg" alt="" style="--i:2;--n:4">
+  <img class="bg carr" src="/propuestas/tec-santa-fe/img/R03_foodcourt_noche.jpg" alt="" style="--i:3;--n:4">
+  <div class="veil"></div>
+  <div class="content">
+    <div class="kicker" style="color:var(--amber)">Tecnológico de Monterrey · Campus Santa Fe</div>
+    <h1 style="margin-top:14px">Así se va a comer<br>en el Tec</h1>
+    <p class="lead">Una cafetería que abre a las 6:30 y sirve comida caliente hasta las 10 de la noche. NutriExpress en la prepa. Tres tótems y una app para pedir sin fila y pagar con tu huella.</p>
+    <button class="cta" onclick="go(1)">Empezar el recorrido <span class="arrow">→</span></button>
+  </div>
+  <div class="foot">Nutri Cafeterías · Septiembre 2026</div>
+</section>
+
+<!-- ===== ECOSISTEMA ===== -->
+<section class="scene light" id="eco">
+  <div class="wrap">
+    <div>
+      <div class="kicker">El proyecto</div>
+      <h1>Dos puntos, tres tótems,<br>una sola app</h1>
+      <p class="lead">Desde cualquier tótem o desde la app pides para el food court o para la prepa, pagas con tu huella y recoges sin fila. Toca un punto para verlo.</p>
+      <div class="nodes">
+        <button class="node" data-ir="cafeteria"><span class="dot" style="background:#1F5D3B">01</span><div><b>Nutri Cafetería · food court</b><span>Ensaladas, paninis, comida del día, jugos y café · 6:30 a 22:00</span></div></button>
+        <button class="node" data-ir="express"><span class="dot" style="background:#F39C12;color:#26241F">02</span><div><b>NutriExpress · Prepa Tec</b><span>Açaí, smoothies y paninis · cero sellos</span></div></button>
+        <button class="node" data-ir="sinfila"><span class="dot" style="background:#6EAF4A;color:#0E3421">03</span><div><b>3 tótems + app</b><span>Edificios I–III, Centro Estudiantil y Prepa</span></div></button>
+        <button class="node" data-ir="colaboradores"><span class="dot" style="background:#0039A6">04</span><div><b>Colaboradores del Tec</b><span>10 % de descuento, crédito quincenal y Mi Apoyo</span></div></button>
+      </div>
+    </div>
+    <div>
+      <svg class="map" viewBox="0 0 663 400" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat">
+  <!-- Plano estilizado del Campus Santa Fe (inspirado en el plano oficial, no a escala). Puntos clicables con data-ir. -->
+  <defs>
+    <style>
+      .tm-ruta{fill:none;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:3 5;animation:tmFlujo 1.1s linear infinite}
+      @keyframes tmFlujo{to{stroke-dashoffset:-16}}
+      .tm-clic{cursor:pointer}
+      .tm-clic:hover .tm-nodo{filter:brightness(1.15)}
+    </style>
+    <radialGradient id="tmGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#6EAF4A" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#6EAF4A" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="tmGrid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r=".7" fill="#2E6B47"/>
+    </pattern>
+    <linearGradient id="tmCampus" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17482E"/>
+      <stop offset="1" stop-color="#123C26"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="663" height="400" rx="20" fill="#0E3421"/>
+  <rect width="663" height="400" rx="20" fill="url(#tmGrid)"/>
+
+  <!-- Av. Carlos Lazo -->
+  <path d="M34 0 C30 120 30 260 40 400" stroke="#1D5237" stroke-width="16" fill="none"/>
+  <path d="M34 0 C30 120 30 260 40 400" stroke="#2E6B47" stroke-width="1" stroke-dasharray="6 6" fill="none"/>
+  <text x="26" y="210" font-size="6.5" font-weight="800" fill="#5E9170" text-anchor="middle" transform="rotate(-90 26 210)" letter-spacing="2">AV. CARLOS LAZO</text>
+
+  <!-- terreno del campus -->
+  <path d="M55 108 L109 110 L143 98 L232 56 L308 36 L351 28 L431 56 L491 59 L537 6 L566 6 L546 127 L504 166 L375 193 L358 225 L365 249 L477 255 L486 296 L332 350 L232 365 L80 394 L76 296 L56 207 Z"
+        fill="url(#tmCampus)" stroke="#3E8B54" stroke-width="1.2" stroke-opacity=".55"/>
+  <!-- circuito interior -->
+  <path d="M70 120 L150 112 L232 72 L352 44 L430 70 L500 70" stroke="#245C3D" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M226 100 L226 300 L300 312" stroke="#245C3D" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M300 205 L350 212 L360 250 L420 262" stroke="#245C3D" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- estadio -->
+  <g>
+    <ellipse cx="172" cy="240" rx="44" ry="78" fill="none" stroke="#2D6FB0" stroke-opacity=".55" stroke-width="7"/>
+    <rect x="148" y="186" width="48" height="108" rx="6" fill="#1F5D3B" stroke="#3E8B54" stroke-width=".8"/>
+    <line x1="148" y1="240" x2="196" y2="240" stroke="#3E8B54" stroke-width=".8"/>
+    <circle cx="172" cy="240" r="8" fill="none" stroke="#3E8B54" stroke-width=".8"/>
+    <text x="172" y="330" font-size="6.5" font-weight="700" fill="#6F9E7E" text-anchor="middle" letter-spacing="1">ESTADIO BORREGOS</text>
+  </g>
+
+  <!-- edificios de contexto -->
+  <g fill="#1B4D33" stroke="#3E8B54" stroke-width=".8" stroke-opacity=".7">
+    <path d="M300 84 L338 72 L362 88 L356 122 L318 128 L300 110 Z"/>
+    <rect x="318" y="152" width="40" height="34" rx="3" transform="rotate(-14 338 169)"/>
+    <rect x="366" y="140" width="40" height="36" rx="3" transform="rotate(-14 386 158)"/>
+    <rect x="412" y="128" width="42" height="34" rx="3" transform="rotate(-14 433 145)"/>
+    <rect x="244" y="160" width="40" height="22" rx="3"/>
+    <path d="M214 318 L300 300 L310 342 L224 360 Z"/>
+    <path d="M334 290 L398 276 L406 312 L342 326 Z"/>
+    <rect x="414" y="262" width="54" height="30" rx="6" transform="rotate(-18 441 277)" fill="#173F2A"/>
+  </g>
+  <g font-size="6" font-weight="700" fill="#7FA88A" text-anchor="middle" letter-spacing=".6">
+    <text x="330" y="103">FEMSA</text>
+    <text x="338" y="172">EDIF. I</text>
+    <text x="386" y="161">EDIF. II</text>
+    <text x="433" y="148">EDIF. III</text>
+    <text x="264" y="196">SALÓN DE CONGRESOS</text>
+    <text x="262" y="339">CENTRO ESTUDIANTIL</text>
+    <text x="370" y="341">PREPA TEC</text>
+    <text x="446" y="306">CENTRO DEPORTIVO</text>
+  </g>
+
+  <!-- rutas: desde cualquier tótem se pide para el food court o para prepa -->
+  <path class="tm-ruta" stroke="#F7B24C" d="M340 131 C310 128 280 138 258 146"/>
+  <path class="tm-ruta" stroke="#F7B24C" d="M262 312 C240 260 238 190 252 156"/>
+  <path class="tm-ruta" stroke="#C7E3B4" d="M270 314 C300 322 340 312 366 302"/>
+  <path class="tm-ruta" stroke="#C7E3B4" d="M346 138 C372 180 380 250 374 286"/>
+  <path class="tm-ruta" stroke="#C7E3B4" d="M347 292 L364 297"/>
+
+  <!-- Nutri Cafetería · food court -->
+  <g class="tm-clic" data-ir="cafeteria">
+    <circle cx="252" cy="148" r="40" fill="url(#tmGlow)"/>
+    <circle cx="252" cy="148" r="15" fill="none" stroke="#6EAF4A" stroke-width="1.5">
+      <animate attributeName="r" values="15;32" dur="2.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".9;0" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle class="tm-nodo" cx="252" cy="148" r="15" fill="#6EAF4A" stroke="#F7F3EA" stroke-width="2"/>
+    <path d="M245 153 c0-7 5-12 13-13 -1 8 -6 13 -13 13z M245 153 l6-6" fill="none" stroke="#0E3421" stroke-width="1.8" stroke-linecap="round"/>
+    <rect x="96" y="118" width="130" height="34" rx="9" fill="#0E3421" stroke="#6EAF4A" stroke-width="1"/>
+    <text x="106" y="132" font-size="8.5" font-weight="900" fill="#F7F3EA" letter-spacing=".4">NUTRI CAFETERÍA</text>
+    <text x="106" y="144" font-size="6.8" font-weight="700" fill="#C7E3B4">food court · 6:30 a 22:00</text>
+    <path d="M226 135 L237 142" stroke="#6EAF4A" stroke-width="1"/>
+  </g>
+
+  <!-- NutriExpress · Prepa Tec -->
+  <g class="tm-clic" data-ir="express">
+    <circle cx="376" cy="298" r="32" fill="url(#tmGlow)"/>
+    <circle cx="376" cy="298" r="12" fill="none" stroke="#F39C12" stroke-width="1.5">
+      <animate attributeName="r" values="12;27" dur="2.2s" begin=".7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".9;0" dur="2.2s" begin=".7s" repeatCount="indefinite"/>
+    </circle>
+    <circle class="tm-nodo" cx="376" cy="298" r="12" fill="#F39C12" stroke="#F7F3EA" stroke-width="2"/>
+    <path d="M378 290 l-6 9 h5 l-2 7 7-10 h-5z" fill="#26241F"/>
+    <rect x="392" y="318" width="118" height="34" rx="9" fill="#0E3421" stroke="#F39C12" stroke-width="1"/>
+    <text x="402" y="332" font-size="8.5" font-weight="900" fill="#F7F3EA" letter-spacing=".4">NUTRIEXPRESS</text>
+    <text x="402" y="344" font-size="6.8" font-weight="700" fill="#F7B24C">prepa · 6:30 a 18:00</text>
+    <path d="M384 307 L394 318" stroke="#F39C12" stroke-width="1"/>
+  </g>
+
+  <!-- 3 tótems -->
+  <g class="tm-clic" data-ir="sinfila" font-size="7" font-weight="900" text-anchor="middle">
+    <g>
+      <rect class="tm-nodo" x="332" y="124" width="16" height="16" rx="4" fill="#F7F3EA" transform="rotate(45 340 132)"/>
+      <text x="340" y="134.5" fill="#1F5D3B">T</text>
+    </g>
+    <g>
+      <rect class="tm-nodo" x="254" y="306" width="16" height="16" rx="4" fill="#F7F3EA" transform="rotate(45 262 314)"/>
+      <text x="262" y="316.5" fill="#1F5D3B">T</text>
+    </g>
+    <g>
+      <rect class="tm-nodo" x="332" y="283" width="16" height="16" rx="4" fill="#F7F3EA" transform="rotate(45 340 291)"/>
+      <text x="340" y="293.5" fill="#1F5D3B">T</text>
+    </g>
+    <circle cx="340" cy="132" r="9" fill="none" stroke="#F7F3EA" stroke-width="1">
+      <animate attributeName="r" values="9;20" dur="2.6s" begin="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".8;0" dur="2.6s" begin="1.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="262" cy="314" r="9" fill="none" stroke="#F7F3EA" stroke-width="1">
+      <animate attributeName="r" values="9;20" dur="2.6s" begin=".4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".8;0" dur="2.6s" begin=".4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="340" cy="291" r="9" fill="none" stroke="#F7F3EA" stroke-width="1">
+      <animate attributeName="r" values="9;20" dur="2.6s" begin="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values=".8;0" dur="2.6s" begin="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- norte -->
+  <g transform="translate(628 34)">
+    <circle r="14" fill="none" stroke="#3E8B54" stroke-width="1"/>
+    <path d="M0 -10 L5 4 L0 1 L-5 4 Z" fill="#C7E3B4"/>
+    <text y="-17" font-size="6.5" font-weight="800" fill="#7FA88A" text-anchor="middle">N</text>
+  </g>
+  <text x="600" y="22" font-size="7" font-weight="800" fill="#6EAF4A" text-anchor="end" letter-spacing="2">CAMPUS SANTA FE</text>
+
+  <!-- leyenda -->
+  <g font-size="7.2" font-weight="700" fill="#D7E3D2">
+    <rect x="510" y="200" width="138" height="118" rx="12" fill="#0B2A1B" stroke="#2E6B47"/>
+    <text x="522" y="218" font-size="6.5" font-weight="800" fill="#F7B24C" letter-spacing="1.6">EN EL CAMPUS</text>
+    <g class="tm-clic" data-ir="cafeteria"><circle cx="528" cy="234" r="6" fill="#6EAF4A"/><text x="540" y="236.5">Nutri Cafetería</text></g>
+    <g class="tm-clic" data-ir="express"><circle cx="528" cy="252" r="6" fill="#F39C12"/><text x="540" y="254.5">NutriExpress prepa</text></g>
+    <g class="tm-clic" data-ir="sinfila"><rect x="523" y="265" width="10" height="10" rx="2.5" fill="#F7F3EA" transform="rotate(45 528 270)"/><text x="540" y="272.5">3 tótems + app</text></g>
+    <path d="M522 288 h14" class="tm-ruta" stroke="#F7B24C"/>
+    <text x="540" y="290.5">pide para cualquier</text>
+    <text x="540" y="301">punto, recoge sin fila</text>
+  </g>
+
+  <text x="331" y="390" text-anchor="middle" font-size="7" font-weight="700" fill="#5E9170" letter-spacing="1.4">PLANO ILUSTRATIVO · TOCA UN PUNTO PARA VERLO</text>
+</svg>
+      <div class="dia"><div><b>6:30</b><span>early bird: café y fruta</span></div><div><b>10:00</b><span>pides en el tótem entre clases</span></div><div><b>14:00</b><span>comida del día ~$99</span></div><div><b>19:00</b><span>Cena Nutri ~$99</span></div><div><b>22:00</b><span>seguimos sirviendo</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CAFETERÍA PRINCIPAL (render héroe + estaciones) ===== -->
+<section class="scene" id="cafeteria">
+  <div class="stage">
+    <div class="heroBox" id="heroBox">
+      <img src="/propuestas/tec-santa-fe/img/R01_foodcourt_lateral.jpg" id="heroImg" alt="Nutri Cafetería en el food court del Tec" data-w="3200" data-h="1899">
+      <img id="closeImg" alt="">
+      <div id="hotspots"></div>
+    </div>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="badge">Render conceptual</div>
+  <div class="sceneTitle">
+    <div class="kicker">01 · Nutri Cafetería · food court</div>
+    <h1>Seis estaciones,<br>todo a la vista</h1>
+    <p>Toca una estación para conocerla</p>
+  </div>
+  <aside class="panel" id="panel">
+    <button class="close" onclick="unzoom()" aria-label="Cerrar">✕</button>
+    <div class="inner" id="panelInner"></div>
+    <div class="acts"><button class="b1" onclick="nextStation()">Siguiente estación →</button></div>
+  </aside>
+</section>
+
+<!-- ===== CONCEPTO · noche ===== -->
+<section class="scene light" id="noche">
+  <div class="split">
+    <div class="pic completa"><img class="fondo" src="/propuestas/tec-santa-fe/img/R03_foodcourt_noche.jpg" alt="" aria-hidden="true"><img src="/propuestas/tec-santa-fe/img/R03_foodcourt_noche.jpg" alt="La Nutri Cafetería de noche" style="object-position:center 55%"><div class="badge">Render conceptual</div></div>
+    <div class="txt">
+      <div class="kicker">02 · Horario extendido</div>
+      <div class="cafeBrand"><div class="logo" style="background:#26241F;color:#F7B24C"><span style="font-size:20px;letter-spacing:.06em">HASTA LAS 10</span><small>comida caliente toda la tarde y la noche</small></div></div>
+      <h1>Primeros en abrir,<br>últimos en cerrar</h1>
+      <p class="lead">Comida caliente de las 6:30 de la mañana a las 10 de la noche. Cuando el campus cierra la cocina, nosotros seguimos.</p>
+      <div class="facts"><div class="fact"><b>6:30</b><span>abrimos, lunes a viernes</span></div><div class="fact"><b>22:00</b><span>comida caliente hasta esa hora</span></div><div class="fact"><b>Sáb</b><span>de 8:00 a 15:00</span></div></div>
+      <div class="mini"><div class="h">Horarios</div><div class="row"><span>Nutri Cafetería · lunes a viernes</span><span>6:30–22:00</span></div><div class="row"><span>Nutri Cafetería · sábado</span><span>8:00–15:00</span></div><div class="row"><span>NutriExpress Prepa · lunes a viernes</span><span>6:30–18:00</span></div><div class="row"><span>Cena Nutri · 19:00 a 22:00 · panini o bowl + bebida</span><span>~$99</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONCEPTO · express ===== -->
+<section class="scene light" id="express">
+  <div class="split">
+    <div class="pic completa"><img class="fondo" src="/propuestas/tec-santa-fe/img/R04_prepa.jpg" alt="" aria-hidden="true"><img src="/propuestas/tec-santa-fe/img/R04_prepa.jpg" alt="NutriExpress en la Prepa Tec" style="object-position:center 55%"><div class="badge">Render conceptual</div></div>
+    <div class="txt">
+      <div class="kicker">03 · NutriExpress · Prepa Tec</div>
+      <div class="cafeBrand"><div class="logo" style="background:#F39C12;color:#26241F"><span style="font-size:20px;letter-spacing:.06em">NUTRIEXPRESS</span><small>prepa tec · 6:30 a 18:00</small></div></div>
+      <h1>Rápido, rico<br>y sin sellos</h1>
+      <p class="lead">Açaí, smoothies y jugos al frente; paninis y desayunos de la plancha. Pides en el tótem o en la app y recoges sin fila.</p>
+      <div class="facts"><div class="fact"><b>0 sellos</b><span>en todo lo que se vende a alumnos</span></div><div class="fact"><b>Sin cafeína</b><span>para alumnos</span></div><div class="fact"><b>Pick-up</b><span>pides antes, recoges sin fila</span></div></div>
+      <div class="mini"><div class="h">Menú de referencia</div><div class="row"><span>Açaí bowl · sin azúcar, granola de la casa</span><span>~$85</span></div><div class="row"><span>Smoothie sin azúcar añadida</span><span>~$55</span></div><div class="row"><span>Panini de la casa</span><span>~$69</span></div></div>
+      <button class="link" onclick="openMenu('express')">Ver menú completo de prepa →</button>
+      <div class="xbtns"><a class="xbtn uno" href="/propuestas/tec-santa-fe/snacks.html">Snacks →</a><a class="xbtn" href="/propuestas/tec-santa-fe/menu.html">Información nutrimental →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONCEPTO · sinfila ===== -->
+<section class="scene light" id="sinfila">
+  <div class="split">
+    <div class="pic"><img src="/propuestas/tec-santa-fe/img/R05_totem.jpg" alt="Tótem de pedido y pago con huella" style="object-position:68% center"></div>
+    <div class="txt">
+      <div class="kicker">04 · Tecnología</div>
+      <div class="cafeBrand"><div class="logo" style="background:#6EAF4A;color:#0E3421"><span style="font-size:20px;letter-spacing:.06em">SIN FILA</span><small>3 tótems · app · huella</small></div></div>
+      <h1>Pide en el tótem,<br>paga con tu huella</h1>
+      <p class="lead">Tótems en Edificios I–III, Centro Estudiantil y Prepa. Desde cualquiera, o desde la app, pides para el food court o la prepa y pagas con tu huella.</p>
+      <div class="facts"><div class="fact"><b>3 tótems</b><span>pides para cualquier punto</span></div><div class="fact"><b>App</b><span>pedido anticipado y saldo</span></div><div class="fact"><b>Huella</b><span>pagas en segundos</span></div></div>
+      <div class="mini"><div class="h">Cómo funciona</div><div class="row"><span>Pide en la app o en cualquier tótem</span><span>cuando quieras</span></div><div class="row"><span>Paga con tu huella</span><span>en segundos</span></div><div class="row"><span>Recoge en la repisa de pick-up</span><span>sin fila</span></div><div class="row"><span>Nutri Club: 10ª compra gratis y puntos</span><span>en la app</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONCEPTO · colaboradores ===== -->
+<section class="scene light" id="colaboradores">
+  <div class="split">
+    <div class="pic"><img src="/propuestas/tec-santa-fe/img/R06_colaboradores.jpg" alt="Beneficios para colaboradores del Tec" style="object-position:center"></div>
+    <div class="txt">
+      <div class="kicker">05 · Colaboradores del Tec</div>
+      <div class="cafeBrand"><div class="logo" style="background:#0039A6;color:#F7F3EA"><span style="font-size:20px;letter-spacing:.06em">COLABORADORES</span><small>10 % · crédito · Mi Apoyo</small></div></div>
+      <h1>Para quienes<br>hacen el Tec</h1>
+      <p class="lead">Profesores y personal comen mejor y pagan menos: descuento en todo, crédito que se paga cada quincena directo a Nutri, la comida del día dentro de Mi Apoyo Colaboradores y entrega en su cubículo.</p>
+      <div class="facts"><div class="fact"><b>10 %</b><span>de descuento en todo</span></div><div class="fact"><b>Crédito</b><span>quincenal; el Tec no interviene</span></div><div class="fact"><b>Mi Apoyo</b><span>comida del día al precio del Tec</span></div></div>
+      <div class="mini"><div class="h">Cómo funciona</div><div class="row"><span>10 % con tu credencial o tu cuenta en la app</span><span>en todo</span></div><div class="row"><span>Crédito Nutri con límite</span><span>cada quincena</span></div><div class="row"><span>Pides en la app y te lo llevamos</span><span>a tu cubículo</span></div><div class="row"><span>Pedido anticipado y pick-up</span><span>sin fila</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONCEPTO · dietas ===== -->
+<section class="scene light" id="dietas">
+  <div class="split">
+    <div class="pic"><img src="/propuestas/tec-santa-fe/img/R07_kosher.jpg" alt="Kosher, keto, sin gluten y vegetariano, señalizados" style="object-position:78% center"></div>
+    <div class="txt">
+      <div class="kicker">06 · Para todos</div>
+      <div class="cafeBrand"><div class="logo" style="background:#F7F3EA;color:#1F5D3B"><span style="font-size:20px;letter-spacing:.06em">KOSHER Y PARA TODOS</span><small>kosher · keto · sin gluten · vegetariano</small></div></div>
+      <h1>Cada quien come<br>lo que necesita</h1>
+      <p class="lead">Línea kosher empacada con certificación de fábrica, en su propia repisa. Keto, sin gluten y vegetariano, señalizados en el menú. Y la información nutrimental de cada platillo, en un QR.</p>
+      <div class="facts"><div class="fact"><b>Kosher</b><span>certificado de fábrica, señalizado</span></div><div class="fact"><b>4 etiquetas</b><span>kosher, keto, sin gluten y vegetariano</span></div><div class="fact"><b>QR</b><span>información nutrimental de cada platillo</span></div></div>
+      <div class="xbtns"><a class="xbtn uno" href="/propuestas/tec-santa-fe/menu.html">Ver información nutrimental →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONCEPTO · promos ===== -->
+<section class="scene light" id="promos">
+  <div class="split">
+    <div class="pic"><img src="/propuestas/tec-santa-fe/img/R08_promos.jpg" alt="Promociones de la Nutri Cafetería" style="object-position:center"></div>
+    <div class="txt">
+      <div class="kicker">07 · Promociones</div>
+      <div class="cafeBrand"><div class="logo" style="background:#F7B24C;color:#26241F"><span style="font-size:20px;letter-spacing:.06em">PROMOS NUTRI</span><small>early bird · cena · exámenes · nutri club</small></div></div>
+      <h1>Siempre hay una<br>razón para volver</h1>
+      <p class="lead">Pensadas para el ritmo del campus: temprano, en la noche y en semana de exámenes. Con Nutri Club, cada compra suma.</p>
+      <div class="facts"><div class="fact"><b>6:30</b><span>early bird hasta las 8:00</span></div><div class="fact"><b>19:00</b><span>Cena Nutri hasta las 22:00</span></div><div class="fact"><b>10ª</b><span>compra gratis en Nutri Club</span></div></div>
+      <div class="mini"><div class="h">Promociones</div><div class="row"><span>Early bird · americano + pan dulce o fruta</span><span>~$45</span></div><div class="row"><span>Early bird · desayuno del día</span><span>~$79</span></div><div class="row"><span>Cena Nutri · panini o bowl + agua fresca o jugo</span><span>~$99</span></div><div class="row"><span>Semana de exámenes · americano con refill</span><span>~$45</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CIERRE ===== -->
+<section class="scene conimg" id="cierre">
+  <div class="cimg" style="background-image:url('/propuestas/tec-santa-fe/img/R08_promos.jpg');background-position:30% center"></div>
+  <div class="wrap">
+    <div class="kicker" style="color:var(--amber)">¿Qué sigue?</div>
+    <h1 style="margin-top:12px">Todo esto, sin inversión<br>para el Tec</h1>
+    <div class="nums">
+      <div class="num"><b>~$3.29 MDP</b><span>de inversión de Nutri (sin IVA): obra, equipo, 3 tótems, app, imagen y capacitación</span></div>
+      <div class="num"><b>$0</b><span>de inversión para el Tec</span></div>
+      <div class="num plan"><b>Ene. 2027</b><span>abrimos el primer día de clases</span>
+        <ul class="hitos">
+          <li><i>Firma</i><em>octubre 2026</em></li>
+          <li><i>Toma de posesión</i><em>diciembre 2026</em></li>
+          <li><i>Nutri Cafetería, NutriExpress, 3 tótems y app</i><em>enero 2027</em></li>
+        </ul>
+        <div class="meta">Food court <strong>6:30–22:00</strong> · Prepa <strong>6:30–18:00</strong> · <strong>3 tótems</strong> y app desde el primer día</div>
+      </div>
+    </div>
+    <div class="cchips"><span>El Tec propone el esquema comercial</span><span>Desde 2018</span><span>UP e IPADE</span><span>NutrIncubadora</span></div>
+    <div class="ctas"><a class="p" href="/propuestas/tec-santa-fe/arma.html">🥗 Arma tu panini o ensalada</a><a class="s" href="/propuestas/tec-santa-fe/snacks.html">Ver los snacks</a><a class="s" href="/propuestas/tec-santa-fe/menu.html">Menú con calorías</a></div>
+    <div class="contact" style="margin-top:34px"><b>Ricardo Krasovsky</b> · Director General, Nutri Cafeterías<br>rkrasvosky@nutricafeteria.com.mx · 55 6703 4269 · cafeteriasescolares.com.mx</div>
+  </div>
+</section>
+
+<!-- ===== NAV ===== -->
+<div class="nav" id="nav">
+  <div class="step" id="step">1 / 10</div>
+  <div class="dots" id="dots"></div>
+  <div class="arrows"><button onclick="go(idx-1)" aria-label="Anterior">←</button><button onclick="go(idx+1)" aria-label="Siguiente">→</button></div>
+</div>
+
+<!-- ===== MODAL MENÚ ===== -->
+<div class="modal" id="modal" onclick="if(event.target===this)closeMenu()">
+  <button class="mnav prev" id="mPrev" onclick="menuPaso(-1)" aria-label="Menú anterior"><span class="arr">←</span><span class="lbl"></span></button>
+  <button class="mnav next" id="mNext" onclick="menuPaso(1)" aria-label="Menú siguiente"><span class="arr">→</span><span class="lbl"></span></button>
+  <div class="sheet">
+    <button class="close" onclick="closeMenu()" aria-label="Cerrar">✕</button>
+    <div class="mtabs" id="mTabs"></div>
+    <h2 id="mTitle">Menú de referencia</h2>
+    <div class="sub" id="mSub">Productos y precios aproximados</div>
+    <div class="cols" id="mCols"></div>
+  </div>
+</div>
+
+<!-- Datos de la escuela para el recorrido: los escribe tour.py a partir de tour.json -->
+<script type="application/json" id="datos-tour">{"textos":{"propuesta_para":"Propuesta para el","menu_boton":"Ver menú","menu_completo":"completo","menu_general":"","render":"Render conceptual","renders":"Renders conceptuales","portada_boton":"Recorrer el proyecto","cafeteria_ayuda":"Toca una estación para conocerla","siguiente_estacion":"Siguiente estación →","menu_de_referencia":"Menú de referencia","incluye":"Incluye","platillos":"platillos","precio_por_platillo":"precio aproximado por platillo","ver_menu_completo":"Ver menú completo →","modal_titulo":"Menú de referencia","modal_sub":"Productos y precios aproximados","revision_marca":"Opciones de nombre · solo en revisión","anterior":"Anterior","siguiente":"Siguiente","menu_anterior":"Menú anterior","menu_siguiente":"Menú siguiente","cerrar":"Cerrar"},"logos":{"nutri":"/propuestas/tec-santa-fe/img/logo_nutri.png","nutri_blanco":"/propuestas/tec-santa-fe/img/logo_nutri_blanco.png"},"escenas":[{"id":"cover","light":false,"ms":3500},{"id":"eco","light":true,"ms":4500},{"id":"cafeteria","light":false,"ms":2500},{"id":"noche","light":true,"ms":4500},{"id":"express","light":true,"ms":4500},{"id":"sinfila","light":true,"ms":4500},{"id":"colaboradores","light":true,"ms":4500},{"id":"dietas","light":true,"ms":4500},{"id":"promos","light":true,"ms":4500},{"id":"cierre","light":false,"ms":5000}],"estaciones":[{"id":"ensalada","x":22,"y":62,"imagen":"","numero":"01","nombre":"ARMA TU ENSALADA","sub":"barra de ensaladas","icono_svg":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M4 20c0-8 6-14 16-16-1 10-7 16-16 16z\"/><path d=\"M4 20l8-8\"/><\/svg>","bg":"#C7E3B4","fg":"#1F5D3B","color_nombre":"#1F5D3B","frase":"Tu ensalada, a tu manera, en dos minutos.","puntos":["Base, proteína, 4 toppings y aderezo","Pollo, atún, panela, huevo o garbanzo","Se arma frente a ti con ingredientes del día"],"menu":[["Arma tu ensalada","~$89","Base + 1 proteína + 4 toppings + aderezo"],["Ensaladas de la casa","~$95","Nutri de pollo y fresa · César · Mexicana · Mediterránea de atún"],["Proteína extra · premium","+$20 · +$15","Aguacate, nuez o queso de cabra"]],"en_carta":true,"izquierda":false},{"id":"panini","x":47,"y":64,"imagen":"","numero":"02","nombre":"ARMA TU PANINI","sub":"a la plancha","icono_svg":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M3 9h18M3 13h18M5 17h14M4 9c0-3 4-5 8-5s8 2 8 5\"/><\/svg>","bg":"#5B5346","fg":"#F7F3EA","color_nombre":"#5B5346","frase":"Pan, proteína, queso y tres verduras. Sale dorado en minutos.","puntos":["Pan artesanal del día","Cinco paninis de la casa, uno vegetariano","Pídelo en el tótem y recógelo caliente"],"menu":[["Arma tu panini","~$79","Pan + proteína + queso + 3 verduras + aderezo"],["Paninis de la casa","~$85","El Clásico · Pollo Pesto · El Italiano · Carnes Frías · Caprese"],["Extras","+$10 a +$20","Proteína +$20 · aguacate +$15 · queso +$10"]],"en_carta":true,"izquierda":false},{"id":"cocina","x":68,"y":77,"imagen":"","numero":"03","nombre":"COCINA NUTRI","sub":"comida del día y a la carta","icono_svg":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-6 1-9z\"/><\/svg>","bg":"#F39C12","fg":"#26241F","color_nombre":"#F39C12","frase":"Comida del día completa y una carta que se antoja.","puntos":["Comida del día: sopa, fuerte, guarnición, agua con refill y postre"],"menu":[["Comida del día","~$99"],["Desayuno del día · con café o jugo","~$89"],{"tier":"Antojitos","price":"~$59","items":[{"n":"Quesadillas","d":"Dos piezas"},{"n":"Molletes","d":"Con frijoles y queso gratinado"},{"n":"Tacos dorados","d":"Tres piezas"},{"n":"Hotcakes de avena"}]},{"tier":"Clásicos","price":"~$95","items":[{"n":"Mr. Burro","g":"350 g"},{"n":"Enchiladas suizas"},{"n":"Enfrijoladas"},{"n":"Flautas ahogadas"},{"n":"Milanesa de pollo","d":"Con ensalada"},{"n":"Pechuga a la plancha","d":"Con dos guarniciones"}]},{"tier":"Bowls Nutri","price":"~$109","items":[{"n":"Poke","d":"De atún"},{"n":"Teriyaki de pollo"},{"n":"Burrito bowl de arrachera"},{"n":"Bowl mediterráneo de falafel","d":"Vegetariano"}]},{"tier":"Especiales","price":"~$129","items":[{"n":"Arrachera","d":"Con guarnición"},{"n":"Hamburguesa Nutri","d":"Con papas al horno"},{"n":"Milanesa de res gratinada","d":"Con puré y ensalada"}]}],"en_carta":true,"izquierda":false,"nombre_ventana":"Cocina Nutri"},{"id":"jugos","x":14,"y":53,"imagen":"/propuestas/tec-santa-fe/img/R02_foodcourt_frente.jpg","numero":"04","nombre":"BARRA DE JUGOS","sub":"jugos, smoothies, açaí y café","icono_svg":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 3s6 6 6 11a6 6 0 0 1-12 0c0-5 6-11 6-11z\"/><\/svg>","bg":"#6EAF4A","fg":"#0E3421","color_nombre":"#6EAF4A","frase":"Todo al momento: jugos, smoothies, açaí y café.","puntos":["Açaí bowl sin azúcar con granola de la casa","Cafés fríos de sabores y malteadas","Refill de americano en tu termo"],"menu":[["Jugo natural","~$42","Naranja · verde · zanahoria"],["Smoothie","~$62","Frutos rojos · mango-maracuyá · verde"],["Açaí bowl","~$85"],["Agua fresca del día","~$25"],{"tier":"Café","price":"~$35–59","items":[{"n":"Americano","d":"~$35 · refill en tu termo ~$15"},{"n":"Latte o capuchino","d":"~$52"},{"n":"Frappé o cold brew","d":"~$59"},{"n":"Café frío de sabores","d":"Mazapán · cajeta · chocolate · ~$59"}]},{"tier":"Malteadas y nieves","price":"~$35–65","items":[{"n":"Malteada","d":"Vainilla · chocolate · fresa · ~$65"},{"n":"Nieve o paleta natural","d":"De fruta · ~$35"}]}],"en_carta":true,"izquierda":false},{"id":"takego","x":14,"y":46,"imagen":"/propuestas/tec-santa-fe/img/R02_foodcourt_frente.jpg","numero":"05","nombre":"TAKE &amp; GO","sub":"para llevar · línea kosher","icono_svg":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M3 10h18l-2 10H5L3 10zM8 10l3-6M16 10l-3-6\"/><\/svg>","bg":"#1F5D3B","fg":"#F7F3EA","color_nombre":"#1F5D3B","frase":"Tomas, pagas con tu huella y te vas.","puntos":["Snacks horneados, deshidratados o al vapor, nunca fritos","Línea kosher certificada, señalizada","Keto y sin gluten, señalizados"],"menu":[["Vaso de fruta · crudités","~$39 · ~$35"],["Parfait de yogurt griego","~$49"],["Wrap de pollo o veggie","~$69"],["Ensalada lista para llevar","~$79"],{"tier":"Snacks horneados","price":"~$29–49","items":[{"n":"Churritos de nopal o amaranto","g":"60 g","d":"Horneados · sal y limón o chilito"},{"n":"Tubitos de quinoa","g":"40 g","d":"Quinoa, amaranto y maíz"},{"n":"Crunchy mix","g":"50 g","d":"Mango enchilado, soya, churritos y veggies, horneado"},{"n":"Chips de camote o betabel","g":"50 g","d":"Deshidratados · limón y sal"},{"n":"Jícama o pepino deshidratados","g":"50 g","d":"Natural o con chile"},{"n":"Maicitos","g":"50 g","d":"Maíz inflado al vapor · sal o quesochile"}]},["Hazlo combo","+$29","Agua fresca o jugo chico + fruta o postre"]],"en_carta":true,"izquierda":false},{"id":"cajas","x":81,"y":62,"imagen":"","numero":"06","nombre":"PAGA CON TU HUELLA","sub":"cajas y pick-up","icono_svg":"<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M7 20c-1-3-1-6 0-9a6 6 0 0 1 11 2c0 3-1 5-2 7M10 20c-1-3 0-7 2-9M13 20c0-2 1-4 1-6\"/><\/svg>","bg":"#0039A6","fg":"#F7F3EA","color_nombre":"#0039A6","frase":"Sin cartera y sin fila.","puntos":["Dos cajas con lector de huella","Repisa de pick-up: tu pedido del tótem o la app te espera","Saldo, puntos y crédito en la misma cuenta"],"menu":[["Pedido anticipado desde la app o el tótem","—"],["Pago con huella, tarjeta o saldo","—"],["Nutri Club: puntos en cada compra","—"]],"en_carta":false,"izquierda":true}],"zoom":1.8,"cartas":[{"id":"cafeteria","pestana":"Nutri Cafetería","corto":"Food court","bg":"#1F5D3B","fg":"#F7F3EA","subtitulo":"Food court · L–V 6:30 a 22:00 · sáb 8:00 a 15:00 · precios aproximados","boton":"del food court"},{"id":"express","pestana":"NutriExpress Prepa","corto":"Prepa","bg":"#F39C12","fg":"#26241F","subtitulo":"Prepa Tec · L–V 6:30 a 18:00 · cero productos con sellos y sin cafeína para alumnos · precios aproximados","boton":"de prepa","secciones":[{"titulo":"Bowls y bebidas","filas":[["Açaí bowl","~$85","Sin azúcar, fruta y granola de la casa"],["Bowl de yogurt griego","~$59","Con fruta y granola"],["Smoothie sin azúcar añadida","~$55","Frutos rojos · mango · verde"],["Jugo natural","~$39"],["Agua fresca · agua natural","~$22 · ~$15"]]},{"titulo":"De la plancha","filas":[["Arma tu panini","~$79"],["Panini de la casa","~$69","Clásico · Pollo Pesto · Italiano"],["Burrito","~$39","De huevo · de frijoles con queso"],["Quesadilla · sincronizada","~$29 · ~$39"],["Molletes","~$45"],["Hotcakes de avena con fruta","~$55"]]},{"titulo":"Take &amp; go","filas":[["Vaso de fruta · crudités","~$35"],["Ensalada lista · wrap de pollo","~$69"],["Snacks y línea kosher, todo sin sellos","anaquel"]]},{"titulo":"Snacks sin sellos","filas":[{"tier":"Snacks horneados","price":"~$29–49","items":[{"n":"Churritos de nopal o amaranto","g":"60 g","d":"Horneados · sal y limón o chilito"},{"n":"Tubitos de quinoa","g":"40 g","d":"Quinoa, amaranto y maíz"},{"n":"Crunchy mix","g":"50 g","d":"Mango enchilado, soya, churritos y veggies, horneado"},{"n":"Chips de camote o betabel","g":"50 g","d":"Deshidratados · limón y sal"},{"n":"Jícama o pepino deshidratados","g":"50 g","d":"Natural o con chile"},{"n":"Maicitos","g":"50 g","d":"Maíz inflado al vapor · sal o quesochile"}]}]},{"titulo":"Docentes","filas":[["Americano · latte","~$35 · ~$52","No se vende a alumnos"]]}]}],"marcas":{"noche":[{"nombre":"HASTA LAS 10","sub":"comida caliente toda la tarde y la noche","bg":"#26241F","fg":"#F7B24C","estilo":"font-size:20px;letter-spacing:.06em"}],"express":[{"nombre":"NUTRIEXPRESS","sub":"prepa tec · 6:30 a 18:00","bg":"#F39C12","fg":"#26241F","estilo":"font-size:20px;letter-spacing:.06em"}],"sinfila":[{"nombre":"SIN FILA","sub":"3 tótems · app · huella","bg":"#6EAF4A","fg":"#0E3421","estilo":"font-size:20px;letter-spacing:.06em"}],"colaboradores":[{"nombre":"COLABORADORES","sub":"10 % · crédito · Mi Apoyo","bg":"#0039A6","fg":"#F7F3EA","estilo":"font-size:20px;letter-spacing:.06em"}],"dietas":[{"nombre":"KOSHER Y PARA TODOS","sub":"kosher · keto · sin gluten · vegetariano","bg":"#F7F3EA","fg":"#1F5D3B","estilo":"font-size:20px;letter-spacing:.06em"}],"promos":[{"nombre":"PROMOS NUTRI","sub":"early bird · cena · exámenes · nutri club","bg":"#F7B24C","fg":"#26241F","estilo":"font-size:20px;letter-spacing:.06em"}]},"autoplay":{"estacion":3200,"salida_cafeteria":1200}}</script>
+<script>
+const D = JSON.parse(document.getElementById('datos-tour').textContent);
+const T = D.textos;
+/* HTML → texto plano (para títulos que se escriben con textContent) */
+function txt(h){ const d = document.createElement('div'); d.innerHTML = h == null ? '' : h; return d.textContent; }
+
+/* ========= ESTACIONES (hotspots en % sobre el render hero) ========= */
+const STATIONS = D.estaciones;
+
+/* ========= ESCENAS ========= */
+const SCENES = D.escenas.map(e=>e.id);
+const LIGHT = {}; D.escenas.forEach(e=>{ if(e.light) LIGHT[e.id] = 1; });
+let idx = 0, currentStation = null;
+const $ = s => document.querySelector(s);
+
+function go(i){
+  if(i<0||i>=SCENES.length) return;
+  unzoom(true);
+  document.querySelectorAll('.scene').forEach(s=>s.classList.remove('active'));
+  idx=i; const id=SCENES[i]; $('#'+id).classList.add('active');
+  const light = !!LIGHT[id];
+  $('#top').classList.toggle('light', light); $('#nav').classList.toggle('light', light);
+  $('#topLogo').src = light ? D.logos.nutri : D.logos.nutri_blanco;
+  $('#step').textContent = (i+1)+' / '+SCENES.length;
+  document.querySelectorAll('#dots button').forEach((b,j)=>b.classList.toggle('on', j===i));
+  history.replaceState(null,'','#'+id);
+  if(id==='cafeteria') requestAnimationFrame(layoutHotspots);
+  if(document.body.classList.contains('anim')) contar($('#'+id));
+  const bm = document.querySelector('.btn-menu');
+  if(bm){
+    bm.classList.remove('pulse'); void bm.offsetWidth; bm.classList.add('pulse');   // pulso para que se note el menú
+    bm.querySelector('.bm-long').textContent = ' ' + [T.menu_completo, MENU_DE[id] || T.menu_general].filter(Boolean).map(txt).join(' ');
+  }
+}
+/* Números que cuentan hacia arriba al entrar a la escena (solo con portada.animado) */
+function contar(sc){
+  sc.querySelectorAll('.fact b').forEach(b=>{
+    const m=(b.dataset.orig||b.textContent).match(/^([^0-9]*)(\d+)(.*)$/s); if(!m) return;
+    b.dataset.orig=b.dataset.orig||b.textContent; const fin=+m[2]; if(fin<2) return;
+    let t0=null; const paso=ts=>{ if(!t0) t0=ts; const k=Math.min(1,(ts-t0)/900); b.textContent=m[1]+Math.round(fin*(1-Math.pow(1-k,3)))+m[3]; if(k<1) requestAnimationFrame(paso); };
+    requestAnimationFrame(paso);
+  });
+}
+/* Ir a una escena por su id: botones del ecosistema y puntos del plano llevan data-ir="<id>" */
+function irA(id){ const i = SCENES.indexOf(id); if(i>=0) go(i); }
+document.addEventListener('click', e=>{ const t = e.target.closest ? e.target.closest('[data-ir]') : null; if(t) irA(t.getAttribute('data-ir')); });
+function buildDots(){ $('#dots').innerHTML = SCENES.map((s,i)=>`<button onclick="go(${i})" aria-label="${s}"></button>`).join(''); }
+
+/* ========= HOTSPOTS ========= */
+function buildHotspots(){
+  if(!$('#hotspots')) return;
+  $('#hotspots').innerHTML = STATIONS.map(s=>`
+    <div class="hs ${s.izquierda?'left':''}" data-id="${s.id}">
+      <button onclick="focusStation('${s.id}')">${s.numero}</button><label>${s.nombre}</label>
+    </div>`).join('');
+  $('#chips').innerHTML = STATIONS.map(s=>`<button onclick="focusStation('${s.id}')">${s.numero} ${s.nombre}</button>`).join('');
+  layoutHotspots();
+}
+/* Coordenadas en % de la IMAGEN → px dentro de la caja (object-fit: cover) */
+function imgRect(){
+  const box=$('#heroBox'), img=$('#heroImg'); if(!box||!img) return {rw:0};
+  const bw=box.clientWidth, bh=box.clientHeight;
+  const iw=+img.dataset.w, ih=+img.dataset.h; const sc=Math.max(bw/iw, bh/ih);
+  const rw=iw*sc, rh=ih*sc; return {ox:(bw-rw)/2, oy:(bh-rh)/2, rw, rh};
+}
+function layoutHotspots(){
+  const r=imgRect(); if(!r.rw) return;
+  document.querySelectorAll('#hotspots .hs').forEach(el=>{
+    const s=STATIONS.find(x=>x.id===el.dataset.id);
+    el.style.left=(r.ox + s.x/100*r.rw)+'px'; el.style.top=(r.oy + s.y/100*r.rh)+'px';
+  });
+}
+window.addEventListener('resize', layoutHotspots);
+/* Una estación es "solo incluye" cuando todas sus filas llevan el precio '—' (servicios, no platillos) */
+const soloIncluye = s => s.menu.every(r=>Array.isArray(r) && r[1]==='—');
+function focusStation(id){
+  const s = STATIONS.find(x=>x.id===id); if(!s) return; currentStation=id;
+  const r=imgRect(); const img=$('#heroImg');
+  img.style.transformOrigin=`${r.ox + s.x/100*r.rw}px ${r.oy + s.y/100*r.rh}px`; img.style.transform=`scale(${D.zoom})`;
+  const ci=$('#closeImg'); if(s.imagen){ ci.src=s.imagen; ci.style.visibility=''; } else { ci.style.visibility='hidden'; }   // sin acercamiento: solo zoom al render
+  $('#cafeteria').classList.add('zoomed'); document.body.classList.add('zoomed');
+  $('#panelInner').innerHTML = `
+    <div class="brand"><div class="ico" style="background:${s.bg};color:${s.fg}">${s.icono_svg}</div><div><div class="nm" style="color:${s.color_nombre}">${s.nombre}</div><div class="sub">${s.numero}${s.sub ? ' · '+s.sub : ''}</div></div></div>
+    <div class="tag">${s.frase}</div>
+    ${s.puntos.length ? `<ul>${s.puntos.map(b=>`<li>${b}</li>`).join('')}</ul>` : ''}
+    ${s.menu.length ? `<div class="menu"><div class="h">${soloIncluye(s) ? T.incluye : T.menu_de_referencia}</div>${menuRows(s.menu, s.id)}</div>` : ''}`;
+  $('#panelInner').scrollTop = 0; panelFade();
+}
+/* Desvanecido inferior cuando el panel tiene más contenido abajo */
+function panelFade(){ const i=$('#panelInner'); if(i) i.classList.toggle('more', i.scrollTop + i.clientHeight < i.scrollHeight - 6); }
+if($('#panelInner')) $('#panelInner').addEventListener('scroll', panelFade);
+window.addEventListener('resize', ()=>{ if(currentStation) panelFade(); });
+/* Filas de menú: [platillo, precio, descripción opcional], {tier, price, items} para los niveles de la carta
+   o {enlace, carta} para un enlace a otra página del menú */
+function menuRows(rows, sid){
+  return rows.map((r,i)=>{
+    if(r.enlace) return `<button class="lnk" onclick="openMenu('${r.carta}')">${r.enlace}</button>`;
+    if(!Array.isArray(r)){
+      // En la tarjeta de la estación, cada categoría es un botón que abre sus platillos
+      if(sid) return `<button class="cat" onclick="openCat('${sid}',${i})"><span class="n">${r.tier}<small>${r.items.length} ${T.platillos}</small></span><span class="p">${r.price}</span><span class="go">›</span></button>`;
+      return `<div class="tier"><div class="row"><span>${r.tier}</span><span>${r.price}</span></div><div class="items">${r.items.map(it=>`<span>${it.n}</span>`).join('')}</div></div>`;
+    }
+    return `<div class="row"><span>${r[0]}${r[2] ? `<small>${r[2]}</small>` : ''}</span><span>${r[1]==='—' ? '' : r[1]}</span></div>`;
+  }).join('');
+}
+/* Ventana con los platillos de una categoría (p. ej. Premium, Clásicos, Antojitos) */
+function openCat(sid, i){
+  const s = STATIONS.find(x=>x.id===sid), t = s.menu[i];
+  $('#mTitle').textContent = txt(`${t.tier} · ${t.price}`);
+  const nombre = s.nombre_ventana || txt(s.nombre).toLowerCase().replace(/(^|\s)\S/g, c=>c.toUpperCase());
+  $('#mSub').textContent = `${txt(nombre)} · ${txt(T.precio_por_platillo)}`;
+  $('#modal').classList.remove('carta'); $('.sheet').classList.add('one');
+  $('#mCols').classList.remove('mas','in-next','in-prev');
+  $('#mCols').innerHTML = `<div class="sec">${t.items.map(it=>`<div class="dish"><div class="t"><b>${it.n}</b>${it.g ? `<em>${it.g}</em>` : ''}</div>${it.d ? `<span>${it.d}</span>` : ''}</div>`).join('')}</div>`;
+  $('#modal').classList.add('open');
+}
+function unzoom(silent){
+  const img=$('#heroImg'); if(!img) return;
+  img.style.transform='scale(1)'; $('#cafeteria').classList.remove('zoomed'); document.body.classList.remove('zoomed'); currentStation=null;
+}
+function nextStation(){
+  const i = STATIONS.findIndex(s=>s.id===currentStation);
+  if(i<STATIONS.length-1) focusStation(STATIONS[i+1].id); else { unzoom(); go(idx+1); }
+}
+
+/* ========= MARCA DE UN CONCEPTO (con opciones a elegir en ?review=1) ========= */
+const MARCA = {};
+function marcaDe(id){ const ms = D.marcas[id]; return ms && ms.length ? ms[MARCA[id]||0] : null; }
+function setMarca(id, k){
+  MARCA[id] = k; const b = marcaDe(id), el = document.querySelector(`#${id} .cafeBrand`); if(!b || !el) return;
+  el.innerHTML = `<div class="logo" style="background:${b.bg};color:${b.fg}"><span style="${b.estilo}">${b.nombre}</span><small>${b.sub}</small></div>`;
+  document.querySelectorAll(`#${id} .picker button`).forEach((x,j)=>x.classList.toggle('on', j===k));
+}
+
+/* ========= MENÚ MODAL ========= */
+/* Carrusel de cartas completas (orden en tour.json → menu.orden) con pestañas y flechas para avanzar o regresar */
+const CARTAS = D.cartas;
+const MENU_DE = {}; CARTAS.forEach(c=>{ if(c.boton) MENU_DE[c.id] = c.boton; });
+let cartaIdx = 0;
+function seccionesDe(id){
+  const c = CARTAS.find(x=>x.id===id);
+  if(id==='cafeteria'){
+    // Cafetería: la estación con carta por niveles va primero; ocupa su propia columna y todo cabe sin scroll
+    const conNiveles = s => s.menu.some(r=>!Array.isArray(r) && !r.enlace);
+    return STATIONS.filter(s=>s.en_carta).sort((a,b)=>conNiveles(b)-conNiveles(a)).map(s=>({h:s.nombre+(s.sub ? ' · '+s.sub : ''), rows:s.menu, bg:s.bg}));
+  }
+  const m = marcaDe(id);
+  return c.secciones.map(g=>({h:g.titulo, rows:g.filas, bg:g.color || (m ? m.bg : c.bg)}));
+}
+function openMenu(which){ if(!CARTAS.length) return; mostrarCarta(Math.max(0, CARTAS.findIndex(c=>c.id===which)), 0); }
+function mostrarCarta(i, dir){
+  cartaIdx = i; const c = CARTAS[i], m = $('#modal');
+  m.classList.add('carta'); $('.sheet').classList.remove('one');
+  $('#mTabs').innerHTML = CARTAS.map((x,j)=>`<button class="${j===i?'on':''}" style="${j===i?`background:${x.bg};border-color:${x.bg};color:${x.fg}`:''}" onclick="mostrarCarta(${j},${j>i?1:-1})">${x.pestana}</button>`).join('');
+  $('#mTitle').textContent = txt(c.pestana); $('#mSub').textContent = txt(c.subtitulo);
+  const secs = seccionesDe(c.id), cols = $('#mCols');
+  cols.classList.remove('mas','in-next','in-prev');
+  cols.innerHTML = secs.map(sec=>`<div class="sec"><div class="h"><span style="width:10px;height:10px;border-radius:50%;background:${sec.bg};display:inline-block"></span>${sec.h}</div>${menuRows(sec.rows)}</div>`).join('');
+  m.classList.add('open'); $('.sheet').scrollTop = 0;
+  repartirColumnas();
+  const prev = CARTAS[i-1], next = CARTAS[i+1];
+  $('#mPrev').classList.toggle('off', !prev); $('#mPrev .lbl').textContent = prev ? txt(prev.corto) : '';
+  $('#mNext').classList.toggle('off', !next); $('#mNext .lbl').textContent = next ? txt(next.corto) : '';
+  if(dir){ void cols.offsetWidth; cols.classList.add(dir>0 ? 'in-next' : 'in-prev'); }
+}
+function menuPaso(d){ const j = cartaIdx + d; if(j>=0 && j<CARTAS.length) mostrarCarta(j, d); }
+/* Reparte las secciones en columnas SIN cambiar su orden (se lee de arriba abajo y de izquierda a derecha):
+   prueba todos los cortes posibles y se queda con el que deja la columna más alta lo más baja posible */
+function repartirColumnas(){
+  const c = $('#mCols'), ancho = c.clientWidth, secs = [...c.children], k = secs.length;
+  const n = Math.min(ancho >= 760 ? 3 : ancho >= 500 ? 2 : 1, k);
+  if(n < 2) return;
+  const hs = secs.map(s=>s.offsetHeight + 20);
+  const suma = (a,b)=>hs.slice(a,b).reduce((x,y)=>x+y,0);
+  let mejor = null;
+  if(n === 2){ for(let i=1;i<k;i++){ const m = Math.max(suma(0,i), suma(i,k)); if(!mejor || m < mejor.m) mejor = {m, cortes:[i]}; } }
+  else { for(let i=1;i<k-1;i++) for(let j=i+1;j<k;j++){ const m = Math.max(suma(0,i), suma(i,j), suma(j,k)); if(!mejor || m < mejor.m) mejor = {m, cortes:[i,j]}; } }
+  const lim = [0, ...mejor.cortes, k];
+  c.classList.add('mas'); c.style.setProperty('--n', lim.length-1);
+  c.innerHTML = '';
+  for(let x=0; x<lim.length-1; x++){ const d = document.createElement('div'); d.className = 'mcol'; secs.slice(lim[x], lim[x+1]).forEach(s=>d.appendChild(s)); c.appendChild(d); }
+}
+function closeMenu(){ $('#modal').classList.remove('open'); }
+/* Botón "Ver menú" de arriba: muestra la carta de la pantalla actual (o la primera si la pantalla no tiene carta) */
+function openMenuHere(){ openMenu(SCENES[idx]); }
+
+/* ========= INPUT ========= */
+document.addEventListener('keydown', e=>{
+  if($('#modal').classList.contains('open')){
+    if(e.key==='Escape') closeMenu();
+    else if($('#modal').classList.contains('carta') && (e.key==='ArrowRight'||e.key==='ArrowLeft')){ e.preventDefault(); menuPaso(e.key==='ArrowRight'?1:-1); }
+    return;
+  }
+  if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); if(currentStation) nextStation(); else go(idx+1); }
+  if(e.key==='ArrowLeft'){ e.preventDefault(); go(idx-1); }
+  if(e.key==='Escape'){ unzoom(); }
+});
+let tx=0; document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{ const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)<=70) return;
+  const m=$('#modal');
+  if(m.classList.contains('open')){ if(m.classList.contains('carta')) menuPaso(dx<0?1:-1); return; }   // deslizar cambia de menú
+  if(!currentStation){ dx<0?go(idx+1):go(idx-1);} },{passive:true});
+
+/* ========= AUTOPLAY (para el video): tiempos por escena en tour.json → autoplay ========= */
+const params = new URLSearchParams(location.search);
+if(params.get('review')==='1') document.body.classList.add('review');
+async function autoplay(){
+  const wait = ms => new Promise(r=>setTimeout(r,ms));
+  document.body.classList.add('auto');
+  for(let i=0; i<D.escenas.length; i++){
+    const e = D.escenas[i];
+    go(i); await wait(e.ms);
+    if(e.id==='cafeteria' && STATIONS.length){
+      for(const s of STATIONS){ focusStation(s.id); await wait(s.autoplay_ms || D.autoplay.estacion); }
+      unzoom(); await wait(D.autoplay.salida_cafeteria);
+    }
+  }
+}
+
+/* ========= INIT ========= */
+buildDots(); buildHotspots();
+STATIONS.forEach(s=>{ if(s.imagen){ const i=new Image(); i.src=s.imagen; } });
+const start = SCENES.indexOf(location.hash.replace('#','')); go(start>=0?start:0);
+if(params.get('auto')==='1') autoplay();
+</script>
+</body>
+</html>
