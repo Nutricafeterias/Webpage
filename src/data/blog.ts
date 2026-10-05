@@ -26,6 +26,47 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'productos-sin-sellos-reformulados-cafeteria-escolar-exhorto-congreso-2026',
+    title: '"Sin sellos" no significa saludable: 5 revisiones que tu cafetería escolar necesita tras el exhorto del Congreso (octubre 2026)',
+    description:
+      'El Congreso pidió reforzar la prohibición de productos con sellos en escuelas, Salud reporta la primera baja en el consumo de refresco infantil y la industria reformula botanas para quedar sin octágonos. Qué debe revisar un director en su cafetería.',
+    date: '2026-10-05',
+    readTime: '6 min',
+    category: 'Guías para directores',
+    emoji: '🏷️',
+    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&h=630&fit=crop&q=85',
+    keywords: ['productos sin sellos escuelas', 'exhorto Congreso comida chatarra escuelas', 'productos reformulados cafetería escolar', 'lineamientos SEP alimentos escuelas particulares', 'consumo de refresco niños baja 2026', 'cafetería escolar saludable'],
+    related: [
+      { href: '/blog/fallo-scjn-comida-chatarra-escuelas-prohibicion-sigue-vigente', anchor: 'El fallo de la SCJN y la prohibición de comida chatarra en escuelas' },
+      { href: '/blog/ultraprocesados-comedor-escolar-cocina-desde-cero-tendencia-2026', anchor: 'Ultraprocesados en el comedor escolar: la tendencia de cocinar desde cero' },
+      { href: '/diagnostico', anchor: 'Diagnóstico gratuito de tu cafetería escolar' },
+    ],
+    content: [
+      { type: 'p', text: 'Las últimas dos semanas de septiembre dejaron tres noticias que, juntas, cambian la conversación sobre la comida en las escuelas. El 25 de septiembre la Comisión Permanente del Congreso aprobó un exhorto para que las autoridades educativas hagan cumplir la prohibición de vender alimentos y bebidas con sellos de advertencia en los 262,547 planteles públicos y privados del país. El 29 de septiembre, en la conferencia presidencial, el secretario de Salud, David Kershenobich, reportó que el consumo de refresco en la población infantil bajó 2.2%, la primera disminución que se registra en esa población desde que arrancó la estrategia "Vive saludable, vive feliz". Y días antes, la Presidenta confirmó que la prohibición se mantiene pese a los amparos de la industria.' },
+      { type: 'p', text: 'Para un director de escuela particular, el mensaje es claro: la regla no se va a relajar, y la vigilancia va a crecer. Pero hay un matiz que casi nadie está revisando: el riesgo ya no es el producto con cinco octágonos. Es el producto que fue rediseñado para no tener ninguno.' },
+      { type: 'h2', text: 'Qué pidió el Congreso (y qué no)' },
+      { type: 'p', text: 'El exhorto no crea nuevas restricciones. Refuerza las que son obligatorias desde el 29 de marzo de 2025, cuando entraron en vigor los lineamientos de la SEP para la preparación, distribución y venta de alimentos y bebidas en escuelas del Sistema Educativo Nacional. Lo que pide es que las autoridades educativas estatales, municipales y de las alcaldías de la Ciudad de México vigilen su cumplimiento, incluyendo el entorno de los planteles. En otras palabras: menos discurso y más supervisión.' },
+      { type: 'p', text: 'El contexto explica por qué. La SEP ha reportado que 86% de las escuelas consultadas eliminó la venta de comida chatarra, pero en el ciclo 2024-2025 la plataforma "Mi Escuela Saludable", de El Poder del Consumidor y REDIM, recibió reportes contra 20,262 primarias y secundarias por incumplir la restricción. El 14% restante es justo donde se va a concentrar la atención.' },
+      { type: 'h2', text: 'El nuevo punto ciego: los productos reformulados' },
+      { type: 'p', text: 'Según una nota de agencia publicada por Infobae el 25 de septiembre, la industria de botanas está reformulando productos para quedar fuera de los sellos, por ejemplo cambiando la fritura por procesos como la deshidratación. Entre julio y agosto, El Poder del Consumidor analizó 31 productos promocionados para el entorno escolar y denunció posibles incumplimientos del etiquetado frontal en algunos de ellos. Su advertencia es la que importa para la cafetería: quitarle un sello a un producto no necesariamente mejora su perfil nutricional.' },
+      { type: 'p', text: 'Esto pone al director en una posición incómoda. Un producto sin octágonos puede venderse, pero si la familia o la autoridad lo percibe como "chatarra disfrazada", el costo reputacional es el mismo. Y en una escuela particular, la reputación de la cafetería es parte de la reputación del colegio.' },
+      { type: 'h2', text: '5 revisiones para hacer este mes' },
+      { type: 'ul', items: [
+        'Inventario de empaquetados: pide a tu cafetería la lista completa de productos procesados que vende hoy, con foto de la etiqueta frontal. Si algún producto trae aunque sea un sello o leyenda precautoria, no debe estar en el anaquel.',
+        'Cambios de presentación: pregunta qué productos cambiaron de receta o de empaque en los últimos meses. Un producto "nuevo y mejorado" merece una segunda lectura de su tabla nutrimental, no solo de su frente.',
+        'Proporción preparado vs. empaquetado: entre más se cocine en sitio con ingredientes frescos, menos dependes de lo que la industria decida reformular. Revisa qué porcentaje del menú es comida preparada.',
+        'Bebidas: la baja en el consumo de refresco infantil es la mejor noticia del año en salud escolar. Asegúrate de que tu cafetería empuje agua simple y bebidas sin azúcar añadida, no sustitutos con edulcorantes que los lineamientos también restringen.',
+        'Evidencia lista para la visita: si la supervisión llega, la escuela debe poder mostrar el menú vigente, la lista de productos y quién es responsable de que cumplan. Que esa carpeta exista antes de que alguien la pida.',
+      ] },
+      { type: 'quote', text: 'Cumplir con los lineamientos ya no es quitar lo que tiene sellos. Es poder explicarle a cualquier familia, con evidencia, por qué cada producto de tu cafetería está ahí.' },
+      { type: 'h2', text: 'Lo que viene' },
+      { type: 'p', text: 'La Presidencia anunció una campaña nacional sobre alimentación equilibrada y actividad física para octubre, y los amparos siguen en tribunales sin suspender la norma. Todo apunta a que el ciclo 2026-2027 será el de la supervisión. Las escuelas que ya tienen una cafetería con menú preparado en sitio y criterios claros de compra van a vivir el exhorto como un trámite; las que dependen del anaquel de empaquetados, como una auditoría.' },
+      { type: 'h2', text: 'Cómo lo resolvemos en Nutri Cafeterías' },
+      { type: 'p', text: 'En Nutri Cafeterías operamos cafeterías escolares desde 2018, con menús diseñados bajo los lineamientos de la SEP y procesos alineados a la NOM-251. Nuestra base es comida preparada en sitio, el pago es con huella digital y la escuela no hace ninguna inversión para tener una cafetería que cumpla y que las familias recomienden.' },
+      { type: 'p', text: '¿Quieres saber cómo saldría tu cafetería en una revisión? Haz el diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo y revisamos juntos tu lista de productos antes de que lo haga la autoridad.' },
+    ],
+  },
+  {
     slug: 'prohibicion-celulares-escuelas-sep-3-noviembre-recreo-cafeteria',
     title: 'Adiós al celular en el recreo desde el 3 de noviembre: 5 cosas que tu cafetería escolar debe resolver antes (guía SEP 2026)',
     description:
