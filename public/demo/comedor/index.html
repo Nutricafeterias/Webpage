@@ -232,12 +232,12 @@ input:focus,select:focus{border-color:var(--verde2)}
 <script>
 "use strict";
 /* ================= datos fijos ================= */
-const PRECIO=38, SEMANA_N=5, SEMANA_P=190, MES_N=20, MES_P=740, COMISION=0.02;
+const PRECIO=38, PRECIO_MES=37, COMISION=0.02;
 const CAMARA='http://127.0.0.1:8765';
 const UMBRAL=0.70, MARGEN=0.06, REAL_MIN=0.5;
 const MENU={ // 1=lunes … 5=viernes
- 1:{f:'Tinga de pollo',d:'Sopa de fideo · pepino y zanahoria · guayaba · agua natural'},
- 2:{f:'Albóndigas de res con espagueti',d:'Ensalada · sandía con chile piquín y limón · agua de piña'},
+ 1:{f:'Albóndigas de res con espagueti',d:'Ensalada · sandía con chile piquín y limón · agua de piña'},
+ 2:{f:'Tinga de pollo',d:'Sopa de fideo · pepino y zanahoria · guayaba · agua natural'},
  3:{f:'Tacos suaves de pollo con frijoles',d:'Sopa de letras · nopales asados · plátano · agua natural'},
  4:{f:'Picadillo de res con papa y zanahoria',d:'Arroz rojo · jícama y pepino · papaya · agua de limón con chía'},
  5:{f:'Torta de huevo con verduras y frijoles',d:'Sopa de coditos · lechuga y jitomate · naranja · agua natural'},
@@ -264,14 +264,23 @@ const hijo=()=>E.hijos[E.sel];
 /* ================= fechas ================= */
 const hoy0=()=>{const d=new Date();d.setHours(0,0,0,0);return d};
 const clave=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-const habil=d=>d.getDay()>=1&&d.getDay()<=5;
-function diasHabiles(desde,n){const r=[];const d=new Date(desde);while(r.length<n){if(habil(d))r.push(new Date(d));d.setDate(d.getDate()+1)}return r}
-function primerComprable(){const d=hoy0();d.setDate(d.getDate()+1);while(!habil(d))d.setDate(d.getDate()+1);return d}
+// Calendario escolar SEP 2026-2027 (clases del 31-ago-2026 al 9-jul-2027).
+const SIN_CLASES=new Set(['2026-10-30','2026-11-02','2026-11-16','2026-11-27','2027-01-06','2027-01-29','2027-02-01','2027-02-26','2027-03-15','2027-04-30','2027-05-05','2027-05-28','2027-06-25']);
+const RANGOS_VAC=[['2026-12-21','2027-01-05'],['2027-03-22','2027-04-02']];
+const FIN_CICLO='2027-07-09';
+const MOTIVO={'2026-10-30':'Consejo Técnico','2026-11-02':'Día de Muertos','2026-11-16':'Revolución Mexicana','2026-11-27':'Consejo Técnico','2027-01-06':'Día de Reyes','2027-01-29':'Consejo Técnico','2027-02-01':'Día de la Constitución','2027-02-26':'Consejo Técnico','2027-03-15':'Natalicio de Benito Juárez','2027-04-30':'Consejo Técnico','2027-05-05':'Batalla de Puebla','2027-05-28':'Consejo Técnico','2027-06-25':'Consejo Técnico'};
+const habil=d=>{if(d.getDay()<1||d.getDay()>5)return false;const k=clave(d);if(k>FIN_CICLO||SIN_CLASES.has(k))return false;return !RANGOS_VAC.some(([a,b])=>k>=a&&k<=b)};
+function diasHabiles(desde,n){const r=[];const d=new Date(desde);while(r.length<n&&clave(d)<=FIN_CICLO){if(habil(d))r.push(new Date(d));d.setDate(d.getDate()+1)}return r}
+// Regla de «un día antes» DESACTIVADA por ahora (Ricardo, 16-oct): se puede comprar de hoy para hoy.
+function primerComprable(){const d=hoy0();while(!habil(d))d.setDate(d.getDate()+1);return d}
 const fechaLarga=d=>DIAS[d.getDay()][0].toUpperCase()+DIAS[d.getDay()].slice(1)+' '+d.getDate()+' de '+MESES[d.getMonth()];
 const hora=()=>{const d=new Date();return d.getHours()+':'+String(d.getMinutes()).padStart(2,'0')};
-const pesos=n=>'$'+n.toLocaleString('es-MX',{minimumFractionDigits:0,maximumFractionDigits:2});
+const pesos=n=>{const e=Math.abs(n-Math.round(n))<0.005;return '$'+n.toLocaleString('es-MX',{minimumFractionDigits:e?0:2,maximumFractionDigits:e?0:2})};
 /* El día que se muestra en la entrada del comedor = el siguiente día hábil (lo que el papá ya pudo comprar). */
+// La entrada al comedor simula el siguiente día de clases (el primero que el papá puede comprar)
+// y solo deja pasar si compraron la comida de ESE día.
 const diaServicio=()=>primerComprable();
+const tieneComida=h=>h.comidas.includes(clave(diaServicio()));
 
 /* ================= utilidades UI ================= */
 const $=id=>document.getElementById(id);
@@ -305,7 +314,7 @@ const P={}, F={};
 P.bienvenida=()=>`<div class="cuerpo" style="display:flex;flex-direction:column;justify-content:center;padding-top:80px">
   <img class="logo-app" src="/demo/comedor/logo.png" alt="Nutri">
   <div style="text-align:center;font-size:36px;font-weight:800;color:var(--verde);line-height:1.1;margin-bottom:12px">La comida de tus hijos,<br>sin filas</div>
-  <div style="text-align:center;font-size:19px;color:var(--cacao);margin-bottom:44px;line-height:1.4">Compra sus comidas desde tu casa,<br>recarga su saldo y entérate cuando ya comieron.</div>
+  <div style="text-align:center;font-size:19px;color:var(--cacao);margin-bottom:44px;line-height:1.4">Compra sus comidas desde tu casa,<br>recarga su saldo y entérate cuando entran al comedor.</div>
   <button class="btn nar" data-ir="registro">Crear mi cuenta</button>
   <button class="btn sec" data-ir="registro">Ya tengo cuenta</button></div>`;
 
@@ -313,7 +322,7 @@ P.registro=()=>`${cab('Crea tu cuenta','Toma menos de un minuto','bienvenida')}
   <div class="cuerpo">
   <button class="ejemplo" id="llenar">✨ Llenar con un ejemplo</button>
   <div class="campo"><label>Nombre(s)</label><input id="rNom" placeholder="Nombre(s)" autocomplete="off"></div>
-  <div class="campo"><label>Apellidos</label><input id="rApe" placeholder="Apellido paterno y materno" autocomplete="off"></div>
+  <div class="campo"><label>Apellidos</label><input id="rApe" placeholder="Ej. Martínez López" autocomplete="off"></div>
   <div class="campo"><label>Celular</label><input id="rCel" inputmode="numeric" placeholder="55 0000 0000" autocomplete="off"></div>
   <div class="campo"><label>Contraseña</label><input id="rPas" type="password" placeholder="Mínimo 6 caracteres" autocomplete="off"></div>
   <div class="aviso">Con tu cuenta compras las comidas de <b>todos tus hijos</b> y recibes un aviso cuando entran al comedor.</div>
@@ -327,7 +336,8 @@ F.registro=()=>{
 P.hijo=()=>`${cab(datos.primero?'Agrega a tu hijo':'Agregar otro hijo','Uno por uno, los que quieras',E.hijos.length?'inicio':'')}
   <div class="cuerpo">
   <button class="ejemplo" id="llenar">✨ Llenar con un ejemplo</button>
-  <div class="campo"><label>Nombre de tu hijo o hija</label><input id="hNom" placeholder="Nombre" autocomplete="off"></div>
+  <div class="campo"><label>Nombre(s) de tu hijo o hija</label><input id="hNom" placeholder="Nombre(s)" autocomplete="off"></div>
+  <div class="campo"><label>Apellidos</label><input id="hApe" placeholder="Ej. Martínez López" value="${esc((E.papa&&E.papa.apellidos)||'')}" autocomplete="off"></div>
   <div class="campo"><label>Grado y grupo</label><select id="hGr">${GRADOS.map(g=>`<option>${g}</option>`).join('')}</select></div>
   <div class="h2">¿Tiene alguna alergia?</div>
   <div class="chips" id="hAl" style="flex-wrap:wrap">${['Ninguna','Cacahuate','Lácteos','Gluten','Huevo','Mariscos'].map((a,i)=>`<button class="chip${i==0?' on':''}" data-a="${a}" style="padding:12px 18px">${a}</button>`).join('')}</div>
@@ -337,14 +347,14 @@ F.hijo=()=>{
   const al=$('hAl');al.onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;
     if(b.dataset.a==='Ninguna'){al.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===b))}
     else{b.classList.toggle('on');al.querySelector('[data-a="Ninguna"]').classList.toggle('on',!al.querySelector('.chip.on:not([data-a="Ninguna"])'))}};
-  $('llenar').onclick=()=>{const usados=E.hijos.map(h=>h.nombre);const ej=EJ_HIJOS.find(x=>!usados.includes(x[0]))||EJ_HIJOS[0];$('hNom').value=ej[0];$('hGr').value=ej[1]};
+  $('llenar').onclick=()=>{const usados=E.hijos.map(h=>h.nombre);const ej=EJ_HIJOS.find(x=>!usados.includes(x[0]))||EJ_HIJOS[0];$('hNom').value=ej[0];if(!$('hApe').value)$('hApe').value=(E.papa&&E.papa.apellidos)||'Martínez López';$('hGr').value=ej[1]};
   $('hOk').onclick=()=>{const n=$('hNom').value.trim();if(!n){$('hNom').focus();return}
     const alergias=[...al.querySelectorAll('.chip.on')].map(c=>c.dataset.a).filter(a=>a!=='Ninguna');
-    E.hijos.push({nombre:n,grupo:$('hGr').value,alergias,saldo:0,comidas:[],rostro:null});E.sel=E.hijos.length-1;guardar();
-    ir('hijoListo')};
+    E.hijos.push({nombre:n,apellidos:$('hApe').value.trim(),grupo:$('hGr').value,alergias,saldo:0,comidas:[],rostro:null});E.sel=E.hijos.length-1;guardar();
+    ir('rostro',{alta:true})};
 };
 P.hijoListo=()=>{const h=hijo();return `${cab('¡Listo!','','')}
-  <div class="cuerpo"><div class="exito"><div class="ok">✓</div><h2>${esc(h.nombre)} ya está en tu cuenta</h2><p>${esc(h.grupo)}${h.alergias.length?' · alergia: '+esc(h.alergias.join(', ')):''}</p></div>
+  <div class="cuerpo"><div class="exito"><div class="ok">✓</div><h2>${esc(h.nombre+(h.apellidos?' '+h.apellidos:''))} ya está en tu cuenta</h2><p>${esc(h.grupo)}${turno(h.grupo)?' · come a las '+turno(h.grupo)[0]+' h, comedor de '+turno(h.grupo)[1]:''}${h.alergias.length?'<br>Alergia: '+esc(h.alergias.join(', ')):''}<br>${h.rostro?'<b style="color:var(--verde)">✓ Rostro registrado: ya puede entrar al comedor</b>':'Puedes registrar su rostro después desde el inicio'}</p></div>
   <button class="btn sec" data-ir="hijo">＋ Agregar otro hijo</button>
   <button class="btn" data-ir="inicio">Continuar</button></div>`};
 
@@ -368,24 +378,66 @@ P.inicio=()=>{const h=hijo();if(!h)return P.hijo();
 F.inicio=()=>{document.querySelectorAll('[data-h]').forEach(b=>b.onclick=()=>{E.sel=+b.dataset.h;guardar();pintar()})};
 
 /* ----- recarga ----- */
-P.recarga=()=>{const h=hijo();const m=datos.monto||500;const com=Math.round(m*COMISION*100)/100;
-  return `${cab('Recargar saldo','Para '+h.nombre,'inicio')}
+const METODOS=[
+ {k:'TARJETA',n:'Tarjeta',d:'Crédito, débito o tarjeta del Bienestar.',tiempo:'El saldo se abona en cuanto se aprueba el pago (segundos).',ic:'💳',com:COMISION,btn:'Pagar con tarjeta'},
+ {k:'SPEI',n:'Transferencia SPEI',d:'Te damos una CLABE y el importe exacto. Transfiere desde la app de tu banco.',tiempo:'El saldo se abona al confirmarse la transferencia: normalmente minutos.',ic:'🏦',com:0,btn:'Obtener CLABE para transferir'},
+ {k:'OXXO',n:'Efectivo en OXXO',d:'Te damos una ficha con referencia. Paga en caja de cualquier OXXO el importe exacto.',tiempo:'El saldo se abona hasta 2 horas hábiles después de pagar.',ic:'🏪',com:COMISION,btn:'Obtener ficha para pagar en OXXO'},
+ {k:'WALLET',n:'Apple Pay / Google Pay',d:'Con la tarjeta que ya tienes en tu teléfono.',tiempo:'El saldo se abona en cuanto se aprueba el pago (segundos).',ic:'📱',com:COMISION,btn:'Pagar con Apple Pay / Google Pay'},
+];
+const comision=(m,met)=>Math.round(m*met.com*100)/100;
+P.recarga=()=>{const h=hijo();const otro=datos.otro||'';const m=otro?Number(otro):(datos.monto||200);const valido=m>=50&&m<=5000;
+  const met=METODOS.find(x=>x.k===(datos.met||'TARJETA'));const com=valido?comision(m,met):0;
+  return `${cab('Recargar a '+h.nombre,'Saldo actual: '+pesos(h.saldo),'inicio')}
   <div class="cuerpo">
    <div class="h2" style="margin-top:4px">¿Cuánto quieres recargar?</div>
-   <div class="montos">${[200,500,1000].map(v=>`<button class="monto${v==m?' on':''}" data-m="${v}">${pesos(v)}</button>`).join('')}</div>
-   <div class="h2">Paga con</div>
-   <div class="tc"><small>Tarjeta de prueba · no se cobra nada</small>4242 4242 4242 4242<div class="exp"><span>${esc((E.papa.nombre+' '+(E.papa.apellidos||'')).toUpperCase())}</span><span>12/29 · CVV 123</span></div></div>
-   <div class="aviso">Aceptamos <b>débito, crédito y tarjeta del Bienestar</b>. En la caja del comedor también puedes pagar con tarjeta o en efectivo, y por transferencia, <b>sin comisión</b>.</div>
-   <div class="tarjeta" style="margin-top:14px"><div class="resumen"><span>Recarga</span><span>${pesos(m)}</span></div>
-     <div class="resumen"><span>Comisión por pago en línea (2 %)</span><span>${pesos(com)}</span></div>
-     <div class="resumen t"><span>Total</span><span>${pesos(m+com)}</span></div></div>
-  </div><div class="pie-app"><button class="btn" id="pagar">Pagar ${pesos(m+com)}</button></div>`};
-F.recarga=()=>{document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{datos.monto=+b.dataset.m;pintar()});
-  $('pagar').onclick=()=>procesar(()=>{const h=hijo();const m=datos.monto||500;h.saldo+=m;guardar();
-    aviso('💳','Recarga exitosa',`${pesos(m)} al saldo de ${h.nombre}`,false);
-    return {t:'¡Recarga lista!',p:`${esc(h.nombre)} ya tiene <b>${pesos(h.saldo)}</b> de saldo`,sig:'comprar',sigT:'Comprar sus comidas'}})};
+   <div class="montos" style="grid-template-columns:repeat(4,1fr)">${[100,200,300,500].map(v=>`<button class="monto${!otro&&v==m?' on':''}" data-m="${v}">${pesos(v)}</button>`).join('')}</div>
+   <div class="campo" style="margin-top:12px"><label>Otro monto ($50 a $5,000)</label><input id="otro" inputmode="numeric" placeholder="Escribe el monto" value="${esc(otro)}" autocomplete="off"></div>
+   <div class="h2">¿Cómo pagas?</div>
+   ${METODOS.map(x=>`<button class="dia${x.k===met.k?' on':''}" data-met="${x.k}" style="width:100%;text-align:left"><div class="f" style="font-size:32px">${x.ic}</div><div class="m"><b>${x.n}</b><span>${x.d}</span></div></button>`).join('')}
+   ${valido?`<div class="tarjeta" style="margin-top:6px"><div class="resumen t" style="border:0;margin:0;padding:0"><span>Recarga para ${esc(h.nombre)}</span><span>${pesos(m)}</span></div></div>
+   <div class="aviso" style="background:var(--verde4)"><b>${met.tiempo}</b></div>`:`<div class="aviso">Escribe un monto entre $50 y $5,000.</div>`}
+  </div><div class="pie-app"><button class="btn nar" id="pagar" ${valido?'':'disabled'}>${met.btn}${valido?' · '+pesos(m):''}</button></div>`};
+F.recarga=()=>{
+  document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{datos.monto=+b.dataset.m;datos.otro='';pintar()});
+  document.querySelectorAll('[data-met]').forEach(b=>b.onclick=()=>{datos.met=b.dataset.met;pintar()});
+  const o=$('otro');o.onchange=()=>{datos.otro=o.value.replace(/[^0-9]/g,'');pintar()};
+  o.onkeydown=e=>{if(e.key==='Enter')o.blur()};
+  $('pagar').onclick=()=>{const otro=datos.otro||'';const m=otro?Number(otro):(datos.monto||200);const met=METODOS.find(x=>x.k===(datos.met||'TARJETA'));
+    const exito=()=>{const h=hijo();h.saldo+=m;guardar();aviso('💳','Recarga exitosa',`${pesos(m)} al saldo de ${h.nombre} · ${met.n}`,false);
+      return {t:'¡Recarga lista!',p:`${esc(h.nombre)} ya tiene <b>${pesos(h.saldo)}</b> de saldo`,sig:'comprar',sigT:'Comprar sus comidas'}};
+    const total=m+comision(m,met);
+    if(met.k==='TARJETA')ir('tarjetaPago',{monto:m,comision:comision(m,met),concepto:'Recarga a '+hijo().nombre,exito,volver:'recarga',vDatos:{...datos}});
+    else if(met.k==='WALLET')procesar(exito,'Confirmando con tu teléfono…');
+    else ir('referencia',{met,monto:m,com:comision(m,met),total,exito})};
+};
+/* ----- datos de tarjeta (de prueba: ya vienen llenos) ----- */
+P.tarjetaPago=()=>{const total=datos.monto+datos.comision;const tit=esc((E.papa.nombre+' '+(E.papa.apellidos||'')).toUpperCase());
+  return `${cab('Datos de tu tarjeta',datos.concepto,'')}
+  <div class="cuerpo">
+   <div class="tc"><small>Tarjeta de prueba · no se cobra nada</small>4242 4242 4242 4242<div class="exp"><span>${tit}</span><span>12/29</span></div></div>
+   <div class="campo" style="margin-top:16px"><label>Número de tarjeta</label><input value="4242 4242 4242 4242" readonly></div>
+   <div class="campo"><label>Nombre como aparece en la tarjeta</label><input value="${tit}" readonly></div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div class="campo"><label>Vencimiento</label><input value="12/29" readonly></div><div class="campo"><label>CVV</label><input value="123" readonly></div></div>
+   <div class="aviso">Aceptamos <b>crédito, débito y tarjeta del Bienestar</b>. En la caja del comedor y por transferencia, <b>sin comisión</b>.</div>
+   <div class="tarjeta" style="margin-top:12px"><div class="resumen"><span>Importe</span><span>${pesos(datos.monto)}</span></div>
+     <div class="resumen"><span>Comisión por pago en línea (2 %)</span><span>${pesos(datos.comision)}</span></div>
+     <div class="resumen t"><span>Total a pagar</span><span>${pesos(total)}</span></div></div>
+  </div><div class="pie-app"><button class="btn nar" id="tPagar">Pagar ${pesos(total)}</button><button class="btn sec" id="tCancelar">Cancelar</button></div>`};
+F.tarjetaPago=()=>{const d=datos;$('tPagar').onclick=()=>procesar(d.exito);$('tCancelar').onclick=()=>ir(d.volver,d.vDatos)};
+/* ----- CLABE / ficha OXXO ----- */
+P.referencia=()=>{const spei=datos.met.k==='SPEI';
+  return `${cab(spei?'Transfiere a esta CLABE':'Ficha para pagar en OXXO','Importe exacto: '+pesos(datos.total),'recarga')}
+  <div class="cuerpo">
+   <div class="tarjeta" style="text-align:center;padding:30px 20px"><div class="h2" style="margin:0 0 10px">${spei?'CLABE':'Referencia'}</div>
+     <div style="font-size:32px;font-weight:800;letter-spacing:.08em">${spei?'6461 8012 3456 7890 12':'9800 2610 1934 5571'}</div>
+     ${spei?'<div style="font-size:17px;color:var(--cacao);margin-top:10px">Banco: STP · Beneficiario: Nutricafeterias</div>':'<div style="margin:18px auto 0;height:70px;width:80%;background:repeating-linear-gradient(90deg,#26241F 0 3px,#fff 3px 5px,#26241F 5px 6px,#fff 6px 9px)"></div>'}
+     <div style="font-size:40px;font-weight:800;color:var(--verde);margin-top:18px">${pesos(datos.total)}</div>
+     ${datos.com?`<div style="font-size:15px;color:var(--cacao);margin-top:4px">Recarga ${pesos(datos.monto)} + comisión ${pesos(datos.com)} (2 %)</div>`:'<div style="font-size:15px;color:var(--cacao);margin-top:4px">Sin comisión</div>'}</div>
+   <div class="aviso">${esc(datos.met.tiempo)} Mientras tanto la recarga aparece como <b>«Pendiente»</b>.</div>
+  </div><div class="pie-app"><button class="btn" id="yaPague">${spei?'Simular que ya transferí':'Simular que ya pagué en OXXO'}</button></div>`};
+F.referencia=()=>{const d=datos;$('yaPague').onclick=()=>procesar(d.exito,'Confirmando el pago…')};
 
-function procesar(fn){const A=$('app');A.innerHTML=`${cab('Procesando pago','','')}<div class="cuerpo"><div class="cargando"><div class="spin"></div>Confirmando con el banco…</div></div>`;
+function procesar(fn,msg){const A=$('app');A.innerHTML=`${cab('Procesando pago','','')}<div class="cuerpo"><div class="cargando"><div class="spin"></div>${msg||'Confirmando con el banco…'}</div></div>`;
   setTimeout(()=>{const r=fn();A.innerHTML=`${cab('Listo','','')}<div class="cuerpo"><div class="exito"><div class="ok">✓</div><h2>${r.t}</h2><p>${r.p}</p></div>
     ${r.sig?`<button class="btn" data-ir="${r.sig}">${r.sigT}</button>`:''}<button class="btn sec" data-ir="inicio">Ir al inicio</button></div>`},1600)}
 
@@ -394,22 +446,37 @@ P.comprar=()=>{const h=hijo();const modo=datos.modo||'dia';datos.sel=datos.sel||
   const ini0=primerComprable();
   let lista='',total=0,n=0,fechas=[];
   if(modo==='dia'){
-    const hoy=hoy0();
-    const hoyHabil=habil(hoy);
-    lista=(hoyHabil?`<div class="dia off"><div class="f"><small>hoy</small><b>${hoy.getDate()}</b></div><div class="m"><b>${esc(MENU[hoy.getDay()].f)}</b><span>Hoy ya no se puede comprar: las comidas se compran un día antes</span></div><div class="check" style="background:var(--lino);border-color:var(--lino);color:var(--piedra)">✕</div></div>`:'')+
-    diasHabiles(ini0,10).map(d=>{const k=clave(d),ya=h.comidas.includes(k),on=datos.sel.includes(k);
-      return `<button class="dia${on?' on':''}${ya?' off':''}" data-d="${k}" ${ya?'disabled':''} style="width:100%;text-align:left"><div class="f"><small>${DIAS[d.getDay()].slice(0,3)}</small><b>${d.getDate()}</b></div><div class="m"><b>${esc(MENU[d.getDay()].f)}</b><span>${ya?'Ya comprada ✓':esc(MENU[d.getDay()].d)}</span></div><div class="check">${on?'✓':''}</div></button>`}).join('');
+    lista=
+    (()=>{let mAnt='';return diasHabiles(ini0,400).map(d=>{const k=clave(d),ya=h.comidas.includes(k),on=datos.sel.includes(k);
+      const m=MESES[d.getMonth()];const cabM=m!==mAnt?`<div class="h2">${m} ${d.getFullYear()}</div>`:'';mAnt=m;
+      return cabM+`<button class="dia${on?' on':''}${ya?' off':''}" data-d="${k}" ${ya?'disabled':''} style="width:100%;text-align:left"><div class="f"><small>${DIAS[d.getDay()].slice(0,3)}</small><b>${d.getDate()}</b></div><div class="m"><b>${esc(MENU[d.getDay()].f)}</b><span>${ya?'Ya comprada ✓':esc(MENU[d.getDay()].d)}</span></div><div class="check">${on?'✓':''}</div></button>`}).join('')})();
     fechas=datos.sel.slice();n=fechas.length;total=n*PRECIO;
   }else{
-    const N=modo==='semana'?SEMANA_N:MES_N, PR=modo==='semana'?SEMANA_P:MES_P;
-    const ds=diasHabiles(ini0,N);fechas=ds.map(clave).filter(k=>!h.comidas.includes(k));n=fechas.length;
-    const ahorro=N*PRECIO-PR;
-    lista=`<div class="paquete on"><div style="font-size:20px;font-weight:800">${modo==='semana'?'Paquete semanal':'Paquete mensual'} · ${N} comidas</div>
-      <div class="p">${pesos(PR)} <small>en lugar de ${pesos(N*PRECIO)}</small></div>
-      ${ahorro>0?`<span class="ah">Ahorras ${pesos(ahorro)}</span>`:''}
-      <div style="font-size:16px;color:var(--cacao);margin-top:12px">Del ${fechaLarga(ds[0]).toLowerCase()} al ${fechaLarga(ds[ds.length-1]).toLowerCase()}</div></div>
-      <div class="aviso"><b>Importante:</b> en los paquetes no se devuelve el dinero si tu hijo falta a la escuela. Si quieres flexibilidad, compra por día.</div>`;
-    total=n===N?PR:Math.round(PR/N*n);
+    // Bloques del resto del ciclo: semanas (lun–vie) o meses, con los días de clase reales.
+    const bloques=[];const d=new Date(ini0);
+    if(modo==='semana')d.setDate(d.getDate()-((d.getDay()+6)%7));else d.setDate(1);
+    while(clave(d)<=FIN_CICLO){
+      const ini=new Date(d),fin=new Date(d);
+      if(modo==='semana')fin.setDate(fin.getDate()+4);else{fin.setMonth(fin.getMonth()+1);fin.setDate(0)}
+      const dias=[],libres=[];const x=new Date(ini);
+      while(x<=fin){const k=clave(x);if(x>=ini0&&k<=FIN_CICLO){if(habil(x))dias.push(k);else if(x.getDay()>=1&&x.getDay()<=5&&MOTIVO[k])libres.push(MOTIVO[k]+' ('+x.getDate()+')')}x.setDate(x.getDate()+1)}
+      bloques.push({id:clave(ini),ini,fin,dias,libres});
+      if(modo==='semana')d.setDate(d.getDate()+7);else d.setMonth(d.getMonth()+1);
+    }
+    const pu=modo==='mes'?PRECIO_MES:PRECIO;
+    let mesAnt='';
+    lista=bloques.map(bq=>{
+      const pend=bq.dias.filter(k=>!h.comidas.includes(k));const on=datos.sel.includes(bq.id);
+      let cabMes='';const m=MESES[bq.ini.getMonth()];
+      if(modo==='semana'&&m!==mesAnt){cabMes=`<div class="h2">${m} ${bq.ini.getFullYear()}</div>`;mesAnt=m}
+      const tit=modo==='semana'?(bq.ini.getMonth()===bq.fin.getMonth()?`${bq.ini.getDate()} al ${bq.fin.getDate()} de ${MESES[bq.fin.getMonth()]}`:`${bq.ini.getDate()} de ${MESES[bq.ini.getMonth()]} al ${bq.fin.getDate()} de ${MESES[bq.fin.getMonth()]}`):`${m[0].toUpperCase()+m.slice(1)} ${bq.ini.getFullYear()}`;
+      if(!bq.dias.length)return cabMes+`<div class="dia off"><div class="f" style="font-size:26px">🌴</div><div class="m"><b>${tit}</b><span>Vacaciones: no hay clases</span></div></div>`;
+      if(!pend.length)return cabMes+`<div class="dia off"><div class="f" style="font-size:26px">✓</div><div class="m"><b>${tit}</b><span>Ya comprada</span></div></div>`;
+      const ah=modo==='mes'?pend.length*(PRECIO-PRECIO_MES):0;
+      return cabMes+`<button class="dia${on?' on':''}" data-b="${bq.id}" style="width:100%;text-align:left"><div class="f"><small>${modo==='semana'?'sem':MESES[bq.ini.getMonth()].slice(0,3)}</small><b style="font-size:24px">${pend.length}</b><small>comidas</small></div><div class="m"><b>${tit}</b><span>${pesos(pend.length*pu)}${ah?' · ahorras '+pesos(ah):''}${bq.libres.length?' · sin clases: '+bq.libres.join(', '):''}</span></div><div class="check">${on?'✓':''}</div></button>`}).join('')+
+      `<div class="aviso"><b>Importante:</b> en los paquetes no se devuelve el dinero si tu hijo falta a la escuela. Si quieres flexibilidad, compra por día.${modo==='mes'?' Por mes, cada comida cuesta '+pesos(PRECIO_MES)+'.':''}</div>`;
+    const set=new Set();bloques.filter(bq=>datos.sel.includes(bq.id)).forEach(bq=>bq.dias.forEach(k=>{if(!h.comidas.includes(k))set.add(k)}));
+    fechas=[...set].sort();n=fechas.length;total=n*pu;
   }
   datos.fechas=fechas;datos.total=total;
   const alcanza=h.saldo>=total&&total>0;
@@ -422,17 +489,19 @@ P.comprar=()=>{const h=hijo();const modo=datos.modo||'dia';datos.sel=datos.sel||
    <div class="resumen"><span>${n} ${n==1?'comida':'comidas'}</span><b>${pesos(total)}</b></div>
    <div class="resumen" style="font-size:16px;color:var(--cacao)"><span>Saldo de ${esc(h.nombre)}</span><span>${pesos(h.saldo)}</span></div>
    ${alcanza?`<button class="btn" id="cSaldo" style="margin-top:10px">Pagar con su saldo</button>`:''}
-   <button class="btn ${alcanza?'sec':''}" id="cTarjeta" ${total?'':'disabled'} style="margin-top:10px">Pagar con tarjeta${total?' · '+pesos(Math.round(total*(1+COMISION)*100)/100):''}</button>
+   <button class="btn ${alcanza?'sec':''}" id="cTarjeta" ${total?'':'disabled'} style="margin-top:10px">Pagar con tarjeta</button>
   </div>`};
 F.comprar=()=>{
   document.querySelectorAll('[data-modo]').forEach(b=>b.onclick=()=>{datos={modo:b.dataset.modo};pintar()});
-  document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{const k=b.dataset.d;const i=datos.sel.indexOf(k);i<0?datos.sel.push(k):datos.sel.splice(i,1);pintar()});
-  const fin=porSaldo=>procesar(()=>{const h=hijo();if(porSaldo)h.saldo-=datos.total;
-    h.comidas=[...new Set([...h.comidas,...datos.fechas])].sort();guardar();
-    aviso('🍽️','Comidas compradas',`${datos.fechas.length} ${datos.fechas.length==1?'comida':'comidas'} para ${h.nombre} · ${pesos(datos.total)}`,false);
-    return {t:'¡Comidas compradas!',p:`${esc(h.nombre)} tiene <b>${datos.fechas.length} ${datos.fechas.length==1?'comida':'comidas'}</b> lista${datos.fechas.length==1?'':'s'}.<br>Le avisamos cuando entre al comedor.`,sig:hijo().rostro?'':'rostro',sigT:'Registrar su rostro'}});
-  if($('cSaldo'))$('cSaldo').onclick=()=>fin(true);
-  $('cTarjeta').onclick=()=>{if(!datos.total)return;fin(false)};
+  document.querySelectorAll('[data-d],[data-b]').forEach(b=>b.onclick=()=>{const k=b.dataset.d||b.dataset.b;const i=datos.sel.indexOf(k);i<0?datos.sel.push(k):datos.sel.splice(i,1);const y=document.querySelector('#app .cuerpo').scrollTop;pintar();document.querySelector('#app .cuerpo').scrollTop=y});
+  const d=datos;
+  const exito=porSaldo=>()=>{const h=hijo();if(porSaldo)h.saldo-=d.total;
+    h.comidas=[...new Set([...h.comidas,...d.fechas])].sort();guardar();
+    aviso('🍽️','Comidas compradas',`${d.fechas.length} ${d.fechas.length==1?'comida':'comidas'} para ${h.nombre} · ${pesos(d.total)}`,false);
+    return {t:'¡Comidas compradas!',p:`${esc(h.nombre)} tiene <b>${d.fechas.length} ${d.fechas.length==1?'comida':'comidas'}</b> lista${d.fechas.length==1?'':'s'}.<br>Le avisamos cuando entre al comedor.`,sig:hijo().rostro?'':'rostro',sigT:'Registrar su rostro'}};
+  if($('cSaldo'))$('cSaldo').onclick=()=>procesar(exito(true),'Pagando con su saldo…');
+  $('cTarjeta').onclick=()=>{if(!d.total)return;
+    ir('tarjetaPago',{monto:d.total,comision:Math.round(d.total*COMISION*100)/100,concepto:d.fechas.length+' comidas para '+hijo().nombre,exito:exito(false),volver:'comprar',vDatos:{modo:d.modo,sel:d.sel}})};
 };
 
 /* ----- avisos ----- */
@@ -440,13 +509,14 @@ P.avisos=()=>{E.avisos.forEach(a=>a.v=a.n);E.noLeidos=0;E.avisos.forEach(a=>a.n=
   return `${cab('Avisos','','inicio')}<div class="cuerpo">${E.avisos.length?E.avisos.map(a=>`<div class="noti${a.v?' nueva':''}"><div class="ic">${a.i}</div><div><b>${esc(a.t)}</b><span>${esc(a.x)}</span><small>${a.h}</small></div></div>`).join(''):'<div class="vacio">Aquí verás cuando tus hijos entren al comedor, tus recargas y tus compras.</div>'}</div>`};
 
 /* ----- registrar rostro (dentro del celular, con la cámara del tótem) ----- */
-P.rostro=()=>{const h=hijo();return `${cab('Registrar rostro',h.nombre,'inicio')}
+P.rostro=()=>{const h=hijo();return `${cab(datos.alta?'Registra el rostro de '+h.nombre:'Registrar rostro',datos.alta?'Paso 2 de 2 · así entrará al comedor':h.nombre,datos.alta?'':'inicio')}
   <div class="cuerpo" style="text-align:center">
    <div style="font-size:19px;color:var(--cacao);margin:4px 0 18px;line-height:1.4">Que ${esc(h.nombre)} se pare frente a la cámara del tótem, mire de frente y <b>parpadee</b>.</div>
    <div class="circulo" style="width:440px;height:440px"><img id="cImg" alt=""><div class="sincam" id="cSin">Conectando la cámara…</div><div class="aro" id="cAro"></div></div>
    <div class="indicacion" id="cInd">Ponte frente a la cámara</div>
    <div class="sub-ind">Solo guardamos una huella numérica del rostro, nunca la foto.</div>
    <div class="simular" id="cSim"></div>
+   ${datos.alta?'<button class="btn sec" data-ir="hijoListo" style="margin-top:18px">Registrarlo después</button>':''}
   </div>`};
 P.rostroOk=()=>{const h=hijo();return `${cab('Rostro registrado','','')}<div class="cuerpo"><div class="exito"><div class="ok">✓</div><h2>¡Listo, ${esc(h.nombre)}!</h2><p>Ya puede entrar al comedor solo con su cara.<br>Sin tarjetas y sin filas.</p></div><button class="btn" data-ir="inicio">Ir al inicio</button></div>`};
 F.rostro=()=>camara({img:'cImg',sin:'cSin',aro:'cAro',ind:'cInd',sim:'cSim',modo:'registro'});
@@ -485,7 +555,7 @@ function camara(o){
   const listo=(huellas,real)=>{if(c.ocupado)return;c.ocupado=true;
     if(o.modo==='registro'){
       if(real<REAL_MIN){ind.textContent='No pudimos confirmar. Intenta otra vez';c.ocupado=false;return}
-      const h=hijo();h.rostro=huellas;guardar();ir('rostroOk');
+      const h=hijo();h.rostro=huellas;guardar();ir(datos.alta?'hijoListo':'rostroOk');
     }else{entradaResultado(huellas,real);setTimeout(()=>{c.ocupado=false},5200)}};
   (async function ciclo(){
     let ultimaFoto=0;
@@ -521,10 +591,9 @@ function entradaResultado(huellas,real){
   const i=real>=REAL_MIN?identificar(huellas[0]):-1;
   if(i<0){tipo='gris';icono='?';t='No te encontramos';p='Por favor revísalo con tu profesor.'}
   else{const h=E.hijos[i];const tu=turno(h.grupo);g=h.grupo+(tu?` · ${tu[0]} h · comedor de ${tu[1]}`:'');
-    if(h.comidas.includes(k)){tipo='verde';icono='✓';t='¡Hola, '+h.nombre+'!';p='Adelante, ya tienes tu comida de hoy.';
+    if(tieneComida(h)){tipo='verde';icono='✓';t='¡Hola, '+h.nombre+'!';p='Adelante, ya tienes tu comida de hoy.';
       aviso('✅',h.nombre+' entró al comedor',`${fechaLarga(d)} · ${hora()} h`,false);
-      aviso('🍽️',h.nombre+' recibió su comida',`${MENU[d.getDay()].f} · plato completo`,false);
-      setTimeout(()=>mostrarBanner(h.nombre+' ya está en el comedor','Recibió su comida: '+MENU[d.getDay()].f),400);
+      setTimeout(()=>mostrarBanner(h.nombre+' entró al comedor',`${fechaLarga(d)} · ${hora()} h`),400);
     }else{tipo='naranja';icono='!';t=h.nombre+', hoy no tienes comida';p='Por favor revísalo con tu profesor.'}}
   R.className='resultado on '+tipo;$('resI').textContent=icono;$('resT').textContent=t;$('resP').textContent=p;
   $('resG').textContent=g;$('resG').style.display=g?'':'none';
