@@ -312,15 +312,16 @@ P.bienvenida=()=>`<div class="cuerpo" style="display:flex;flex-direction:column;
 P.registro=()=>`${cab('Crea tu cuenta','Toma menos de un minuto','bienvenida')}
   <div class="cuerpo">
   <button class="ejemplo" id="llenar">✨ Llenar con un ejemplo</button>
-  <div class="campo"><label>Tu nombre</label><input id="rNom" placeholder="Nombre y apellido" autocomplete="off"></div>
+  <div class="campo"><label>Nombre(s)</label><input id="rNom" placeholder="Nombre(s)" autocomplete="off"></div>
+  <div class="campo"><label>Apellidos</label><input id="rApe" placeholder="Apellido paterno y materno" autocomplete="off"></div>
   <div class="campo"><label>Celular</label><input id="rCel" inputmode="numeric" placeholder="55 0000 0000" autocomplete="off"></div>
   <div class="campo"><label>Contraseña</label><input id="rPas" type="password" placeholder="Mínimo 6 caracteres" autocomplete="off"></div>
   <div class="aviso">Con tu cuenta compras las comidas de <b>todos tus hijos</b> y recibes un aviso cuando entran al comedor.</div>
   </div><div class="pie-app"><button class="btn" id="rOk">Crear cuenta</button></div>`;
 F.registro=()=>{
-  $('llenar').onclick=()=>{$('rNom').value='Laura Martínez';$('rCel').value='55 1234 5678';$('rPas').value='nutri123'};
-  $('rOk').onclick=()=>{const n=$('rNom').value.trim()||'Laura Martínez';
-    E.papa={nombre:n,cel:$('rCel').value.trim()||'55 1234 5678'};guardar();ir('hijo',{primero:true})};
+  $('llenar').onclick=()=>{$('rNom').value='Laura';$('rApe').value='Martínez López';$('rCel').value='55 1234 5678';$('rPas').value='nutri123'};
+  $('rOk').onclick=()=>{const n=$('rNom').value.trim()||'Laura';const a=$('rApe').value.trim()||'Martínez López';
+    E.papa={nombre:n,apellidos:a,cel:$('rCel').value.trim()||'55 1234 5678'};guardar();ir('hijo',{primero:true})};
 };
 
 P.hijo=()=>`${cab(datos.primero?'Agrega a tu hijo':'Agregar otro hijo','Uno por uno, los que quieras',E.hijos.length?'inicio':'')}
@@ -373,7 +374,7 @@ P.recarga=()=>{const h=hijo();const m=datos.monto||500;const com=Math.round(m*CO
    <div class="h2" style="margin-top:4px">¿Cuánto quieres recargar?</div>
    <div class="montos">${[200,500,1000].map(v=>`<button class="monto${v==m?' on':''}" data-m="${v}">${pesos(v)}</button>`).join('')}</div>
    <div class="h2">Paga con</div>
-   <div class="tc"><small>Tarjeta de prueba · no se cobra nada</small>4242 4242 4242 4242<div class="exp"><span>LAURA MARTÍNEZ</span><span>12/29 · CVV 123</span></div></div>
+   <div class="tc"><small>Tarjeta de prueba · no se cobra nada</small>4242 4242 4242 4242<div class="exp"><span>${esc((E.papa.nombre+' '+(E.papa.apellidos||'')).toUpperCase())}</span><span>12/29 · CVV 123</span></div></div>
    <div class="aviso">Aceptamos <b>débito, crédito y tarjeta del Bienestar</b>. En la caja del comedor también puedes pagar con tarjeta o en efectivo, y por transferencia, <b>sin comisión</b>.</div>
    <div class="tarjeta" style="margin-top:14px"><div class="resumen"><span>Recarga</span><span>${pesos(m)}</span></div>
      <div class="resumen"><span>Comisión por pago en línea (2 %)</span><span>${pesos(com)}</span></div>
