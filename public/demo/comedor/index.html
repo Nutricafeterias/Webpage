@@ -555,14 +555,18 @@ function camara(o){
   const listo=(huellas,real)=>{if(c.ocupado)return;c.ocupado=true;
     if(o.modo==='registro'){
       if(real<REAL_MIN){ind.textContent='No pudimos confirmar. Intenta otra vez';c.ocupado=false;return}
-      const h=hijo();h.rostro=huellas;guardar();ir(datos.alta?'hijoListo':'rostroOk');
+      const h=hijo();const q=promedio(huellas);
+      // No permitir el mismo rostro en dos niños (si no, en la entrada quedan empatados y no entra nadie).
+      const otro=E.hijos.find(x=>x!==h&&x.rostro&&x.rostro.some(m=>sim(q,m)>=UMBRAL));
+      if(otro){ind.textContent='Este rostro ya está registrado como '+otro.nombre;c.avisoHasta=Date.now()+4000;c.ocupado=false;return}
+      h.rostro=huellas;guardar();ir(datos.alta?'hijoListo':'rostroOk');
     }else{entradaResultado(huellas,real);setTimeout(()=>{c.ocupado=false},5200)}};
   (async function ciclo(){
     let ultimaFoto=0;
     while(c.vivo){
       try{
         const r=await pedir('/rostro',1500);const e=await r.json();fallas=0;pintarSim();
-        ind.textContent=c.ocupado&&o.modo!=='registro'?'':indicacion(e);
+        if(!(c.avisoHasta>Date.now()))ind.textContent=c.ocupado&&o.modo!=='registro'?'':indicacion(e);
         aro.className='aro'+(e.listoParaParpadear?' listo':'')+(e.presente&&!e.listoParaParpadear?' leyendo':'');
         const res=e.resultado;
         if(res&&res.id){
