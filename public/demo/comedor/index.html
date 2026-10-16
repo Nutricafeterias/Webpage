@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Demo comedor Nutri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Demo del comedor para la degustación — Centro Escolar Benito Juárez.
+   TODO es simulado y vive en este equipo (localStorage). No cobra, no toca el ERP.
+   La cámara es la app «Nutri Cámara» del tótem (http://127.0.0.1:8765). */
+:root{
+  --crema:#F7F3EA;--lino:#EDE7D8;--arena:#D8CDB6;--piedra:#A79B82;--cacao:#5B5346;--carbon:#26241F;
+  --verde:#1F5D3B;--verde2:#6EAF4A;--verde3:#C7E3B4;--verde4:#EAF4E2;--naranja:#F39C12;--naranja2:#FFF1DC;--rojo:#C63A3A;--rojo2:#FBE4E4;
+  --fondo:#FBF8F1;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--fondo);color:var(--carbon);font-family:'Montserrat',system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select{font-family:inherit;font-size:22px;padding:16px 18px;border:2px solid var(--lino);border-radius:16px;width:100%;background:#fff;color:var(--carbon);outline:none;user-select:text;-webkit-user-select:text}
+input:focus,select:focus{border-color:var(--verde2)}
+
+/* ---------- marco general (tótem 1080×1920) ---------- */
+#raiz{position:fixed;left:0;top:0;width:1080px;height:1920px;display:flex;flex-direction:column;transform-origin:0 0}
+.barra{display:flex;align-items:center;justify-content:space-between;padding:26px 40px 18px}
+.barra .logo{height:74px}
+.modos{display:flex;gap:10px;background:#fff;border:2px solid var(--lino);border-radius:999px;padding:6px}
+.modos button{font-size:21px;font-weight:800;padding:14px 26px;border-radius:999px;color:var(--cacao)}
+.modos button.on{background:var(--verde);color:#fff}
+.vista{flex:1;display:none;flex-direction:column;align-items:center;min-height:0}
+.vista.on{display:flex}
+
+/* ---------- vista app: celular en el centro ---------- */
+.titular{text-align:center;margin:4px 40px 20px}
+.titular .k{font-size:17px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--piedra)}
+.titular h1{margin:8px 0 0;font-size:46px;line-height:1.05;font-weight:800;color:var(--verde);letter-spacing:-.02em}
+.cel{position:relative;width:660px;height:1400px;background:#16150F;border-radius:72px;padding:18px;box-shadow:0 30px 70px rgba(38,36,31,.25)}
+.cel .pantalla{position:relative;width:100%;height:100%;border-radius:56px;overflow:hidden;background:var(--fondo);display:flex;flex-direction:column}
+.cel .muesca{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:170px;height:34px;background:#16150F;border-radius:0 0 22px 22px;z-index:5}
+.formas{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:22px 40px 0;max-width:1000px}
+.formas span{background:#fff;border:2px solid var(--lino);border-radius:999px;padding:11px 18px;font-size:17px;font-weight:700;color:var(--cacao)}
+.formas span b{color:var(--verde)}
+
+/* ---------- dentro del celular ---------- */
+.app-cab{padding:58px 26px 14px;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:2px solid var(--lino)}
+.app-cab .t{font-size:24px;font-weight:800}
+.app-cab .t small{display:block;font-size:14px;font-weight:600;color:var(--piedra);margin-top:2px}
+.app-cab .atras{font-size:30px;font-weight:700;color:var(--verde);width:48px;height:48px;border-radius:50%;background:var(--verde4)}
+.campana{position:relative;width:56px;height:56px;border-radius:50%;background:var(--verde4);display:flex;align-items:center;justify-content:center}
+.campana svg{width:28px;height:28px}
+.campana i{position:absolute;top:-4px;right:-4px;min-width:26px;height:26px;border-radius:13px;background:var(--rojo);color:#fff;font-size:15px;font-weight:800;font-style:normal;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.cuerpo{flex:1;overflow-y:auto;padding:22px 24px 30px}
+.cuerpo::-webkit-scrollbar{display:none}
+.pie-app{padding:16px 24px 34px;background:#fff;border-top:2px solid var(--lino)}
+.h2{font-size:15px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--piedra);margin:22px 2px 10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:22px;border-radius:20px;font-size:23px;font-weight:800;background:var(--verde);color:#fff}
+.btn.sec{background:#fff;color:var(--verde);border:2px solid var(--verde3)}
+.btn.nar{background:var(--naranja)}
+.btn:disabled{opacity:.4}
+.btn+.btn{margin-top:12px}
+.campo{margin-bottom:14px}
+.campo label{display:block;font-size:15px;font-weight:700;color:var(--cacao);margin:0 0 6px 4px}
+.ejemplo{display:inline-block;font-size:16px;font-weight:700;color:var(--verde);background:var(--verde4);border-radius:999px;padding:9px 16px;margin:0 0 16px}
+.tarjeta{background:#fff;border:2px solid var(--lino);border-radius:24px;padding:20px 22px;margin-bottom:14px}
+.chips{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;display:flex;align-items:center;gap:10px;padding:10px 18px 10px 10px;border-radius:999px;background:#fff;border:2px solid var(--lino);font-size:19px;font-weight:800}
+.chip.on{border-color:var(--verde);background:var(--verde4)}
+.ava{width:44px;height:44px;border-radius:50%;background:var(--naranja);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;flex:none}
+.saldo{background:var(--verde);color:#fff;border-radius:28px;padding:24px 26px;position:relative;overflow:hidden}
+.saldo small{font-size:16px;font-weight:700;opacity:.85}
+.saldo b{display:block;font-size:54px;font-weight:800;letter-spacing:-.02em;margin:4px 0 14px}
+.saldo .btn{background:#fff;color:var(--verde);padding:16px;font-size:20px}
+.fila{display:flex;align-items:center;gap:14px}
+.fila .ic{width:52px;height:52px;border-radius:16px;background:var(--verde4);display:flex;align-items:center;justify-content:center;font-size:26px;flex:none}
+.fila .tx{flex:1;min-width:0}
+.fila .tx b{display:block;font-size:20px;font-weight:800}
+.fila .tx span{display:block;font-size:16px;color:var(--cacao);margin-top:2px}
+.estado{font-size:15px;font-weight:800;border-radius:999px;padding:7px 14px;white-space:nowrap}
+.estado.ok{background:var(--verde4);color:var(--verde)}
+.estado.no{background:var(--naranja2);color:#B26B00}
+.acciones{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.accion{background:#fff;border:2px solid var(--lino);border-radius:22px;padding:20px 16px;text-align:left}
+.accion .e{font-size:30px}
+.accion b{display:block;font-size:19px;font-weight:800;margin-top:8px}
+.accion span{display:block;font-size:14px;color:var(--cacao);margin-top:2px}
+.montos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.monto{padding:20px 0;border-radius:18px;background:#fff;border:2px solid var(--lino);font-size:24px;font-weight:800}
+.monto.on{border-color:var(--verde);background:var(--verde4);color:var(--verde)}
+.tc{background:linear-gradient(135deg,#2E3A2F,#1F5D3B);color:#fff;border-radius:22px;padding:22px 24px;font-size:22px;font-weight:700;letter-spacing:.06em;position:relative}
+.tc small{display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
+.tc .exp{display:flex;justify-content:space-between;margin-top:16px;font-size:16px;opacity:.9}
+.aviso{font-size:15px;color:var(--cacao);background:var(--crema);border-radius:16px;padding:14px 16px;line-height:1.4;margin-top:12px}
+.aviso b{color:var(--carbon)}
+.resumen{display:flex;justify-content:space-between;font-size:19px;padding:6px 2px}
+.resumen.t{font-size:24px;font-weight:800;border-top:2px solid var(--lino);margin-top:6px;padding-top:12px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#fff;border:2px solid var(--lino);border-radius:18px;padding:5px;margin-bottom:16px}
+.tabs button{padding:14px 0;border-radius:14px;font-size:18px;font-weight:800;color:var(--cacao)}
+.tabs button.on{background:var(--verde);color:#fff}
+.dia{display:flex;align-items:center;gap:14px;background:#fff;border:2px solid var(--lino);border-radius:20px;padding:14px 16px;margin-bottom:10px}
+.dia.on{border-color:var(--verde);background:var(--verde4)}
+.dia.off{opacity:.55}
+.dia .f{width:66px;text-align:center;flex:none}
+.dia .f small{display:block;font-size:13px;font-weight:800;text-transform:uppercase;color:var(--piedra);letter-spacing:.08em}
+.dia .f b{display:block;font-size:30px;font-weight:800;line-height:1}
+.dia .m{flex:1;min-width:0}
+.dia .m b{display:block;font-size:18px;font-weight:800;line-height:1.2}
+.dia .m span{display:block;font-size:14px;color:var(--cacao);margin-top:3px}
+.check{width:38px;height:38px;border-radius:12px;border:2px solid var(--arena);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;flex:none}
+.dia.on .check{background:var(--verde);border-color:var(--verde)}
+.paquete{background:#fff;border:2px solid var(--lino);border-radius:24px;padding:22px}
+.paquete.on{border-color:var(--verde);background:var(--verde4)}
+.paquete .p{font-size:44px;font-weight:800;color:var(--verde)}
+.paquete .p small{font-size:18px;color:var(--cacao);font-weight:600}
+.paquete .ah{display:inline-block;background:var(--naranja);color:#fff;font-size:15px;font-weight:800;border-radius:999px;padding:6px 12px;margin-top:6px}
+.noti{display:flex;gap:14px;background:#fff;border:2px solid var(--lino);border-radius:20px;padding:16px;margin-bottom:10px}
+.noti .ic{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;flex:none;background:var(--verde4)}
+.noti b{display:block;font-size:18px;font-weight:800}
+.noti span{display:block;font-size:15px;color:var(--cacao);margin-top:2px;line-height:1.35}
+.noti small{display:block;font-size:13px;color:var(--piedra);margin-top:4px;font-weight:600}
+.noti.nueva{border-color:var(--verde2)}
+.vacio{text-align:center;color:var(--piedra);font-size:18px;padding:40px 10px}
+.exito{text-align:center;padding:50px 10px 10px}
+.exito .ok{width:130px;height:130px;border-radius:50%;background:var(--verde);color:#fff;font-size:74px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;animation:pop .45s ease}
+.exito h2{font-size:34px;margin:0 0 8px;color:var(--verde)}
+.exito p{font-size:19px;color:var(--cacao);margin:0 0 26px;line-height:1.4}
+@keyframes pop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.cargando{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:90px 0;font-size:21px;font-weight:700;color:var(--cacao)}
+.spin{width:70px;height:70px;border-radius:50%;border:8px solid var(--verde3);border-top-color:var(--verde);animation:gira .8s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.banner{position:absolute;left:16px;right:16px;top:-140px;z-index:20;background:#fff;border-radius:24px;box-shadow:0 14px 40px rgba(0,0,0,.18);padding:16px 18px;display:flex;gap:14px;align-items:center;transition:top .45s cubic-bezier(.2,1.2,.4,1)}
+.banner.on{top:62px}
+.banner img{width:50px;height:50px;border-radius:12px}
+.banner b{display:block;font-size:17px;font-weight:800}
+.banner span{display:block;font-size:15px;color:var(--cacao);margin-top:2px}
+.logo-app{display:block;height:84px;margin:40px auto 30px}
+
+/* ---------- cámara (registro de rostro y entrada) ---------- */
+.circulo{position:relative;border-radius:50%;overflow:hidden;background:#1d1c18;margin:0 auto}
+.circulo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.circulo .aro{position:absolute;inset:0;border-radius:50%;border:12px solid var(--arena);transition:border-color .25s}
+.circulo .aro.listo{border-color:var(--verde2)}
+.circulo .aro.leyendo{border-color:var(--naranja)}
+.circulo .sincam{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:#C9C1AF;font-size:20px;font-weight:700;padding:30px}
+.indicacion{font-size:30px;font-weight:800;text-align:center;margin:26px 0 8px;color:var(--verde)}
+.sub-ind{font-size:18px;text-align:center;color:var(--cacao)}
+.simular{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
+.simular button{font-size:15px;font-weight:700;padding:10px 14px;border-radius:999px;border:2px dashed var(--arena);color:var(--cacao)}
+
+/* ---------- vista entrada al comedor ---------- */
+.entrada{flex:1;width:100%;display:flex;flex-direction:column;align-items:center;padding:6px 60px 40px}
+.entrada .cab{text-align:center}
+.entrada .cab .k{font-size:20px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--piedra)}
+.entrada .cab h1{font-size:64px;margin:10px 0 6px;color:var(--verde);font-weight:800;letter-spacing:-.02em;line-height:1}
+.entrada .cab p{font-size:24px;color:var(--cacao);margin:0;font-weight:600}
+.entrada .circulo{width:760px;height:760px;margin-top:56px}
+.entrada .indicacion{font-size:46px;margin-top:44px}
+.entrada .sub-ind{font-size:24px}
+.menu-hoy{margin-top:auto;width:100%;background:#fff;border:2px solid var(--lino);border-radius:28px;padding:24px 30px;display:flex;align-items:center;gap:22px}
+.menu-hoy .e{font-size:54px}
+.menu-hoy small{display:block;font-size:16px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--piedra)}
+.menu-hoy b{display:block;font-size:26px;font-weight:800;margin-top:4px}
+.menu-hoy span{display:block;font-size:19px;color:var(--cacao);margin-top:4px}
+.resultado{position:absolute;inset:0;z-index:50;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;color:#fff}
+.resultado.on{display:flex;animation:entra .35s ease}
+@keyframes entra{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+.resultado.verde{background:var(--verde)}
+.resultado.naranja{background:#D9850B}
+.resultado.gris{background:#5B5346}
+.resultado .icono{width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:150px;margin-bottom:50px}
+.resultado h2{font-size:86px;line-height:1.02;margin:0 0 24px;font-weight:800;letter-spacing:-.02em}
+.resultado p{font-size:38px;margin:0;font-weight:600;line-height:1.3;max-width:900px}
+.resultado .grupo{margin-top:40px;font-size:26px;font-weight:800;background:rgba(255,255,255,.18);border-radius:999px;padding:14px 30px}
+
+/* ---------- reinicio ---------- */
+#dlgReinicio{position:absolute;inset:0;background:rgba(38,36,31,.55);z-index:80;display:none;align-items:center;justify-content:center}
+#dlgReinicio.on{display:flex}
+#dlgReinicio .caja{background:#fff;border-radius:32px;padding:40px;width:720px;text-align:center}
+#dlgReinicio h3{font-size:34px;margin:0 0 12px}
+#dlgReinicio p{font-size:21px;color:var(--cacao);margin:0 0 28px}
+#dlgReinicio .btn{margin-top:12px}
+</style>
+</head>
+<body>
+<div id="raiz">
+  <div class="barra">
+    <img class="logo" src="/demo/comedor/logo.png" alt="Nutri Cafeterías" id="logo">
+    <div class="modos">
+      <button id="mApp" class="on">App de papás</button>
+      <button id="mEntrada">Entrada al comedor</button>
+    </div>
+  </div>
+
+  <!-- ===== VISTA APP ===== -->
+  <section class="vista on" id="vApp">
+    <div class="titular"><div class="k">Así funciona para los papás</div><h1>Todo desde tu celular</h1></div>
+    <div class="cel"><div class="muesca"></div>
+      <div class="pantalla" id="pantalla">
+        <div class="banner" id="banner"><img src="/demo/comedor/isotipo.png" alt=""><div><b id="bannerT"></b><span id="bannerS"></span></div></div>
+        <div id="app" style="display:flex;flex-direction:column;height:100%"></div>
+      </div>
+    </div>
+    <div class="formas">
+      <span><b>Sin filas</b> · compra desde tu casa</span>
+      <span>Tarjeta de débito y crédito</span>
+      <span><b>Tarjeta del Bienestar</b></span>
+      <span>Transferencia</span>
+      <span>Efectivo en caja</span>
+    </div>
+  </section>
+
+  <!-- ===== VISTA ENTRADA AL COMEDOR ===== -->
+  <section class="vista" id="vEntrada">
+    <div class="entrada">
+      <div class="cab"><div class="k">Entrada al comedor</div><h1 id="eFecha"></h1><p>Párate frente a la cámara y parpadea</p></div>
+      <div class="circulo" id="eCirc"><img id="eImg" alt=""><div class="sincam" id="eSin">Conectando la cámara…</div><div class="aro" id="eAro"></div></div>
+      <div class="indicacion" id="eInd">Ponte frente a la cámara</div>
+      <div class="sub-ind" id="eSub">Sin tarjetas, sin filas: tu cara es tu boleto</div>
+      <div class="simular" id="eSim"></div>
+      <div class="menu-hoy"><div class="e">🍽️</div><div><small>Menú de hoy</small><b id="eMenu"></b><span id="eMenuS"></span></div></div>
+    </div>
+  </section>
+<div class="resultado" id="res"><div class="icono" id="resI"></div><h2 id="resT"></h2><p id="resP"></p><div class="grupo" id="resG"></div></div>
+
+<div id="dlgReinicio"><div class="caja"><h3>¿Reiniciar la demo?</h3><p>Se borran las cuentas, hijos, rostros, saldo y comidas de prueba de este tótem.</p>
+  <button class="btn" id="rSi" style="background:var(--rojo)">Sí, empezar de cero</button><button class="btn sec" id="rNo">Cancelar</button></div></div>
+</div>
+
+<script>
+"use strict";
+/* ================= datos fijos ================= */
+const PRECIO=38, SEMANA_N=5, SEMANA_P=190, MES_N=20, MES_P=740, COMISION=0.02;
+const CAMARA='http://127.0.0.1:8765';
+const UMBRAL=0.70, MARGEN=0.06, REAL_MIN=0.5;
+const MENU={ // 1=lunes … 5=viernes
+ 1:{f:'Tinga de pollo',d:'Sopa de fideo · pepino y zanahoria · guayaba · agua natural'},
+ 2:{f:'Albóndigas de res con espagueti',d:'Ensalada · sandía con chile piquín y limón · agua de piña'},
+ 3:{f:'Tacos suaves de pollo con frijoles',d:'Sopa de letras · nopales asados · plátano · agua natural'},
+ 4:{f:'Picadillo de res con papa y zanahoria',d:'Arroz rojo · jícama y pepino · papaya · agua de limón con chía'},
+ 5:{f:'Torta de huevo con verduras y frijoles',d:'Sopa de coditos · lechuga y jitomate · naranja · agua natural'},
+};
+const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const GRADOS=['1.° A','1.° B','2.° A','2.° B','3.° A','3.° B','4.° A','4.° B','5.° A','5.° B','6.° A','6.° B'];
+const EJ_HIJOS=[['Raúl','4.° A'],['Sofía','2.° B'],['Mateo','6.° A'],['Valeria','1.° A']];
+
+/* ================= estado (localStorage) ================= */
+const LLAVE='nutri-demo-comedor-v1';
+let E=cargar();
+function nuevo(){return{papa:null,hijos:[],sel:0,avisos:[],noLeidos:0}}
+function cargar(){try{return JSON.parse(localStorage.getItem(LLAVE))||nuevo()}catch(e){return nuevo()}}
+function guardar(){try{localStorage.setItem(LLAVE,JSON.stringify(E))}catch(e){}}
+const hijo=()=>E.hijos[E.sel];
+
+/* ================= fechas ================= */
+const hoy0=()=>{const d=new Date();d.setHours(0,0,0,0);return d};
+const clave=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const habil=d=>d.getDay()>=1&&d.getDay()<=5;
+function diasHabiles(desde,n){const r=[];const d=new Date(desde);while(r.length<n){if(habil(d))r.push(new Date(d));d.setDate(d.getDate()+1)}return r}
+function primerComprable(){const d=hoy0();d.setDate(d.getDate()+1);while(!habil(d))d.setDate(d.getDate()+1);return d}
+const fechaLarga=d=>DIAS[d.getDay()][0].toUpperCase()+DIAS[d.getDay()].slice(1)+' '+d.getDate()+' de '+MESES[d.getMonth()];
+const hora=()=>{const d=new Date();return d.getHours()+':'+String(d.getMinutes()).padStart(2,'0')};
+const pesos=n=>'$'+n.toLocaleString('es-MX',{minimumFractionDigits:0,maximumFractionDigits:2});
+/* El día que se muestra en la entrada del comedor = el siguiente día hábil (lo que el papá ya pudo comprar). */
+const diaServicio=()=>primerComprable();
+
+/* ================= utilidades UI ================= */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ini=n=>(n||'?').trim()[0].toUpperCase();
+const CAMPANA='<svg viewBox="0 0 24 24" fill="none" stroke="#1F5D3B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>';
+function cab(titulo,sub,atras){
+  return `<div class="app-cab">${atras?`<button class="atras" data-ir="${atras}">‹</button>`:''}
+  <div class="t" style="flex:1;${atras?'margin-left:14px':''}">${esc(titulo)}${sub?`<small>${esc(sub)}</small>`:''}</div>
+  ${E.papa?`<button class="campana" data-ir="avisos">${CAMPANA}${E.noLeidos?`<i>${E.noLeidos}</i>`:''}</button>`:''}</div>`;
+}
+let pant='inicio', datos={};
+function ir(p,d){detenerCamara();pant=p;datos=d||{};pintar()}
+document.addEventListener('click',ev=>{const b=ev.target.closest('[data-ir]');if(b)ir(b.dataset.ir)});
+function aviso(icono,titulo,texto,banner){
+  E.avisos.unshift({i:icono,t:titulo,x:texto,h:hora(),n:true});E.noLeidos++;guardar();
+  if(banner)mostrarBanner(titulo,texto);
+}
+let tBanner;
+function mostrarBanner(t,s){$('bannerT').textContent=t;$('bannerS').textContent=s;$('banner').classList.add('on');clearTimeout(tBanner);tBanner=setTimeout(()=>$('banner').classList.remove('on'),5200)}
+
+/* ================= pantallas de la app ================= */
+function pintar(){
+  const A=$('app');
+  if(!E.papa&&!['bienvenida','registro'].includes(pant))pant='bienvenida';
+  if(E.papa&&!E.hijos.length&&pant==='inicio'){pant='hijo';datos={primero:true}}
+  const f=P[pant]||P.inicio;A.innerHTML=f();if(F[pant])F[pant]();
+}
+const P={}, F={};
+
+P.bienvenida=()=>`<div class="cuerpo" style="display:flex;flex-direction:column;justify-content:center;padding-top:80px">
+  <img class="logo-app" src="/demo/comedor/logo.png" alt="Nutri">
+  <div style="text-align:center;font-size:36px;font-weight:800;color:var(--verde);line-height:1.1;margin-bottom:12px">La comida de tus hijos,<br>sin filas</div>
+  <div style="text-align:center;font-size:19px;color:var(--cacao);margin-bottom:44px;line-height:1.4">Compra sus comidas desde tu casa,<br>recarga su saldo y entérate cuando ya comieron.</div>
+  <button class="btn nar" data-ir="registro">Crear mi cuenta</button>
+  <button class="btn sec" data-ir="registro">Ya tengo cuenta</button></div>`;
+
+P.registro=()=>`${cab('Crea tu cuenta','Toma menos de un minuto','bienvenida')}
+  <div class="cuerpo">
+  <button class="ejemplo" id="llenar">✨ Llenar con un ejemplo</button>
+  <div class="campo"><label>Tu nombre</label><input id="rNom" placeholder="Nombre y apellido" autocomplete="off"></div>
+  <div class="campo"><label>Celular</label><input id="rCel" inputmode="numeric" placeholder="55 0000 0000" autocomplete="off"></div>
+  <div class="campo"><label>Contraseña</label><input id="rPas" type="password" placeholder="Mínimo 6 caracteres" autocomplete="off"></div>
+  <div class="aviso">Con tu cuenta compras las comidas de <b>todos tus hijos</b> y recibes un aviso cuando entran al comedor.</div>
+  </div><div class="pie-app"><button class="btn" id="rOk">Crear cuenta</button></div>`;
+F.registro=()=>{
+  $('llenar').onclick=()=>{$('rNom').value='Laura Martínez';$('rCel').value='55 1234 5678';$('rPas').value='nutri123'};
+  $('rOk').onclick=()=>{const n=$('rNom').value.trim()||'Laura Martínez';
+    E.papa={nombre:n,cel:$('rCel').value.trim()||'55 1234 5678'};guardar();ir('hijo',{primero:true})};
+};
+
+P.hijo=()=>`${cab(datos.primero?'Agrega a tu hijo':'Agregar otro hijo','Uno por uno, los que quieras',E.hijos.length?'inicio':'')}
+  <div class="cuerpo">
+  <button class="ejemplo" id="llenar">✨ Llenar con un ejemplo</button>
+  <div class="campo"><label>Nombre de tu hijo o hija</label><input id="hNom" placeholder="Nombre" autocomplete="off"></div>
+  <div class="campo"><label>Grado y grupo</label><select id="hGr">${GRADOS.map(g=>`<option>${g}</option>`).join('')}</select></div>
+  <div class="h2">¿Tiene alguna alergia?</div>
+  <div class="chips" id="hAl" style="flex-wrap:wrap">${['Ninguna','Cacahuate','Lácteos','Gluten','Huevo','Mariscos'].map((a,i)=>`<button class="chip${i==0?' on':''}" data-a="${a}" style="padding:12px 18px">${a}</button>`).join('')}</div>
+  <div class="aviso" style="margin-top:16px">Si marcas una alergia, la cocina la ve <b>antes de servir</b> su plato.</div>
+  </div><div class="pie-app"><button class="btn" id="hOk">Guardar</button></div>`;
+F.hijo=()=>{
+  const al=$('hAl');al.onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;
+    if(b.dataset.a==='Ninguna'){al.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===b))}
+    else{b.classList.toggle('on');al.querySelector('[data-a="Ninguna"]').classList.toggle('on',!al.querySelector('.chip.on:not([data-a="Ninguna"])'))}};
+  $('llenar').onclick=()=>{const usados=E.hijos.map(h=>h.nombre);const ej=EJ_HIJOS.find(x=>!usados.includes(x[0]))||EJ_HIJOS[0];$('hNom').value=ej[0];$('hGr').value=ej[1]};
+  $('hOk').onclick=()=>{const n=$('hNom').value.trim();if(!n){$('hNom').focus();return}
+    const alergias=[...al.querySelectorAll('.chip.on')].map(c=>c.dataset.a).filter(a=>a!=='Ninguna');
+    E.hijos.push({nombre:n,grupo:$('hGr').value,alergias,saldo:0,comidas:[],rostro:null});E.sel=E.hijos.length-1;guardar();
+    ir('hijoListo')};
+};
+P.hijoListo=()=>{const h=hijo();return `${cab('¡Listo!','','')}
+  <div class="cuerpo"><div class="exito"><div class="ok">✓</div><h2>${esc(h.nombre)} ya está en tu cuenta</h2><p>${esc(h.grupo)}${h.alergias.length?' · alergia: '+esc(h.alergias.join(', ')):''}</p></div>
+  <button class="btn sec" data-ir="hijo">＋ Agregar otro hijo</button>
+  <button class="btn" data-ir="inicio">Continuar</button></div>`};
+
+P.inicio=()=>{const h=hijo();if(!h)return P.hijo();
+  const sig=primerComprable(), tiene=h.comidas.includes(clave(sig));
+  const prox=h.comidas.filter(c=>c>=clave(hoy0())).length;
+  return `${cab('Hola, '+E.papa.nombre.split(' ')[0],'Centro Escolar Benito Juárez')}
+  <div class="cuerpo">
+   <div class="chips">${E.hijos.map((x,i)=>`<button class="chip${i==E.sel?' on':''}" data-h="${i}"><span class="ava">${ini(x.nombre)}</span>${esc(x.nombre)}</button>`).join('')}<button class="chip" data-ir="hijo" style="padding:10px 18px">＋</button></div>
+   <div class="saldo" style="margin-top:16px"><small>Saldo de ${esc(h.nombre)}</small><b>${pesos(h.saldo)}</b><button class="btn" data-ir="recarga">Recargar saldo</button></div>
+   <div class="h2">Comedor</div>
+   <div class="tarjeta"><div class="fila"><div class="ic">🍽️</div><div class="tx"><b>${fechaLarga(sig)}</b><span>${esc(MENU[sig.getDay()].f)}</span></div>
+     <span class="estado ${tiene?'ok':'no'}">${tiene?'Comprada ✓':'Sin comprar'}</span></div></div>
+   <div class="acciones">
+     <button class="accion" data-ir="comprar"><div class="e">🗓️</div><b>Comprar comidas</b><span>${prox?prox+' comidas compradas':'Por día, semana o mes'}</span></button>
+     <button class="accion" data-ir="rostro"><div class="e">${h.rostro?'✅':'🙂'}</div><b>${h.rostro?'Rostro registrado':'Registrar rostro'}</b><span>${h.rostro?'Ya puede entrar al comedor':'Para entrar sin filas'}</span></button>
+   </div>
+   <div class="h2">Menú de la semana</div>
+   ${diasHabiles(sig,5).map(d=>`<div class="dia"><div class="f"><small>${DIAS[d.getDay()].slice(0,3)}</small><b>${d.getDate()}</b></div><div class="m"><b>${esc(MENU[d.getDay()].f)}</b><span>${esc(MENU[d.getDay()].d)}</span></div></div>`).join('')}
+  </div>`};
+F.inicio=()=>{document.querySelectorAll('[data-h]').forEach(b=>b.onclick=()=>{E.sel=+b.dataset.h;guardar();pintar()})};
+
+/* ----- recarga ----- */
+P.recarga=()=>{const h=hijo();const m=datos.monto||500;const com=Math.round(m*COMISION*100)/100;
+  return `${cab('Recargar saldo','Para '+h.nombre,'inicio')}
+  <div class="cuerpo">
+   <div class="h2" style="margin-top:4px">¿Cuánto quieres recargar?</div>
+   <div class="montos">${[200,500,1000].map(v=>`<button class="monto${v==m?' on':''}" data-m="${v}">${pesos(v)}</button>`).join('')}</div>
+   <div class="h2">Paga con</div>
+   <div class="tc"><small>Tarjeta de prueba · no se cobra nada</small>4242 4242 4242 4242<div class="exp"><span>LAURA MARTÍNEZ</span><span>12/29 · CVV 123</span></div></div>
+   <div class="aviso">Aceptamos <b>débito, crédito y tarjeta del Bienestar</b>. En la caja del comedor también puedes pagar con tarjeta o en efectivo, y por transferencia, <b>sin comisión</b>.</div>
+   <div class="tarjeta" style="margin-top:14px"><div class="resumen"><span>Recarga</span><span>${pesos(m)}</span></div>
+     <div class="resumen"><span>Comisión por pago en línea (2 %)</span><span>${pesos(com)}</span></div>
+     <div class="resumen t"><span>Total</span><span>${pesos(m+com)}</span></div></div>
+  </div><div class="pie-app"><button class="btn" id="pagar">Pagar ${pesos(m+com)}</button></div>`};
+F.recarga=()=>{document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{datos.monto=+b.dataset.m;pintar()});
+  $('pagar').onclick=()=>procesar(()=>{const h=hijo();const m=datos.monto||500;h.saldo+=m;guardar();
+    aviso('💳','Recarga exitosa',`${pesos(m)} al saldo de ${h.nombre}`,false);
+    return {t:'¡Recarga lista!',p:`${esc(h.nombre)} ya tiene <b>${pesos(h.saldo)}</b> de saldo`,sig:'comprar',sigT:'Comprar sus comidas'}})};
+
+function procesar(fn){const A=$('app');A.innerHTML=`${cab('Procesando pago','','')}<div class="cuerpo"><div class="cargando"><div class="spin"></div>Confirmando con el banco…</div></div>`;
+  setTimeout(()=>{const r=fn();A.innerHTML=`${cab('Listo','','')}<div class="cuerpo"><div class="exito"><div class="ok">✓</div><h2>${r.t}</h2><p>${r.p}</p></div>
+    ${r.sig?`<button class="btn" data-ir="${r.sig}">${r.sigT}</button>`:''}<button class="btn sec" data-ir="inicio">Ir al inicio</button></div>`},1600)}
+
+/* ----- comprar comidas ----- */
+P.comprar=()=>{const h=hijo();const modo=datos.modo||'dia';datos.sel=datos.sel||[];
+  const ini0=primerComprable();
+  let lista='',total=0,n=0,fechas=[];
+  if(modo==='dia'){
+    const hoy=hoy0();
+    const hoyHabil=habil(hoy);
+    lista=(hoyHabil?`<div class="dia off"><div class="f"><small>hoy</small><b>${hoy.getDate()}</b></div><div class="m"><b>${esc(MENU[hoy.getDay()].f)}</b><span>Hoy ya no se puede comprar: las comidas se compran un día antes</span></div><div class="check" style="background:var(--lino);border-color:var(--lino);color:var(--piedra)">✕</div></div>`:'')+
+    diasHabiles(ini0,10).map(d=>{const k=clave(d),ya=h.comidas.includes(k),on=datos.sel.includes(k);
+      return `<button class="dia${on?' on':''}${ya?' off':''}" data-d="${k}" ${ya?'disabled':''} style="width:100%;text-align:left"><div class="f"><small>${DIAS[d.getDay()].slice(0,3)}</small><b>${d.getDate()}</b></div><div class="m"><b>${esc(MENU[d.getDay()].f)}</b><span>${ya?'Ya comprada ✓':esc(MENU[d.getDay()].d)}</span></div><div class="check">${on?'✓':''}</div></button>`}).join('');
+    fechas=datos.sel.slice();n=fechas.length;total=n*PRECIO;
+  }else{
+    const N=modo==='semana'?SEMANA_N:MES_N, PR=modo==='semana'?SEMANA_P:MES_P;
+    const ds=diasHabiles(ini0,N);fechas=ds.map(clave).filter(k=>!h.comidas.includes(k));n=fechas.length;
+    const ahorro=N*PRECIO-PR;
+    lista=`<div class="paquete on"><div style="font-size:20px;font-weight:800">${modo==='semana'?'Paquete semanal':'Paquete mensual'} · ${N} comidas</div>
+      <div class="p">${pesos(PR)} <small>en lugar de ${pesos(N*PRECIO)}</small></div>
+      ${ahorro>0?`<span class="ah">Ahorras ${pesos(ahorro)}</span>`:''}
+      <div style="font-size:16px;color:var(--cacao);margin-top:12px">Del ${fechaLarga(ds[0]).toLowerCase()} al ${fechaLarga(ds[ds.length-1]).toLowerCase()}</div></div>
+      <div class="aviso"><b>Importante:</b> en los paquetes no se devuelve el dinero si tu hijo falta a la escuela. Si quieres flexibilidad, compra por día.</div>`;
+    total=n===N?PR:Math.round(PR/N*n);
+  }
+  datos.fechas=fechas;datos.total=total;
+  const alcanza=h.saldo>=total&&total>0;
+  return `${cab('Comprar comidas','Para '+h.nombre+' · '+pesos(PRECIO)+' cada una','inicio')}
+  <div class="cuerpo">
+   <div class="tabs">${[['dia','Por día'],['semana','Semana'],['mes','Mes']].map(([k,t])=>`<button class="${k==modo?'on':''}" data-modo="${k}">${t}</button>`).join('')}</div>
+   ${lista}
+  </div>
+  <div class="pie-app">
+   <div class="resumen"><span>${n} ${n==1?'comida':'comidas'}</span><b>${pesos(total)}</b></div>
+   <div class="resumen" style="font-size:16px;color:var(--cacao)"><span>Saldo de ${esc(h.nombre)}</span><span>${pesos(h.saldo)}</span></div>
+   ${alcanza?`<button class="btn" id="cSaldo" style="margin-top:10px">Pagar con su saldo</button>`:''}
+   <button class="btn ${alcanza?'sec':''}" id="cTarjeta" ${total?'':'disabled'} style="margin-top:10px">Pagar con tarjeta${total?' · '+pesos(Math.round(total*(1+COMISION)*100)/100):''}</button>
+  </div>`};
+F.comprar=()=>{
+  document.querySelectorAll('[data-modo]').forEach(b=>b.onclick=()=>{datos={modo:b.dataset.modo};pintar()});
+  document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{const k=b.dataset.d;const i=datos.sel.indexOf(k);i<0?datos.sel.push(k):datos.sel.splice(i,1);pintar()});
+  const fin=porSaldo=>procesar(()=>{const h=hijo();if(porSaldo)h.saldo-=datos.total;
+    h.comidas=[...new Set([...h.comidas,...datos.fechas])].sort();guardar();
+    aviso('🍽️','Comidas compradas',`${datos.fechas.length} ${datos.fechas.length==1?'comida':'comidas'} para ${h.nombre} · ${pesos(datos.total)}`,false);
+    return {t:'¡Comidas compradas!',p:`${esc(h.nombre)} tiene <b>${datos.fechas.length} ${datos.fechas.length==1?'comida':'comidas'}</b> lista${datos.fechas.length==1?'':'s'}.<br>Le avisamos cuando entre al comedor.`,sig:hijo().rostro?'':'rostro',sigT:'Registrar su rostro'}});
+  if($('cSaldo'))$('cSaldo').onclick=()=>fin(true);
+  $('cTarjeta').onclick=()=>{if(!datos.total)return;fin(false)};
+};
+
+/* ----- avisos ----- */
+P.avisos=()=>{E.avisos.forEach(a=>a.v=a.n);E.noLeidos=0;E.avisos.forEach(a=>a.n=false);guardar();
+  return `${cab('Avisos','','inicio')}<div class="cuerpo">${E.avisos.length?E.avisos.map(a=>`<div class="noti${a.v?' nueva':''}"><div class="ic">${a.i}</div><div><b>${esc(a.t)}</b><span>${esc(a.x)}</span><small>${a.h}</small></div></div>`).join(''):'<div class="vacio">Aquí verás cuando tus hijos entren al comedor, tus recargas y tus compras.</div>'}</div>`};
+
+/* ----- registrar rostro (dentro del celular, con la cámara del tótem) ----- */
+P.rostro=()=>{const h=hijo();return `${cab('Registrar rostro',h.nombre,'inicio')}
+  <div class="cuerpo" style="text-align:center">
+   <div style="font-size:19px;color:var(--cacao);margin:4px 0 18px;line-height:1.4">Que ${esc(h.nombre)} se pare frente a la cámara del tótem, mire de frente y <b>parpadee</b>.</div>
+   <div class="circulo" style="width:440px;height:440px"><img id="cImg" alt=""><div class="sincam" id="cSin">Conectando la cámara…</div><div class="aro" id="cAro"></div></div>
+   <div class="indicacion" id="cInd">Ponte frente a la cámara</div>
+   <div class="sub-ind">Solo guardamos una huella numérica del rostro, nunca la foto.</div>
+   <div class="simular" id="cSim"></div>
+  </div>`};
+P.rostroOk=()=>{const h=hijo();return `${cab('Rostro registrado','','')}<div class="cuerpo"><div class="exito"><div class="ok">✓</div><h2>¡Listo, ${esc(h.nombre)}!</h2><p>Ya puede entrar al comedor solo con su cara.<br>Sin tarjetas y sin filas.</p></div><button class="btn" data-ir="inicio">Ir al inicio</button></div>`};
+F.rostro=()=>camara({img:'cImg',sin:'cSin',aro:'cAro',ind:'cInd',sim:'cSim',modo:'registro'});
+
+/* ================= cámara ================= */
+let cam=null;
+function detenerCamara(){if(cam){cam.vivo=false;cam=null}}
+async function pedir(ruta,ms){const c=new AbortController();const t=setTimeout(()=>c.abort(),ms||1500);
+  try{const r=await fetch(CAMARA+ruta,{cache:'no-store',signal:c.signal});if(!r.ok)throw 0;return r}finally{clearTimeout(t)}}
+function indicacion(e){if(!e||e.camara===false)return'Conectando la cámara…';if(!e.presente)return'Ponte frente a la cámara';
+  if(!e.cerca)return'Acércate un poco';if(e.muyCerca)return'Aléjate un poco';if(!e.centrado)return'Ponte al centro';
+  if(!e.deFrente)return'Mira de frente a la cámara';if(!e.ojosAbiertos)return'Abre los ojos';return'Ahora parpadea';}
+function leerHuella(b64){const bin=atob(b64);if(bin.length!==2048)return null;const dv=new DataView(new ArrayBuffer(2048));
+  for(let i=0;i<2048;i++)dv.setUint8(i,bin.charCodeAt(i));const v=new Float32Array(512);let n=0;
+  for(let i=0;i<512;i++){v[i]=dv.getFloat32(i*4,true);n+=v[i]*v[i]}n=Math.sqrt(n)||1;for(let i=0;i<512;i++)v[i]/=n;return Array.from(v)}
+function promedio(vs){const p=new Array(512).fill(0);vs.forEach(v=>v.forEach((x,i)=>p[i]+=x));const n=Math.sqrt(p.reduce((s,x)=>s+x*x,0))||1;return p.map(x=>x/n)}
+const sim=(a,b)=>{let s=0;for(let i=0;i<a.length;i++)s+=a[i]*b[i];return s};
+function identificar(consulta){
+  let mejor=-1,seg=-1,quien=-1;
+  E.hijos.forEach((h,i)=>{if(!h.rostro)return;let s=-1;h.rostro.forEach(m=>s=Math.max(s,sim(consulta,m)));
+    if(s>mejor){seg=mejor;mejor=s;quien=i}else if(s>seg)seg=s});
+  if(quien<0||mejor<UMBRAL||(seg>0&&mejor-seg<MARGEN))return -1;return quien;
+}
+function camara(o){
+  detenerCamara();const c={vivo:true,base:null,ocupado:false};cam=c;
+  const img=$(o.img),sin=$(o.sin),aro=$(o.aro),ind=$(o.ind);let url=null,fallas=0;
+  // botones para probar sin cámara (solo aparecen si no hay cámara)
+  const pintarSim=()=>{const s=$(o.sim);if(!s)return;
+    if(fallas<3){s.innerHTML='';return}
+    if(o.modo==='registro')s.innerHTML=`<button data-s="reg">Simular registro (sin cámara)</button>`;
+    else s.innerHTML=E.hijos.map((h,i)=>h.rostro?`<button data-s="${i}">Simular a ${esc(h.nombre)}</button>`:'').join('')+`<button data-s="x">Simular desconocido</button>`;
+    s.onclick=ev=>{const b=ev.target.closest('[data-s]');if(!b)return;const v=b.dataset.s;
+      if(v==='reg'){const fake=Array.from({length:512},()=>Math.random()-.5);const n=Math.sqrt(fake.reduce((a,x)=>a+x*x,0));listo([fake.map(x=>x/n)],1)}
+      else if(v==='x'){const fake=Array.from({length:512},()=>Math.random()-.5);const n=Math.sqrt(fake.reduce((a,x)=>a+x*x,0));listo([fake.map(x=>x/n)],1)}
+      else listo([E.hijos[+v].rostro[0]],1)}};
+  const listo=(huellas,real)=>{if(c.ocupado)return;c.ocupado=true;
+    if(o.modo==='registro'){
+      if(real<REAL_MIN){ind.textContent='No pudimos confirmar. Intenta otra vez';c.ocupado=false;return}
+      const h=hijo();h.rostro=huellas;guardar();ir('rostroOk');
+    }else{entradaResultado(huellas,real);setTimeout(()=>{c.ocupado=false},5200)}};
+  (async function ciclo(){
+    let ultimaFoto=0;
+    while(c.vivo){
+      try{
+        const r=await pedir('/rostro',1500);const e=await r.json();fallas=0;pintarSim();
+        ind.textContent=c.ocupado&&o.modo!=='registro'?'':indicacion(e);
+        aro.className='aro'+(e.listoParaParpadear?' listo':'')+(e.presente&&!e.listoParaParpadear?' leyendo':'');
+        const res=e.resultado;
+        if(res&&res.id){
+          if(c.base===null)c.base=res.id;           // ignora un resultado viejo al abrir la pantalla
+          else if(res.id>c.base){c.base=res.id;
+            const hs=(res.huellas||[]).map(leerHuella).filter(Boolean);
+            if(hs.length)listo(o.modo==='registro'?hs:[promedio(hs)],res.real==null?1:res.real);}
+        }else if(c.base===null)c.base=0;
+        if(Date.now()-ultimaFoto>110){ultimaFoto=Date.now();
+          try{const f=await pedir('/foto.jpg',1500);const b=await f.blob();if(!c.vivo)break;
+            const u=URL.createObjectURL(b);img.src=u;if(url)URL.revokeObjectURL(url);url=u;sin.style.display='none'}catch(_){}}
+      }catch(err){fallas++;sin.style.display='flex';sin.textContent=fallas>2?'Cámara no conectada':'Conectando la cámara…';ind.textContent=fallas>2?'Cámara no conectada':'Conectando la cámara…';pintarSim();
+        await new Promise(r=>setTimeout(r,900));}
+      await new Promise(r=>setTimeout(r,90));
+    }
+  })();
+}
+
+/* ================= entrada al comedor ================= */
+function pintarEntrada(){const d=diaServicio();$('eFecha').textContent=fechaLarga(d);
+  $('eMenu').textContent=MENU[d.getDay()].f;$('eMenuS').textContent=MENU[d.getDay()].d}
+let tRes;
+function entradaResultado(huellas,real){
+  const d=diaServicio(),k=clave(d);const R=$('res');
+  let tipo,icono,t,p,g='';
+  const i=real>=REAL_MIN?identificar(huellas[0]):-1;
+  if(i<0){tipo='gris';icono='?';t='No te encontramos';p='Por favor revísalo con tu profesor.'}
+  else{const h=E.hijos[i];g=h.grupo;
+    if(h.comidas.includes(k)){tipo='verde';icono='✓';t='¡Hola, '+h.nombre+'!';p='Adelante, ya tienes tu comida de hoy.';
+      aviso('✅',h.nombre+' entró al comedor',`${fechaLarga(d)} · ${hora()} h`,false);
+      aviso('🍽️',h.nombre+' recibió su comida',`${MENU[d.getDay()].f} · plato completo`,false);
+      setTimeout(()=>mostrarBanner(h.nombre+' ya está en el comedor','Recibió su comida: '+MENU[d.getDay()].f),400);
+    }else{tipo='naranja';icono='!';t=h.nombre+', hoy no tienes comida';p='Por favor revísalo con tu profesor.'}}
+  R.className='resultado on '+tipo;$('resI').textContent=icono;$('resT').textContent=t;$('resP').textContent=p;
+  $('resG').textContent=g;$('resG').style.display=g?'':'none';
+  clearTimeout(tRes);tRes=setTimeout(()=>R.classList.remove('on'),4800);
+}
+$('res').onclick=()=>$('res').classList.remove('on');
+
+/* ================= modos y reinicio ================= */
+function modo(m){
+  $('mApp').classList.toggle('on',m==='app');$('mEntrada').classList.toggle('on',m==='entrada');
+  $('vApp').classList.toggle('on',m==='app');$('vEntrada').classList.toggle('on',m==='entrada');
+  detenerCamara();$('res').classList.remove('on');
+  if(m==='entrada'){pintarEntrada();camara({img:'eImg',sin:'eSin',aro:'eAro',ind:'eInd',sim:'eSim',modo:'entrada'})}
+  else{E=cargar();if(pant==='rostro')pant='inicio';pintar();if(E.noLeidos&&E.avisos[0])setTimeout(()=>mostrarBanner(E.avisos[0].t,E.avisos[0].x),500)}
+}
+$('mApp').onclick=()=>modo('app');$('mEntrada').onclick=()=>modo('entrada');
+let tLargo;const logo=$('logo');
+const abrirRe=()=>$('dlgReinicio').classList.add('on');
+logo.addEventListener('pointerdown',()=>{tLargo=setTimeout(abrirRe,1800)});
+['pointerup','pointerleave','pointercancel'].forEach(ev=>logo.addEventListener(ev,()=>clearTimeout(tLargo)));
+$('rNo').onclick=()=>$('dlgReinicio').classList.remove('on');
+$('rSi').onclick=()=>{E=nuevo();guardar();$('dlgReinicio').classList.remove('on');pant='bienvenida';modo('app')};
+
+function ajustar(){const s=Math.min(innerWidth/1080,innerHeight/1920);const r=$('raiz');
+  r.style.transform=`translate(${(innerWidth-1080*s)/2}px,${(innerHeight-1920*s)/2}px) scale(${s})`}
+addEventListener('resize',ajustar);ajustar();
+pant=E.papa?'inicio':'bienvenida';pintar();
+</script>
+</body>
+</html>

@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async rewrites() {
     return [
+      { source: '/demo/comedor', destination: '/demo/comedor/index.html' },
       { source: '/propuestas/tec-prepa', destination: '/propuestas/tec-prepa/index.html' },
       { source: '/propuestas/tec-santa-fe', destination: '/propuestas/tec-santa-fe/index.html' },
       { source: '/propuestas/itj-santa-monica', destination: '/propuestas/itj-santa-monica/index.html' },
