@@ -290,7 +290,7 @@ const CAMPANA='<svg viewBox="0 0 24 24" fill="none" stroke="#1F5D3B" stroke-widt
 function cab(titulo,sub,atras){
   return `<div class="app-cab">${atras?`<button class="atras" data-ir="${atras}">‹</button>`:''}
   <div class="t" style="flex:1;${atras?'margin-left:14px':''}">${esc(titulo)}${sub?`<small>${esc(sub)}</small>`:''}</div>
-  ${E.papa?`<button class="campana" data-ir="avisos">${CAMPANA}${E.noLeidos?`<i>${E.noLeidos}</i>`:''}</button>`:''}</div>`;
+  ${E.papa&&E.sesion?`<button class="campana" data-ir="avisos">${CAMPANA}${E.noLeidos?`<i>${E.noLeidos}</i>`:''}</button>`:''}</div>`;
 }
 let pant='inicio', datos={};
 function ir(p,d){detenerCamara();pant=p;datos=d||{};pintar()}
@@ -305,7 +305,8 @@ function mostrarBanner(t,s){$('bannerT').textContent=t;$('bannerS').textContent=
 /* ================= pantallas de la app ================= */
 function pintar(){
   const A=$('app');
-  if(!E.papa&&!['bienvenida','registro'].includes(pant))pant='bienvenida';
+  if(E.papa&&E.sesion===undefined)E.sesion=true;
+  if((!E.papa||!E.sesion)&&!['bienvenida','registro','login'].includes(pant))pant='bienvenida';
   if(E.papa&&!E.hijos.length&&pant==='inicio'){pant='hijo';datos={primero:true}}
   const f=P[pant]||P.inicio;A.innerHTML=f();if(F[pant])F[pant]();
 }
@@ -316,7 +317,14 @@ P.bienvenida=()=>`<div class="cuerpo" style="display:flex;flex-direction:column;
   <div style="text-align:center;font-size:36px;font-weight:800;color:var(--verde);line-height:1.1;margin-bottom:12px">La comida de tus hijos,<br>sin filas</div>
   <div style="text-align:center;font-size:19px;color:var(--cacao);margin-bottom:44px;line-height:1.4">Compra sus comidas desde tu casa,<br>recarga su saldo y entérate cuando entran al comedor.</div>
   <button class="btn nar" data-ir="registro">Crear mi cuenta</button>
-  <button class="btn sec" data-ir="registro">Ya tengo cuenta</button></div>`;
+  <button class="btn sec" data-ir="login">Ya tengo cuenta</button></div>`;
+P.login=()=>`${cab('Iniciar sesión','','bienvenida')}
+  <div class="cuerpo">${E.papa?`
+  <div class="campo"><label>Celular</label><input id="lCel" inputmode="numeric" value="${esc(E.papa.cel||'')}" autocomplete="off"></div>
+  <div class="campo"><label>Contraseña</label><input id="lPas" type="password" value="nutri123" autocomplete="off"></div>
+  <div class="aviso">Hola de nuevo, <b>${esc(E.papa.nombre)}</b>.</div>`:`<div class="vacio">Todavía no hay una cuenta en este equipo.</div>`}
+  </div><div class="pie-app">${E.papa?'<button class="btn" id="lOk">Entrar</button>':'<button class="btn nar" data-ir="registro">Crear mi cuenta</button>'}</div>`;
+F.login=()=>{if($('lOk'))$('lOk').onclick=()=>{E.sesion=true;guardar();ir('inicio')}};
 
 P.registro=()=>`${cab('Crea tu cuenta','Toma menos de un minuto','bienvenida')}
   <div class="cuerpo">
@@ -330,7 +338,7 @@ P.registro=()=>`${cab('Crea tu cuenta','Toma menos de un minuto','bienvenida')}
 F.registro=()=>{
   $('llenar').onclick=()=>{$('rNom').value='Laura';$('rApe').value='Martínez López';$('rCel').value='55 1234 5678';$('rPas').value='nutri123'};
   $('rOk').onclick=()=>{const n=$('rNom').value.trim()||'Laura';const a=$('rApe').value.trim()||'Martínez López';
-    E.papa={nombre:n,apellidos:a,cel:$('rCel').value.trim()||'55 1234 5678'};guardar();ir('hijo',{primero:true})};
+    E=nuevo();E.papa={nombre:n,apellidos:a,cel:$('rCel').value.trim()||'55 1234 5678'};E.sesion=true;guardar();ir('hijo',{primero:true})};
 };
 
 P.hijo=()=>`${cab(datos.primero?'Agrega a tu hijo':'Agregar otro hijo','Uno por uno, los que quieras',E.hijos.length?'inicio':'')}
@@ -374,8 +382,10 @@ P.inicio=()=>{const h=hijo();if(!h)return P.hijo();
    </div>
    <div class="h2">Menú de la semana</div>
    ${diasHabiles(sig,5).map(d=>`<div class="dia"><div class="f"><small>${DIAS[d.getDay()].slice(0,3)}</small><b>${d.getDate()}</b></div><div class="m"><b>${esc(MENU[d.getDay()].f)}</b><span>${esc(MENU[d.getDay()].d)}</span></div></div>`).join('')}
+   <button class="btn sec" id="salir" style="margin-top:18px;color:var(--rojo);border-color:var(--rojo2)">Cerrar sesión</button>
   </div>`};
-F.inicio=()=>{document.querySelectorAll('[data-h]').forEach(b=>b.onclick=()=>{E.sel=+b.dataset.h;guardar();pintar()})};
+F.inicio=()=>{document.querySelectorAll('[data-h]').forEach(b=>b.onclick=()=>{E.sel=+b.dataset.h;guardar();pintar()});
+  if($('salir'))$('salir').onclick=()=>{E.sesion=false;guardar();ir('bienvenida')}};
 
 /* ----- recarga ----- */
 const METODOS=[
