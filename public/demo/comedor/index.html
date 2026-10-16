@@ -215,7 +215,7 @@ input:focus,select:focus{border-color:var(--verde2)}
   <!-- ===== VISTA ENTRADA AL COMEDOR ===== -->
   <section class="vista" id="vEntrada">
     <div class="entrada">
-      <div class="cab"><div class="k">Entrada al comedor</div><h1 id="eFecha"></h1><p>Párate frente a la cámara y parpadea</p></div>
+      <div class="cab"><div class="k">Entrada al comedor</div><h1 id="eFecha"></h1><p>Turnos 13:00 · 13:45 · 14:30 · 15:15 — párate frente a la cámara y parpadea</p></div>
       <div class="circulo" id="eCirc"><img id="eImg" alt=""><div class="sincam" id="eSin">Conectando la cámara…</div><div class="aro" id="eAro"></div></div>
       <div class="indicacion" id="eInd">Ponte frente a la cámara</div>
       <div class="sub-ind" id="eSub">Sin tarjetas, sin filas: tu cara es tu boleto</div>
@@ -244,8 +244,14 @@ const MENU={ // 1=lunes … 5=viernes
 };
 const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
 const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-const GRADOS=['1.° A','1.° B','2.° A','2.° B','3.° A','3.° B','4.° A','4.° B','5.° A','5.° B','6.° A','6.° B'];
-const EJ_HIJOS=[['Raúl','4.° A'],['Sofía','2.° B'],['Mateo','6.° A'],['Valeria','1.° A']];
+// Horario oficial de comedor 2026-2027 (hoja de la escuela): grupo → [turno, comedor]
+const HORARIO={};
+[['13:00',['1A','1B','1C','1D'],['1E','2A','2B']],['13:45',['2C','2D','2E','3A'],['3B','3C','3D']],
+ ['14:30',['4A','4B','4C','4D'],['3E','5A','5B']],['15:15',['5C','5D','6A','6B'],['6C','6D','6E']]]
+ .forEach(([h,ab,ar])=>{ab.forEach(g=>HORARIO[g]=[h,'abajo']);ar.forEach(g=>HORARIO[g]=[h,'arriba'])});
+const GRADOS=Object.keys(HORARIO).sort().map(g=>g[0]+'.° '+g[1]);
+const turno=gr=>HORARIO[gr.replace('.° ','')]||null;
+const EJ_HIJOS=[['Raúl','4.° A'],['Sofía','2.° B'],['Mateo','6.° C'],['Valeria','1.° A']];
 
 /* ================= estado (localStorage) ================= */
 const LLAVE='nutri-demo-comedor-v1';
@@ -349,7 +355,7 @@ P.inicio=()=>{const h=hijo();if(!h)return P.hijo();
    <div class="chips">${E.hijos.map((x,i)=>`<button class="chip${i==E.sel?' on':''}" data-h="${i}"><span class="ava">${ini(x.nombre)}</span>${esc(x.nombre)}</button>`).join('')}<button class="chip" data-ir="hijo" style="padding:10px 18px">＋</button></div>
    <div class="saldo" style="margin-top:16px"><small>Saldo de ${esc(h.nombre)}</small><b>${pesos(h.saldo)}</b><button class="btn" data-ir="recarga">Recargar saldo</button></div>
    <div class="h2">Comedor</div>
-   <div class="tarjeta"><div class="fila"><div class="ic">🍽️</div><div class="tx"><b>${fechaLarga(sig)}</b><span>${esc(MENU[sig.getDay()].f)}</span></div>
+   <div class="tarjeta"><div class="fila"><div class="ic">🍽️</div><div class="tx"><b>${fechaLarga(sig)}</b><span>${esc(MENU[sig.getDay()].f)}${turno(h.grupo)?' · '+turno(h.grupo)[0]+' h, comedor de '+turno(h.grupo)[1]:''}</span></div>
      <span class="estado ${tiene?'ok':'no'}">${tiene?'Comprada ✓':'Sin comprar'}</span></div></div>
    <div class="acciones">
      <button class="accion" data-ir="comprar"><div class="e">🗓️</div><b>Comprar comidas</b><span>${prox?prox+' comidas compradas':'Por día, semana o mes'}</span></button>
@@ -513,7 +519,7 @@ function entradaResultado(huellas,real){
   let tipo,icono,t,p,g='';
   const i=real>=REAL_MIN?identificar(huellas[0]):-1;
   if(i<0){tipo='gris';icono='?';t='No te encontramos';p='Por favor revísalo con tu profesor.'}
-  else{const h=E.hijos[i];g=h.grupo;
+  else{const h=E.hijos[i];const tu=turno(h.grupo);g=h.grupo+(tu?` · ${tu[0]} h · comedor de ${tu[1]}`:'');
     if(h.comidas.includes(k)){tipo='verde';icono='✓';t='¡Hola, '+h.nombre+'!';p='Adelante, ya tienes tu comida de hoy.';
       aviso('✅',h.nombre+' entró al comedor',`${fechaLarga(d)} · ${hora()} h`,false);
       aviso('🍽️',h.nombre+' recibió su comida',`${MENU[d.getDay()].f} · plato completo`,false);
