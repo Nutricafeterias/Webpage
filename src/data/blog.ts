@@ -26,6 +26,52 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'scjn-comida-chatarra-universidades-preparatorias-cafeteria-campus-2026',
+    title: 'La Corte extendió el veto a la comida chatarra a prepas y universidades: 5 decisiones para la cafetería de tu campus (octubre 2026)',
+    description:
+      'El 13 de octubre de 2026 la Suprema Corte negó por unanimidad tres amparos y confirmó que los lineamientos de la SEP aplican también a educación media superior y superior. Qué cambia para preparatorias y universidades privadas y cómo ajustar la cafetería.',
+    date: '2026-10-19',
+    readTime: '6 min',
+    category: 'Guías para directores',
+    emoji: '⚖️',
+    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&h=630&fit=crop&q=85',
+    keywords: ['comida chatarra universidades SCJN', 'lineamientos SEP preparatorias', 'cafetería universitaria saludable', 'prohibición comida chatarra educación superior', 'amparos comida chatarra escuelas 2026', 'cafetería escolar lineamientos SEP'],
+    related: [
+      { href: '/blog/fallo-scjn-comida-chatarra-escuelas-prohibicion-sigue-vigente', anchor: 'El fallo de la SCJN y la prohibición de comida chatarra en escuelas' },
+      { href: '/blog/productos-sin-sellos-reformulados-cafeteria-escolar-exhorto-congreso-2026', anchor: 'Productos sin sellos y reformulados en la cafetería escolar' },
+      { href: '/diagnostico', anchor: 'Diagnóstico gratuito de tu cafetería escolar' },
+    ],
+    content: [
+      { type: 'p', text: 'Durante años, muchas preparatorias y universidades privadas vivieron con una idea cómoda: los lineamientos de la SEP sobre alimentos eran "cosa de primarias". Esa idea terminó el martes 13 de octubre de 2026. Ese día, la Suprema Corte de Justicia de la Nación negó por unanimidad tres amparos promovidos por empresas (embotelladoras, una cadena de panaderías y proveedores de alimentos en planteles) y confirmó la constitucionalidad de los lineamientos para la preparación, distribución y venta de alimentos y bebidas en todo el Sistema Educativo Nacional, incluidas la educación media superior y la superior.' },
+      { type: 'p', text: 'Según la cobertura de Expansión Política y Reforma, los ministros resolvieron los amparos en revisión 127/2026, 91/2026 y 183/2026. Uno de ellos revoca la sentencia de un juzgado que, el 8 de diciembre de 2025, había dado la razón a una empresa al considerar que la restricción en universidades afectaba la libertad de comercio. Con este fallo, la Corte se aparta del criterio de 2016, cuando su Segunda Sala sostuvo que la prohibición no podía extenderse a mayores de edad.' },
+      { type: 'h2', text: 'Qué dijo la Corte, en corto' },
+      { type: 'ul', items: [
+        'Los lineamientos, publicados en el DOF el 30 de septiembre de 2024, desarrollan facultades que ya da la legislación educativa; no son un exceso de la autoridad.',
+        'No prohíben el comercio en general: regulan qué productos se pueden vender dentro de los planteles.',
+        'Los contratos previos de los proveedores no generan un derecho adquirido para seguir vendiendo lo que la norma restringe.',
+        'Una empresa no puede reclamar en nombre propio los derechos personales de los estudiantes adultos.',
+        'La protección de la salud y el derecho a una alimentación adecuada también aplican a prepas y universidades.',
+      ] },
+      { type: 'p', text: 'Hay dos matices que conviene tener claros. Primero, la regla es sobre la venta dentro del plantel, no sobre el consumo: de acuerdo con lo reportado sobre la discusión, el ministro Irving Espinosa señaló que los alumnos pueden llevar estos productos; lo que no pueden es comprarlos en la escuela. Segundo, la ministra Yasmín Esquivel, aunque votó con la mayoría, planteó que las universidades con autonomía legal pueden fijar sus propias reglas. Para una institución particular, sin embargo, lo prudente es asumir que la norma aplica de lleno.' },
+      { type: 'h2', text: 'Por qué esto es un tema de operación, no solo legal' },
+      { type: 'p', text: 'En una primaria, la cafetería vende sobre todo en el recreo. En una preparatoria o un campus universitario, la cafetería funciona de la mañana a la noche y compite con la oferta que hay afuera del campus. Si de un día para otro desaparecen del anaquel los refrescos, las botanas y las bebidas energéticas que sostenían una parte de la venta, la cafetería pierde ingresos y los alumnos salen a comprar a la esquina. La solución no es esconder productos: es rediseñar la oferta para que lo permitido sea también lo que el alumno quiere comprar.' },
+      { type: 'h2', text: '5 decisiones para la cafetería de tu campus' },
+      { type: 'ul', items: [
+        'Haz el inventario hoy: pide a tu operador la lista de todo lo que se vende, incluidas máquinas expendedoras y refrigeradores de terceros. Todo producto con sellos de advertencia sale del plantel, aunque el comprador sea mayor de edad.',
+        'Revisa contratos de proveedores y vending: el fallo deja claro que un contrato firmado antes no protege la venta de productos restringidos. Asegúrate de que las cláusulas obliguen al proveedor a cumplir los lineamientos vigentes.',
+        'Sustituye, no solo quites: café de especialidad, agua simple, bowls, sándwiches y snacks preparados en sitio pueden cubrir el hueco que deja el anaquel de empaquetados. Lo que se cocina en el campus no depende de cómo la industria reformule sus etiquetas.',
+        'Piensa en el horario completo: el desayuno de las 7:00, la comida entre clases y el turno vespertino son momentos distintos. Un menú que solo funciona a mediodía empuja a los alumnos fuera del campus el resto del día.',
+        'Ten la evidencia lista: menú vigente, lista de productos con foto de etiqueta y un responsable claro de que todo cumpla. Si llega una supervisión o una familia pregunta, la respuesta debe estar en una carpeta, no en la memoria de alguien.',
+      ] },
+      { type: 'quote', text: 'El fallo no le pide a una universidad que vigile lo que sus alumnos traen en la mochila. Le pide que lo que vende sea defendible. Y una cafetería que se puede defender con evidencia es, también, una cafetería que las familias y los alumnos recomiendan.' },
+      { type: 'h2', text: 'Lo que sigue' },
+      { type: 'p', text: 'Reforma reportó que la Corte también atrajo el amparo de una universidad privada de la Ciudad de México, que se espera siga la misma línea. Todo indica que el ciclo 2026-2027 será el de la aplicación en prepas y campus universitarios, que hasta ahora habían quedado fuera de la conversación.' },
+      { type: 'h2', text: 'Cómo lo resolvemos en Nutri Cafeterías' },
+      { type: 'p', text: 'En Nutri Cafeterías operamos cafeterías escolares desde 2018, con menús diseñados bajo los lineamientos de la SEP y procesos alineados a la NOM-251. Nuestra base es comida preparada en sitio, el pago es con huella digital y la escuela no hace ninguna inversión para tener una cafetería que cumpla en todos sus niveles, de la primaria a la preparatoria y el campus universitario.' },
+      { type: 'p', text: '¿Quieres saber si la cafetería de tu prepa o universidad pasaría hoy una revisión? Haz el diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo y revisamos juntos tu oferta antes de que lo haga la autoridad.' },
+    ],
+  },
+  {
     slug: 'productos-sin-sellos-reformulados-cafeteria-escolar-exhorto-congreso-2026',
     title: '"Sin sellos" no significa saludable: 5 revisiones que tu cafetería escolar necesita tras el exhorto del Congreso (octubre 2026)',
     description:
