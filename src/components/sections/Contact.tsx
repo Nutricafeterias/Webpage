@@ -82,7 +82,7 @@ export function Contact() {
 
             <div className="space-y-3">
               <a
-                href="https://wa.me/5215567034269"
+                href="https://wa.me/522219366575"
                 className="flex items-center gap-3 p-4 rounded-2xl border-2 border-emerald-200 bg-white hover:bg-emerald-50 transition-colors group shadow-sm"
               >
                 <div className="p-2 rounded-xl bg-emerald-100">

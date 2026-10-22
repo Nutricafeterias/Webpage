@@ -462,7 +462,7 @@ export function Diagnostic() {
                 Agendar reunión gratis →
               </a>
               <a
-                href={`https://wa.me/5215567034269?text=${waText}`}
+                href={`https://wa.me/522219366575?text=${waText}`}
                 className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-emerald-700/60 text-white font-bold hover:bg-emerald-700 transition-colors"
               >
                 <WhatsAppIcon className="w-4 h-4" /> Platicar por WhatsApp

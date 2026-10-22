@@ -39,7 +39,7 @@ export function WhatsAppButton() {
               Escríbenos y te respondemos en segundos.
             </p>
             <a
-              href="https://wa.me/5215567034269?text=Hola!%20Me%20interesa%20conocer%20más%20sobre%20Nutri%20Cafeterías"
+              href="https://wa.me/522219366575?text=Hola!%20Me%20interesa%20conocer%20más%20sobre%20Nutri%20Cafeterías"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => track('whatsapp_click', { origen: 'boton_flotante' })}
