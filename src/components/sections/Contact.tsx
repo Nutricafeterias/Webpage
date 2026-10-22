@@ -8,6 +8,17 @@ import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 export function Contact() {
   const [state, handleSubmit] = useForm('xrejlppw')
 
+  // El lead también entra directo al CRM del ERP (Formspree queda de respaldo).
+  const enviar = (e: React.FormEvent<HTMLFormElement>) => {
+    const datos = Object.fromEntries(new FormData(e.currentTarget).entries())
+    void fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datos),
+    }).catch(() => undefined)
+    return handleSubmit(e)
+  }
+
   return (
     <section id="contacto" className="py-24 bg-gradient-to-b from-emerald-50/40 to-emerald-100/60 relative overflow-hidden">
       {/* Decorative blobs */}
@@ -125,7 +136,9 @@ export function Contact() {
                 </motion.div>
 
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={enviar} className="space-y-4">
+                  {/* Campo trampa para bots: las personas no lo ven. */}
+                  <input type="text" name="sitio_web" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
                   <h3 className="font-black text-stone-900 text-lg mb-5">Agenda tu reunión gratis 🗓️</h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
