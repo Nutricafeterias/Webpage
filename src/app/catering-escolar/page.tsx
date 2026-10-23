@@ -37,7 +37,7 @@ const serviceJsonLd = {
     '@type': 'LocalBusiness',
     name: 'Nutri Cafeterías',
     url: 'https://cafeteriasescolares.com.mx',
-    telephone: '+52-221-936-6575',
+    telephone: '+52-221-925-1954',
   },
   areaServed: [
     { '@type': 'City', name: 'Ciudad de México' },
@@ -96,7 +96,7 @@ export default function CateringEscolarPage() {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
-                href="https://wa.me/522219366575?text=Hola!%20Quiero%20cotizar%20catering%20para%20un%20evento%20de%20mi%20escuela."
+                href="https://wa.me/522219251954?text=Hola!%20Quiero%20cotizar%20catering%20para%20un%20evento%20de%20mi%20escuela."
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border-2 border-emerald-200 bg-white text-emerald-700 font-black hover:bg-emerald-50 transition-all duration-200"
               >
                 <WhatsAppIcon className="w-4 h-4" /> WhatsApp directo

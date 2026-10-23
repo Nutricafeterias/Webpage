@@ -132,7 +132,7 @@ export default function LineamientosSepPage() {
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href="https://wa.me/522219366575?text=Hola!%20Quiero%20una%20revisión%20de%20cumplimiento%20SEP%20para%20la%20cafetería%20de%20mi%20escuela."
+                href="https://wa.me/522219251954?text=Hola!%20Quiero%20una%20revisión%20de%20cumplimiento%20SEP%20para%20la%20cafetería%20de%20mi%20escuela."
                 className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-emerald-700/60 text-white font-bold hover:bg-emerald-700 transition-colors"
               >
                 <WhatsAppIcon className="w-4 h-4" /> Revisión por WhatsApp

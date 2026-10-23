@@ -70,7 +70,7 @@ export function Hero() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              href="https://wa.me/522219366575"
+              href="https://wa.me/522219251954"
               className="group inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white hover:bg-green-50 border-2 border-stone-200 hover:border-green-300 text-stone-800 font-semibold transition-all duration-200 shadow-sm"
             >
               <WhatsAppIcon className="w-4 h-4 text-green-500" />
