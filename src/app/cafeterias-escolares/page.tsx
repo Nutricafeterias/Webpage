@@ -45,7 +45,7 @@ const serviceJsonLd = {
     '@type': 'LocalBusiness',
     name: 'Nutri Cafeterías',
     url: 'https://cafeteriasescolares.com.mx',
-    telephone: '+52-55-6703-4269',
+    telephone: '+52-221-925-1954',
   },
   areaServed: [
     { '@type': 'City', name: 'Ciudad de México' },

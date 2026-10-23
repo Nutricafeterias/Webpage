@@ -42,7 +42,7 @@ export function Parents() {
                 y te atendemos directamente.
               </p>
               <a
-                href="https://wa.me/5215567034269"
+                href="https://wa.me/522219354734"
                 className="mt-3 inline-flex items-center gap-2 text-emerald-700 font-bold text-sm hover:underline"
               >
                 <WhatsAppIcon className="w-4 h-4" />
