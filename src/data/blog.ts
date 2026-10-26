@@ -26,6 +26,49 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'colorantes-artificiales-cafeteria-escolar-rojo-3-mexico-2026',
+    title: 'Colorantes artificiales en la cafetería escolar: México retira el Rojo 3 y el mundo va por más (4 revisiones para tu escuela en 2026)',
+    description:
+      'La Secretaría de Salud dio 24 meses a la industria para retirar el colorante Rojo 3 (eritrosina), California prohibirá seis colorantes en sus escuelas públicas y Aramark los quitó de sus menús escolares. Qué debe revisar un director en su cafetería.',
+    date: '2026-10-26',
+    readTime: '6 min',
+    category: 'Nutrición y bienestar',
+    emoji: '🎨',
+    image: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=1200&h=630&fit=crop&q=85',
+    keywords: ['colorantes artificiales escuelas', 'Rojo 3 eritrosina México', 'colorantes sintéticos niños', 'cafetería escolar sin colorantes', 'Rojo 40 Amarillo 5 alimentos escolares', 'cafetería escolar saludable'],
+    related: [
+      { href: '/blog/productos-sin-sellos-reformulados-cafeteria-escolar-exhorto-congreso-2026', anchor: 'Productos sin sellos y reformulados en la cafetería escolar' },
+      { href: '/blog/ultraprocesados-comedor-escolar-cocina-desde-cero-tendencia-2026', anchor: 'Ultraprocesados en el comedor escolar: la tendencia de cocinar desde cero' },
+      { href: '/diagnostico', anchor: 'Diagnóstico gratuito de tu cafetería escolar' },
+    ],
+    content: [
+      { type: 'p', text: 'Mientras la conversación sobre comida en las escuelas se concentra en los sellos de advertencia y en los fallos de la Suprema Corte, hay otro ingrediente que empieza a salir de los menús escolares en distintas partes del mundo: los colorantes artificiales. No aportan nutrientes, no cambian el sabor de manera relevante y, sin embargo, están en muchos de los productos que más compran niñas y niños. En 2026, México dio su primer paso formal en este tema.' },
+      { type: 'h2', text: 'Qué decidió México' },
+      { type: 'p', text: 'De acuerdo con El Poder del Consumidor y la Alianza por la Salud Alimentaria, la Secretaría de Salud determinó retirar gradualmente la eritrosina (también conocida como Rojo 3) de los alimentos, bebidas y suplementos alimenticios, mediante el Acuerdo por el que se determinan los aditivos y coadyuvantes permitidos. La industria tiene un periodo de 24 meses para reformular sus productos.' },
+      { type: 'p', text: 'Las mismas organizaciones advierten que el Rojo 3 es solo el inicio: siguen permitidos colorantes como el Amarillo 5, el Amarillo 6, el Rojo 40 y el Azul 1, cuyo consumo ha generado preocupación en distintos países por sus posibles efectos en la salud y el comportamiento infantil. Su función principal, señalan, es hacer más atractivos productos como cereales de caja, dulces, gelatinas, postres, bebidas saborizadas y botanas. Y piden expresamente a la Secretaría de Salud y a la COFEPRIS prohibir estos aditivos en los entornos escolares.' },
+      { type: 'h2', text: 'Lo que ya está pasando fuera de México' },
+      { type: 'ul', items: [
+        'California: la Ley de Seguridad Alimentaria Escolar (AB 2316) prohibirá, a partir del 31 de diciembre de 2027, seis colorantes sintéticos (Rojo 40, Amarillo 5, Amarillo 6, Azul 1, Azul 2 y Verde 3) en los alimentos que se ofrecen en las escuelas públicas durante el horario escolar.',
+        'Aramark, uno de los operadores de alimentación escolar más grandes de Estados Unidos, anunció en agosto de 2026 que eliminará los colorantes y aditivos artificiales de su menú base en más de 350 distritos escolares participantes durante el ciclo 2026-2027.',
+        'Unión Europea: los productos con ciertos colorantes, como la tartrazina, deben advertir en su etiqueta que "pueden tener efectos negativos sobre la actividad y la atención de los niños".',
+      ] },
+      { type: 'p', text: 'Conviene ser precisos: la evidencia no es unánime. La FDA de Estados Unidos ha señalado que no ha establecido una relación causal entre los colorantes sintéticos y problemas de conducta en la población infantil general. Pero la dirección de la tendencia es clara: autoridades, operadores y familias están eligiendo el principio de precaución, sobre todo cuando se trata de niños y de un ingrediente que no aporta valor nutricional.' },
+      { type: 'h2', text: 'Por qué esto le importa a un director' },
+      { type: 'p', text: 'Un producto puede no tener sellos de advertencia y aun así llevar colorantes sintéticos. Hoy eso es legal en México (con la excepción del Rojo 3, que va de salida), pero las familias leen etiquetas cada vez con más atención y comparan lo que ven en la cafetería con lo que leen en redes y noticias. Una gelatina fosforescente o una bebida azul en el mostrador puede generar más preguntas en la junta de padres que cualquier detalle del menú del día.' },
+      { type: 'h2', text: '4 revisiones para tu cafetería' },
+      { type: 'ul', items: [
+        'Lee la lista de ingredientes, no solo el frente: pide a tu cafetería la lista de productos empaquetados y busca nombres como eritrosina, Rojo 40 (rojo allura), tartrazina (Amarillo 5), amarillo ocaso (Amarillo 6) o azul brillante (Azul 1).',
+        'Ubica dónde se esconden: postres, gelatinas, betunes, bebidas saborizadas, cereales, dulces y botanas de colores suelen concentrar estos aditivos. También los productos de temporada, como los de Halloween o Navidad.',
+        'Pregunta por el plan de reformulación: si un proveedor usa Rojo 3, el plazo de 24 meses ya corre. Mejor sustituirlo hoy que esperar a que se agote la última caja.',
+        'Prefiere lo preparado en sitio: el color de una agua de jamaica, un licuado de fresa o un bowl de frutas viene de los ingredientes. Entre más comida se cocine en la escuela, menos dependes de cómo reformule la industria.',
+      ] },
+      { type: 'quote', text: 'Una cafetería escolar no necesita esperar a que la ley prohíba un colorante para dejar de usarlo. El color de un buen menú escolar debería venir de la fruta, la verdura y la cocina, no de un aditivo.' },
+      { type: 'h2', text: 'Cómo lo resolvemos en Nutri Cafeterías' },
+      { type: 'p', text: 'En Nutri Cafeterías operamos cafeterías escolares desde 2018, con menús diseñados bajo los lineamientos de la SEP y procesos alineados a la NOM-251. Nuestra base es comida preparada en sitio con ingredientes frescos, y la escuela no hace ninguna inversión para tener una cafetería que cumpla hoy y que esté lista para las reglas que vienen.' },
+      { type: 'p', text: '¿Quieres saber qué tan lista está tu cafetería para esta tendencia? Haz el diagnóstico gratuito de 2 minutos en cafeteriasescolares.com.mx/diagnostico o agenda una reunión sin costo y revisamos juntos la lista de productos de tu escuela.' },
+    ],
+  },
+  {
     slug: 'scjn-comida-chatarra-universidades-preparatorias-cafeteria-campus-2026',
     title: 'La Corte extendió el veto a la comida chatarra a prepas y universidades: 5 decisiones para la cafetería de tu campus (octubre 2026)',
     description:
