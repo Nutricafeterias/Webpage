@@ -15,6 +15,7 @@ import { Safety } from '@/components/sections/Safety'
 import { QueVendemos } from '@/components/sections/QueVendemos'
 import { waHref } from '@/lib/whatsapp'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { PruebaSocial } from '@/components/PruebaSocial'
 import { Respaldos } from '@/components/sections/Respaldos'
 
 export const metadata: Metadata = {
@@ -88,19 +89,21 @@ export default function CafeteriasEscolaresPage() {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="/#contacto"
-              data-cta="agenda_reunion"
+              data-cta="agenda_visita_hero"
               className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-black transition-all duration-200 shadow-xl shadow-emerald-200 hover:scale-[1.03]"
             >
-              Agenda una reunión gratis
+              Agenda una visita sin costo
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <Link
               href="/diagnostico"
+              data-cta="diagnostico_hero_cafeteria"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border-2 border-emerald-200 bg-white text-emerald-700 font-black hover:bg-emerald-50 transition-all duration-200"
             >
               📊 Evalúa tu cafetería en 2 min
             </Link>
           </div>
+          <PruebaSocial className="mt-6" />
         </div>
 
         <QueVendemos />
@@ -153,6 +156,7 @@ export default function CafeteriasEscolaresPage() {
                   ¿Buscas un comedor con menú del día? →
                 </Link>
               </p>
+              <PruebaSocial tono="oscuro" className="mt-5" />
             </div>
           </div>
         </div>
