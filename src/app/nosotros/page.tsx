@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer'
 import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { StatsBar } from '@/components/sections/StatsBar'
 import { Schools } from '@/components/sections/Schools'
+import { Respaldos } from '@/components/sections/Respaldos'
 
 export const metadata: Metadata = {
   title: 'Nosotros | Nutri Cafeterías — Cafeterías y comedores escolares desde 2018',
@@ -25,11 +26,6 @@ const valores = [
   { emoji: '🤝', title: 'Aliados, no proveedores', desc: 'Operamos como una extensión de la escuela: su reputación es la nuestra. Resolvemos antes de que los problemas lleguen a dirección.' },
   { emoji: '🔬', title: 'Tecnología con propósito', desc: 'La innovación no es un lujo: ordena la fila, registra cada consumo y da a las familias visibilidad, sin dejar de aceptar efectivo en caja.' },
   { emoji: '📚', title: 'La cafetería también educa', desc: 'Menús visibles, alérgenos claros y alumnos que prueban y votan platillos: el receso también forma hábitos.' },
-]
-
-const certs = [
-  { emoji: '🧼', title: 'NOM-251-SSA1', desc: 'Protocolos de higiene documentados y auditables en todo el proceso.' },
-  { emoji: '🎓', title: 'Personal capacitado', desc: 'Capacitación documentada en manejo de alimentos para todo el equipo.' },
 ]
 
 const equipo = [
@@ -84,24 +80,10 @@ export default function NosotrosPage() {
           </div>
         </div>
 
-        {/* Certificaciones */}
+        {/* Respaldos */}
         <div className="py-20 bg-stone-900">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-black text-white text-center mb-4">
-              Respaldo <span className="text-emerald-400">verificable</span>
-            </h2>
-            <p className="text-stone-400 text-center max-w-xl mx-auto mb-12">
-              No pedimos que confíes en nuestra palabra: te mostramos los papeles.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {certs.map(c => (
-                <div key={c.title} className="p-6 rounded-2xl bg-stone-800/80 border border-stone-700 text-center">
-                  <div className="text-4xl mb-3">{c.emoji}</div>
-                  <h3 className="font-black text-white text-sm mb-1.5">{c.title}</h3>
-                  <p className="text-xs text-stone-400 leading-relaxed">{c.desc}</p>
-                </div>
-              ))}
-            </div>
+            <Respaldos tono="oscuro" titulo={<>Respaldo <span className="text-emerald-400">verificable</span></>} />
           </div>
         </div>
 

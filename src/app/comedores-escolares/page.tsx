@@ -7,6 +7,7 @@ import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { comedorFaqs, tiempos, menuSemana } from '@/data/comedor'
 import { waHref } from '@/lib/whatsapp'
+import { Respaldos } from '@/components/sections/Respaldos'
 
 const URL = 'https://cafeteriasescolares.com.mx/comedores-escolares'
 
@@ -442,6 +443,11 @@ export default function ComedoresEscolaresPage() {
                 Solicita nuestro anexo de cumplimiento →
               </a>
             </div>
+          </section>
+
+          {/* 3.13b Respaldos */}
+          <section className="mt-16 max-w-6xl mx-auto">
+            <Respaldos />
           </section>
 
           {/* 3.14 FAQ */}

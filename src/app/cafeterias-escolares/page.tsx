@@ -15,6 +15,7 @@ import { Safety } from '@/components/sections/Safety'
 import { QueVendemos } from '@/components/sections/QueVendemos'
 import { waHref } from '@/lib/whatsapp'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { Respaldos } from '@/components/sections/Respaldos'
 
 export const metadata: Metadata = {
   title: 'Cafetería escolar que cumple con la SEP · Concesión y operación | Nutri Cafeterías',
@@ -111,6 +112,13 @@ export default function CafeteriasEscolaresPage() {
         <div data-seccion="cafeteria_como_funciona"><HowItWorks /></div>
         <div data-seccion="cafeteria_antes_despues"><BeforeAfter /></div>
         <div data-seccion="cafeteria_seguridad"><Safety /></div>
+
+        {/* Respaldos */}
+        <div className="py-20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <Respaldos />
+          </div>
+        </div>
 
         {/* CTA final */}
         <div data-seccion="cafeteria_cta_final" className="py-20 bg-white">

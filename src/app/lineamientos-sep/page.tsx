@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer'
 import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { waHref } from '@/lib/whatsapp'
+import { Respaldos } from '@/components/sections/Respaldos'
 
 export const metadata: Metadata = {
   title: 'Lineamientos SEP para cafetería y comedor escolar: qué exige y cómo cumplir | Nutri',
@@ -42,7 +43,7 @@ const garantias = [
   'Agua natural y bebidas bajas en azúcar como oferta principal de hidratación',
   'Documentación de cumplimiento disponible para la dirección ante cualquier revisión o auditoría',
   'Actualización continua: cuando la norma cambia, tu menú cambia — sin que la escuela tenga que hacer nada',
-  'Cumplimiento garantizado por contrato: la responsabilidad operativa es nuestra',
+  'La operación diaria de la cafetería y su cumplimiento quedan a nuestro cargo, por contrato',
 ]
 
 export default function LineamientosSepPage() {
@@ -97,13 +98,13 @@ export default function LineamientosSepPage() {
             </p>
           </div>
 
-          {/* Cómo lo garantizamos */}
+          {/* Cómo cumplimos */}
           <div className="mt-16 max-w-3xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-8">
               <ShieldCheck className="w-8 h-8 text-emerald-500" />
               <h2 className="text-3xl md:text-4xl font-black text-stone-900 text-center">
-                Así lo{' '}
-                <span className="gradient-text-primary">garantizamos</span>
+                Así{' '}
+                <span className="gradient-text-primary">cumplimos</span>
               </h2>
             </div>
             <div className="space-y-3">
@@ -114,6 +115,11 @@ export default function LineamientosSepPage() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Respaldos */}
+          <div className="mt-20">
+            <Respaldos />
           </div>
 
           {/* CTA */}

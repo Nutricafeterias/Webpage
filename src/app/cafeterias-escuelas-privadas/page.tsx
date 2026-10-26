@@ -7,6 +7,7 @@ import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { QueVendemos } from '@/components/sections/QueVendemos'
 import { waHref } from '@/lib/whatsapp'
+import { Respaldos } from '@/components/sections/Respaldos'
 
 export const metadata: Metadata = {
   title: 'Cafetería y comedor para colegios particulares en CDMX | Nutri Cafeterías',
@@ -202,6 +203,11 @@ export default function CafeteriasEscuelasPrivadasPage() {
               </Link>
               .
             </p>
+          </div>
+
+          {/* Respaldos */}
+          <div className="mt-20">
+            <Respaldos />
           </div>
 
           {/* CTA final */}
