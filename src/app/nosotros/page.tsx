@@ -28,7 +28,7 @@ const hechos = [
   'Nutri Cafeterías se fundó en agosto de 2018 y abrió su primera cafetería escolar en agosto de 2019.',
   'Somos el operador de cafeterías escolares #1 en México.',
   'Hemos servido más de 1,000,000 de órdenes desde 2018, según nuestros registros de venta.',
-  'Nuestro servicio tiene 4.9 / 5 de satisfacción.',
+  'Nuestro servicio tiene 4.9 / 5 de satisfacción en una encuesta a 500 personas de la comunidad de la Universidad Panamericana, Campus Ciudad UP (2025).',
   'Hoy (octubre de 2026) operamos en la Universidad Panamericana, Campus Ciudad UP, y en IPADE Business School, en la Ciudad de México.',
   'Atendemos desde preescolar hasta universidad, con dos líneas de servicio: cafetería escolar y comedor escolar.',
   'La comida del comedor se cocina el mismo día y se sirve por turnos, con porción por edad.',
@@ -75,7 +75,7 @@ const valores = [
 ]
 
 const equipo = [
-  { emoji: '📋', title: 'Diseño de menús', desc: 'Cada ciclo de menús se diseña con criterios nutrimentales de la SEP y las necesidades de cada comunidad escolar.' },
+  { emoji: '📋', title: 'Diseño de menús', desc: 'Cada ciclo de menús lo diseñan nutriólogos con los criterios nutrimentales de la SEP y las necesidades de cada comunidad escolar.' },
   { emoji: '👨‍🍳', title: 'Chefs y cocineros', desc: 'Convierten el balance nutricional en platillos que compiten en antojo — y ganan.' },
   { emoji: '💻', title: 'Equipo de tecnología', desc: 'Desarrollan y operan nuestro ERP y punto de venta propios, los tótems, el reconocimiento facial opcional y la app para familias.' },
   { emoji: '🛡️', title: 'Supervisores de calidad', desc: 'Auditan higiene, temperaturas y servicio en cada escuela, todos los días.' },

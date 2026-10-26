@@ -48,12 +48,12 @@ const serviceJsonLd = {
     { '@type': 'AdministrativeArea', name: 'Área Metropolitana del Valle de México' },
   ],
   description:
-    'Concesión y operación integral de cafeterías y comedores en colegios particulares: menús con criterios nutrimentales de los Lineamientos SEP, higiene según la NOM-251, tótems de autoservicio, app para familias y reconocimiento facial opcional, siempre con pago en efectivo en caja.',
+    'Concesión y operación integral de cafeterías y comedores en colegios particulares: menús diseñados por nutriólogos con criterios nutrimentales de los Lineamientos SEP, higiene según la NOM-251, tótems de autoservicio, app para familias y reconocimiento facial opcional, siempre con pago en efectivo en caja.',
 }
 
 const expectativas = [
   { emoji: '👨‍👩‍👧', title: 'Familias que pagan colegiatura premium', desc: 'Esperan que la cafetería esté a la altura del resto de la escuela: calidad de restaurante, no de cooperativa.' },
-  { emoji: '🥗', title: 'Nutrición real, no discurso', desc: 'Menús con criterios nutrimentales de la SEP, cero productos con sellos de exceso y manejo documentado de alergias e intolerancias.' },
+  { emoji: '🥗', title: 'Nutrición real, no discurso', desc: 'Menús diseñados por nutriólogos con los criterios nutrimentales de la SEP, cero productos con sellos de exceso y manejo documentado de alergias e intolerancias.' },
   { emoji: '📱', title: 'Visibilidad para los papás', desc: 'Con la app Nutri para familias cada familia ve qué comió su hijo, recarga saldo y define límites. También puede pagar en efectivo en caja.' },
   { emoji: '🛡️', title: 'Cumplimiento SEP sin riesgos', desc: 'La escuela privada es la primera en la mira ante un incumplimiento. Nuestro contrato garantiza lineamientos al día.' },
   { emoji: '⏱️', title: 'Recesos cortos', desc: 'Tótems, pedidos desde la app y reconocimiento facial opcional: un flujo pensado para que el receso alcance aunque salgan cientos de alumnos a la vez.' },
