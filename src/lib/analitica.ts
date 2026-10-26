@@ -36,6 +36,9 @@ export type EventoNutri =
   | 'campana_vista'
   | 'campana_click'
   | 'campana_cerrada'
+  | 'lead_magnet_descarga'
+  | 'lead_corto_enviado'
+  | 'cta_movil_abierto'
 
 /** Envía un evento a PostHog; si aún no carga, lo encola (máx. 50). */
 export function capturar(evento: EventoNutri, props?: Record<string, unknown>) {

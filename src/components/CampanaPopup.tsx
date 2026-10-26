@@ -49,12 +49,29 @@ export function CampanaPopup() {
   useEffect(() => {
     const c = campanaPara(ruta, hoyCDMX())
     if (!c || yaVista(c.id)) return
-    const t = setTimeout(() => {
+    // CRO 26-oct: nunca a los pocos segundos (interrumpe al que vino a leer y
+    // Google castiga los intersticiales en móvil). Se muestra cuando el visitante
+    // ya leyó (45 % de scroll) o tras 30 s en la página, lo que pase primero.
+    let mostrado = false
+    const mostrar = () => {
+      if (mostrado) return
+      mostrado = true
       setCampana(c)
       marcarVista(c.id)
       capturar('campana_vista', { campana: c.id, pagina: ruta })
-    }, 4000)
-    return () => clearTimeout(t)
+      limpiar()
+    }
+    const onScroll = () => {
+      const alto = document.documentElement.scrollHeight - window.innerHeight
+      if (alto > 0 && window.scrollY / alto >= 0.45) mostrar()
+    }
+    const t = setTimeout(mostrar, 30_000)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    function limpiar() {
+      clearTimeout(t)
+      window.removeEventListener('scroll', onScroll)
+    }
+    return limpiar
   }, [ruta])
 
   const cerrar = () => {

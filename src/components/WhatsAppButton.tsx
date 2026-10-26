@@ -8,6 +8,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { waHref, origenDesdeRuta } from '@/lib/whatsapp'
+import { ctaMovilActivo } from '@/components/CtaMovil'
 
 export function WhatsAppButton() {
   const [open, setOpen] = useState(false)
@@ -15,7 +16,8 @@ export function WhatsAppButton() {
   const origen = origenDesdeRuta(pathname)
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    // En móvil, donde hay barra fija inferior (CtaMovil), el flotante se oculta para no duplicar WhatsApp.
+    <div className={`fixed bottom-6 right-6 z-50 flex-col items-end gap-3 ${ctaMovilActivo(pathname) ? 'hidden lg:flex' : 'flex'}`}>
       <AnimatePresence>
         {open && (
           <motion.div

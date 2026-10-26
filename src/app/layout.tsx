@@ -5,6 +5,7 @@ import './globals.css'
 import { AtribucionTracker } from '@/components/AtribucionTracker'
 import { CampanaPopup } from '@/components/CampanaPopup'
 import { Analitica } from '@/components/Analitica'
+import { CtaMovil } from '@/components/CtaMovil'
 
 const jakarta = Plus_Jakarta_Sans({
   variable: '--font-sans',
@@ -144,6 +145,7 @@ export default function RootLayout({
         {children}
         <AtribucionTracker />
         <CampanaPopup />
+        <CtaMovil />
         <Analitica />
         <Analytics />
       </body>
