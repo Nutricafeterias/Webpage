@@ -15,7 +15,7 @@ const comparisons = [
 
 const reasons = [
   { num: '2018', label: 'Año de fundación', emoji: '🏆', bg: 'bg-amber-50 border-amber-200', text: 'text-amber-600' },
-  { num: '11', label: 'Cafeterías a la vez (máximo)', emoji: '🏫', bg: 'bg-emerald-50 border-emerald-200', text: 'text-emerald-600' },
+  { num: '4.9/5', label: 'Satisfacción', emoji: '⭐', bg: 'bg-emerald-50 border-emerald-200', text: 'text-emerald-600' },
   { num: 'ERP', label: 'Y punto de venta propios', emoji: '🧾', bg: 'bg-blue-50 border-blue-200', text: 'text-blue-600' },
   { num: 'SEP', label: 'Menús conforme a Lineamientos', emoji: '🛡️', bg: 'bg-rose-50 border-rose-200', text: 'text-rose-600' },
 ]

@@ -164,7 +164,7 @@ export function Hero() {
             <span className="text-3xl">🏫</span>
             <div>
               <div className="text-xl font-black text-stone-900">Desde 2018</div>
-              <div className="text-xs text-stone-500">Hasta 11 cafeterías a la vez</div>
+              <div className="text-xs text-stone-500">4.9 / 5 de satisfacción</div>
             </div>
           </motion.div>
 

@@ -65,7 +65,7 @@ export function Experience() {
           >
             {[
               { icon: '📅', text: 'Desde 2018' },
-              { icon: '🏫', text: 'Hasta 11 cafeterías a la vez' },
+              { icon: '⭐', text: '4.9 / 5 de satisfacción' },
               { icon: '🤖', text: 'Tótems de autoservicio' },
             ].map(s => (
               <div key={s.text} className="px-4 py-2.5 rounded-xl bg-white/15 backdrop-blur-sm border border-white/25 flex items-center gap-2">

@@ -87,7 +87,7 @@ export function Footer() {
             {[
               { emoji: '📅', text: 'Desde 2018' },
               { emoji: '🍽️', text: '+1,000,000 órdenes servidas' },
-              { emoji: '🏫', text: 'Hasta 11 cafeterías a la vez' },
+              { emoji: '⭐', text: '4.9 / 5 de satisfacción' },
               { emoji: '🧾', text: 'ERP y punto de venta propios' },
             ].map(s => (
               <div key={s.text} className="flex items-center gap-2 text-sm text-stone-400">

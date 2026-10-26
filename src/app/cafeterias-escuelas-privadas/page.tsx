@@ -114,7 +114,7 @@ export default function CafeteriasEscuelasPrivadasPage() {
           <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
               { n: '2018', t: 'año de fundación' },
-              { n: '11', t: 'cafeterías a la vez (máximo)' },
+              { n: '4.9/5', t: 'de satisfacción' },
               { n: 'SEP', t: 'menús conforme a Lineamientos' },
               { n: 'ERP', t: 'y punto de venta propios' },
             ].map(s => (
