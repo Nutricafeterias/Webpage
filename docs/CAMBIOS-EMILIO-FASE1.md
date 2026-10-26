@@ -150,3 +150,31 @@ Encargo de Ricardo: «todos se meten, dan clic y se salen». Datos 19–26 oct: 
 2. La entrega del PDF es inmediata en pantalla (sin correo automático).
 3. El interceptor convierte todos los `/#contacto` fuera de la home en la hoja rápida (incluye comedores, navbar y footer). Se revierte quitando el bloque en `CtaMovil.tsx`.
 4. Datos de lineamientos («la Corte confirmó que incluye prepas y universidades», retiro del RVOE en casos graves) tomados de los artículos del propio blog.
+
+## GEO 26-oct (rama `feat/emilio-geo`, desde `origin/main` 65cae41)
+
+Encargo de DG: que el sitio lo puedan leer, entender y citar con exactitud los asistentes de IA (ChatGPT, Claude, Gemini, Perplexity, Google Modo IA), y responder lo que ellos detectan como debilidad. Método: habilidad `seo-ai-visibility` (sin texto oculto, sin instrucciones a IAs, sin claims inventados). Prueba previa y plan externo en `~/nutri-web-emilio/GEO-PRUEBA-26OCT.md` y `GEO-PLAN.md`. **Nada subido ni publicado.**
+
+| Área | Cambio |
+|---|---|
+| `robots.ts` | Permiso explícito a GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, Claude-User, PerplexityBot, Perplexity-User, Google-Extended, Applebot(-Extended), Bingbot y Googlebot; se bloquea `/api/` además de propuestas y demo. |
+| `sitemap.ts` | lastmod fijo (2026-10-26) en páginas fijas; los artículos usan `updated ?? date`. Fuera los artículos retirados. |
+| `public/llms.txt` | Reescrito: datos clave, razón social, clientes con la frase única «Universidad Panamericana, Campus Ciudad UP» e IPADE, cifras con fuente, **tecnología en operación hoy con fechas**, respaldos (COFEPRIS por cafetería, REPSE, póliza), pagos, FAQ de objeciones, páginas y guías. |
+| JSON-LD global (`layout.tsx`) | `@graph` con `LocalBusiness` (`@id` #organization, `legalName` Nutricafeterías, S.A., `foundingDate` 2018-08, `areaServed`, `contactPoint` ventas, logo) + `WebSite`. Se quitó `sameAs` a wa.me (no es perfil) y no hay perfiles sociales reales todavía. |
+| FAQ del inicio | Ahora con `<details>`: **todas las respuestas viajan en el HTML** (antes solo la primera). Nuevas: costo (sin inversión en concesión, cotización por matrícula), sabor/voto de alumnos, preescolar (la maestra no hace trabajo extra), sin saldo (nadie se queda sin comer), familias sin app, quién responde ante la SEP, tecnología en operación hoy, COFEPRIS por cafetería, dónde operamos hoy. |
+| `/comedores-escolares` | «su profesor lo revisa contigo» → «come igual y nuestro equipo lo resuelve contigo después»; «entra con la lista de su grupo» → «nuestro personal lo registra en la entrada…; la maestra no hace nada extra». FAQ nuevas: sabor, preescolar, sin saldo, SEP; costo con concesión. Título con «Nutri Cafeterías». |
+| `/nosotros` | Secciones «Por qué Nutri, en datos» (una oración por hecho) y «Tecnología en operación hoy» (POS sep-2026, App oct-2026, tótems en Ciudad UP oct-2026, reconocimiento facial oct-2026, ERP). `AboutPage` + `BreadcrumbList`. Fuera «11 cafeterías» (ESTRATEGIA §4: diferido al 30-nov). |
+| Cifras | «+1,000,000 órdenes servidas desde 2018, según nuestros registros de venta» en FAQ, /nosotros y llms.txt. **El 4.9 / 5 sigue sin fuente publicada: falta que Ricardo confirme su origen (encuesta, n, fecha).** |
+| Nombre del cliente UP | «Universidad Panamericana, Campus Ciudad UP» en escuelas, marquesina, testimonios, prueba social, FAQ, JSON-LD y llms.txt. |
+| Blog | Nueva guía `/blog/como-elegir-operador-cafeteria-escolar` (12 criterios, preguntas para cualquier proveedor, FAQ con `FAQPage`, sin marcas). Retirados con 301 a ella: `mejores-empresas-cafeterias-escolares-mexico`, `inteligencia-artificial-cafeteria-escolar-datos-chartwells-sodexo`, `tendencias-internacionales-food-service-escolar-2026` y la guía vieja `como-elegir-proveedor-cafeteria-escolar` (se consolida para no tener dos páginas compitiendo; traía «sin inversión» universal y «especialistas»). Sin marcas en colorantes (Aramark) ni en emociones (Chartwells). Enlaces «relacionados» y el de `/cafeterias-escuelas-privadas` apuntan a la guía nueva. Artículos con `BreadcrumbList`, `dateModified` y FAQ opcional. |
+| Footer | Razón social, ciudad, WhatsApp y correo en texto (consistencia de nombre/teléfono). Se quitaron Instagram/Facebook que apuntaban a «#». |
+| Contadores | `useCounter` empieza en la cifra real: el HTML del servidor ya no dice «+0 órdenes». |
+| Títulos | «Nutri Cafeterías» completo en `/menus`, `/lineamientos-sep`, `/comedores-escolares`. |
+
+Verificado: `npx tsc --noEmit` y `npm run build` limpios (44 páginas); con `next start`: 200 en inicio, comedores, nosotros, guía, llms.txt y sitemap (36 URL, sin las retiradas); 301 de los 4 artículos a la guía; JSON-LD parsea en inicio, comedores, nosotros y guía; FAQ del inicio abre y cierra en navegador.
+
+Pendientes y riesgos:
+- `Reveal` y varias secciones de framer-motion siguen saliendo con `opacity:0` en el HTML hasta que corre JS; el texto sí está en el HTML (los rastreadores sin JS lo leen). No se cambió para no tocar el diseño.
+- El artículo `datos-biometricos-menores-…` conserva «biométrico» (categoría legal; cambiar el slug rompe una URL indexada).
+- `public/propuestas/*` y `public/demo/comedor` dicen «huella»; están en `noindex` y bloqueadas en robots (propuestas entregadas a clientes, no se tocaron).
+- Lint: quedan errores previos (comillas sin escapar y `<a>` a `/`) en archivos que no se tocaron.
