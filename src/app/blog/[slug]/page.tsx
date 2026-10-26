@@ -6,6 +6,8 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { blogPosts, getPost } from '@/data/blog'
+import { CtaBlogFinal, CtaBlogMedio, temaDeArticulo } from '@/components/CtaBlog'
+import { origenDesdeRuta } from '@/lib/whatsapp'
 
 export function generateStaticParams() {
   return blogPosts.map(post => ({ slug: post.slug }))
@@ -54,6 +56,11 @@ export default async function BlogPostPage({
   if (!post) notFound()
 
   const related = blogPosts.filter(p => p.slug !== post.slug).slice(0, 3)
+  const tema = temaDeArticulo(post.slug)
+  const origen = origenDesdeRuta(`/blog/${post.slug}`)
+  // CTA contextual a mitad del artículo: antes del 3.er h2 (o a la mitad si hay pocos).
+  const h2s = post.content.map((b, i) => (b.type === 'h2' ? i : -1)).filter(i => i >= 0)
+  const indiceMedio = h2s.length >= 3 ? h2s[2] : Math.floor(post.content.length / 2)
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -120,7 +127,8 @@ export default async function BlogPostPage({
           {/* Content */}
           <div className="space-y-6">
             {post.content.map((block, i) => {
-              switch (block.type) {
+              const medio = i === indiceMedio ? <CtaBlogMedio key={`cta-${i}`} tema={tema} /> : null
+              const bloque = (() => { switch (block.type) {
                 case 'h2':
                   return (
                     <h2 key={i} className="text-2xl md:text-3xl font-black text-stone-900 pt-4">
@@ -153,7 +161,8 @@ export default async function BlogPostPage({
                       {block.text}
                     </blockquote>
                   )
-              }
+              } })()
+              return medio ? [medio, bloque] : bloque
             })}
           </div>
 
@@ -176,21 +185,8 @@ export default async function BlogPostPage({
             </div>
           )}
 
-          {/* CTA */}
-          <div className="mt-14 p-8 rounded-3xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-center shadow-xl shadow-emerald-200">
-            <p className="text-xl md:text-2xl font-black text-white">
-              ¿Quieres una cafetería escolar de primer nivel? 🏆
-            </p>
-            <p className="mt-2 text-emerald-100 text-sm">
-              Agenda una reunión gratis y conoce cómo trabajamos en escuelas privadas de México desde 2018.
-            </p>
-            <a
-              href="/#contacto"
-              className="mt-5 inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white text-emerald-700 font-black hover:bg-emerald-50 transition-all duration-200 shadow-lg hover:scale-[1.03]"
-            >
-              Contactar a Nutri Cafeterías →
-            </a>
-          </div>
+          {/* CTA final contextual al tema del artículo */}
+          <CtaBlogFinal tema={tema} origen={origen} />
 
           {/* Related */}
           <div className="mt-16">
