@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Lineamientos SEP: lo que tu escuela debe cumplir en la cafetería',
     description:
-      'La comida chatarra está prohibida en las escuelas de México. Así garantizamos el cumplimiento total — la responsabilidad deja de ser tuya.',
+      'La comida chatarra está prohibida en las escuelas de México. Así cumplimos con los lineamientos en tu cafetería, paso a paso.',
     url: 'https://cafeteriasescolares.com.mx/lineamientos-sep',
     type: 'website',
   },

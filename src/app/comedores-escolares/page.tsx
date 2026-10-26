@@ -75,7 +75,7 @@ const sellos = [
 
 const recienHecho = [
   { emoji: '🍳', t: 'En la cocina de tu escuela', d: 'Cocinamos ahí mismo, por tandas, para que cada turno reciba comida recién hecha.' },
-  { emoji: '🚚', t: '¿Tu escuela no tiene cocina?', d: 'Cocinamos esa misma mañana en nuestra cocina cercana y lo llevamos caliente, en contenedores térmicos con la temperatura controlada. Llega a servirse, no a calentarse.' },
+  { emoji: '🚚', t: '¿Tu escuela no tiene cocina?', d: 'Te proponemos cómo resolverlo: equipar un espacio en la escuela o traer la comida caliente, preparada el mismo día, en contenedores térmicos con la temperatura controlada. Llega a servirse, no a calentarse.' },
   { emoji: '🌡️', t: 'Temperaturas con bitácora', d: 'Lo caliente, a 60 °C o más; ensalada, fruta y agua, a 4 °C o menos (NOM-251-SSA1-2009).' },
   { emoji: '🧂', t: 'Recetas estandarizadas', d: 'Sal medida en cada receta: así el sabor no depende del turno ni de quién cocine.' },
 ]
@@ -304,14 +304,14 @@ export default function ComedoresEscolaresPage() {
               <span className="gradient-text-primary">en la app o en efectivo</span>
             </h2>
             <p className="text-center text-stone-600 mb-10">
-              <strong>Por día, por semana o por mes</strong>, como prefieras. Comprar el mes completo sale más barato.
+              <strong>Por día, por semana o por mes</strong>, como prefieras. Pregunta por los paquetes semanales y mensuales de tu escuela.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-8 rounded-3xl border-2 border-emerald-200 bg-white shadow-sm">
                 <div className="text-4xl mb-3">📱</div>
                 <h3 className="text-xl font-black text-stone-900 mb-3">En la app para familias</h3>
                 <ul className="space-y-2 text-sm text-stone-700">
-                  <li>✓ Tarjeta de débito o crédito, transferencia, Apple Pay y Google Pay, o efectivo en OXXO con ficha</li>
+                  <li>✓ Tarjeta de débito o crédito, transferencia, Apple Pay y Google Pay, o efectivo en tiendas de la red Paynet (7-Eleven, Walmart, farmacias)</li>
                   <li>✓ Un saldo por cada hijo, con su historial</li>
                   <li>✓ Límite diario y alergias registradas</li>
                 </ul>
@@ -339,11 +339,11 @@ export default function ComedoresEscolaresPage() {
             </h2>
             <div className="p-8 rounded-3xl bg-emerald-50 border-2 border-emerald-200">
               <p className="text-lg text-emerald-900">
-                <strong>Avísanos antes de las 9:00 a. m.</strong> desde la app, por WhatsApp o en la
+                <strong>Avísanos con anticipación</strong> desde la app, por WhatsApp o en la
                 caja, y esa comida <strong>se queda como saldo</strong> para otro día. Así de simple.
               </p>
               <p className="mt-3 text-sm text-stone-600">
-                Si no nos avisas, la comida ya se preparó para él y se cuenta como servida. Los
+                Cada escuela fija la hora límite del aviso. Si no nos avisas a tiempo, la comida ya se preparó para él y se cuenta como servida. Los
                 paquetes de semana o mes siguen la misma regla. ¿Te cambias de escuela o das de baja
                 el servicio? Te devolvemos el saldo que no hayas usado.
               </p>
@@ -368,7 +368,7 @@ export default function ComedoresEscolaresPage() {
           </section>
 
           {/* 3.11 Degustación */}
-          <section data-seccion="comedor_degustacion" className="mt-24 max-w-4xl mx-auto p-10 rounded-3xl bg-white border-2 border-emerald-200 shadow-sm text-center">
+          <section id="degustacion" data-seccion="comedor_degustacion" className="mt-24 max-w-4xl mx-auto p-10 rounded-3xl bg-white border-2 border-emerald-200 shadow-sm text-center">
             <h2 className="text-3xl md:text-4xl font-black text-stone-900 mb-4">
               Pruébalo <span className="gradient-text-primary">antes de decidir</span>
             </h2>
@@ -390,13 +390,13 @@ export default function ComedoresEscolaresPage() {
           {/* 3.12 Tecnología */}
           <section data-seccion="comedor_tecnologia" className="mt-24 max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-stone-900 text-center mb-10">
-              Entra con su rostro.{' '}
+              Paga con Face ID.{' '}
               <span className="gradient-text-primary">Tú recibes el aviso.</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {[
                 { t: 'Tótem con reconocimiento facial', d: 'A la entrada del comedor: el niño se para frente a la cámara y entra, sin tarjetas ni boletos. Si no tiene comida comprada, su profesor lo revisa contigo.' },
-                { t: 'Voluntario y con consentimiento', d: 'El registro del rostro requiere el consentimiento de mamá o papá. No guardamos la foto. Consulta nuestro aviso de privacidad.' },
+                { t: 'Voluntario y con consentimiento', d: 'Como desbloquear su celular con la cara. Su foto nunca se guarda: tú decides si lo activas, con tu consentimiento, y lo borras cuando quieras desde la app.' },
                 { t: '¿No quieres registrar su rostro?', d: 'Entra con la lista de su grupo. Nadie se queda sin comer por la tecnología.' },
                 { t: 'App para familias', d: 'Compra por día, semana o mes, saldo por hijo, límite diario, alergias que la cocina ve antes de servir, y avisos. También puedes pagar en efectivo en caja.' },
               ].map(c => (
@@ -504,7 +504,7 @@ export default function ComedoresEscolaresPage() {
               Una empresa de comedor escolar se encarga del servicio completo de alimentos para la
               escuela. Diseña el menú con criterios nutrimentales de la SEP y lo organiza en un ciclo
               de 4 semanas; compra y recibe los insumos con trazabilidad de proveedores, y cocina el
-              mismo día, en la cocina de la escuela o en una cocina cercana, siguiendo la NOM-251.
+              mismo día, en la cocina de la escuela o, si no tiene, preparada ese mismo día y llevada caliente, siguiendo la NOM-251.
             </p>
             <p>
               Después sirve por turnos, con la porción que corresponde a cada edad, cobra a las

@@ -28,6 +28,9 @@ export type EventoNutri =
   | 'form_submit'
   | 'diagnostico_completado'
   | 'seccion_vista'
+  | 'campana_vista'
+  | 'campana_click'
+  | 'campana_cerrada'
 
 /** Envía un evento a PostHog; si aún no carga, lo encola (máx. 50). */
 export function capturar(evento: EventoNutri, props?: Record<string, unknown>) {

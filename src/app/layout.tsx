@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { AtribucionTracker } from '@/components/AtribucionTracker'
+import { CampanaPopup } from '@/components/CampanaPopup'
 import { Analitica } from '@/components/Analitica'
 
 const jakarta = Plus_Jakarta_Sans({
@@ -142,6 +143,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[#F7F3EA]" suppressHydrationWarning>
         {children}
         <AtribucionTracker />
+        <CampanaPopup />
         <Analitica />
         <Analytics />
       </body>

@@ -13,7 +13,6 @@ import { FAQ } from '@/components/sections/FAQ'
 import { Contact } from '@/components/sections/Contact'
 import { Footer } from '@/components/Footer'
 import { WhatsAppButton } from '@/components/WhatsAppButton'
-import { SepPopup } from '@/components/SepPopup'
 import { faqs } from '@/data/faqs'
 
 const faqJsonLd = {
@@ -50,7 +49,6 @@ export default function Home() {
       </main>
       <Footer />
       <WhatsAppButton />
-      <SepPopup />
     </>
   )
 }

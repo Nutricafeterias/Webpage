@@ -20,11 +20,35 @@ export type Atribucion = {
 }
 
 export type AtribucionEnvio = Atribucion & {
+  /** Última campaña del sitio (aviso emergente, blog, redes) en la que dio clic. */
+  campana: string
   pagina_envio: string
   dispositivo: 'movil' | 'tablet' | 'escritorio'
 }
 
 const CLAVE = 'nutri_atrib'
+const CLAVE_CAMPANA = 'nutri_campana'
+
+/** Registra la campaña en la que el visitante dio clic (vive en la sesión). */
+export function registrarCampana(id: string): void {
+  try {
+    sessionStorage.setItem(CLAVE_CAMPANA, id.slice(0, 80))
+  } catch {
+    /* ignorar */
+  }
+}
+
+function campanaActual(): string {
+  try {
+    const guardada = sessionStorage.getItem(CLAVE_CAMPANA)
+    if (guardada) return guardada
+    const desdeUrl = new URL(window.location.href).searchParams.get('utm_campaign')
+    if (desdeUrl) return desdeUrl.slice(0, 80)
+  } catch {
+    /* ignorar */
+  }
+  return ''
+}
 const UTM = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'] as const
 const DIAS_COOKIE = 90
 
@@ -129,12 +153,13 @@ export function atribucionParaEnvio(): AtribucionEnvio {
     gclid: '',
     primera_visita: '',
   }
-  return { ...base, pagina_envio: corto(window.location.pathname, 300), dispositivo: dispositivo() }
+  return { ...base, campana: campanaActual(), pagina_envio: corto(window.location.pathname, 300), dispositivo: dispositivo() }
 }
 
 /** Bloque legible de una línea para el campo de notas del CRM. */
 export function textoOrigen(a: Partial<AtribucionEnvio>): string {
   const partes: string[] = []
+  if (a.campana) partes.push(`campaña ${a.campana}`)
   if (a.pagina_envio) partes.push(`enviado desde ${a.pagina_envio}`)
   if (a.primera_pagina) partes.push(`entrada ${a.primera_pagina}`)
   partes.push(`referrer ${a.referrer || 'directo'}`)
@@ -151,6 +176,7 @@ export const CAMPOS_ATRIBUCION = [
   ...UTM,
   'gclid',
   'primera_visita',
+  'campana',
   'pagina_envio',
   'dispositivo',
 ] as const
