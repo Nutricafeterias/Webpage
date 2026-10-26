@@ -5,11 +5,12 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { waHref } from '@/lib/whatsapp'
 
 export const metadata: Metadata = {
-  title: 'Catering para Eventos Escolares en CDMX | Graduaciones, Kermés y Festivales — Nutri Cafeterías',
+  title: 'Eventos escolares y catering en CDMX | Graduaciones, juntas y coffee breaks — Nutri Cafeterías',
   description:
-    'Catering profesional para eventos escolares en CDMX: graduaciones, kermés, festivales, juntas de consejo, desayunos con padres y eventos deportivos. Con protocolos de higiene NOM-251 y los estándares de las mejores escuelas privadas.',
+    'Eventos escolares como complemento de tu cafetería o comedor: graduaciones, kermés, juntas de consejo, coffee breaks y desayunos con padres, con higiene según la NOM-251.',
   keywords: [
     'catering escolar',
     'catering eventos escolares CDMX',
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://cafeteriasescolares.com.mx/catering-escolar' },
   openGraph: {
-    title: 'Catering para Eventos Escolares — Nutri Cafeterías',
+    title: 'Eventos escolares — Nutri Cafeterías',
     description:
       'Graduaciones, kermés, festivales y eventos institucionales con estándares premium de calidad e higiene.',
     url: 'https://cafeteriasescolares.com.mx/catering-escolar',
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
 const serviceJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Catering para eventos escolares',
+  name: 'Eventos escolares',
   serviceType: 'Catering escolar',
   provider: {
     '@type': 'LocalBusiness',
@@ -44,7 +45,7 @@ const serviceJsonLd = {
     { '@type': 'AdministrativeArea', name: 'Área Metropolitana del Valle de México' },
   ],
   description:
-    'Catering profesional para eventos de escuelas privadas: graduaciones, kermés, festivales, juntas de consejo, desayunos con padres y eventos deportivos, con protocolos de higiene alineados a NOM-251.',
+    'Complemento para eventos escolares: graduaciones, kermés, festivales, juntas de consejo, desayunos con padres y eventos deportivos, con protocolos de higiene alineados a NOM-251.',
 }
 
 const eventos = [
@@ -76,7 +77,7 @@ export default function CateringEscolarPage() {
           {/* Hero */}
           <div className="text-center max-w-3xl mx-auto">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-700 font-bold text-sm mb-6 border border-amber-200">
-              🎉 Catering escolar
+              🎉 Eventos escolares
             </span>
             <h1 className="text-4xl md:text-6xl font-black text-stone-900 leading-tight">
               Eventos escolares{' '}
@@ -84,19 +85,23 @@ export default function CateringEscolarPage() {
             </h1>
             <p className="mt-5 text-stone-500 text-lg leading-relaxed">
               Graduaciones, kermés, festivales y eventos institucionales con el mismo
-              estándar premium de nuestras cafeterías: calidad, higiene certificada
+              estándar de nuestras cafeterías y comedores: calidad, higiene según la NOM-251
               y una logística que no le quita el sueño a nadie.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="/#contacto"
+                data-cta="cotiza_evento"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-black transition-all duration-200 shadow-xl shadow-emerald-200 hover:scale-[1.03]"
               >
                 Cotiza tu evento gratis
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
-                href="https://wa.me/522219251954?text=Hola!%20Quiero%20cotizar%20catering%20para%20un%20evento%20de%20mi%20escuela."
+                href={waHref('Hola, quiero cotizar alimentos para un evento de mi escuela', 'eventos')}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="whatsapp_hero"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border-2 border-emerald-200 bg-white text-emerald-700 font-black hover:bg-emerald-50 transition-all duration-200"
               >
                 <WhatsAppIcon className="w-4 h-4" /> WhatsApp directo
@@ -145,8 +150,8 @@ export default function CateringEscolarPage() {
             <p className="mt-3 text-center text-stone-500">
               ¿Buscas servicio de alimentos <strong>todos los días</strong> y no solo para un
               evento? Conoce nuestro{' '}
-              <Link href="/catering-escolar-cdmx" className="text-emerald-600 font-bold hover:underline">
-                catering escolar diario en CDMX
+              <Link href="/comedores-escolares" className="text-emerald-600 font-bold hover:underline">
+                comedor escolar
               </Link>
               .
             </p>

@@ -711,7 +711,7 @@ export const blogPosts: BlogPost[] = [
     keywords: ['cuánto cuesta comedor escolar CDMX', 'precio comedor escolar', 'costo cafetería escolar', 'concesión comedor escolar CDMX', 'presupuesto comedor escuela privada', 'comedor escolar CDMX'],
     related: [
       { href: '/comedores-escolares', anchor: 'Comedor escolar en CDMX: conoce nuestra operación integral' },
-      { href: '/catering-escolar-cdmx', anchor: 'Catering escolar en CDMX: servicio diario sin cocina propia' },
+      { href: '/comedores-escolares', anchor: 'Comedor escolar: también para escuelas sin cocina propia' },
       { href: '/blog/como-elegir-proveedor-cafeteria-escolar', anchor: 'Cómo elegir el mejor proveedor de cafetería escolar (guía 2026)' },
     ],
     content: [
@@ -981,7 +981,7 @@ export const blogPosts: BlogPost[] = [
     related: [
       { href: '/blog/como-elegir-proveedor-cafeteria-escolar', anchor: 'Cómo elegir el mejor proveedor de cafetería escolar (guía 2026)' },
       { href: '/cafeterias-escuelas-privadas', anchor: 'Cafeterías para escuelas privadas: nuestro servicio' },
-      { href: '/catering-escolar-cdmx', anchor: 'Catering escolar en CDMX: servicio diario de alimentos' },
+      { href: '/comedores-escolares', anchor: 'Comedor escolar: servicio diario de alimentos para escuelas' },
     ],
     content: [
       { type: 'p', text: 'Si diriges o administras una escuela privada en México y estás evaluando quién debería operar tu cafetería o comedor escolar, esta comparativa te ahorrará semanas de investigación. Analizamos a los principales operadores del mercado mexicano según los criterios que más importan a una institución: tecnología, calidad nutricional, seguridad alimentaria, modelo económico y experiencia.' },

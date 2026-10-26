@@ -3,11 +3,10 @@ import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import Image from 'next/image'
 
 const links = [
-  { href: '/cafeterias-escolares', label: 'Cafeterías escolares' },
-  { href: '/cafeterias-escuelas-privadas', label: 'Cafeterías para escuelas privadas' },
-  { href: '/comedores-escolares',  label: 'Comedor escolar CDMX' },
-  { href: '/catering-escolar-cdmx', label: 'Catering escolar CDMX' },
-  { href: '/catering-escolar',     label: 'Catering para eventos' },
+  { href: '/cafeterias-escolares', label: 'Cafetería escolar' },
+  { href: '/comedores-escolares',  label: 'Comedor escolar' },
+  { href: '/cafeterias-escuelas-privadas', label: 'Colegios particulares' },
+  { href: '/catering-escolar',     label: 'Eventos escolares' },
   { href: '/menus',       label: 'Menús' },
   { href: '/lineamientos-sep', label: 'Lineamientos SEP' },
   { href: '/nosotros',    label: 'Nosotros' },
@@ -15,6 +14,7 @@ const links = [
   { href: '/blog',        label: 'Blog' },
   { href: '/#faq',        label: 'Preguntas frecuentes' },
   { href: '/#contacto',   label: 'Contacto' },
+  { href: '/aviso-de-privacidad', label: 'Aviso de privacidad' },
 ]
 
 export function Footer() {
