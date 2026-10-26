@@ -11,6 +11,12 @@ const nextConfig: NextConfig = {
       { source: '/catering-escolar-cdmx', destination: '/comedores-escolares', statusCode: 301 },
       // Errores de tipeo que reciben impresiones en Search Console.
       { source: '/comedores-esculares', destination: '/comedores-escolares', statusCode: 301 },
+      // GEO 26-oct: artículos que nombraban a otras marcas se retiran; su lugar lo toma la guía de criterios.
+      { source: '/blog/mejores-empresas-cafeterias-escolares-mexico', destination: '/blog/como-elegir-operador-cafeteria-escolar', statusCode: 301 },
+      { source: '/blog/inteligencia-artificial-cafeteria-escolar-datos-chartwells-sodexo', destination: '/blog/como-elegir-operador-cafeteria-escolar', statusCode: 301 },
+      { source: '/blog/tendencias-internacionales-food-service-escolar-2026', destination: '/blog/como-elegir-operador-cafeteria-escolar', statusCode: 301 },
+      // La guía vieja de 7 criterios se consolida en la nueva (evita dos páginas que compiten por lo mismo).
+      { source: '/blog/como-elegir-proveedor-cafeteria-escolar', destination: '/blog/como-elegir-operador-cafeteria-escolar', statusCode: 301 },
       { source: '/blog/regreso-clases-2026-multa-real-director-regrules-2028', destination: '/blog/regreso-clases-2026-multa-real-director-reglas-2028', statusCode: 301 },
     ];
   },

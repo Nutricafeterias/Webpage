@@ -11,7 +11,7 @@ import { RecursoDescargable } from '@/components/RecursoDescargable'
 import { PruebaSocial } from '@/components/PruebaSocial'
 
 export const metadata: Metadata = {
-  title: 'Lineamientos SEP para cafetería y comedor escolar: qué exige y cómo cumplir | Nutri',
+  title: 'Lineamientos SEP para cafetería y comedor escolar: qué exige y cómo cumplir | Nutri Cafeterías',
   description:
     'Qué exigen los Lineamientos SEP (DOF 30-sep-2024, vigentes desde el 29-mar-2025) en la cafetería y el comedor de tu escuela, qué arriesga la dirección y cómo un operador te ayuda a cumplir. Pide una revisión sin costo.',
   keywords: [

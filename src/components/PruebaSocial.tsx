@@ -8,7 +8,7 @@ export const CLAIMS = [
   { dato: '#1', texto: 'operador de cafeterías escolares en México' },
   { dato: '+1,000,000', texto: 'órdenes servidas' },
   { dato: '4.9 / 5', texto: 'de satisfacción' },
-  { dato: 'Desde 2018', texto: 'en UP Campus Ciudad UP, IPADE y más' },
+  { dato: 'Desde 2018', texto: 'en la Universidad Panamericana, Campus Ciudad UP, e IPADE' },
 ] as const
 
 export function PruebaSocial({ tono = 'claro', className = '' }: { tono?: 'claro' | 'oscuro'; className?: string }) {

@@ -3,7 +3,9 @@
 import { useEffect, useRef, useState } from 'react'
 
 export function useCounter(end: number, duration = 2000) {
-  const [count, setCount] = useState(0)
+  // Empieza en el valor final: el HTML del servidor (y quien lo lea sin JS) ve la cifra real;
+  // al entrar en pantalla la animación corre de 0 al valor.
+  const [count, setCount] = useState(end)
   const ref = useRef<HTMLDivElement>(null)
   const triggered = useRef(false)
 

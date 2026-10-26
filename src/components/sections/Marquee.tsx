@@ -1,7 +1,7 @@
 const base = [
   '🍎 Menús conforme a los Lineamientos SEP',
   '🤖 Tótems de autoservicio',
-  '🏫 Universidad Panamericana',
+  '🏫 Universidad Panamericana, Campus Ciudad UP',
   '🙂 Pago con reconocimiento facial (opcional)',
   '📱 App para familias + efectivo en caja',
   '🥇 Operador #1 en México',
