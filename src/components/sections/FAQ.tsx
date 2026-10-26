@@ -1,46 +1,34 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Plus, Minus } from 'lucide-react'
 import { faqs } from '@/data/faqs'
 
-function FAQItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boolean; onToggle: () => void }) {
+// <details> nativo: todas las respuestas viajan en el HTML del servidor (las lee
+// cualquier buscador o asistente, coinciden con el FAQPage) y abren sin JS.
+function FAQItem({ q, a, abierto }: { q: string; a: string; abierto: boolean }) {
   return (
-    <div className={`rounded-2xl overflow-hidden border-2 transition-colors duration-200 ${isOpen ? 'border-emerald-300 bg-emerald-50' : 'border-stone-200 bg-white hover:border-emerald-200'}`}>
-      <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-        aria-expanded={isOpen}
-      >
-        <span className={`font-bold text-base transition-colors ${isOpen ? 'text-emerald-700' : 'text-stone-800'}`}>
+    <details
+      open={abierto}
+      className="group rounded-2xl overflow-hidden border-2 transition-colors duration-200 border-stone-200 bg-white hover:border-emerald-200 open:border-emerald-300 open:bg-emerald-50"
+    >
+      <summary className="w-full cursor-pointer list-none flex items-center justify-between gap-4 px-6 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 [&::-webkit-details-marker]:hidden">
+        <span className="font-bold text-base transition-colors text-stone-800 group-open:text-emerald-700">
           {q}
         </span>
-        <span className={`flex-shrink-0 p-1.5 rounded-lg transition-colors ${isOpen ? 'bg-emerald-500 text-white' : 'bg-stone-100 text-stone-500'}`}>
-          {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+        <span className="flex-shrink-0 p-1.5 rounded-lg transition-colors bg-stone-100 text-stone-500 group-open:bg-emerald-500 group-open:text-white">
+          <Plus className="w-4 h-4 group-open:hidden" />
+          <Minus className="w-4 h-4 hidden group-open:block" />
         </span>
-      </button>
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
-          >
-            <div className="px-6 pb-5 text-stone-600 text-sm leading-relaxed border-t-2 border-emerald-100 pt-4">
-              {a}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+      </summary>
+      <div className="px-6 pb-5 text-stone-600 text-sm leading-relaxed border-t-2 border-emerald-100 pt-4">
+        {a}
+      </div>
+    </details>
   )
 }
 
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
-
   return (
     <section id="faq" className="py-24 bg-gradient-to-b from-white to-emerald-50/40">
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
@@ -72,13 +60,7 @@ export function FAQ() {
           className="space-y-3"
         >
           {faqs.map((faq, i) => (
-            <FAQItem
-              key={i}
-              q={faq.q}
-              a={faq.a}
-              isOpen={openIndex === i}
-              onToggle={() => setOpenIndex(openIndex === i ? null : i)}
-            />
+            <FAQItem key={faq.q} q={faq.q} a={faq.a} abierto={i === 0} />
           ))}
         </motion.div>
 
