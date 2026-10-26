@@ -69,7 +69,7 @@ export default async function BlogPostPage({
     description: post.description,
     image: post.image,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updated ?? post.date,
     inLanguage: 'es-MX',
     author: {
       '@type': 'Organization',
@@ -87,11 +87,35 @@ export default async function BlogPostPage({
     mainEntityOfPage: `https://cafeteriasescolares.com.mx/blog/${post.slug}`,
   }
 
+  const url = `https://cafeteriasescolares.com.mx/blog/${post.slug}`
+  const extrasJsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://cafeteriasescolares.com.mx' },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://cafeteriasescolares.com.mx/blog' },
+        { '@type': 'ListItem', position: 3, name: post.title, item: url },
+      ],
+    },
+    ...(post.faq && post.faq.length > 0
+      ? [{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: post.faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+        }]
+      : []),
+  ]
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(extrasJsonLd) }}
       />
       <Navbar />
       <main className="pt-24 pb-24 bg-[#F7F3EA] min-h-screen">
@@ -165,6 +189,23 @@ export default async function BlogPostPage({
               return medio ? [medio, bloque] : bloque
             })}
           </div>
+
+          {/* Preguntas frecuentes del artículo (visibles; mismas que el FAQPage) */}
+          {post.faq && post.faq.length > 0 && (
+            <section className="mt-12" data-seccion="blog_faq">
+              <h2 className="text-2xl md:text-3xl font-black text-stone-900 mb-5">Preguntas frecuentes</h2>
+              <div className="space-y-3">
+                {post.faq.map(f => (
+                  <details key={f.q} className="group rounded-2xl border-2 border-stone-200 bg-white open:border-emerald-300 open:bg-emerald-50">
+                    <summary className="cursor-pointer list-none px-6 py-5 font-bold text-stone-800 [&::-webkit-details-marker]:hidden">
+                      {f.q}
+                    </summary>
+                    <p className="px-6 pb-5 text-stone-600 leading-relaxed">{f.a}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Enlaces relacionados (internal linking SEO) */}
           {post.related && post.related.length > 0 && (

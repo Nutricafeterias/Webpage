@@ -198,7 +198,7 @@ export default function CafeteriasEscuelasPrivadasPage() {
                 eventos escolares
               </Link>
               . Y si estás comparando opciones, te dejamos nuestra{' '}
-              <Link href="/blog/como-elegir-proveedor-cafeteria-escolar" className="text-emerald-600 font-bold hover:underline">
+              <Link href="/blog/como-elegir-operador-cafeteria-escolar" className="text-emerald-600 font-bold hover:underline">
                 guía para elegir al mejor proveedor de cafetería escolar
               </Link>
               .
