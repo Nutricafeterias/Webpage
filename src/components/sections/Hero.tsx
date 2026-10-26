@@ -52,7 +52,7 @@ export function Hero() {
           >
             Operamos <strong className="text-stone-900">cafeterías y comedores escolares</strong> de forma integral en escuelas privadas de México.
             Servicio rápido, alimentación saludable y tecnología de vanguardia.
-            Con presencia en CDMX y más de 10 años de experiencia.
+            Con presencia en CDMX desde 2018.
           </motion.p>
 
           {/* CTAs */}
@@ -98,7 +98,7 @@ export function Hero() {
                 ))}
               </div>
               <p className="text-xs text-stone-500 mt-0.5">
-                <strong className="text-stone-700">+10 escuelas</strong> confían en nosotros
+                <strong className="text-stone-700">Desde 2018</strong> en escuelas privadas
               </p>
             </div>
           </motion.div>
@@ -156,10 +156,10 @@ export function Hero() {
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
             className="absolute top-6 -left-2 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 border border-amber-100"
           >
-            <span className="text-3xl">😊</span>
+            <span className="text-3xl">🏫</span>
             <div>
-              <div className="text-xl font-black text-stone-900">97%</div>
-              <div className="text-xs text-stone-500">Satisfacción</div>
+              <div className="text-xl font-black text-stone-900">Desde 2018</div>
+              <div className="text-xs text-stone-500">En escuelas privadas</div>
             </div>
           </motion.div>
 

@@ -38,8 +38,8 @@ const pillars = [
     btnBg: 'bg-blue-500 hover:bg-blue-600',
     title: 'Tecnología que lo hace fácil',
     tag: 'Tecnología',
-    desc: 'Huella digital, tótems de autoservicio y app para padres. Todo integrado para hacer la vida más cómoda.',
-    items: ['Pago con huella digital', 'Tótems de autoservicio', 'App para padres y alumnos'],
+    desc: 'Huella digital y tótems de autoservicio, y próximamente app para padres. Todo integrado para hacer la vida más cómoda.',
+    items: ['Pago con huella digital', 'Tótems de autoservicio', 'App para padres (próximamente)'],
     stat: '3 tech',
   },
   {

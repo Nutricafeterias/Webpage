@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const comparisons = [
   { feature: 'Operación consistente todos los días',         nutri: '✅', trad: '❌' },
-  { feature: 'Tecnología (huella, app, tótems)',             nutri: '✅', trad: '❌' },
+  { feature: 'Tecnología (huella digital y tótems)',             nutri: '✅', trad: '❌' },
   { feature: 'Cero carga operativa para la escuela',         nutri: '✅', trad: '❌' },
   { feature: 'Gestión de personal incluida',                 nutri: '✅', trad: '❌' },
   { feature: 'Menos de 3 minutos de espera',                 nutri: '✅', trad: '❌' },
@@ -14,9 +14,9 @@ const comparisons = [
 ]
 
 const reasons = [
-  { num: '+10', label: 'Años de experiencia', emoji: '🏆', bg: 'bg-amber-50 border-amber-200', text: 'text-amber-600' },
-  { num: '10K+', label: 'Alumnos diarios', emoji: '👩‍🎓', bg: 'bg-emerald-50 border-emerald-200', text: 'text-emerald-600' },
-  { num: '97%', label: 'Satisfacción', emoji: '😊', bg: 'bg-blue-50 border-blue-200', text: 'text-blue-600' },
+  { num: '2018', label: 'Año de fundación', emoji: '🏆', bg: 'bg-amber-50 border-amber-200', text: 'text-amber-600' },
+  { num: '11', label: 'Cafeterías a la vez (máximo)', emoji: '🏫', bg: 'bg-emerald-50 border-emerald-200', text: 'text-emerald-600' },
+  { num: '<3 min', label: 'De espera', emoji: '⚡', bg: 'bg-blue-50 border-blue-200', text: 'text-blue-600' },
   { num: '0', label: 'Carga para la escuela', emoji: '🛡️', bg: 'bg-rose-50 border-rose-200', text: 'text-rose-600' },
 ]
 

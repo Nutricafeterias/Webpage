@@ -42,8 +42,8 @@ export function Schools() {
             🏫 Escuelas que nos eligen
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-stone-900">
-            Ya confían en nosotros{' '}
-            <span className="gradient-text-primary">más de 10 instituciones</span>
+            Escuelas que han confiado{' '}
+            <span className="gradient-text-primary">en nosotros</span>
           </h2>
           <p className="mt-4 text-stone-500 max-w-xl mx-auto text-lg">
             Escuelas privadas de primer nivel en México que transformaron su cafetería con nosotros.

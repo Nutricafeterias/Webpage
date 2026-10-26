@@ -17,7 +17,7 @@ const services = [
   {
     emoji: '🍲',
     title: 'Comedores escolares',
-    desc: 'Comedor completo con desayuno y comida: ciclos de menús alineados a SEP, Distintivo H, manejo de alérgenos y cero carga operativa para la institución.',
+    desc: 'Comedor completo con desayuno y comida: ciclos de menús alineados a SEP, higiene NOM-251, manejo de alérgenos y cero carga operativa para la institución.',
     href: '/comedores-escolares',
     cta: 'Ver comedores',
     image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=800&h=520&fit=crop&q=85',
@@ -53,7 +53,7 @@ export function ServicesSplit() {
             <span className="gradient-text-primary">la alimentación de tu escuela</span>
           </h2>
           <p className="mt-4 text-stone-500 max-w-2xl mx-auto text-lg">
-            Tres servicios, un mismo estándar premium: nutriólogos, Distintivo H,
+            Tres servicios, un mismo estándar premium: nutriólogos, higiene NOM-251,
             tecnología y cero carga para la institución. 🏆
           </p>
         </motion.div>

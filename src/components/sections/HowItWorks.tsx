@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 const steps = [
   { num: '01', emoji: '🔍', title: 'Evaluamos tu escuela',       desc: 'Visitamos, entendemos sus necesidades y diseñamos un plan personalizado. Sin costo.', color: 'bg-emerald-50 border-emerald-200', num_color: 'text-emerald-500' },
   { num: '02', emoji: '🍽️', title: 'Diseñamos el menú',          desc: 'Con nutriólogos y considerando las preferencias reales de tus alumnos.', color: 'bg-amber-50 border-amber-200', num_color: 'text-amber-500' },
-  { num: '03', emoji: '🤖', title: 'Instalamos la tecnología',   desc: 'Tótems, huella y app. Todo configurado y listo antes del primer día.', color: 'bg-blue-50 border-blue-200', num_color: 'text-blue-500' },
+  { num: '03', emoji: '🤖', title: 'Instalamos la tecnología',   desc: 'Tótems y huella digital. Todo configurado y listo antes del primer día.', color: 'bg-blue-50 border-blue-200', num_color: 'text-blue-500' },
   { num: '04', emoji: '👥', title: 'Capacitamos al equipo',      desc: 'Seleccionamos, contratamos y entrenamos al personal. La escuela no interviene.', color: 'bg-purple-50 border-purple-200', num_color: 'text-purple-500' },
   { num: '05', emoji: '🚀', title: '¡Arrancamos!',               desc: 'Desde el primer día con servicio completo, fluido y al nivel de tu institución.', color: 'bg-rose-50 border-rose-200', num_color: 'text-rose-500' },
   { num: '06', emoji: '📈', title: 'Mejora continua',            desc: 'Supervisión constante y mejora permanente. La cafetería mejora cada ciclo.', color: 'bg-teal-50 border-teal-200', num_color: 'text-teal-500' },

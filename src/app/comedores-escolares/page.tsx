@@ -9,7 +9,7 @@ import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 export const metadata: Metadata = {
   title: 'Comedor Escolar en CDMX | Operación Integral de Comedores Escolares — Nutri Cafeterías',
   description:
-    'Operamos comedores escolares en escuelas privadas de CDMX y área metropolitana: menús de nutriólogos alineados a SEP, Distintivo H, protocolos NOM-251, tecnología de pago sin efectivo y app para padres. Sin inversión para la escuela.',
+    'Operamos comedores escolares en escuelas privadas de CDMX y área metropolitana: menús de nutriólogos alineados a SEP, protocolos NOM-251 y tecnología de pago sin efectivo. Sin inversión para la escuela.',
   keywords: [
     'comedor escolar CDMX',
     'comedor escolar',
@@ -45,13 +45,13 @@ const serviceJsonLd = {
     { '@type': 'AdministrativeArea', name: 'Área Metropolitana del Valle de México' },
   ],
   description:
-    'Operación completa de comedores escolares para escuelas privadas: menús diseñados por nutriólogos alineados a lineamientos SEP, Distintivo H, protocolos alineados a NOM-251, tecnología de pago sin efectivo y app para padres. Sin inversión inicial para la institución.',
+    'Operación completa de comedores escolares para escuelas privadas: menús diseñados por nutriólogos alineados a lineamientos SEP, protocolos alineados a NOM-251 y tecnología de pago sin efectivo; app para padres próximamente. Sin inversión inicial para la institución.',
 }
 
 const beneficios = [
   { emoji: '👩‍⚕️', title: 'Menús de nutriólogos', desc: 'Ciclos de 4 semanas con platillos de temporada, alineados a lineamientos SEP y con manejo de alérgenos documentado.' },
-  { emoji: '🏅', title: 'Distintivo H y licencia sanitaria', desc: 'Permisos y certificaciones en regla, con protocolos de higiene alineados a NOM-251, bitácoras y auditorías internas.' },
-  { emoji: '💳', title: 'Cero efectivo en el plantel', desc: 'Pago con huella digital y app: los papás recargan desde el celular y ven cada consumo en tiempo real.' },
+  { emoji: '🏅', title: 'Higiene NOM-251', desc: 'Protocolos de higiene alineados a NOM-251, con bitácoras y auditorías internas.' },
+  { emoji: '💳', title: 'Cero efectivo en el plantel', desc: 'Pago con huella digital que deja registro de cada consumo; app para que los papás recarguen y lo consulten, próximamente.' },
   { emoji: '⚡', title: 'Servicio en menos de 3 minutos', desc: 'Diseño de flujo y tótems de autoservicio que eliminan filas incluso con cientos de alumnos en receso.' },
   { emoji: '🏫', title: 'Cero carga para la dirección', desc: 'Personal, proveedores, calidad y quejas: todo lo operamos nosotros. La escuela se dedica a educar.' },
   { emoji: '💰', title: 'Sin inversión inicial', desc: 'Nosotros asumimos equipo, tecnología y adecuaciones. La escuela solo aporta el espacio.' },
@@ -59,7 +59,7 @@ const beneficios = [
 
 const diferencias = [
   { q: 'Comedor tradicional', items: ['Menú fijo impuesto', 'Pago en efectivo o vales', 'Filas largas en hora pico', 'La escuela supervisa la operación', 'Sin visibilidad para los papás'] },
-  { q: 'Comedor escolar Nutri', items: ['Menús de nutriólogo que los alumnos eligen', 'Huella digital y app — cero efectivo', 'Menos de 3 minutos de espera', 'Operación 100% a cargo de Nutri', 'App para padres con historial y límites'] },
+  { q: 'Comedor escolar Nutri', items: ['Menús de nutriólogo que los alumnos eligen', 'Huella digital — cero efectivo', 'Menos de 3 minutos de espera', 'Operación 100% a cargo de Nutri', 'App para padres con historial y límites (próximamente)'] },
 ]
 
 export default function ComedoresEscolaresPage() {

@@ -9,7 +9,7 @@ import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 export const metadata: Metadata = {
   title: 'Catering para Eventos Escolares en CDMX | Graduaciones, Kermés y Festivales — Nutri Cafeterías',
   description:
-    'Catering profesional para eventos escolares en CDMX: graduaciones, kermés, festivales, juntas de consejo, desayunos con padres y eventos deportivos. Con Distintivo H y los estándares de las mejores escuelas privadas.',
+    'Catering profesional para eventos escolares en CDMX: graduaciones, kermés, festivales, juntas de consejo, desayunos con padres y eventos deportivos. Con protocolos de higiene NOM-251 y los estándares de las mejores escuelas privadas.',
   keywords: [
     'catering escolar',
     'catering eventos escolares CDMX',
@@ -44,7 +44,7 @@ const serviceJsonLd = {
     { '@type': 'AdministrativeArea', name: 'Área Metropolitana del Valle de México' },
   ],
   description:
-    'Catering profesional para eventos de escuelas privadas: graduaciones, kermés, festivales, juntas de consejo, desayunos con padres y eventos deportivos, con Distintivo H y protocolos alineados a NOM-251.',
+    'Catering profesional para eventos de escuelas privadas: graduaciones, kermés, festivales, juntas de consejo, desayunos con padres y eventos deportivos, con protocolos de higiene alineados a NOM-251.',
 }
 
 const eventos = [
@@ -57,7 +57,7 @@ const eventos = [
 ]
 
 const razones = [
-  { emoji: '🏅', text: 'Los mismos estándares de nuestras cafeterías: Distintivo H, licencia sanitaria y protocolos alineados a NOM-251' },
+  { emoji: '🏅', text: 'Los mismos estándares de nuestras cafeterías: protocolos de higiene alineados a NOM-251' },
   { emoji: '👨‍🍳', text: 'Personal uniformado y capacitado que ya conoce el entorno escolar y el trato con familias' },
   { emoji: '📋', text: 'Menús a la medida del evento y del presupuesto, diseñados con nuestro equipo de nutriólogos y chefs' },
   { emoji: '⚡', text: 'Logística completa: montaje, servicio, desmontaje y limpieza — la escuela solo disfruta el evento' },

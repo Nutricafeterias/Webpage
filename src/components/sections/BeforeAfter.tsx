@@ -14,7 +14,6 @@ const before = [
 const after = [
   '⚡ Menos de 3 minutos de espera',
   '🚀 Servicio rápido, ordenado y consistente',
-  '😊 97% de satisfacción de alumnos',
   '🥗 Menús equilibrados que los alumnos aman',
   '🛡️ Cero carga operativa para la escuela',
   '✅ Procesos claros que funcionan siempre',

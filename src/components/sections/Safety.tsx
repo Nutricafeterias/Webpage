@@ -5,8 +5,8 @@ import { motion } from 'framer-motion'
 const pillars = [
   {
     emoji: '🏅',
-    title: 'Distintivo H y licencia sanitaria',
-    desc: 'Permisos y certificaciones en regla: Distintivo H, licencia sanitaria y protocolos de higiene alineados a NOM-251 en todo el proceso.',
+    title: 'Higiene alineada a NOM-251',
+    desc: 'Protocolos de higiene alineados a la NOM-251-SSA1 en todo el proceso, con bitácoras y capacitación del personal.',
   },
   {
     emoji: '🥜',

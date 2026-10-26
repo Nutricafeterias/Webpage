@@ -13,7 +13,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: 'Cafeterías Escolares en México | Nutri Cafeterías — Comedores Escolares CDMX',
   description:
-    'Operamos cafeterías y comedores escolares en escuelas privadas de México. Servicio integral, alimentación saludable, tecnología de pago con huella y app para padres. +10 años de experiencia en CDMX. 97% satisfacción.',
+    'Operamos cafeterías y comedores escolares en escuelas privadas de México. Servicio integral, alimentación saludable, tecnología de pago con huella digital. Operando en CDMX desde 2018.',
   keywords: [
     'cafetería escolar',
     'cafeterías escolares México',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Nutri Cafeterías — Cafeterías Escolares en México',
     description:
-      'Transformamos cafeterías escolares: alimentación saludable, tecnología de punta y servicio de primer nivel. Más de 10 escuelas privadas confían en nosotros.',
+      'Transformamos cafeterías escolares: alimentación saludable, tecnología de punta y servicio de primer nivel en escuelas privadas desde 2018.',
     url: 'https://cafeteriasescolares.com.mx',
     siteName: 'Nutri Cafeterías',
     locale: 'es_MX',
@@ -80,13 +80,13 @@ const jsonLd = {
   alternateName: 'Nutri Cafeterías — Cafeterías Escolares',
   slogan: 'La cafetería más feliz de tu escuela',
   description:
-    'Nutri Cafeterías es el operador premium de cafeterías y comedores escolares en México. Opera de forma integral cafeterías en escuelas privadas de la Ciudad de México desde preescolar hasta preparatoria: menús diseñados por nutriólogos alineados a lineamientos SEP, protocolos de higiene alineados a NOM-251, tecnología de pago con huella digital, tótems de autoservicio, app para padres y programas educativos exclusivos como NutriMood (comida y emociones), Cocina Aventura y Sabores del Mundo. Más de 10 años de experiencia, más de 10 escuelas, más de 1,000,000 de órdenes servidas y 97% de satisfacción. La escuela no realiza ninguna inversión inicial.',
+    'Nutri Cafeterías es el operador premium de cafeterías y comedores escolares en México. Opera de forma integral cafeterías en escuelas privadas de la Ciudad de México desde preescolar hasta preparatoria: menús diseñados por nutriólogos alineados a lineamientos SEP, protocolos de higiene alineados a NOM-251, tecnología de pago con huella digital, tótems de autoservicio y programas educativos exclusivos como NutriMood (comida y emociones), Cocina Aventura y Sabores del Mundo. Fundada en 2018; llegó a operar 11 cafeterías escolares de forma simultánea. La escuela no realiza ninguna inversión inicial.',
   url: 'https://cafeteriasescolares.com.mx',
   logo: 'https://cafeteriasescolares.com.mx/logo.png',
   image: 'https://cafeteriasescolares.com.mx/logo.png',
   telephone: '+52-221-925-1954',
   email: 'contacto@nutricafeteria.com.mx',
-  foundingDate: '2014',
+  foundingDate: '2018-08',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Ciudad de México',
@@ -98,10 +98,6 @@ const jsonLd = {
     { '@type': 'AdministrativeArea', name: 'Área Metropolitana del Valle de México' },
   ],
   serviceType: 'Operación integral de cafeterías escolares',
-  hasCredential: [
-    { '@type': 'EducationalOccupationalCredential', credentialCategory: 'certification', name: 'Distintivo H' },
-    { '@type': 'EducationalOccupationalCredential', credentialCategory: 'license', name: 'Licencia sanitaria' },
-  ],
   knowsAbout: [
     'cafeterías escolares',
     'comedores escolares',
@@ -119,15 +115,9 @@ const jsonLd = {
     itemListElement: [
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Operación integral de cafetería escolar', description: 'Operación completa sin inversión para la escuela: personal, menús, proveedores, calidad y tecnología.' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Programa NutriMood — comida y emociones', description: 'Programa educativo que conecta la alimentación con las emociones y la concentración de los alumnos.' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tecnología de cafetería escolar', description: 'Pago con huella digital, tótems de autoservicio y app para padres con control de saldo y consumo.' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tecnología de cafetería escolar', description: 'Pago con huella digital y tótems de autoservicio; app para padres con control de saldo y consumo, próximamente.' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Comedores escolares con menús de nutriólogo', description: 'Menús balanceados alineados a lineamientos SEP, con manejo de alérgenos y rotación de temporada.' } },
     ],
-  },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '47',
-    bestRating: '5',
   },
   sameAs: [
     'https://wa.me/522219251954',

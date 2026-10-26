@@ -48,7 +48,7 @@ export function Footer() {
               />
             </div>
             <p className="text-stone-400 text-sm leading-relaxed">
-              Especializados en cafeterías escolares. Más de 10 años transformando
+              Especializados en cafeterías escolares. Desde 2018 transformando
               la experiencia dentro de las instituciones de México. 🇲🇽
             </p>
             <div className="flex items-center gap-3 mt-5">
@@ -85,9 +85,8 @@ export function Footer() {
           <div className="flex flex-col gap-3">
             <h4 className="font-black text-white text-sm uppercase tracking-wider">En números</h4>
             {[
-              { emoji: '🍽️', text: '+1,000,000 órdenes servidas' },
-              { emoji: '🏫', text: '+10 escuelas operando' },
-              { emoji: '😊', text: '97% de satisfacción' },
+              { emoji: '📅', text: 'Desde 2018' },
+              { emoji: '🏫', text: 'Hasta 11 cafeterías a la vez' },
               { emoji: '⚡', text: 'Menos de 3 min de espera' },
             ].map(s => (
               <div key={s.text} className="flex items-center gap-2 text-sm text-stone-400">

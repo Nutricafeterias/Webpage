@@ -9,7 +9,7 @@ import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 export const metadata: Metadata = {
   title: 'Cafeterías para Escuelas Privadas en CDMX | Nutri Cafeterías',
   description:
-    'Operamos cafeterías en escuelas privadas de CDMX con estándar premium: menús de nutriólogos alineados a SEP, Distintivo H, pago con huella digital y app para padres. Más de 10 años, +10 colegios, 97% de satisfacción. Sin inversión para la escuela.',
+    'Operamos cafeterías en escuelas privadas de CDMX con estándar premium: menús de nutriólogos alineados a SEP, protocolos NOM-251 y pago con huella digital. Operando en escuelas privadas desde 2018. Sin inversión para la escuela.',
   keywords: [
     'cafeterias escuelas privadas',
     'cafetería para escuela privada',
@@ -44,13 +44,13 @@ const serviceJsonLd = {
     { '@type': 'AdministrativeArea', name: 'Área Metropolitana del Valle de México' },
   ],
   description:
-    'Concesión y operación integral de cafeterías en escuelas privadas: menús diseñados por nutriólogos alineados a lineamientos SEP, Distintivo H, protocolos alineados a NOM-251, pago con huella digital y app para padres. Sin inversión inicial para el colegio.',
+    'Concesión y operación integral de cafeterías en escuelas privadas: menús diseñados por nutriólogos alineados a lineamientos SEP, protocolos alineados a NOM-251 y pago con huella digital; app para padres próximamente. Sin inversión inicial para el colegio.',
 }
 
 const expectativas = [
   { emoji: '👨‍👩‍👧', title: 'Familias que pagan colegiatura premium', desc: 'Esperan que la cafetería esté a la altura del resto de la escuela: calidad de restaurante, no de cooperativa.' },
   { emoji: '🥗', title: 'Nutrición real, no discurso', desc: 'Menús diseñados por nutriólogos, cero productos con sellos de exceso y manejo documentado de alergias e intolerancias.' },
-  { emoji: '📱', title: 'Visibilidad total para los papás', desc: 'App donde cada familia ve qué comió su hijo, recarga saldo y define límites — el estándar que las escuelas top ya ofrecen.' },
+  { emoji: '📱', title: 'Visibilidad para los papás (próximamente)', desc: 'Estamos desarrollando una app donde cada familia podrá ver qué comió su hijo, recargar saldo y definir límites.' },
   { emoji: '🛡️', title: 'Cumplimiento SEP sin riesgos', desc: 'La escuela privada es la primera en la mira ante un incumplimiento. Nuestro contrato garantiza lineamientos al día.' },
   { emoji: '⏱️', title: 'Recesos cortos, cero filas', desc: 'Pago con huella y flujo diseñado: servicio en menos de 3 minutos aunque salgan cientos de alumnos a la vez.' },
   { emoji: '🏫', title: 'Cero carga para la dirección', desc: 'Personal, proveedores, calidad, quejas de papás: todo lo operamos nosotros. La dirección solo recibe reportes.' },
@@ -83,8 +83,8 @@ export default function CafeteriasEscuelasPrivadasPage() {
               <span className="gradient-text-primary">escuelas privadas</span>
             </h1>
             <p className="mt-5 text-stone-500 text-lg leading-relaxed">
-              Más de 10 años operando cafeterías en colegios privados de CDMX y área
-              metropolitana. Calidad premium, cumplimiento SEP garantizado y tecnología
+              Operando cafeterías en colegios privados de CDMX y área
+              metropolitana desde 2018. Calidad premium, cumplimiento SEP garantizado y tecnología
               que los papás aman — sin que tu escuela invierta un peso.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -107,9 +107,9 @@ export default function CafeteriasEscuelasPrivadasPage() {
           {/* Stats strip */}
           <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
-              { n: '+10', t: 'colegios privados' },
-              { n: '+1M', t: 'órdenes servidas' },
-              { n: '97%', t: 'satisfacción' },
+              { n: '2018', t: 'año de fundación' },
+              { n: '11', t: 'cafeterías a la vez (máximo)' },
+              { n: '0', t: 'inversión para la escuela' },
               { n: '<3 min', t: 'de espera' },
             ].map(s => (
               <div key={s.t} className="p-5 rounded-2xl bg-white border-2 border-stone-100 shadow-sm text-center">
@@ -172,14 +172,14 @@ export default function CafeteriasEscuelasPrivadasPage() {
               <Link href="/lineamientos-sep" className="text-emerald-600 font-bold hover:underline">
                 lineamientos SEP para cafeterías escolares
               </Link>
-              , mantener licencia sanitaria y protocolos de higiene, y atender todos los días
+              , mantener permisos sanitarios y protocolos de higiene, y atender todos los días
               las expectativas de cientos de familias. Para la mayoría de los colegios privados,
               ese esfuerzo distrae de lo esencial: educar. Por eso las mejores instituciones
               trabajan con un operador especializado en cafeterías para escuelas privadas.
             </p>
             <p>
               En Nutri Cafeterías asumimos la operación completa — desde el menú diseñado por
-              nutriólogos hasta el pago con huella digital y la app para padres — con un modelo
+              nutriólogos hasta el pago con huella digital — con un modelo
               de concesión donde la escuela no invierte ni opera. Si tu institución también
               necesita servicio de alimentos en comedor, conoce nuestros{' '}
               <Link href="/comedores-escolares" className="text-emerald-600 font-bold hover:underline">
