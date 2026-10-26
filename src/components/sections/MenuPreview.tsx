@@ -34,7 +34,7 @@ export function MenuPreview() {
             <span className="gradient-text-orange">realmente quieren comer</span>
           </h2>
           <p className="mt-4 text-stone-500 max-w-xl mx-auto text-lg">
-            Equilibramos nutrición con preferencias reales. Diseñada con nutriólogos,
+            Equilibramos nutrición con preferencias reales. Diseñada con criterios nutrimentales de la SEP,
             adaptada a cada escuela, fresca todos los días.
           </p>
         </motion.div>
@@ -86,7 +86,7 @@ export function MenuPreview() {
           className="mt-8 text-center"
         >
           <p className="text-stone-400 text-sm">
-            Diseñados con nutriólogos · Ingredientes frescos · Adaptados a cada institución
+            Criterios nutrimentales de la SEP · Ingredientes frescos · Adaptados a cada institución
           </p>
         </motion.div>
       </div>

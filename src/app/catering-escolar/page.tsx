@@ -59,7 +59,7 @@ const eventos = [
 const razones = [
   { emoji: '🏅', text: 'Los mismos estándares de nuestras cafeterías: protocolos de higiene alineados a NOM-251' },
   { emoji: '👨‍🍳', text: 'Personal uniformado y capacitado que ya conoce el entorno escolar y el trato con familias' },
-  { emoji: '📋', text: 'Menús a la medida del evento y del presupuesto, diseñados con nuestro equipo de nutriólogos y chefs' },
+  { emoji: '📋', text: 'Menús a la medida del evento y del presupuesto, diseñados por nuestros cocineros con criterios nutrimentales' },
   { emoji: '⚡', text: 'Logística completa: montaje, servicio, desmontaje y limpieza — la escuela solo disfruta el evento' },
 ]
 

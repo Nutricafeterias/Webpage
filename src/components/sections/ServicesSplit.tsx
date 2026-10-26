@@ -7,8 +7,8 @@ import Image from 'next/image'
 const services = [
   {
     emoji: '🍽️',
-    title: 'Cafeterías escolares',
-    desc: 'Operación integral de la cafetería de tu escuela: menús de nutriólogos, tecnología de pago con huella, programas educativos y servicio en menos de 3 minutos.',
+    title: 'Cafetería escolar',
+    desc: 'Platillos a la carta, snacks y bebidas que cumplen con la SEP, con tótems, app para familias y reconocimiento facial para que nadie pierda el receso en la fila. Y siempre efectivo en caja.',
     href: '/cafeterias-escolares',
     cta: 'Conoce el servicio',
     image: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&h=520&fit=crop&q=85',
@@ -16,8 +16,8 @@ const services = [
   },
   {
     emoji: '🍲',
-    title: 'Comedores escolares',
-    desc: 'Comedor completo con desayuno y comida: ciclos de menús alineados a SEP, higiene NOM-251, manejo de alérgenos y cero carga operativa para la institución.',
+    title: 'Comedor escolar',
+    desc: 'Un menú completo de 3 o 4 tiempos, recién hecho, con la porción de cada edad y el mismo sabor del primer turno al último.',
     href: '/comedores-escolares',
     cta: 'Ver comedores',
     image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=800&h=520&fit=crop&q=85',
@@ -25,10 +25,10 @@ const services = [
   },
   {
     emoji: '🎉',
-    title: 'Catering para eventos',
-    desc: 'Graduaciones, kermés, festivales, juntas de consejo y desayunos con padres — con los mismos estándares de calidad e higiene de nuestras cafeterías.',
+    title: 'Eventos escolares',
+    desc: 'Complemento para tu contrato: graduaciones, juntas de consejo, coffee breaks y desayunos con padres, con el mismo estándar de cocina e higiene.',
     href: '/catering-escolar',
-    cta: 'Ver catering',
+    cta: 'Ver eventos',
     image: 'https://images.unsplash.com/photo-1555244162-803834f70033?w=800&h=520&fit=crop&q=85',
     badge: null,
   },
@@ -53,8 +53,8 @@ export function ServicesSplit() {
             <span className="gradient-text-primary">la alimentación de tu escuela</span>
           </h2>
           <p className="mt-4 text-stone-500 max-w-2xl mx-auto text-lg">
-            Tres servicios, un mismo estándar premium: nutriólogos, higiene NOM-251,
-            tecnología y cero carga para la institución. 🏆
+            Dos líneas de servicio y un complemento, con el mismo estándar: menús conforme a los
+            Lineamientos de la SEP, higiene según la NOM-251 y tecnología propia. Una escuela puede tener las dos. 🏆
           </p>
         </motion.div>
 

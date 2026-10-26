@@ -1,29 +1,16 @@
-const items = [
-  '🍎 Alimentación saludable',
-  '⚡ Menos de 3 minutos de espera',
-  '🏫 Universidad Panamericana',
-  '💳 Pago con huella digital',
-  '🌮 Menús que los alumnos aman',
-  '📱 App para padres (próximamente)',
-  '🏆 Desde 2018',
+const base = [
+  '🍎 Menús conforme a los Lineamientos SEP',
   '🤖 Tótems de autoservicio',
-  '✅ Cero carga para la escuela',
-  '🏫 Northridge School',
-  '🍊 100% ingredientes frescos',
-  '👨‍🍳 Equipo profesional',
-  '🍎 Alimentación saludable',
-  '⚡ Menos de 3 minutos de espera',
   '🏫 Universidad Panamericana',
-  '💳 Pago con huella digital',
-  '🌮 Menús que los alumnos aman',
-  '📱 App para padres (próximamente)',
+  '🙂 Pago con reconocimiento facial (opcional)',
+  '📱 App para familias + efectivo en caja',
   '🏆 Desde 2018',
-  '🤖 Tótems de autoservicio',
-  '✅ Cero carga para la escuela',
-  '🏫 Northridge School',
-  '🍊 100% ingredientes frescos',
-  '👨‍🍳 Equipo profesional',
+  '🧾 ERP y punto de venta propios',
+  '🛡️ Seguimos la NOM-251',
+  '🍽️ Comedor escolar de 3 o 4 tiempos',
+  '🍊 Se cocina el mismo día',
 ]
+const items = [...base, ...base]
 
 export function Marquee() {
   return (

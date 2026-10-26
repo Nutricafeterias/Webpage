@@ -8,7 +8,6 @@ const links = [
   { href: '/comedores-escolares',  label: 'Comedor escolar CDMX' },
   { href: '/catering-escolar-cdmx', label: 'Catering escolar CDMX' },
   { href: '/catering-escolar',     label: 'Catering para eventos' },
-  { href: '/programas',   label: 'Programas educativos' },
   { href: '/menus',       label: 'Menús' },
   { href: '/lineamientos-sep', label: 'Lineamientos SEP' },
   { href: '/nosotros',    label: 'Nosotros' },
@@ -87,7 +86,7 @@ export function Footer() {
             {[
               { emoji: '📅', text: 'Desde 2018' },
               { emoji: '🏫', text: 'Hasta 11 cafeterías a la vez' },
-              { emoji: '⚡', text: 'Menos de 3 min de espera' },
+              { emoji: '🧾', text: 'ERP y punto de venta propios' },
             ].map(s => (
               <div key={s.text} className="flex items-center gap-2 text-sm text-stone-400">
                 <span>{s.emoji}</span> {s.text}

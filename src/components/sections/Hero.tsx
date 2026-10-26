@@ -26,7 +26,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 text-sm font-semibold mb-6 shadow-sm"
           >
             <Star className="w-3.5 h-3.5 fill-emerald-500 text-emerald-500" />
-            Operador de cafeterías escolares #1 en México
+            Cafeterías y comedores escolares · desde 2018
           </motion.div>
 
           {/* Headline */}
@@ -38,9 +38,9 @@ export function Hero() {
           >
             Cafeterías escolares
             <br />
-            <span className="gradient-text-primary">que los alumnos</span>
+            <span className="gradient-text-primary">con comida real,</span>
             <br />
-            realmente aman
+            a tiempo y a la vista
           </motion.h1>
 
           {/* Sub */}
@@ -50,9 +50,9 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-5 text-lg text-stone-600 leading-relaxed max-w-xl"
           >
-            Operamos <strong className="text-stone-900">cafeterías y comedores escolares</strong> de forma integral en escuelas privadas de México.
-            Servicio rápido, alimentación saludable y tecnología de vanguardia.
-            Con presencia en CDMX desde 2018.
+            Operamos <strong className="text-stone-900">cafeterías y comedores escolares</strong> de forma integral en colegios y escuelas de México.
+            Menús conforme a los Lineamientos de la SEP, ERP y punto de venta propios, tótems de autoservicio
+            y app para familias, sin dejar de aceptar efectivo en caja. En CDMX desde 2018.
           </motion.p>
 
           {/* CTAs */}
@@ -98,7 +98,7 @@ export function Hero() {
                 ))}
               </div>
               <p className="text-xs text-stone-500 mt-0.5">
-                <strong className="text-stone-700">Desde 2018</strong> en escuelas privadas
+                <strong className="text-stone-700">Desde 2018</strong> en colegios y escuelas
               </p>
             </div>
           </motion.div>
@@ -143,10 +143,10 @@ export function Hero() {
             transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             className="absolute bottom-16 -right-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 border border-emerald-100"
           >
-            <span className="text-3xl">⚡</span>
+            <span className="text-3xl">🤖</span>
             <div>
-              <div className="text-xl font-black text-stone-900">{'<'}3 min</div>
-              <div className="text-xs text-stone-500">Tiempo de espera</div>
+              <div className="text-xl font-black text-stone-900">Tótems</div>
+              <div className="text-xs text-stone-500">Pide y paga sin fila larga</div>
             </div>
           </motion.div>
 
@@ -159,7 +159,7 @@ export function Hero() {
             <span className="text-3xl">🏫</span>
             <div>
               <div className="text-xl font-black text-stone-900">Desde 2018</div>
-              <div className="text-xs text-stone-500">En escuelas privadas</div>
+              <div className="text-xs text-stone-500">Hasta 11 cafeterías a la vez</div>
             </div>
           </motion.div>
 
@@ -173,7 +173,7 @@ export function Hero() {
             <span className="text-xl">🛡️</span>
             <div>
               <div className="text-sm font-black leading-tight">Lineamientos SEP</div>
-              <div className="text-[11px] text-emerald-400 font-bold">Cumplimiento garantizado</div>
+              <div className="text-[11px] text-emerald-400 font-bold">Así cumplimos</div>
             </div>
           </motion.a>
         </motion.div>

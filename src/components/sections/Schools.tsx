@@ -5,9 +5,8 @@ import { Star } from 'lucide-react'
 import Image from 'next/image'
 
 const schools = [
-  { name: 'Universidad Panamericana', location: 'Ciudad de México', initials: 'UP',  image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=400&fit=crop&q=85' },
-  { name: 'Northridge School',        location: 'Ciudad de México', initials: 'NS',  image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&h=400&fit=crop&q=85' },
-  { name: 'Prepa UP',                 location: 'Ciudad de México', initials: 'PUP', image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=600&h=400&fit=crop&q=85' },
+  { name: 'Universidad Panamericana', location: 'Campus Ciudad UP', initials: 'UP',  image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=400&fit=crop&q=85' },
+  { name: 'IPADE Business School',    location: 'Ciudad de México', initials: 'IP',  image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&h=400&fit=crop&q=85' },
 ]
 
 const testimonials = [
@@ -17,13 +16,6 @@ const testimonials = [
     school: 'Universidad Panamericana',
     emoji: '🎓',
     bg: 'bg-emerald-50 border-emerald-200',
-  },
-  {
-    quote: 'El cambio fue inmediato. Hoy la cafetería funciona de forma ordenada y sin generar problemas para la escuela. Los alumnos están felices.',
-    author: 'Coordinador Académico',
-    school: 'Northridge School',
-    emoji: '📚',
-    bg: 'bg-amber-50 border-amber-200',
   },
 ]
 
@@ -51,7 +43,7 @@ export function Schools() {
         </motion.div>
 
         {/* School cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12 max-w-4xl mx-auto">
           {schools.map((school, i) => (
             <motion.div
               key={school.name}
@@ -82,7 +74,7 @@ export function Schools() {
         </div>
 
         {/* Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 max-w-3xl mx-auto">
           {testimonials.map((t, i) => (
             <motion.div
               key={i}

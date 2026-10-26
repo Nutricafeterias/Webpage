@@ -36,7 +36,7 @@ const exigencias = [
 ]
 
 const garantias = [
-  'Menús diseñados por nutriólogos, verificados contra los lineamientos vigentes de la SEP antes de servirse',
+  'Menús diseñados con criterios nutrimentales de la SEP, verificados contra los lineamientos vigentes de la SEP antes de servirse',
   'Cero productos con sellos de exceso en nuestras cafeterías y comedores',
   'Agua natural y bebidas bajas en azúcar como oferta principal de hidratación',
   'Documentación de cumplimiento disponible para la dirección ante cualquier revisión o auditoría',

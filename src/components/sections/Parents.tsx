@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 
 const features = [
-  { emoji: '💳', title: 'Recargas desde tu celular', desc: 'Saldo siempre disponible sin enviar efectivo a la escuela.' },
+  { emoji: '💳', title: 'Recargas desde tu celular', desc: 'Saldo disponible desde la app, o recarga en efectivo en caja.' },
   { emoji: '👀', title: 'Ve qué comió tu hijo', desc: 'Historial de consumo en tiempo real: qué, cuándo y cuánto.' },
   { emoji: '🚦', title: 'Límites de gasto', desc: 'Tú decides cuánto puede gastar al día. La app lo respeta.' },
   { emoji: '📅', title: 'Menú de la semana', desc: 'Consulta platillos e información nutricional con anticipación.' },
@@ -24,7 +24,7 @@ export function Parents() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-100 text-sky-700 font-bold text-sm mb-6 border border-sky-200">
-              👨‍👩‍👧‍👦 Para papás y mamás · App próximamente
+              👨‍👩‍👧‍👦 Para papás y mamás · App para familias
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-stone-900 leading-tight">
               Transparencia total,{' '}
@@ -32,13 +32,13 @@ export function Parents() {
             </h2>
             <p className="mt-5 text-stone-500 text-lg leading-relaxed">
               Sabemos lo que es dejar a tus hijos en la escuela y preguntarte si comieron bien.
-              Por eso estamos desarrollando nuestra app para padres (próximamente), que te dará
-              visibilidad de su alimentación — algo que ninguna cafetería tradicional te ofrece.
+              Por eso tenemos la app Nutri para familias: saldo, recargas, límite diario, alergias y
+              pedidos para recoger. ¿No usas apps? También puedes pagar en efectivo en caja.
             </p>
             <div className="mt-8 p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-200">
               <p className="text-sm text-emerald-900 leading-relaxed">
-                <strong>¿Tu hijo tiene alergias o necesidades especiales?</strong> Nuestro equipo
-                de nutriólogos trabaja contigo un plan personalizado. Escríbenos por WhatsApp
+                <strong>¿Tu hijo tiene alergias o necesidades especiales?</strong> Registra sus
+                alergias en la app o avísanos, y la cocina las ve antes de servir. Escríbenos por WhatsApp
                 y te atendemos directamente.
               </p>
               <a
@@ -46,7 +46,7 @@ export function Parents() {
                 className="mt-3 inline-flex items-center gap-2 text-emerald-700 font-bold text-sm hover:underline"
               >
                 <WhatsAppIcon className="w-4 h-4" />
-                Hablar con un nutriólogo →
+                Hablar con nuestro equipo →
               </a>
             </div>
           </motion.div>

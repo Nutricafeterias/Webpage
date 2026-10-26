@@ -8,23 +8,23 @@ import { StatsBar } from '@/components/sections/StatsBar'
 import { Schools } from '@/components/sections/Schools'
 
 export const metadata: Metadata = {
-  title: 'Nosotros | Nutri Cafeterías — Alimentando Escuelas Privadas desde 2018',
+  title: 'Nosotros | Nutri Cafeterías — Cafeterías y comedores escolares desde 2018',
   description:
-    'Conoce a Nutri Cafeterías: el operador premium de cafeterías y comedores escolares en México. Desde 2018, con protocolos de higiene alineados a NOM-251 y un equipo de nutriólogos, chefs y tecnólogos al servicio de las escuelas.',
+    'Conoce a Nutri Cafeterías: operamos cafeterías y comedores escolares en México desde 2018. Seguimos la NOM-251 y los Lineamientos SEP, con ERP y punto de venta propios, cocineros y supervisores al servicio de cada escuela.',
   alternates: { canonical: 'https://cafeteriasescolares.com.mx/nosotros' },
   openGraph: {
     title: 'Nosotros — Nutri Cafeterías',
-    description: 'Desde 2018 transformando la alimentación en escuelas privadas de México.',
+    description: 'Desde 2018 operando cafeterías y comedores escolares en México.',
     url: 'https://cafeteriasescolares.com.mx/nosotros',
     type: 'website',
   },
 }
 
 const valores = [
-  { emoji: '🥗', title: 'Nutrición sin sacrificar sabor', desc: 'Creemos que la comida saludable solo funciona si los alumnos la eligen por gusto. Por eso cada platillo pasa el doble filtro: nutriólogo y comensal real.' },
+  { emoji: '🥗', title: 'Nutrición sin sacrificar sabor', desc: 'Creemos que la comida saludable solo funciona si los alumnos la eligen por gusto. Por eso cada platillo pasa el doble filtro: criterios nutrimentales de la SEP y comensal real.' },
   { emoji: '🤝', title: 'Aliados, no proveedores', desc: 'Operamos como una extensión de la escuela: su reputación es la nuestra. Resolvemos antes de que los problemas lleguen a dirección.' },
-  { emoji: '🔬', title: 'Tecnología con propósito', desc: 'La innovación no es un lujo: elimina filas, quita el efectivo del plantel y da a los padres una tranquilidad que ninguna cafetería tradicional ofrece.' },
-  { emoji: '📚', title: 'La cafetería también educa', desc: 'Nuestros programas convierten cada receso en una oportunidad de formar hábitos que los alumnos se llevan para toda la vida.' },
+  { emoji: '🔬', title: 'Tecnología con propósito', desc: 'La innovación no es un lujo: ordena la fila, registra cada consumo y da a las familias visibilidad, sin dejar de aceptar efectivo en caja.' },
+  { emoji: '📚', title: 'La cafetería también educa', desc: 'Menús visibles, alérgenos claros y alumnos que prueban y votan platillos: el receso también forma hábitos.' },
 ]
 
 const certs = [
@@ -33,9 +33,9 @@ const certs = [
 ]
 
 const equipo = [
-  { emoji: '👩‍⚕️', title: 'Nutriólogos', desc: 'Diseñan cada ciclo de menús conforme a lineamientos SEP y las necesidades de cada comunidad escolar.' },
+  { emoji: '📋', title: 'Diseño de menús', desc: 'Cada ciclo de menús se diseña con criterios nutrimentales de la SEP y las necesidades de cada comunidad escolar.' },
   { emoji: '👨‍🍳', title: 'Chefs y cocineros', desc: 'Convierten el balance nutricional en platillos que compiten en antojo — y ganan.' },
-  { emoji: '💻', title: 'Equipo de tecnología', desc: 'Operan la plataforma de pagos biométricos y tótems, y desarrollan la app para padres (próximamente).' },
+  { emoji: '💻', title: 'Equipo de tecnología', desc: 'Desarrollan y operan nuestro ERP y punto de venta propios, los tótems, el reconocimiento facial opcional y la app para familias.' },
   { emoji: '🛡️', title: 'Supervisores de calidad', desc: 'Auditan higiene, temperaturas y servicio en cada escuela, todos los días.' },
 ]
 
@@ -55,8 +55,8 @@ export default function NosotrosPage() {
               <span className="gradient-text-primary">alimentando generaciones</span>
             </h1>
             <p className="mt-5 text-stone-500 text-lg leading-relaxed">
-              Nutri Cafeterías nació con una convicción: la cafetería puede ser el lugar
-              favorito de la escuela sin sacrificar la nutrición. Abrimos
+              Nutri Cafeterías nació con una convicción: la cafetería escolar puede servir comida real,
+              a tiempo y a la vista. Abrimos
               nuestra primera cafetería en agosto de 2019, tras ganar nuestra primera licitación,
               y llegamos a operar 11 cafeterías escolares al mismo tiempo en la Ciudad de México.
             </p>

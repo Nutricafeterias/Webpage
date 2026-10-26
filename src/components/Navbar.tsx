@@ -18,7 +18,7 @@ const menus = [
     label: 'Recursos',
     items: [
       { href: '/diagnostico', label: 'Evalúa tu escuela', desc: 'Diagnóstico gratis en 2 minutos' },
-      { href: '/lineamientos-sep', label: 'Lineamientos SEP', desc: 'Cumplimiento garantizado' },
+      { href: '/lineamientos-sep', label: 'Lineamientos SEP', desc: 'Cómo cumplimos' },
       { href: '/blog',        label: 'Blog', desc: 'Guías para directores' },
       { href: '/#faq',        label: 'Preguntas frecuentes', desc: 'Respuestas claras' },
     ],
@@ -26,7 +26,6 @@ const menus = [
 ]
 
 const links = [
-  { href: '/programas', label: 'Programas' },
   { href: '/menus',     label: 'Menús' },
   { href: '/nosotros',  label: 'Nosotros' },
 ]

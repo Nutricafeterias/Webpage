@@ -3,9 +3,9 @@
 import { motion } from 'framer-motion'
 
 const techs = [
-  { emoji: '👆', title: 'Pago con huella digital', desc: 'Los alumnos pagan en segundos con su huella. Sin efectivo, sin filas innecesarias.', bg: 'bg-violet-50', border: 'border-violet-200', badge: 'bg-violet-500' },
+  { emoji: '🙂', title: 'Reconocimiento facial', desc: 'Opcional y con consentimiento de la familia. Quien no quiera registrar su rostro paga igual, sin penalización.', bg: 'bg-violet-50', border: 'border-violet-200', badge: 'bg-violet-500' },
   { emoji: '🖥️', title: 'Tótems de autoservicio', desc: 'Pantallas táctiles intuitivas que agilizan el flujo y reducen los tiempos de espera.', bg: 'bg-blue-50', border: 'border-blue-200', badge: 'bg-blue-500' },
-  { emoji: '📱', title: 'App para padres y alumnos (próximamente)', desc: 'En desarrollo: control del saldo, historial de compras y recargas desde el celular.', bg: 'bg-emerald-50', border: 'border-emerald-200', badge: 'bg-emerald-500' },
+  { emoji: '📱', title: 'App para familias', desc: 'Saldo, recargas, límite diario, alergias y pedidos para recoger. También puedes pagar en efectivo en caja.', bg: 'bg-emerald-50', border: 'border-emerald-200', badge: 'bg-emerald-500' },
 ]
 
 export function Technology() {
@@ -59,9 +59,9 @@ export function Technology() {
         >
           <div className="absolute -top-8 -right-8 text-[120px] opacity-10 select-none">⚡</div>
           <p className="text-2xl md:text-3xl font-black text-white relative z-10">
-            Menos de <span className="bg-white text-emerald-600 px-2 rounded-lg">3 minutos</span> desde que el alumno llega hasta que recibe su pedido
+            <span className="bg-white text-emerald-600 px-2 rounded-lg">ERP y punto de venta</span> propios, pensados para que el receso alcance
           </p>
-          <p className="mt-2 text-emerald-100 relative z-10">Incluso en horas pico.</p>
+          <p className="mt-2 text-emerald-100 relative z-10">App, tótem o efectivo en caja: cada familia elige cómo pagar.</p>
         </motion.div>
       </div>
     </section>

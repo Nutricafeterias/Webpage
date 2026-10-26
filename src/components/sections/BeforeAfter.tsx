@@ -12,10 +12,10 @@ const before = [
 ]
 
 const after = [
-  '⚡ Menos de 3 minutos de espera',
+  '🤖 Tótems y app para pedir sin perder el receso',
   '🚀 Servicio rápido, ordenado y consistente',
-  '🥗 Menús equilibrados que los alumnos aman',
-  '🛡️ Cero carga operativa para la escuela',
+  '🥗 Menús conforme a los Lineamientos de la SEP',
+  '🛡️ La operación diaria a cargo de Nutri',
   '✅ Procesos claros que funcionan siempre',
 ]
 

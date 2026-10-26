@@ -7,7 +7,6 @@ import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { Experience } from '@/components/sections/Experience'
 import { Services } from '@/components/sections/Services'
 import { MenuPreview } from '@/components/sections/MenuPreview'
-import { Programs } from '@/components/sections/Programs'
 import { Parents } from '@/components/sections/Parents'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 import { CafeteriaStyles } from '@/components/sections/CafeteriaStyles'
@@ -17,7 +16,7 @@ import { Safety } from '@/components/sections/Safety'
 export const metadata: Metadata = {
   title: 'Cafeterías Escolares Premium en CDMX | Operación Integral — Nutri Cafeterías',
   description:
-    'Operamos la cafetería de tu escuela de forma integral: menús de nutriólogos alineados a SEP, protocolos NOM-251, pago con huella digital y programas educativos como NutriMood; app para padres próximamente. Sin inversión para la escuela.',
+    'Operamos la cafetería de tu escuela de forma integral: menús conforme a los Lineamientos SEP, higiene según la NOM-251, tótems, app para familias y pago con reconocimiento facial opcional, siempre con efectivo en caja.',
   keywords: [
     'cafetería escolar',
     'cafeterías escolares CDMX',
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Cafeterías Escolares Premium — Operación Integral',
     description:
-      'Menús de nutriólogos, tecnología de huella digital, programas educativos y cero carga para tu escuela.',
+      'Platillos a la carta, snacks y bebidas que cumplen con la SEP, con tótems, app para familias y reconocimiento facial.',
     url: 'https://cafeteriasescolares.com.mx/cafeterias-escolares',
     type: 'website',
   },
@@ -52,7 +51,7 @@ const serviceJsonLd = {
     { '@type': 'AdministrativeArea', name: 'Área Metropolitana del Valle de México' },
   ],
   description:
-    'Operación completa de cafeterías escolares para escuelas privadas: menús de nutriólogos alineados a SEP, protocolos NOM-251, pago con huella digital, tótems de autoservicio y programas educativos exclusivos; app para padres próximamente. Sin inversión inicial para la institución.',
+    'Operación completa de cafeterías escolares: platillos a la carta, snacks empaquetados y bebidas conforme a los Lineamientos SEP, higiene según la NOM-251, tótems de autoservicio, app para familias y reconocimiento facial opcional, con pago en efectivo en caja.',
 }
 
 export default function CafeteriasEscolaresPage() {
@@ -74,9 +73,8 @@ export default function CafeteriasEscolaresPage() {
             <span className="gradient-text-primary">que tu escuela merece</span>
           </h1>
           <p className="mt-5 text-stone-500 text-lg leading-relaxed max-w-2xl mx-auto">
-            Operación integral premium: menús diseñados por nutriólogos, pago con huella
-            digital, programas educativos únicos y servicio en menos de 3 minutos.
-            Tu escuela no invierte ni opera nada.
+            Operación integral premium: menús con criterios nutrimentales de la SEP, tótems,
+            app para familias y reconocimiento facial opcional, siempre con efectivo en caja.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
@@ -99,7 +97,6 @@ export default function CafeteriasEscolaresPage() {
         <Services />
         <CafeteriaStyles />
         <MenuPreview />
-        <Programs />
         <Parents />
         <HowItWorks />
         <BeforeAfter />

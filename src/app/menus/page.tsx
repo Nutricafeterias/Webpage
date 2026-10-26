@@ -8,7 +8,7 @@ import { MenuExplorer } from '@/components/sections/MenuExplorer'
 export const metadata: Metadata = {
   title: 'Menús Escolares Saludables | Ejemplo de Menú Semanal — Nutri Cafeterías',
   description:
-    'Explora un menú de muestra de nuestras cafeterías escolares: platillos diseñados por nutriólogos con información nutricional, filtros de alérgenos y opciones vegetarianas, sin gluten y sin lácteos.',
+    'Explora un menú de muestra de nuestras cafeterías escolares: platillos con criterios nutrimentales de la SEP, información nutricional, filtros de alérgenos y opciones vegetarianas, sin gluten y sin lácteos.',
   keywords: [
     'menú escolar saludable',
     'menú cafetería escolar',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: 'https://cafeteriasescolares.com.mx/menus' },
   openGraph: {
-    title: 'Menús Escolares de Nutriólogos — Nutri Cafeterías',
+    title: 'Menús escolares conforme a la SEP — Nutri Cafeterías',
     description: 'Menú de muestra con información nutricional y filtros de alérgenos. Transparencia total.',
     url: 'https://cafeteriasescolares.com.mx/menus',
     type: 'website',
@@ -42,7 +42,7 @@ export default function MenusPage() {
             <p className="mt-5 text-stone-500 text-lg leading-relaxed">
               Mientras otros operadores esconden sus menús, nosotros los presumimos.
               Explora este menú de muestra con información nutricional real, diseñado
-              por nuestro equipo de nutriólogos conforme a los lineamientos de la SEP.
+              con los criterios nutrimentales de los lineamientos de la SEP.
             </p>
           </div>
 
@@ -53,8 +53,8 @@ export default function MenusPage() {
             <p className="text-sm text-emerald-900 leading-relaxed">
               <strong>Este es un menú de muestra.</strong> Cada escuela recibe un ciclo de
               menús personalizado de 4 semanas, adaptado a su comunidad, con rotación de
-              temporada y manejo documentado de alérgenos. Próximamente los padres podrán
-              consultarlo desde la app con la información nutricional completa.
+              temporada y manejo documentado de alérgenos. Las familias pueden
+              consultarlo en la app Nutri para familias (y pagar en la app o en efectivo en caja).
             </p>
           </div>
 
@@ -64,7 +64,7 @@ export default function MenusPage() {
               ¿Quieres el menú ideal para tu escuela?
             </p>
             <p className="text-emerald-100 mt-2 mb-6">
-              Nuestros nutriólogos diseñan una propuesta a la medida de tu comunidad — sin costo.
+              Diseñamos una propuesta a la medida de tu comunidad, con criterios nutrimentales de la SEP — sin costo.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a

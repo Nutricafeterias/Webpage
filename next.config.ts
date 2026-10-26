@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Evita que Turbopack tome como raíz otro lockfile del home (error "Can't resolve tailwindcss").
+  turbopack: { root: __dirname },
+  async redirects() {
+    return [
+      // NutriMood se retiró (claim sin evidencia): la página de programas ya no existe.
+      { source: '/programas', destination: '/cafeterias-escolares', permanent: true },
+    ];
+  },
   async rewrites() {
     return [
       { source: '/demo/comedor', destination: '/demo/comedor/index.html' },
