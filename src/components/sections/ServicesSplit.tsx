@@ -11,15 +11,17 @@ const services = [
     desc: 'Platillos a la carta, snacks y bebidas que cumplen con la SEP, con tótems, app para familias y reconocimiento facial para que nadie pierda el receso en la fila. Y siempre efectivo en caja.',
     href: '/cafeterias-escolares',
     cta: 'Conoce el servicio',
+    alt: 'Cafetería escolar con platillos a la carta, snacks y bebidas',
     image: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&h=520&fit=crop&q=85',
     badge: 'El más solicitado ⭐',
   },
   {
     emoji: '🍲',
     title: 'Comedor escolar',
-    desc: 'Un menú completo de 3 o 4 tiempos, recién hecho, con la porción de cada edad y el mismo sabor del primer turno al último.',
+    desc: 'Un menú completo de 3 o 4 tiempos, recién hecho, con la porción de cada edad y el mismo sabor del primer turno al último. Comedores escolares conforme a la SEP.',
     href: '/comedores-escolares',
-    cta: 'Ver comedores',
+    cta: 'Ver el servicio de comedor escolar',
+    alt: 'Servicio de comedor escolar con menú completo recién hecho',
     image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=800&h=520&fit=crop&q=85',
     badge: null,
   },
@@ -29,6 +31,7 @@ const services = [
     desc: 'Complemento para tu contrato: graduaciones, juntas de consejo, coffee breaks y desayunos con padres, con el mismo estándar de cocina e higiene.',
     href: '/catering-escolar',
     cta: 'Ver eventos',
+    alt: 'Servicio de eventos escolares y coffee break',
     image: 'https://images.unsplash.com/photo-1555244162-803834f70033?w=800&h=520&fit=crop&q=85',
     badge: null,
   },
@@ -72,7 +75,7 @@ export function ServicesSplit() {
               <div className="relative h-48 overflow-hidden">
                 <Image
                   src={s.image}
-                  alt={s.title}
+                  alt={s.alt}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />

@@ -58,6 +58,32 @@ export default function MenusPage() {
             </p>
           </div>
 
+          {/* Enlaces a servicios */}
+          <div className="mt-8 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Link
+              href="/comedores-escolares"
+              className="card-lift p-6 rounded-2xl bg-white border-2 border-stone-100 shadow-sm block"
+            >
+              <p className="text-2xl mb-2">🍲</p>
+              <p className="font-black text-stone-900">Menú de comedor escolar</p>
+              <p className="text-sm text-stone-600 mt-1">
+                Comida completa de 3 o 4 tiempos, por turnos y con la porción de cada edad. Conoce el{' '}
+                <span className="text-emerald-600 font-bold">servicio de comedor escolar →</span>
+              </p>
+            </Link>
+            <Link
+              href="/cafeterias-escolares"
+              className="card-lift p-6 rounded-2xl bg-white border-2 border-stone-100 shadow-sm block"
+            >
+              <p className="text-2xl mb-2">🥪</p>
+              <p className="font-black text-stone-900">Menú de cafetería escolar</p>
+              <p className="text-sm text-stone-600 mt-1">
+                Platillos a la carta, snacks y bebidas que cumplen con la SEP.{' '}
+                <span className="text-emerald-600 font-bold">Ver cafetería escolar →</span>
+              </p>
+            </Link>
+          </div>
+
           {/* CTA */}
           <div className="mt-10 p-10 rounded-3xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-center shadow-xl shadow-emerald-200">
             <p className="text-2xl md:text-3xl font-black text-white">

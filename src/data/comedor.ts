@@ -1,6 +1,9 @@
 // Contenido de /comedores-escolares (brief 04 §3). Sin precios públicos.
 
 export const comedorFaqs = [
+  { q: '¿Qué es un comedor escolar?', a: 'Es el servicio que da a los alumnos una comida completa al día —entrada, plato fuerte con proteína, verdura, fruta y agua—, servida por turnos y con la porción de cada edad. A diferencia de la cafetería, no se elige a la carta: hay un menú del día, igual para todos.' },
+  { q: '¿Qué diferencia hay entre comedor escolar y cafetería escolar?', a: 'En el comedor, cada niño recibe el menú completo del día en su turno. En la cafetería, los alumnos eligen platillos a la carta, snacks y bebidas. Una escuela puede tener las dos.' },
+  { q: '¿Atienden colegios privados y escuelas públicas?', a: 'Sí. Atendemos colegios privados, escuelas de tiempo completo y universidades, públicas o privadas, y nos adaptamos al proceso de contratación que defina cada escuela.' },
   { q: '¿Pueden atender a 800 o 900 alumnos?', a: 'Sí. Organizamos el servicio en turnos por grupo, y en uno o varios comedores. Cocinamos por tandas para que cada turno coma recién hecho.' },
   { q: '¿Qué incluye la comida?', a: 'Entrada (sopa o ensalada), plato fuerte con proteína todos los días, verdura, fruta de postre y agua. Tortillas de maíz o pasta según el día. En 3 o 4 tiempos, según lo que decida la escuela.' },
   { q: '¿A todos les toca lo mismo?', a: 'Sí. Servimos con utensilios medidos y, al cerrar cada turno, revisamos que nadie se haya quedado sin plato fuerte o sin postre. La porción cambia por edad, no por turno.' },

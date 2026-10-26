@@ -117,6 +117,18 @@ export default function LineamientosSepPage() {
             </div>
           </div>
 
+          <p className="mt-8 max-w-3xl mx-auto text-center text-stone-600">
+            ¿Tu escuela da comida completa a los alumnos? Así aplicamos estos lineamientos en el{' '}
+            <Link href="/comedores-escolares" className="text-emerald-600 font-bold hover:underline">
+              comedor escolar
+            </Link>
+            : menú de 3 o 4 tiempos, porción por edad y bitácoras NOM-251. Y en la{' '}
+            <Link href="/cafeterias-escolares" className="text-emerald-600 font-bold hover:underline">
+              cafetería escolar
+            </Link>
+            , solo productos permitidos.
+          </p>
+
           {/* Respaldos */}
           <div className="mt-20">
             <Respaldos />
