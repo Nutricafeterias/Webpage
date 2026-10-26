@@ -141,9 +141,9 @@ export default function CafeteriasEscolaresPage() {
                 </a>
               </div>
               <p className="mt-5 text-sm text-emerald-50">
-                <a href="/comedores-escolares" className="font-bold underline underline-offset-2">
+                <Link href="/comedores-escolares" className="font-bold underline underline-offset-2">
                   ¿Buscas un comedor con menú del día? →
-                </a>
+                </Link>
               </p>
             </div>
           </div>

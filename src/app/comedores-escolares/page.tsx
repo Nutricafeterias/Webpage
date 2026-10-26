@@ -138,14 +138,14 @@ export default function ComedoresEscolaresPage() {
               ))}
             </div>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
+              <Link
                 href="/#contacto"
                 data-cta="agenda_degustacion"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-black transition-all duration-200 shadow-xl shadow-emerald-200 hover:scale-[1.03]"
               >
                 Agenda una degustación
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
               <a
                 href={waHref(WA_MSG, 'comedores')}
                 target="_blank"
@@ -378,13 +378,13 @@ export default function ComedoresEscolaresPage() {
               <strong>votan con una boleta, también los niños</strong>: qué les gustó más y qué
               calificación le dan. Ahí mismo mostramos el tótem y la app funcionando.
             </p>
-            <a
+            <Link
               href="/#contacto"
               data-cta="agenda_degustacion"
               className="mt-6 inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-black transition-all duration-200 shadow-lg shadow-emerald-200 hover:scale-[1.03]"
             >
               Agenda una degustación <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </section>
 
           {/* 3.12 Tecnología */}
@@ -471,13 +471,13 @@ export default function ComedoresEscolaresPage() {
               Agenda una degustación en tu escuela: prueban la comida, votan los niños y ven cómo funciona.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
+              <Link
                 href="/#contacto"
                 data-cta="agenda_degustacion"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white text-emerald-700 font-black hover:bg-emerald-50 transition-all duration-200 shadow-lg hover:scale-[1.03]"
               >
                 Agendar degustación →
-              </a>
+              </Link>
               <a
                 href={waHref(WA_MSG, 'comedores')}
                 target="_blank"
