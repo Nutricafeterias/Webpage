@@ -23,12 +23,12 @@ export function SepBanner() {
               Nuevos lineamientos SEP: la comida chatarra está prohibida en las escuelas
             </p>
             <p className="text-stone-400 text-sm mt-1">
-              La responsabilidad es de la institución. Con nosotros, el cumplimiento está
-              garantizado por contrato — cero productos con sellos, documentación auditable.
+              La responsabilidad es de la institución. Nosotros operamos bajo NOM-251 y los
+              estándares del Distintivo H, con REPSE y póliza de responsabilidad civil vigentes.
             </p>
           </div>
           <span className="flex-shrink-0 inline-flex items-center gap-1.5 px-5 py-3 rounded-xl bg-emerald-500 text-white text-sm font-black group-hover:bg-emerald-400 transition-colors">
-            Cómo lo garantizamos
+            Cómo cumplimos
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </span>
         </motion.a>

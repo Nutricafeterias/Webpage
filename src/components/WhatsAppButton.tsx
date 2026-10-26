@@ -6,12 +6,18 @@ import { X } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { useState } from 'react'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { waHref, origenDesdeRuta } from '@/lib/whatsapp'
+import { ctaMovilActivo } from '@/components/CtaMovil'
 
 export function WhatsAppButton() {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+  const origen = origenDesdeRuta(pathname)
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    // En móvil, donde hay barra fija inferior (CtaMovil), el flotante se oculta para no duplicar WhatsApp.
+    <div className={`fixed bottom-6 right-6 z-50 flex-col items-end gap-3 ${ctaMovilActivo(pathname) ? 'hidden lg:flex' : 'flex'}`}>
       <AnimatePresence>
         {open && (
           <motion.div
@@ -35,14 +41,14 @@ export function WhatsAppButton() {
               </div>
             </div>
             <p className="text-stone-600 text-sm mb-4 bg-stone-50 rounded-xl p-3 leading-relaxed">
-              👋 ¡Hola! ¿Quieres transformar la cafetería de tu escuela?
+              👋 ¡Hola! ¿Buscas cafetería o comedor para tu escuela?
               Escríbenos y te respondemos en segundos.
             </p>
             <a
-              href="https://wa.me/522219251954?text=Hola!%20Me%20interesa%20conocer%20más%20sobre%20Nutri%20Cafeterías"
+              href={waHref('Hola, me interesa conocer más sobre Nutri Cafeterías', origen)}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => track('whatsapp_click', { origen: 'boton_flotante' })}
+              onClick={() => track('whatsapp_click', { origen: 'boton_flotante', pagina: origen })}
               className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm transition-all shadow-md shadow-emerald-200 hover:scale-[1.02]"
             >
               <WhatsAppIcon className="w-4 h-4" />

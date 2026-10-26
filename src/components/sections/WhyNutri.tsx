@@ -4,20 +4,20 @@ import { motion } from 'framer-motion'
 
 const comparisons = [
   { feature: 'Operación consistente todos los días',         nutri: '✅', trad: '❌' },
-  { feature: 'Tecnología (huella, app, tótems)',             nutri: '✅', trad: '❌' },
-  { feature: 'Cero carga operativa para la escuela',         nutri: '✅', trad: '❌' },
+  { feature: 'Tecnología (reconocimiento facial y tótems)',     nutri: '✅', trad: '❌' },
+  { feature: 'Operación diaria a cargo de Nutri',             nutri: '✅', trad: '❌' },
   { feature: 'Gestión de personal incluida',                 nutri: '✅', trad: '❌' },
-  { feature: 'Menos de 3 minutos de espera',                 nutri: '✅', trad: '❌' },
+  { feature: 'Efectivo y app con la misma fuerza',           nutri: '✅', trad: '❌' },
   { feature: 'Procesos claros y definidos',                  nutri: '✅', trad: '⚠️' },
   { feature: 'Experiencia del alumno como prioridad',        nutri: '✅', trad: '❌' },
   { feature: 'Adaptación al nivel de la escuela',            nutri: '✅', trad: '⚠️' },
 ]
 
 const reasons = [
-  { num: '+10', label: 'Años de experiencia', emoji: '🏆', bg: 'bg-amber-50 border-amber-200', text: 'text-amber-600' },
-  { num: '10K+', label: 'Alumnos diarios', emoji: '👩‍🎓', bg: 'bg-emerald-50 border-emerald-200', text: 'text-emerald-600' },
-  { num: '97%', label: 'Satisfacción', emoji: '😊', bg: 'bg-blue-50 border-blue-200', text: 'text-blue-600' },
-  { num: '0', label: 'Carga para la escuela', emoji: '🛡️', bg: 'bg-rose-50 border-rose-200', text: 'text-rose-600' },
+  { num: '2018', label: 'Año de fundación', emoji: '🏆', bg: 'bg-amber-50 border-amber-200', text: 'text-amber-600' },
+  { num: '4.9/5', label: 'Satisfacción', emoji: '⭐', bg: 'bg-emerald-50 border-emerald-200', text: 'text-emerald-600' },
+  { num: 'ERP', label: 'Y punto de venta propios', emoji: '🧾', bg: 'bg-blue-50 border-blue-200', text: 'text-blue-600' },
+  { num: 'SEP', label: 'Menús conforme a Lineamientos', emoji: '🛡️', bg: 'bg-rose-50 border-rose-200', text: 'text-rose-600' },
 ]
 
 export function WhyNutri() {

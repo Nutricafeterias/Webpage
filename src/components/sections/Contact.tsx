@@ -4,17 +4,27 @@ import { motion } from 'framer-motion'
 import { useForm, ValidationError } from '@formspree/react'
 import { ArrowRight, Clock, Phone, CheckCircle, Mail, Loader2 } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { useRef } from 'react'
+import { usePathname } from 'next/navigation'
+import { atribucionParaEnvio, textoOrigen } from '@/lib/atribucion'
+import { waHref, origenDesdeRuta } from '@/lib/whatsapp'
+import { PruebaSocial } from '@/components/PruebaSocial'
 
 export function Contact() {
   const [state, handleSubmit] = useForm('xrejlppw')
+  const pathname = usePathname()
+  const origenRef = useRef<HTMLInputElement>(null)
 
   // El lead también entra directo al CRM del ERP (Formspree queda de respaldo).
+  // Ambos reciben la atribución (página de entrada, referrer, UTM, gclid, dispositivo).
   const enviar = (e: React.FormEvent<HTMLFormElement>) => {
+    const atribucion = atribucionParaEnvio()
+    if (origenRef.current) origenRef.current.value = textoOrigen(atribucion)
     const datos = Object.fromEntries(new FormData(e.currentTarget).entries())
     void fetch('/api/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(datos),
+      body: JSON.stringify({ ...datos, ...atribucion }),
     }).catch(() => undefined)
     return handleSubmit(e)
   }
@@ -61,7 +71,7 @@ export function Contact() {
               <h3 className="text-lg font-black text-stone-900 mb-4">¿Qué pasa después? 👇</h3>
               <div className="space-y-4">
                 {[
-                  { icon: Clock,       text: 'Te contactamos en menos de 24 horas',        color: 'bg-amber-100 text-amber-600' },
+                  { icon: Clock,       text: 'Te respondemos en menos de 1 día hábil',        color: 'bg-amber-100 text-amber-600' },
                   { icon: Phone,       text: 'Agendamos una llamada de 20 minutos',         color: 'bg-blue-100 text-blue-600' },
                   { icon: CheckCircle, text: 'Te mostramos cómo funcionaría en tu escuela', color: 'bg-emerald-100 text-emerald-600' },
                 ].map((item, i) => (
@@ -82,7 +92,10 @@ export function Contact() {
 
             <div className="space-y-3">
               <a
-                href="https://wa.me/522219251954"
+                href={waHref('Hola, me interesa agendar una reunión con Nutri Cafeterías', origenDesdeRuta(pathname))}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="whatsapp_contacto"
                 className="flex items-center gap-3 p-4 rounded-2xl border-2 border-emerald-200 bg-white hover:bg-emerald-50 transition-colors group shadow-sm"
               >
                 <div className="p-2 rounded-xl bg-emerald-100">
@@ -130,23 +143,25 @@ export function Contact() {
                   <div className="text-6xl mb-4">🎉</div>
                   <h3 className="text-2xl font-black text-stone-900 mb-2">¡Mensaje enviado!</h3>
                   <p className="text-stone-500 text-lg">
-                    Te contactamos en menos de 24 horas.
-                    Estamos listos para transformar tu cafetería. 🚀
+                    Te respondemos en menos de 1 día hábil por WhatsApp o por teléfono.
                   </p>
                 </motion.div>
 
               ) : (
-                <form onSubmit={enviar} className="space-y-4">
+                <form onSubmit={enviar} data-formulario="contacto" className="space-y-4">
                   {/* Campo trampa para bots: las personas no lo ven. */}
                   <input type="text" name="sitio_web" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
-                  <h3 className="font-black text-stone-900 text-lg mb-5">Agenda tu reunión gratis 🗓️</h3>
+                  {/* Atribución para el respaldo de Formspree (se llena al enviar). */}
+                  <input type="hidden" name="origen_web" ref={origenRef} />
+                  <h3 className="font-black text-stone-900 text-lg mb-1">Agenda tu reunión sin costo</h3>
+                  <p className="text-sm text-stone-500 mb-4">3 datos y listo. Te llamamos para ver qué necesita tu escuela.</p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Nombre */}
                     <div>
                       <label htmlFor="nombre" className="block text-sm font-bold text-stone-700 mb-1.5">Tu nombre</label>
                       <input
-                        id="nombre" name="nombre" type="text" placeholder="Juan García"
+                        id="nombre" name="nombre" type="text" placeholder="Juan García" autoComplete="name"
                         required disabled={state.submitting}
                         className="w-full px-4 py-3 rounded-xl bg-stone-50 border-2 border-stone-200 text-stone-900 placeholder-stone-400 text-sm focus:outline-none focus:border-emerald-400 focus:bg-white transition-all disabled:opacity-50"
                       />
@@ -157,29 +172,18 @@ export function Contact() {
                     <div>
                       <label htmlFor="escuela" className="block text-sm font-bold text-stone-700 mb-1.5">Escuela / Institución</label>
                       <input
-                        id="escuela" name="escuela" type="text" placeholder="Colegio San Patricio"
+                        id="escuela" name="escuela" type="text" placeholder="Colegio San Patricio" autoComplete="organization"
                         required disabled={state.submitting}
                         className="w-full px-4 py-3 rounded-xl bg-stone-50 border-2 border-stone-200 text-stone-900 placeholder-stone-400 text-sm focus:outline-none focus:border-emerald-400 focus:bg-white transition-all disabled:opacity-50"
                       />
                       <ValidationError field="escuela" errors={state.errors} className="text-xs text-red-500 mt-1" />
                     </div>
 
-                    {/* Cargo */}
-                    <div>
-                      <label htmlFor="cargo" className="block text-sm font-bold text-stone-700 mb-1.5">Tu cargo</label>
-                      <input
-                        id="cargo" name="cargo" type="text" placeholder="Director, Coordinador…"
-                        required disabled={state.submitting}
-                        className="w-full px-4 py-3 rounded-xl bg-stone-50 border-2 border-stone-200 text-stone-900 placeholder-stone-400 text-sm focus:outline-none focus:border-emerald-400 focus:bg-white transition-all disabled:opacity-50"
-                      />
-                      <ValidationError field="cargo" errors={state.errors} className="text-xs text-red-500 mt-1" />
-                    </div>
-
                     {/* Teléfono */}
-                    <div>
-                      <label htmlFor="telefono" className="block text-sm font-bold text-stone-700 mb-1.5">Teléfono / WhatsApp</label>
+                    <div className="sm:col-span-2">
+                      <label htmlFor="telefono" className="block text-sm font-bold text-stone-700 mb-1.5">WhatsApp o teléfono</label>
                       <input
-                        id="telefono" name="telefono" type="tel" placeholder="+52 55 0000 0000"
+                        id="telefono" name="telefono" type="tel" placeholder="55 1234 5678" autoComplete="tel"
                         required disabled={state.submitting}
                         className="w-full px-4 py-3 rounded-xl bg-stone-50 border-2 border-stone-200 text-stone-900 placeholder-stone-400 text-sm focus:outline-none focus:border-emerald-400 focus:bg-white transition-all disabled:opacity-50"
                       />
@@ -187,15 +191,29 @@ export function Contact() {
                     </div>
                   </div>
 
-                  {/* Email */}
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-bold text-stone-700 mb-1.5">Correo electrónico</label>
-                    <input
-                      id="email" name="email" type="email" placeholder="director@escuela.edu.mx"
-                      required disabled={state.submitting}
-                      className="w-full px-4 py-3 rounded-xl bg-stone-50 border-2 border-stone-200 text-stone-900 placeholder-stone-400 text-sm focus:outline-none focus:border-emerald-400 focus:bg-white transition-all disabled:opacity-50"
-                    />
-                    <ValidationError field="email" errors={state.errors} className="text-xs text-red-500 mt-1" />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Email */}
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-bold text-stone-700 mb-1.5">Correo <span className="font-medium text-stone-400">(opcional)</span></label>
+                      <input
+                        id="email" name="email" type="email" placeholder="director@escuela.edu.mx"
+                        autoComplete="email" disabled={state.submitting}
+                        className="w-full px-4 py-3 rounded-xl bg-stone-50 border-2 border-stone-200 text-stone-900 placeholder-stone-400 text-sm focus:outline-none focus:border-emerald-400 focus:bg-white transition-all disabled:opacity-50"
+                      />
+                      <ValidationError field="email" errors={state.errors} className="text-xs text-red-500 mt-1" />
+                    </div>
+
+                    {/* Cargo */}
+                    <div>
+                      <label htmlFor="cargo" className="block text-sm font-bold text-stone-700 mb-1.5">Tu cargo <span className="font-medium text-stone-400">(opcional)</span></label>
+                      <input
+                        id="cargo" name="cargo" type="text" autoComplete="organization-title" placeholder="Director, Coordinador…"
+                        disabled={state.submitting}
+                        className="w-full px-4 py-3 rounded-xl bg-stone-50 border-2 border-stone-200 text-stone-900 placeholder-stone-400 text-sm focus:outline-none focus:border-emerald-400 focus:bg-white transition-all disabled:opacity-50"
+                      />
+                      <ValidationError field="cargo" errors={state.errors} className="text-xs text-red-500 mt-1" />
+                    </div>
+
                   </div>
 
                   {/* Form-level errors */}
@@ -213,15 +231,16 @@ export function Contact() {
                       </>
                     ) : (
                       <>
-                        ¡Agendar reunión gratis ahora! 🎉
+                        Agendar mi reunión sin costo
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </>
                     )}
                   </button>
 
-                  <p className="text-center text-stone-400 text-xs">
-                    Sin compromiso · Sin costo · Respuesta en menos de 24h
+                  <p className="text-center text-stone-500 text-xs">
+                    Sin costo y sin compromiso · Te respondemos en menos de 1 día hábil · No compartimos tus datos
                   </p>
+                  <PruebaSocial className="pt-2 border-t border-stone-100" />
                 </form>
               )}
 

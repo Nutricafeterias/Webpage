@@ -7,30 +7,36 @@ import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { Experience } from '@/components/sections/Experience'
 import { Services } from '@/components/sections/Services'
 import { MenuPreview } from '@/components/sections/MenuPreview'
-import { Programs } from '@/components/sections/Programs'
 import { Parents } from '@/components/sections/Parents'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 import { CafeteriaStyles } from '@/components/sections/CafeteriaStyles'
 import { BeforeAfter } from '@/components/sections/BeforeAfter'
 import { Safety } from '@/components/sections/Safety'
+import { QueVendemos } from '@/components/sections/QueVendemos'
+import { waHref } from '@/lib/whatsapp'
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { PruebaSocial } from '@/components/PruebaSocial'
+import { Respaldos } from '@/components/sections/Respaldos'
 
 export const metadata: Metadata = {
-  title: 'Cafeterías Escolares Premium en CDMX | Operación Integral — Nutri Cafeterías',
+  title: 'Cafetería escolar que cumple con la SEP · Concesión y operación | Nutri Cafeterías',
   description:
-    'Operamos la cafetería de tu escuela de forma integral: menús de nutriólogos alineados a SEP, Distintivo H, pago con huella digital, app para padres y programas educativos como NutriMood. Sin inversión para la escuela.',
+    'Operamos la cafetería de tu escuela de forma integral: menús conforme a los Lineamientos SEP, higiene según la NOM-251, tótems, app para familias y pago con reconocimiento facial opcional, siempre con efectivo en caja.',
   keywords: [
     'cafetería escolar',
     'cafeterías escolares CDMX',
     'operación cafetería escolar',
     'concesión cafetería escolar',
-    'cafetería escuela privada',
+    'cafetería escolar saludable',
+    'productos permitidos en la cafetería escolar SEP',
+    'cafetería universitaria',
     'proveedor cafetería escolar México',
   ],
   alternates: { canonical: 'https://cafeteriasescolares.com.mx/cafeterias-escolares' },
   openGraph: {
-    title: 'Cafeterías Escolares Premium — Operación Integral',
+    title: 'Cafetería escolar: platillos a la carta, snacks y bebidas que cumplen con la SEP',
     description:
-      'Menús de nutriólogos, tecnología de huella digital, programas educativos y cero carga para tu escuela.',
+      'Platillos a la carta, snacks y bebidas que cumplen con la SEP, con tótems, app para familias y reconocimiento facial.',
     url: 'https://cafeteriasescolares.com.mx/cafeterias-escolares',
     type: 'website',
   },
@@ -52,7 +58,7 @@ const serviceJsonLd = {
     { '@type': 'AdministrativeArea', name: 'Área Metropolitana del Valle de México' },
   ],
   description:
-    'Operación completa de cafeterías escolares para escuelas privadas: menús de nutriólogos alineados a SEP, Distintivo H, pago con huella digital, tótems de autoservicio, app para padres y programas educativos exclusivos. Sin inversión inicial para la institución.',
+    'Operación completa de cafeterías escolares: platillos a la carta, snacks empaquetados y bebidas conforme a los Lineamientos SEP, higiene según la NOM-251, tótems de autoservicio, app para familias y reconocimiento facial opcional, con pago en efectivo en caja.',
 }
 
 export default function CafeteriasEscolaresPage() {
@@ -65,48 +71,60 @@ export default function CafeteriasEscolaresPage() {
       <Navbar />
       <main className="pt-28 bg-[#F7F3EA]">
         {/* Hero */}
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center pb-10">
+        <div data-seccion="cafeteria_hero" className="max-w-4xl mx-auto px-6 lg:px-8 text-center pb-10">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm mb-6 border border-emerald-200">
-            🍽️ Cafeterías escolares
+            🍽️ Cafetería escolar
           </span>
           <h1 className="text-4xl md:text-6xl font-black text-stone-900 leading-tight">
-            La cafetería escolar{' '}
-            <span className="gradient-text-primary">que tu escuela merece</span>
+            Cafetería escolar:{' '}
+            <span className="gradient-text-primary">platillos a la carta, snacks y bebidas</span>{' '}
+            que cumplen con la SEP
           </h1>
           <p className="mt-5 text-stone-500 text-lg leading-relaxed max-w-2xl mx-auto">
-            Operación integral premium: menús diseñados por nutriólogos, pago con huella
-            digital, programas educativos únicos y servicio en menos de 3 minutos.
-            Tu escuela no invierte ni opera nada.
+            Operamos la cafetería de tu escuela de punta a punta: cocina del día, productos
+            empaquetados permitidos y bebidas sin exceso de azúcar, con tótems, app para familias y
+            reconocimiento facial para que el receso no se pierda en la fila. Y siempre se puede pagar
+            en efectivo en caja.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="/#contacto"
+              data-cta="agenda_visita_hero"
               className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-black transition-all duration-200 shadow-xl shadow-emerald-200 hover:scale-[1.03]"
             >
-              Agenda una reunión gratis
+              Agenda una visita sin costo
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <Link
               href="/diagnostico"
+              data-cta="diagnostico_hero_cafeteria"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border-2 border-emerald-200 bg-white text-emerald-700 font-black hover:bg-emerald-50 transition-all duration-200"
             >
               📊 Evalúa tu cafetería en 2 min
             </Link>
           </div>
+          <PruebaSocial className="mt-6" />
         </div>
 
-        <Experience />
-        <Services />
-        <CafeteriaStyles />
-        <MenuPreview />
-        <Programs />
-        <Parents />
-        <HowItWorks />
-        <BeforeAfter />
-        <Safety />
+        <QueVendemos />
+        <div data-seccion="cafeteria_experiencia"><Experience /></div>
+        <div data-seccion="cafeteria_servicios"><Services /></div>
+        <div data-seccion="cafeteria_estilos"><CafeteriaStyles /></div>
+        <div data-seccion="cafeteria_menu"><MenuPreview /></div>
+        <div data-seccion="cafeteria_familias"><Parents /></div>
+        <div data-seccion="cafeteria_como_funciona"><HowItWorks /></div>
+        <div data-seccion="cafeteria_antes_despues"><BeforeAfter /></div>
+        <div data-seccion="cafeteria_seguridad"><Safety /></div>
+
+        {/* Respaldos */}
+        <div className="py-20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <Respaldos />
+          </div>
+        </div>
 
         {/* CTA final */}
-        <div className="py-20 bg-white">
+        <div data-seccion="cafeteria_cta_final" className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
             <div className="p-10 rounded-3xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-center shadow-xl shadow-emerald-200">
               <p className="text-2xl md:text-3xl font-black text-white">
@@ -115,12 +133,30 @@ export default function CafeteriasEscolaresPage() {
               <p className="text-emerald-100 mt-2 mb-6">
                 Visita una de nuestras cafeterías operando y compruébalo en vivo.
               </p>
-              <a
-                href="/#contacto"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white text-emerald-700 font-black hover:bg-emerald-50 transition-all duration-200 shadow-lg hover:scale-[1.03]"
-              >
-                Agendar mi visita →
-              </a>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a
+                  href="/#contacto"
+                  data-cta="agenda_visita"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white text-emerald-700 font-black hover:bg-emerald-50 transition-all duration-200 shadow-lg hover:scale-[1.03]"
+                >
+                  Agendar mi visita →
+                </a>
+                <a
+                  href={waHref('Hola, me interesa la cafetería escolar para mi escuela', 'cafeterias')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cta="whatsapp_cta_final"
+                  className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-emerald-700/60 text-white font-bold hover:bg-emerald-700 transition-colors"
+                >
+                  <WhatsAppIcon className="w-4 h-4" /> WhatsApp
+                </a>
+              </div>
+              <p className="mt-5 text-sm text-emerald-50">
+                <Link href="/comedores-escolares" className="font-bold underline underline-offset-2">
+                  ¿Buscas un comedor con menú del día? →
+                </Link>
+              </p>
+              <PruebaSocial tono="oscuro" className="mt-5" />
             </div>
           </div>
         </div>

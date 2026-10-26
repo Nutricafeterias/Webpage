@@ -9,16 +9,16 @@ const menus = [
   {
     label: 'Servicios',
     items: [
-      { href: '/cafeterias-escolares', label: 'Cafeterías escolares', desc: 'Operación integral premium' },
-      { href: '/comedores-escolares',  label: 'Comedores escolares', desc: 'Desayuno y comida completos' },
-      { href: '/catering-escolar',     label: 'Catering para eventos', desc: 'Graduaciones, kermés y más' },
+      { href: '/cafeterias-escolares', label: 'Cafetería escolar', desc: 'A la carta, snacks y bebidas que cumplen con la SEP' },
+      { href: '/comedores-escolares',  label: 'Comedor escolar', desc: 'Comida completa de 3 o 4 tiempos, por turnos' },
+      { href: '/catering-escolar',     label: 'Eventos escolares', desc: 'Complemento: graduaciones, juntas y coffee breaks', small: true },
     ],
   },
   {
     label: 'Recursos',
     items: [
       { href: '/diagnostico', label: 'Evalúa tu escuela', desc: 'Diagnóstico gratis en 2 minutos' },
-      { href: '/lineamientos-sep', label: 'Lineamientos SEP', desc: 'Cumplimiento garantizado' },
+      { href: '/lineamientos-sep', label: 'Lineamientos SEP', desc: 'Cómo cumplimos' },
       { href: '/blog',        label: 'Blog', desc: 'Guías para directores' },
       { href: '/#faq',        label: 'Preguntas frecuentes', desc: 'Respuestas claras' },
     ],
@@ -26,7 +26,6 @@ const menus = [
 ]
 
 const links = [
-  { href: '/programas', label: 'Programas' },
   { href: '/menus',     label: 'Menús' },
   { href: '/nosotros',  label: 'Nosotros' },
 ]
@@ -77,9 +76,11 @@ function Dropdown({
                 key={s.href}
                 href={s.href}
                 onClick={() => setOpen(false)}
-                className="block px-4 py-3 rounded-xl hover:bg-emerald-50 transition-colors group"
+                className={`block rounded-xl hover:bg-emerald-50 transition-colors group ${
+                  s.small ? 'mt-1 px-4 py-2 border-t border-stone-100 rounded-t-none' : 'px-4 py-3'
+                }`}
               >
-                <span className="block text-sm font-bold text-stone-800 group-hover:text-emerald-700">
+                <span className={`block font-bold group-hover:text-emerald-700 ${s.small ? 'text-xs text-stone-600' : 'text-sm text-stone-800'}`}>
                   {s.label}
                 </span>
                 <span className="block text-xs text-stone-400 mt-0.5">{s.desc}</span>
@@ -197,7 +198,7 @@ export function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center gap-2 py-3 text-amber-800 text-sm font-black transition-colors border-b border-stone-100"
               >
-                🛡️ Norma SEP — cumplimiento garantizado
+                🛡️ Lineamientos SEP — cómo cumplimos
               </a>
               {menus.map(m => (
                 <div key={m.label}>

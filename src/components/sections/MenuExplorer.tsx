@@ -93,12 +93,11 @@ export function MenuExplorer() {
         </p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {visible.map((item, i) => (
+          {visible.map(item => (
             <motion.div
               key={item.name}
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: Math.min(i * 0.05, 0.4) }}
               className="card-lift p-6 rounded-2xl bg-white border-2 border-stone-100 shadow-sm flex flex-col"
             >
               <div className="flex items-start justify-between gap-3">

@@ -2,6 +2,10 @@ import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { AtribucionTracker } from '@/components/AtribucionTracker'
+import { CampanaPopup } from '@/components/CampanaPopup'
+import { Analitica } from '@/components/Analitica'
+import { CtaMovil } from '@/components/CtaMovil'
 
 const jakarta = Plus_Jakarta_Sans({
   variable: '--font-sans',
@@ -13,7 +17,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: 'Cafeterías Escolares en México | Nutri Cafeterías — Comedores Escolares CDMX',
   description:
-    'Operamos cafeterías y comedores escolares en escuelas privadas de México. Servicio integral, alimentación saludable, tecnología de pago con huella y app para padres. +10 años de experiencia en CDMX. 97% satisfacción.',
+    'Operamos cafeterías y comedores escolares en colegios y escuelas de México desde 2018: menús conforme a los Lineamientos SEP, tótems, app para familias y reconocimiento facial opcional, con efectivo en caja.',
   keywords: [
     'cafetería escolar',
     'cafeterías escolares México',
@@ -39,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Nutri Cafeterías — Cafeterías Escolares en México',
     description:
-      'Transformamos cafeterías escolares: alimentación saludable, tecnología de punta y servicio de primer nivel. Más de 10 escuelas privadas confían en nosotros.',
+      'Cafeterías y comedores escolares con comida real, a tiempo y a la vista. Desde 2018.',
     url: 'https://cafeteriasescolares.com.mx',
     siteName: 'Nutri Cafeterías',
     locale: 'es_MX',
@@ -57,7 +61,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Nutri Cafeterías — Cafeterías Escolares en México',
     description:
-      'Transformamos cafeterías escolares: alimentación saludable, tecnología de punta y servicio de primer nivel.',
+      'Cafeterías y comedores escolares con comida real, a tiempo y a la vista. Desde 2018.',
     images: ['/logo.png'],
   },
   robots: {
@@ -78,15 +82,15 @@ const jsonLd = {
   '@type': ['LocalBusiness', 'FoodService'],
   name: 'Nutri Cafeterías',
   alternateName: 'Nutri Cafeterías — Cafeterías Escolares',
-  slogan: 'La cafetería más feliz de tu escuela',
+  slogan: 'Comida real, a tiempo y a la vista',
   description:
-    'Nutri Cafeterías es el operador premium de cafeterías y comedores escolares en México. Opera de forma integral cafeterías en escuelas privadas de la Ciudad de México desde preescolar hasta preparatoria: menús diseñados por nutriólogos alineados a lineamientos SEP, protocolos de higiene alineados a NOM-251, tecnología de pago con huella digital, tótems de autoservicio, app para padres y programas educativos exclusivos como NutriMood (comida y emociones), Cocina Aventura y Sabores del Mundo. Más de 10 años de experiencia, más de 10 escuelas, más de 1,000,000 de órdenes servidas y 97% de satisfacción. La escuela no realiza ninguna inversión inicial.',
+    'Nutri Cafeterías opera cafeterías y comedores escolares en la Ciudad de México y área metropolitana, desde preescolar hasta universidad. Cafetería: platillos a la carta, snacks y bebidas conforme a los Lineamientos SEP. Comedor: menú del día de 3 o 4 tiempos por turnos. Sigue la NOM-251, con ERP y punto de venta propios, tótems de autoservicio, pago con reconocimiento facial opcional y app para familias, siempre con efectivo en caja. Fundada en 2018; llegó a operar hasta 11 cafeterías escolares al mismo tiempo.',
   url: 'https://cafeteriasescolares.com.mx',
   logo: 'https://cafeteriasescolares.com.mx/logo.png',
   image: 'https://cafeteriasescolares.com.mx/logo.png',
   telephone: '+52-221-925-1954',
   email: 'a.fernandez@nutricafeteria.com.mx',
-  foundingDate: '2014',
+  foundingDate: '2018-08',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Ciudad de México',
@@ -98,36 +102,25 @@ const jsonLd = {
     { '@type': 'AdministrativeArea', name: 'Área Metropolitana del Valle de México' },
   ],
   serviceType: 'Operación integral de cafeterías escolares',
-  hasCredential: [
-    { '@type': 'EducationalOccupationalCredential', credentialCategory: 'certification', name: 'Distintivo H' },
-    { '@type': 'EducationalOccupationalCredential', credentialCategory: 'license', name: 'Licencia sanitaria' },
-  ],
   knowsAbout: [
     'cafeterías escolares',
     'comedores escolares',
     'alimentación escolar saludable',
-    'nutrición infantil',
     'lineamientos SEP para venta de alimentos en escuelas',
     'NOM-251 seguridad alimentaria',
     'tecnología para cafeterías escolares',
-    'pago con huella digital en escuelas',
-    'programas de comida y emociones',
+    'reconocimiento facial para pagos en escuelas',
+    'app para familias en la cafetería escolar',
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Servicios de Nutri Cafeterías',
     itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Operación integral de cafetería escolar', description: 'Operación completa sin inversión para la escuela: personal, menús, proveedores, calidad y tecnología.' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Programa NutriMood — comida y emociones', description: 'Programa educativo que conecta la alimentación con las emociones y la concentración de los alumnos.' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tecnología de cafetería escolar', description: 'Pago con huella digital, tótems de autoservicio y app para padres con control de saldo y consumo.' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Comedores escolares con menús de nutriólogo', description: 'Menús balanceados alineados a lineamientos SEP, con manejo de alérgenos y rotación de temporada.' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Cafetería escolar', description: 'Platillos a la carta, snacks empaquetados y bebidas conforme a los Lineamientos SEP, con tótems, app para familias y efectivo en caja.' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Comedor escolar', description: 'Menú del día de 3 o 4 tiempos, recién hecho, servido por turnos y con porción por edad, conforme a los Lineamientos SEP.' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tecnología de cafetería escolar', description: 'ERP y punto de venta propios, tótems de autoservicio, reconocimiento facial opcional y app para familias con saldo, recargas, límite diario y alergias.' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Eventos escolares', description: 'Complemento para graduaciones, juntas de consejo, coffee breaks y desayunos institucionales.' } },
     ],
-  },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '47',
-    bestRating: '5',
   },
   sameAs: [
     'https://wa.me/522219251954',
@@ -150,6 +143,10 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-[#F7F3EA]" suppressHydrationWarning>
         {children}
+        <AtribucionTracker />
+        <CampanaPopup />
+        <CtaMovil />
+        <Analitica />
         <Analytics />
       </body>
     </html>

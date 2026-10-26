@@ -1,14 +1,13 @@
 import { Mail } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import Image from 'next/image'
+import { WaLink } from '@/components/WaLink'
 
 const links = [
-  { href: '/cafeterias-escolares', label: 'Cafeterías escolares' },
-  { href: '/cafeterias-escuelas-privadas', label: 'Cafeterías para escuelas privadas' },
-  { href: '/comedores-escolares',  label: 'Comedor escolar CDMX' },
-  { href: '/catering-escolar-cdmx', label: 'Catering escolar CDMX' },
-  { href: '/catering-escolar',     label: 'Catering para eventos' },
-  { href: '/programas',   label: 'Programas educativos' },
+  { href: '/cafeterias-escolares', label: 'Cafetería escolar' },
+  { href: '/comedores-escolares',  label: 'Comedor escolar' },
+  { href: '/cafeterias-escuelas-privadas', label: 'Colegios particulares' },
+  { href: '/catering-escolar',     label: 'Eventos escolares' },
   { href: '/menus',       label: 'Menús' },
   { href: '/lineamientos-sep', label: 'Lineamientos SEP' },
   { href: '/nosotros',    label: 'Nosotros' },
@@ -16,6 +15,7 @@ const links = [
   { href: '/blog',        label: 'Blog' },
   { href: '/#faq',        label: 'Preguntas frecuentes' },
   { href: '/#contacto',   label: 'Contacto' },
+  { href: '/aviso-de-privacidad', label: 'Aviso de privacidad' },
 ]
 
 export function Footer() {
@@ -48,13 +48,13 @@ export function Footer() {
               />
             </div>
             <p className="text-stone-400 text-sm leading-relaxed">
-              Especializados en cafeterías escolares. Más de 10 años transformando
+              Especializados en cafeterías escolares. Desde 2018 transformando
               la experiencia dentro de las instituciones de México. 🇲🇽
             </p>
             <div className="flex items-center gap-3 mt-5">
-              <a href="https://wa.me/522219251954" className="p-2.5 rounded-xl bg-stone-800 hover:bg-emerald-600 text-stone-400 hover:text-white transition-all" aria-label="WhatsApp">
+              <WaLink cta="whatsapp_footer" className="p-2.5 rounded-xl bg-stone-800 hover:bg-emerald-600 text-stone-400 hover:text-white transition-all" aria-label="WhatsApp">
                 <WhatsAppIcon className="w-4 h-4" />
-              </a>
+              </WaLink>
               <a href="mailto:a.fernandez@nutricafeteria.com.mx" className="p-2.5 rounded-xl bg-stone-800 hover:bg-blue-600 text-stone-400 hover:text-white transition-all" aria-label="Email">
                 <Mail className="w-4 h-4" />
               </a>
@@ -85,10 +85,10 @@ export function Footer() {
           <div className="flex flex-col gap-3">
             <h4 className="font-black text-white text-sm uppercase tracking-wider">En números</h4>
             {[
+              { emoji: '📅', text: 'Desde 2018' },
               { emoji: '🍽️', text: '+1,000,000 órdenes servidas' },
-              { emoji: '🏫', text: '+10 escuelas operando' },
-              { emoji: '😊', text: '97% de satisfacción' },
-              { emoji: '⚡', text: 'Menos de 3 min de espera' },
+              { emoji: '⭐', text: '4.9 / 5 de satisfacción' },
+              { emoji: '🧾', text: 'ERP y punto de venta propios' },
             ].map(s => (
               <div key={s.text} className="flex items-center gap-2 text-sm text-stone-400">
                 <span>{s.emoji}</span> {s.text}

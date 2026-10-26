@@ -1,6 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Evita que Turbopack tome como raíz otro lockfile del home (error "Can't resolve tailwindcss").
+  turbopack: { root: __dirname },
+  async redirects() {
+    return [
+      // NutriMood se retiró (claim sin evidencia): la página de programas ya no existe.
+      { source: '/programas', destination: '/cafeterias-escolares', statusCode: 301 },
+      // El «servicio diario de alimentos» es comedor; catering queda solo como eventos.
+      { source: '/catering-escolar-cdmx', destination: '/comedores-escolares', statusCode: 301 },
+      // Errores de tipeo que reciben impresiones en Search Console.
+      { source: '/comedores-esculares', destination: '/comedores-escolares', statusCode: 301 },
+      { source: '/blog/regreso-clases-2026-multa-real-director-regrules-2028', destination: '/blog/regreso-clases-2026-multa-real-director-reglas-2028', statusCode: 301 },
+    ];
+  },
   async rewrites() {
     return [
       { source: '/demo/comedor', destination: '/demo/comedor/index.html' },

@@ -5,6 +5,9 @@ import { motion } from 'framer-motion'
 import { track } from '@vercel/analytics'
 import { ArrowRight, ArrowLeft, Loader2, CheckCircle, Lock } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { atribucionParaEnvio } from '@/lib/atribucion'
+import { waHref } from '@/lib/whatsapp'
+import { capturar } from '@/lib/analitica'
 
 type Option = { label: string; emoji: string; points: number }
 type Question = {
@@ -23,12 +26,12 @@ const QUESTIONS: Question[] = [
     emoji: '⏱️',
     q: '¿Cuánto tiempo esperan tus alumnos en la fila de la cafetería?',
     options: [
-      { label: 'Menos de 3 minutos', emoji: '⚡', points: 2 },
+      { label: 'Menos de 5 minutos', emoji: '⚡', points: 2 },
       { label: 'Entre 5 y 10 minutos', emoji: '🚶', points: 1 },
       { label: 'Más de 10 minutos', emoji: '🐢', points: 0 },
       { label: 'No lo hemos medido', emoji: '🤷', points: 0 },
     ],
-    fix: 'Con tótems de autoservicio y pago biométrico, el estándar Nutri es menos de 3 minutos incluso en hora pico.',
+    fix: 'Con tótems de autoservicio, pedidos desde la app y reconocimiento facial opcional, diseñamos el flujo para que el receso alcance incluso en hora pico.',
   },
   {
     key: 'pago',
@@ -36,11 +39,11 @@ const QUESTIONS: Question[] = [
     emoji: '💳',
     q: '¿Cómo pagan los alumnos en la cafetería?',
     options: [
-      { label: 'Huella digital o app, sin efectivo', emoji: '👆', points: 2 },
-      { label: 'Tarjeta o monedero escolar', emoji: '💳', points: 1 },
-      { label: 'Efectivo', emoji: '💵', points: 0 },
+      { label: 'App, tótem o reconocimiento facial, y también efectivo', emoji: '📲', points: 2 },
+      { label: 'Solo tarjeta o monedero escolar', emoji: '💳', points: 1 },
+      { label: 'Solo efectivo, sin registro', emoji: '💵', points: 0 },
     ],
-    fix: 'El pago con huella digital elimina el efectivo del plantel: sin robos, sin pérdidas, cobro en 2 segundos.',
+    fix: 'Con app para familias, tótems y reconocimiento facial opcional —y efectivo en caja con la misma fuerza— cada familia elige cómo pagar y cada consumo queda registrado.',
   },
   {
     key: 'quejas',
@@ -52,7 +55,7 @@ const QUESTIONS: Question[] = [
       { label: 'De vez en cuando', emoji: '😐', points: 1 },
       { label: 'Con frecuencia', emoji: '😤', points: 0 },
     ],
-    fix: 'Nuestro modelo resuelve los problemas antes de que lleguen a dirección — 97% de satisfacción en +10 escuelas.',
+    fix: 'Nuestro modelo resuelve los problemas antes de que lleguen a dirección — así operamos en colegios y escuelas desde 2018.',
   },
   {
     key: 'menu',
@@ -60,11 +63,11 @@ const QUESTIONS: Question[] = [
     emoji: '🥗',
     q: '¿Quién diseña el menú de tu cafetería?',
     options: [
-      { label: 'Nutriólogos, alineado a lineamientos SEP', emoji: '👩‍⚕️', points: 2 },
+      { label: 'Con criterios nutrimentales de la SEP, documentado', emoji: '📋', points: 2 },
       { label: 'El cocinero o encargado', emoji: '👨‍🍳', points: 1 },
       { label: 'El proveedor decide qué vender', emoji: '📦', points: 0 },
     ],
-    fix: 'Cada menú Nutri pasa doble filtro: nutriólogos + lineamientos SEP, y platillos que los alumnos sí eligen.',
+    fix: 'Cada menú Nutri pasa doble filtro: criterios nutrimentales de los Lineamientos SEP y platillos que los alumnos sí eligen.',
   },
   {
     key: 'padres',
@@ -76,7 +79,7 @@ const QUESTIONS: Question[] = [
       { label: 'Solo pueden consultar el menú', emoji: '📋', points: 1 },
       { label: 'No tienen visibilidad', emoji: '🙈', points: 0 },
     ],
-    fix: 'La app Nutri da a los papás historial de consumo, límites de gasto, recargas y alertas de alérgenos.',
+    fix: 'La app Nutri para familias ya da saldo, recargas, límite diario, alergias y pedidos para recoger. Y quien prefiera, paga en efectivo en caja.',
   },
   {
     key: 'higiene',
@@ -106,7 +109,7 @@ const QUESTIONS: Question[] = [
 
 const ANALYZING_STEPS = [
   'Analizando tiempos de servicio…',
-  'Comparando con +10 escuelas premium…',
+  'Comparando con escuelas premium…',
   'Evaluando estándares de seguridad alimentaria…',
   'Generando tu diagnóstico personalizado…',
 ]
@@ -174,6 +177,7 @@ export function Diagnostic() {
     e.preventDefault()
     setSending(true)
     try {
+      const atrib = atribucionParaEnvio()
       const detail = QUESTIONS.map(q => `${q.area}: ${answers[q.key]?.label ?? '—'} (${answers[q.key]?.points ?? 0}/2)`).join('\n')
       // Al CRM del ERP (como el formulario de contacto): entra con Andrea, el equipo comercial.
       await fetch('/api/lead', {
@@ -184,6 +188,7 @@ export function Diagnostic() {
           escuela: lead.escuela,
           email: lead.email,
           mensaje: `Diagnóstico interactivo: ${pct}/100\n${detail}`,
+          ...atrib,
         }),
       })
     } catch {
@@ -191,11 +196,13 @@ export function Diagnostic() {
     }
     setSending(false)
     track('diagnostico_completado', { puntaje: pct, escuela: lead.escuela })
+    capturar('diagnostico_completado', { puntaje: pct, pagina: window.location.pathname })
     setStage('result')
   }
 
-  const waText = encodeURIComponent(
+  const waUrl = waHref(
     `¡Hola! Hice el diagnóstico de mi cafetería escolar en su página y obtuve ${pct}/100. Me gustaría platicar sobre cómo mejorarlo.`,
+    'diagnostico',
   )
 
   return (
@@ -349,7 +356,7 @@ export function Diagnostic() {
             </p>
           </div>
 
-          <form onSubmit={submitLead} className="space-y-3">
+          <form onSubmit={submitLead} data-formulario="diagnostico" className="space-y-3">
             <input
               required value={lead.nombre}
               onChange={e => setLead({ ...lead, nombre: e.target.value })}
@@ -460,7 +467,10 @@ export function Diagnostic() {
                 Agendar reunión gratis →
               </a>
               <a
-                href={`https://wa.me/522219251954?text=${waText}`}
+                href={waUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="whatsapp_diagnostico"
                 className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-emerald-700/60 text-white font-bold hover:bg-emerald-700 transition-colors"
               >
                 <WhatsAppIcon className="w-4 h-4" /> Platicar por WhatsApp

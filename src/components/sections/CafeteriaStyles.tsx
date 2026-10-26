@@ -27,7 +27,7 @@ const styles = [
     ideal: 'Ideal para primarias y secundarias con comunidades vibrantes',
     features: [
       'Colores vivos y arte tipo pop en muros',
-      'Zonas instagrameables que los alumnos aman',
+      'Zonas instagrameables para convivir',
       'Mobiliario divertido y flexible',
       'La cafetería más fotografiada de la escuela',
     ],
