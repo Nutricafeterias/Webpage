@@ -19,7 +19,7 @@ const HERO_ALT = 'Niños de primaria comiendo un menú completo en un comedor es
 const hayHero = existeFotoComedor(HERO)
 
 export const metadata: Metadata = {
-  title: 'Comedores escolares en CDMX | Servicio de comedor · Nutri',
+  title: 'Comedores escolares en CDMX | Servicio de comedor · Nutri Cafeterías',
   description:
     'Servicio de comedor escolar en CDMX: menú de 3 o 4 tiempos recién hecho, porción por edad y conforme a la SEP. Pago en app o efectivo. Pide degustación.',
   keywords: [
@@ -636,9 +636,9 @@ export default function ComedoresEscolaresPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {[
-                { t: 'Tótem con reconocimiento facial', d: 'A la entrada del comedor: el niño se para frente a la cámara y entra, sin tarjetas ni boletos. Si no tiene comida comprada, su profesor lo revisa contigo.' },
+                { t: 'Tótem con reconocimiento facial', d: 'A la entrada del comedor: el niño se para frente a la cámara y entra, sin tarjetas ni boletos. Si un día no tiene comida comprada, come igual y nuestro equipo lo resuelve contigo después.' },
                 { t: 'Voluntario y con consentimiento', d: 'Como desbloquear su celular con la cara. Su foto nunca se guarda: tú decides si lo activas, con tu consentimiento, y lo borras cuando quieras desde la app.' },
-                { t: '¿No quieres registrar su rostro?', d: 'Entra con la lista de su grupo. Nadie se queda sin comer por la tecnología.' },
+                { t: '¿No quieres registrar su rostro?', d: 'Nuestro personal lo registra en la entrada con la lista del comedor; la maestra no hace nada extra. Nadie se queda sin comer por la tecnología.' },
                 { t: 'App para familias', d: 'Compra por día, semana o mes, saldo por hijo, límite diario, alergias que la cocina ve antes de servir, y avisos. También puedes pagar en efectivo en caja.' },
               ].map(c => (
                 <div key={c.t} className="p-6 rounded-3xl bg-white border-2 border-stone-100 shadow-sm">
