@@ -12,7 +12,7 @@ import { menuSemana } from '@/data/comedor'
 import { waHref } from '@/lib/whatsapp'
 
 export const metadata: Metadata = {
-  title: 'Menú escolar semanal conforme a la SEP: ejemplo para cafetería y comedor | Nutri',
+  title: 'Menú escolar semanal conforme a la SEP: ejemplo para cafetería y comedor | Nutri Cafeterías',
   description:
     'Ejemplos de menús escolares conforme a la SEP: semana tipo de comedor (entrada, plato fuerte, verdura, fruta y agua) y carta de cafetería escolar sin sellos. Descárgalo gratis en PDF.',
   keywords: [
