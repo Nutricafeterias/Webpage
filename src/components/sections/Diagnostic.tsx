@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { track } from '@vercel/analytics'
 import { ArrowRight, ArrowLeft, Loader2, CheckCircle, Lock } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
-import { atribucionParaEnvio, textoOrigen } from '@/lib/atribucion'
+import { atribucionParaEnvio } from '@/lib/atribucion'
 import { waHref } from '@/lib/whatsapp'
 import { capturar } from '@/lib/analitica'
 
@@ -178,21 +178,17 @@ export function Diagnostic() {
     setSending(true)
     try {
       const atrib = atribucionParaEnvio()
-      const detail =
-        QUESTIONS.map(q => `${q.area}: ${answers[q.key]?.label ?? '—'} (${answers[q.key]?.points ?? 0}/2)`).join('\n') +
-        '\n\n' + textoOrigen(atrib)
-      // Directo al CRM de Nutri: crea escuela+contacto+acción y notifica a Ricardo.
-      await fetch('https://crm.nutricafeteria.com.mx/api/quiz', {
+      const detail = QUESTIONS.map(q => `${q.area}: ${answers[q.key]?.label ?? '—'} (${answers[q.key]?.points ?? 0}/2)`).join('\n')
+      // Al CRM del ERP (como el formulario de contacto): entra con Andrea, el equipo comercial.
+      await fetch('/api/lead', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           nombre: lead.nombre,
           escuela: lead.escuela,
           email: lead.email,
-          puntaje: `${pct}/100`,
-          detalle: detail,
-          origen: 'Diagnóstico interactivo',
-          atribucion: atrib,
+          mensaje: `Diagnóstico interactivo: ${pct}/100\n${detail}`,
+          ...atrib,
         }),
       })
     } catch {

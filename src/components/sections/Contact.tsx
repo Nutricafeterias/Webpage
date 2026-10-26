@@ -107,7 +107,7 @@ export function Contact() {
                 <ArrowRight className="w-4 h-4 text-stone-400 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all" />
               </a>
               <a
-                href="mailto:contacto@nutricafeteria.com.mx"
+                href="mailto:a.fernandez@nutricafeteria.com.mx"
                 className="flex items-center gap-3 p-4 rounded-2xl border-2 border-stone-200 bg-white hover:bg-blue-50 hover:border-blue-200 transition-colors group shadow-sm"
               >
                 <div className="p-2 rounded-xl bg-blue-100">
@@ -115,7 +115,7 @@ export function Contact() {
                 </div>
                 <div className="flex-1">
                   <div className="text-stone-800 text-sm font-bold">Enviar correo</div>
-                  <div className="text-stone-400 text-xs">contacto@nutricafeteria.com.mx</div>
+                  <div className="text-stone-400 text-xs">a.fernandez@nutricafeteria.com.mx</div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-stone-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" />
               </a>
