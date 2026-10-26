@@ -31,8 +31,8 @@ export function RecursoDescargable({ recurso, className = '' }: { recurso: Clave
             <FileText className="w-3.5 h-3.5" /> PDF gratis · {r.paginas}
           </span>
           <h2 className="mt-4 text-2xl md:text-3xl font-black text-stone-900 leading-tight">{r.titulo}</h2>
-          <p className="mt-3 text-stone-600 leading-relaxed">{r.descripcion}</p>
-          <ul className="mt-4 space-y-2">
+          <p className="mt-3 text-stone-600 leading-relaxed hidden md:block">{r.descripcion}</p>
+          <ul className="mt-3 md:mt-4 space-y-2">
             {r.incluye.map(i => (
               <li key={i} className="flex items-start gap-2 text-sm text-stone-700">
                 <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-500" /> {i}

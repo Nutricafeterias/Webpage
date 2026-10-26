@@ -27,7 +27,7 @@ export const RECURSOS: Record<ClaveRecurso, Recurso> = {
       'Carta de cafetería: desayunos, comida, snacks y bebidas sin sellos',
       'Reglas de la SEP para armar tu propio menú',
     ],
-    paginas: '3 páginas',
+    paginas: '2 páginas',
     archivo: '/recursos/menu-escolar-semanal-sep-nutri.pdf',
     boton: 'Descargar el menú en PDF',
     siguientePaso: '¿Quieres que este menú se sirva en tu escuela? Hacemos la degustación sin costo.',
