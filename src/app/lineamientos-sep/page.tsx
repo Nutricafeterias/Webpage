@@ -8,9 +8,9 @@ import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { waHref } from '@/lib/whatsapp'
 
 export const metadata: Metadata = {
-  title: 'Lineamientos SEP para Cafeterías Escolares | Cumplimiento Garantizado — Nutri Cafeterías',
+  title: 'Lineamientos SEP para cafetería y comedor escolar: qué exige y cómo cumplir | Nutri',
   description:
-    'Los nuevos lineamientos de la SEP prohíben la venta de comida chatarra en escuelas de México. Te explicamos qué exige la norma, qué riesgos corre tu escuela y cómo Nutri Cafeterías garantiza el cumplimiento total.',
+    'Qué exigen los Lineamientos SEP (DOF 30-sep-2024, vigentes desde el 29-mar-2025) en la cafetería y el comedor de tu escuela, qué arriesga la dirección y cómo un operador te ayuda a cumplir. Pide una revisión sin costo.',
   keywords: [
     'lineamientos SEP alimentos escuelas',
     'prohibición comida chatarra escuelas SEP',

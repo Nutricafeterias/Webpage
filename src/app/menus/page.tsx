@@ -6,9 +6,9 @@ import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { MenuExplorer } from '@/components/sections/MenuExplorer'
 
 export const metadata: Metadata = {
-  title: 'Menús Escolares Saludables | Ejemplo de Menú Semanal — Nutri Cafeterías',
+  title: 'Menú escolar semanal conforme a la SEP: ejemplo para cafetería y comedor | Nutri',
   description:
-    'Explora un menú de muestra de nuestras cafeterías escolares: platillos con criterios nutrimentales de la SEP, información nutricional, filtros de alérgenos y opciones vegetarianas, sin gluten y sin lácteos.',
+    'Ejemplo real de menú escolar conforme a los Lineamientos SEP, con información nutricional y alérgenos. ¿Quieres este menú en tu escuela? Te armamos una propuesta para tu cafetería o comedor sin costo.',
   keywords: [
     'menú escolar saludable',
     'menú cafetería escolar',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://cafeteriasescolares.com.mx/menus' },
   openGraph: {
     title: 'Menús escolares conforme a la SEP — Nutri Cafeterías',
-    description: 'Menú de muestra con información nutricional y filtros de alérgenos. Transparencia total.',
+    description: 'Ejemplo de menú escolar conforme a la SEP, con información nutricional y alérgenos. Pide una propuesta para tu escuela.',
     url: 'https://cafeteriasescolares.com.mx/menus',
     type: 'website',
   },
