@@ -110,3 +110,43 @@ Encargo de Ricardo: página de comedores más visual (fotos de platillos, menú 
 **Enlazado interno**: home/ServicesSplit (CTA «Ver el servicio de comedor escolar» y `alt` descriptivos); `/menus` → tarjetas «Menú de comedor escolar» / «Menú de cafetería escolar»; `/lineamientos-sep` → párrafo con anclas «comedor escolar» y «cafetería escolar»; desde comedores → `/menus`, `/lineamientos-sep`, `/blog/cuanto-cuesta-comedor-escolar-cdmx` y `/cafeterias-escolares`. Sitemap: ya estaba con prioridad 0.9.
 
 **Pendiente**: `tinga-frijoles.jpg` y `fruta-agua.jpg` aún no llegan (se muestra el gradiente de respaldo); las imágenes de `public/img/comedor/` no están commiteadas (las está generando otra sesión) y deben entrar al repo antes de publicar. Verificado con `tsc` y en el dev server (200, un h1, JSON-LD) a 1280 px y 375 px; sin `next build` por disco.
+
+## CRO 26-oct
+
+Encargo de Ricardo: «todos se meten, dan clic y se salen». Datos 19–26 oct: 63 visitantes, rebote 78 %, 57 % móvil, 0 leads web desde el 21-oct. Método: `~/nutri-web-emilio/CRO-MARCO.md`; auditoría por página: `~/nutri-web-emilio/CRO-AUDITORIA-26OCT.md`.
+
+**Causas principales encontradas**
+1. En móvil no había CTA en la primera pantalla (botón de la navbar oculto en móvil; solo la burbuja de WhatsApp, 2 toques).
+2. La home se pintaba en blanco hasta hidratar: h1/sub/CTAs del Hero salían con `opacity:0` del servidor.
+3. Todos los CTA fuera de la home saltaban a `/#contacto` (otra página, se pierde el contexto).
+4. /menus y /lineamientos-sep no respondían la búsqueda arriba (eslogan en vez de menú de ejemplo / reglas) y no ofrecían un siguiente paso al tráfico informativo.
+5. Formulario con 5 obligatorios; aviso de campaña a los 4 s.
+
+**Cambios**
+
+| Archivo | Cambio |
+|---|---|
+| `src/components/CtaMovil.tsx` (nuevo, en `layout.tsx`) | Barra fija inferior solo en móvil (acción principal según página + WhatsApp) con espaciador para no tapar el final. Hoja de contacto rápido (3 campos) que se abre desde la barra, desde `href="#contacto-rapido"` (+ `data-motivo`) y desde cualquier `/#contacto` fuera de la home. Motivo según `data-cta` (degustación, visita, evento, revisión SEP). Excluida en /diagnostico, /aviso-de-privacidad, /demo, /propuestas. |
+| `src/components/WhatsAppButton.tsx` | En móvil se oculta donde hay barra (sin botones flotantes duplicados); en escritorio sigue igual. |
+| `src/components/FormularioCorto.tsx`, `src/lib/lead.ts` (nuevos) | Nombre, escuela, «WhatsApp o correo» (+ rol opcional de un toque). Envía a `/api/lead` con la atribución de `atribucion.ts` y a Formspree de respaldo; `mensaje` dice qué pidió («Descargó: …», «Quiere: degustación · desde /menus», «Rol: …»). |
+| `src/components/RecursoDescargable.tsx`, `src/data/recursos.ts`, `public/recursos/*.pdf`, `docs/recursos/` | Lead magnets: **Menú escolar semanal conforme a la SEP** (2 págs.; semana de comedor de `comedor.ts` + carta de cafetería + reglas) y **Checklist de cumplimiento SEP** (20 puntos). Contenido visible en la página; el PDF se entrega al instante tras el mini formulario. Regenerar: `sh docs/recursos/generar.sh` (Chrome headless). |
+| `src/components/PruebaSocial.tsx` (nuevo) | Fila #1 en México · +1,000,000 órdenes · 4.9 / 5 · desde 2018 (UP Campus Ciudad UP, IPADE) junto a los CTA. |
+| `src/components/CtaBlog.tsx` + `src/app/blog/[slug]/page.tsx` | CTA contextual por tema a mitad (antes del 3.er h2) y al final de cada artículo: lineamientos → checklist + revisión; menús → PDF + degustación; comedor → servicio + degustación; resto → diagnóstico + visita. |
+| `src/app/menus/page.tsx` | h1 «Menú escolar semanal conforme a la SEP», anclas, semana tipo de comedor arriba, reglas SEP sí/no, PDF, carta de cafetería, FAQ (`FAQPage`), CTA degustación + prueba social. Description con «Descárgalo gratis en PDF». |
+| `src/app/lineamientos-sep/page.tsx` | h1 «qué se puede vender en la escuela y qué no», resumen sí/no y 4 datos clave arriba, checklist PDF, «Pedir revisión sin costo», prueba social. El resto de la página se conserva. |
+| `src/components/sections/Hero.tsx` | h1/sub/CTAs sin animación de entrada; sin `min-h-screen` en móvil; CTA visible a 375 px; «Agenda una reunión sin costo»; confianza 4.9/5 · +1,000,000 · 2018. |
+| `src/components/sections/Contact.tsx` | Obligatorios: nombre, escuela, WhatsApp; correo y cargo opcionales; botón «Agendar mi reunión sin costo»; «te respondemos en menos de 1 día hábil»; prueba social. |
+| `src/components/sections/MenuExplorer.tsx` | Tarjetas sin `opacity:0` inicial. |
+| `src/components/CampanaPopup.tsx` | Aparece al 45 % de scroll o a los 30 s (antes 4 s). |
+| `src/app/cafeterias-escolares/page.tsx` | Prueba social arriba y en el CTA final; «Agenda una visita sin costo» abre la hoja con motivo visita. |
+| `/comedores-escolares` | Archivo sin tocar. Recibe la barra móvil y sus «Pide una degustación» abren la hoja rápida (vía interceptor global). |
+
+**Eventos nuevos (PostHog)**: `lead_magnet_descarga {recurso, pagina}`, `lead_corto_enviado {formulario, rol, pagina}`, `cta_movil_abierto {motivo, desde, pagina}`; formularios `recurso_menu-sep`, `recurso_checklist-sep`, `rapido_<motivo>`; secciones `menus_*`, `sep_*`, `recurso_*`, `blog_cta_*`, `barra_movil`; CTAs `barra_movil_*`, `whatsapp_barra_movil`, `ancla_pdf_menu`, `descarga_*`, `agenda_degustacion_menus`, `pide_revision_sep`, `blog_final_*`, `blog_medio_*`, `agenda_visita_hero`, `diagnostico_hero_cafeteria`, `whatsapp_hoja_contacto`, `whatsapp_tras_*`.
+
+**Verificado**: `npx tsc --noEmit` limpio; ESLint limpio en archivos tocados; 200 en /, /menus, /lineamientos-sep, /cafeterias-escolares, /comedores-escolares, /diagnostico, 3 artículos y los 2 PDF. En el navegador a 375 px: barra visible sin tapar el pie (espaciador), sin burbuja duplicada, hoja de contacto abre desde el blog, descarga del menú probada con `fetch` simulado (no se mandó ningún lead real; payload correcto con `mensaje` y `pagina_envio`). Sin `npm run build` (disco).
+
+**Decisiones por defecto (confirmar)**
+1. Los leads de recursos entran al CRM aunque sean docentes o papás; el rol viene en el mensaje para filtrarlos.
+2. La entrega del PDF es inmediata en pantalla (sin correo automático).
+3. El interceptor convierte todos los `/#contacto` fuera de la home en la hoja rápida (incluye comedores, navbar y footer). Se revierte quitando el bloque en `CtaMovil.tsx`.
+4. Datos de lineamientos («la Corte confirmó que incluye prepas y universidades», retiro del RVOE en casos graves) tomados de los artículos del propio blog.

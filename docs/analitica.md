@@ -36,6 +36,9 @@ IntersectionObserver). Se monta una sola vez en `src/app/layout.tsx`.
 | `form_start` | Primer foco dentro de un formulario | `formulario` (`contacto`, `diagnostico`), `pagina` |
 | `form_submit` | Envío de un formulario | `formulario`, `pagina` |
 | `diagnostico_completado` | Al terminar el diagnóstico y dejar datos | `puntaje`, `pagina` |
+| `lead_magnet_descarga` | Clic en «Descargar el PDF» tras el mini formulario | `recurso`, `pagina` |
+| `lead_corto_enviado` | Envío correcto de un formulario corto (recurso u hoja rápida) | `formulario`, `rol`, `pagina` |
+| `cta_movil_abierto` | Se abre la hoja de contacto rápido | `motivo`, `desde`, `pagina` |
 | `seccion_vista` | Una sección con `data-seccion` entra 35 % en pantalla (una vez por vista de página) | `seccion`, `pagina` |
 
 Nunca se envían a PostHog nombre, correo, teléfono ni escuela.
