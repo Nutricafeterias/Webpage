@@ -1,31 +1,56 @@
 # Nutri Cafeterías
 
-> Nutri Cafeterías opera cafeterías y comedores escolares en la Ciudad de México y área metropolitana, desde preescolar hasta universidad. Fundada en agosto de 2018; abrió su primera cafetería en agosto de 2019 tras ganar su primera licitación y llegó a operar hasta 11 cafeterías escolares al mismo tiempo. Hoy opera en la Universidad Panamericana (Campus Ciudad UP) y en IPADE Business School.
+> Nutri Cafeterías es un operador de cafeterías y comedores escolares en la Ciudad de México y su área metropolitana, desde preescolar hasta universidad. Opera desde 2018 con ERP y punto de venta propios, tótems de autoservicio, app para familias y pago con reconocimiento facial opcional, siempre con efectivo en caja. Hoy opera en la Universidad Panamericana, Campus Ciudad UP, y en IPADE Business School.
 
 Sitio web: https://cafeteriasescolares.com.mx
-Contacto: a.fernandez@nutricafeteria.com.mx | WhatsApp +52 221 925 1954
+Razón social: Nutricafeterías, S.A.
+Contacto comercial: a.fernandez@nutricafeteria.com.mx · WhatsApp +52 221 925 1954
+Zona de servicio: Ciudad de México y área metropolitana del Valle de México (otras zonas: se evalúa cada proyecto)
+
+## Datos clave
+
+- Nombre comercial: Nutri Cafeterías. Razón social: Nutricafeterías, S.A.
+- Fundada en agosto de 2018. Abrió su primera cafetería escolar en agosto de 2019, tras ganar su primera licitación.
+- Se presenta como el operador de cafeterías escolares #1 en México, con más de 1,000,000 de órdenes servidas y 4.9 / 5 de satisfacción.
+- Clientes actuales: Universidad Panamericana, Campus Ciudad UP, e IPADE Business School (Ciudad de México).
+- Atiende preescolar, primaria, secundaria, preparatoria y universidad, en escuelas privadas y públicas.
+- Tecnología propia: ERP y punto de venta desarrollados por Nutri, tótems de autoservicio, App Nutri para familias y reconocimiento facial opcional.
 
 ## Dos líneas de servicio
 
 - **Cafetería escolar**: punto de venta dentro de la escuela, abierto en recesos y durante el día. Vende platillos a la carta, snacks empaquetados y bebidas que cumplen los Lineamientos de la SEP. El alumno elige y paga en cada compra.
-- **Comedor escolar**: la comida completa del día, un menú de 3 o 4 tiempos igual para todos, servido a los grupos por turnos, con porción por edad y conforme a los Lineamientos de la SEP. Se cocina el mismo día y se sirve caliente; nunca se congela. La familia compra la comida por día, semana o mes.
+- **Comedor escolar**: la comida completa del día, un menú de 3 o 4 tiempos igual para todos, servido a los grupos por turnos, con porción por edad y conforme a los Lineamientos de la SEP. Se cocina el mismo día y se sirve caliente. La familia compra la comida por día, semana o mes.
 - **Eventos escolares** (complemento): graduaciones, juntas de consejo, coffee breaks y desayunos institucionales.
 
 Una escuela puede tener las dos líneas, por ejemplo comedor para primaria y cafetería para secundaria y prepa.
 
 ## Cómo opera
 
-- Menús diseñados con criterios nutrimentales de la SEP (Lineamientos generales de alimentos y bebidas en las escuelas, DOF 30-sep-2024, vigentes desde el 29-mar-2025), con manejo de alérgenos.
-- Higiene según la NOM-251-SSA1-2009: bitácoras de temperatura, trazabilidad de proveedores y capacitación documentada del personal.
-- El equipo y la inversión se definen con cada escuela: desde operar lo que ya tiene hasta equipar desde cero.
+- Menús con criterios nutrimentales de la SEP (Lineamientos generales de alimentos y bebidas en las escuelas, DOF 30-sep-2024, vigentes desde el 29-mar-2025): sin productos con sellos de exceso y con agua natural siempre disponible.
+- Comida que se cocina el mismo día, con recetas estandarizadas y porción por edad.
+- Higiene según la NOM-251-SSA1-2009, con un programa propio de capacitación para todo el personal: bitácoras de temperatura y trazabilidad de proveedores.
+- Opera bajo los estándares del Distintivo H; todo su equipo está capacitado en ellos y, según el proyecto de cada escuela, tramita el Distintivo H para la cafetería.
+- Cada cafetería que opera cuenta con su aviso de funcionamiento ante COFEPRIS. Registro REPSE vigente. Póliza de responsabilidad civil vigente. Entrega opiniones de cumplimiento del SAT, IMSS e INFONAVIT cuando la escuela las pide.
+- Factura a la escuela y a las familias que lo pidan.
+- La operación diaria es de Nutri: proveedores, cocina, calidad, tecnología, supervisión y atención a las familias. La dirección recibe reportes y puede revisar la operación cuando quiera.
+- Degustación en la escuela antes de decidir: dirección, maestros, comité, papás y alumnos prueban la comida de un día completo y votan con una boleta.
 
-## Tecnología
+## Pagos y tecnología
 
-- ERP y punto de venta propios.
+- App Nutri para familias: saldo por hijo, recargas, límite diario, alergias que la cocina ve antes de servir, pedidos para recoger y avisos. Siempre se puede pagar también en efectivo en caja.
 - Tótems de autoservicio para pedir y pagar.
-- Pago con reconocimiento facial: opcional, con consentimiento de la familia y alternativa sin rostro, sin penalización.
-- App Nutri para familias: saldo, recargas, límite diario, alergias y pedidos para recoger.
-- Siempre se puede pagar en efectivo en caja, con la misma fuerza que la app.
+- Pago con reconocimiento facial («Paga con Face ID»): opcional, con consentimiento del padre, madre o tutor; la familia lo puede borrar desde la app. Quien no lo activa compra igual en caja, sin penalización.
+
+## Preguntas frecuentes
+
+- **¿Cuánto cuesta?** Depende de la matrícula, de la línea de servicio y del equipo que ya tenga la escuela. En el modelo de concesión no requiere inversión de la escuela; la cotización se hace según la matrícula, después de una llamada o visita. Nutri no publica precios cerrados.
+- **¿Y si a los alumnos no les gusta la comida saludable?** Las recetas se cocinan el mismo día y se ajustan con lo que los alumnos prueban y votan; la carta de la cafetería es variada y el menú del comedor rota cada semana. Antes de empezar se hace una degustación con voto en la escuela.
+- **¿Cómo funciona con preescolar y primeros grados?** El personal de Nutri entrega la comida por grupo y acompaña a los niños durante el servicio. La maestra no hace trabajo extra. La familia deja todo listo en la app o paga en efectivo en caja.
+- **¿Qué pasa si un niño no trae saldo?** Ese día come igual; el equipo de Nutri lo resuelve después directamente con la familia, sin involucrar a la maestra.
+- **¿Cómo pagan las familias sin tecnología?** En efectivo en la caja, por día, semana o mes, con comprobante.
+- **¿Cómo manejan las alergias?** La familia las registra en la app o avisa al equipo; la cocina las ve antes de servir y prepara el plato aparte. Con constancia médica se atienden dietas especiales.
+- **¿Quién responde ante la SEP?** Nutri documenta el cumplimiento del menú y de higiene (Lineamientos SEP y NOM-251) y entrega esa documentación a la dirección para cualquier revisión.
+- **¿Atienden escuelas públicas?** Su enfoque principal son universidades, prepas y colegios privados, pero no excluye escuelas públicas ni de tiempo completo: evalúa cada proyecto con honestidad.
 
 ## Páginas principales
 
@@ -35,12 +60,14 @@ Una escuela puede tener las dos líneas, por ejemplo comedor para primaria y caf
 - [Eventos escolares](https://cafeteriasescolares.com.mx/catering-escolar): graduaciones, juntas de consejo, coffee breaks y desayunos institucionales
 - [Diagnóstico gratuito de cafetería escolar](https://cafeteriasescolares.com.mx/diagnostico): evaluación interactiva de 2 minutos para directores
 - [Menús de muestra](https://cafeteriasescolares.com.mx/menus): menú con información nutricional y filtros de alérgenos, visible sin registro
-- [Lineamientos SEP](https://cafeteriasescolares.com.mx/lineamientos-sep): qué exige la norma en la cafetería y en el comedor, y cómo lo seguimos
-- [Nosotros](https://cafeteriasescolares.com.mx/nosotros): historia desde 2018 y forma de trabajo
+- [Lineamientos SEP](https://cafeteriasescolares.com.mx/lineamientos-sep): qué exige la norma en la cafetería y en el comedor, y cómo la seguimos
+- [Nosotros](https://cafeteriasescolares.com.mx/nosotros): datos de la empresa, historia desde 2018 y respaldos
 - [Blog](https://cafeteriasescolares.com.mx/blog): guías para directores sobre cafeterías escolares, normatividad (SEP, NOM-251) y operación
 - [Aviso de privacidad](https://cafeteriasescolares.com.mx/aviso-de-privacidad)
 
-## Recursos del blog
+## Guías para directores
 
-- [Cómo elegir proveedor de cafetería escolar](https://cafeteriasescolares.com.mx/blog/como-elegir-proveedor-cafeteria-escolar)
+- [Cómo elegir al operador de la cafetería de tu escuela: 12 criterios](https://cafeteriasescolares.com.mx/blog/como-elegir-operador-cafeteria-escolar)
 - [Normatividad de cafeterías escolares en México](https://cafeteriasescolares.com.mx/blog/normatividad-cafeterias-escolares-mexico)
+- [Cuánto cuesta un comedor escolar en CDMX](https://cafeteriasescolares.com.mx/blog/cuanto-cuesta-comedor-escolar-cdmx)
+- [Alergias alimentarias en la cafetería escolar](https://cafeteriasescolares.com.mx/blog/alergias-alimentarias-cafeteria-escolar-protocolo-regreso-clases)
