@@ -5,9 +5,11 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { QueVendemos } from '@/components/sections/QueVendemos'
+import { waHref } from '@/lib/whatsapp'
 
 export const metadata: Metadata = {
-  title: 'Cafeterías para Escuelas Privadas en CDMX | Nutri Cafeterías',
+  title: 'Cafetería y comedor para colegios particulares en CDMX | Nutri Cafeterías',
   description:
     'Cafetería y comedor para colegios particulares de CDMX: menús conforme a los Lineamientos SEP, NOM-251, tótems, app para familias y reconocimiento facial opcional, con efectivo en caja. Desde 2018.',
   keywords: [
@@ -17,10 +19,11 @@ export const metadata: Metadata = {
     'concesión cafetería escuela privada',
     'operador cafetería colegio privado',
     'cafetería premium escuela privada',
+    'comedor colegio privado',
   ],
   alternates: { canonical: 'https://cafeteriasescolares.com.mx/cafeterias-escuelas-privadas' },
   openGraph: {
-    title: 'Cafeterías para Escuelas Privadas — Nutri Cafeterías',
+    title: 'Cafetería y comedor para colegios particulares — Nutri Cafeterías',
     description:
       'Cafetería y comedor para colegios particulares: menús conforme a la SEP, tecnología propia y la operación diaria a cargo de Nutri.',
     url: 'https://cafeteriasescolares.com.mx/cafeterias-escuelas-privadas',
@@ -74,22 +77,24 @@ export default function CafeteriasEscuelasPrivadasPage() {
       <main className="pt-28 pb-24 bg-[#F7F3EA] min-h-screen">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Hero */}
-          <div className="text-center max-w-3xl mx-auto">
+          <div data-seccion="privadas_hero" className="text-center max-w-3xl mx-auto">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm mb-6 border border-emerald-200">
-              🎓 Escuelas privadas
+              🎓 Colegios particulares
             </span>
             <h1 className="text-4xl md:text-6xl font-black text-stone-900 leading-tight">
-              Cafeterías para{' '}
-              <span className="gradient-text-primary">escuelas privadas</span>
+              Cafetería y comedor para{' '}
+              <span className="gradient-text-primary">colegios particulares</span>
             </h1>
             <p className="mt-5 text-stone-500 text-lg leading-relaxed">
-              Operando cafeterías en colegios privados de CDMX y área
-              metropolitana desde 2018. Calidad premium, menús conforme a la SEP y tecnología
+              Operamos cafeterías y comedores en colegios de CDMX y área
+              metropolitana desde 2018. Cafetería: platillos a la carta, snacks y bebidas que cumplen
+              con la SEP. Comedor: menú del día de 3 o 4 tiempos, por turnos. Calidad premium, menús conforme a la SEP y tecnología
               propia, con efectivo en caja para quien lo prefiera.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="/#contacto"
+                data-cta="agenda_reunion"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-black transition-all duration-200 shadow-xl shadow-emerald-200 hover:scale-[1.03]"
               >
                 Agenda una reunión gratis
@@ -118,6 +123,8 @@ export default function CafeteriasEscuelasPrivadasPage() {
               </div>
             ))}
           </div>
+
+          <QueVendemos />
 
           {/* Lo que una escuela privada exige */}
           <div className="mt-20">
@@ -181,13 +188,13 @@ export default function CafeteriasEscuelasPrivadasPage() {
               En Nutri Cafeterías asumimos la operación completa — desde el menú con criterios
               nutrimentales de la SEP hasta el cobro con app, tótem, reconocimiento facial o efectivo en caja — con un modelo
               de concesión que definimos con cada escuela. Si tu institución también
-              necesita servicio de alimentos en comedor, conoce nuestros{' '}
+              necesita comida completa por turnos, conoce nuestro{' '}
               <Link href="/comedores-escolares" className="text-emerald-600 font-bold hover:underline">
-                comedores escolares en CDMX
+                comedor escolar
               </Link>{' '}
-              y nuestro{' '}
-              <Link href="/catering-escolar-cdmx" className="text-emerald-600 font-bold hover:underline">
-                catering escolar en CDMX
+              y, para graduaciones o juntas de consejo,{' '}
+              <Link href="/catering-escolar" className="text-emerald-600 font-bold hover:underline">
+                eventos escolares
               </Link>
               . Y si estás comparando opciones, te dejamos nuestra{' '}
               <Link href="/blog/como-elegir-proveedor-cafeteria-escolar" className="text-emerald-600 font-bold hover:underline">
@@ -200,10 +207,10 @@ export default function CafeteriasEscuelasPrivadasPage() {
           {/* CTA final */}
           <div className="mt-16 p-10 rounded-3xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-center shadow-xl shadow-emerald-200">
             <p className="text-2xl md:text-3xl font-black text-white">
-              La cafetería que tu colegiatura promete 🏆
+              Que la hora de comer sea la mejor parte del día 🏆
             </p>
             <p className="text-emerald-100 mt-2 mb-6">
-              Agenda una visita y conoce nuestras cafeterías operando en colegios privados.
+              Agenda una visita y conoce nuestra operación en vivo.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
@@ -213,7 +220,10 @@ export default function CafeteriasEscuelasPrivadasPage() {
                 Agendar reunión gratis →
               </a>
               <a
-                href="https://wa.me/522219251954?text=Hola!%20Me%20interesa%20la%20cafeter%C3%ADa%20para%20mi%20escuela%20privada."
+                href={waHref('Hola, me interesa la cafetería o el comedor para mi colegio', 'privadas')}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="whatsapp_cta_final"
                 className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-emerald-700/60 text-white font-bold hover:bg-emerald-700 transition-colors"
               >
                 <WhatsAppIcon className="w-4 h-4" /> WhatsApp directo
