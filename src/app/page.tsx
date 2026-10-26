@@ -35,18 +35,18 @@ export default function Home() {
       />
       <Navbar />
       <main suppressHydrationWarning>
-        <Hero />
+        <div data-seccion="home_hero"><Hero /></div>
         <Marquee />
-        <StatsBar />
-        <Problem />
-        <SepBanner />
-        <DiagnosticTeaser />
-        <ServicesSplit />
-        <Technology />
-        <WhyNutri />
-        <Schools />
-        <FAQ />
-        <Contact />
+        <div data-seccion="home_stats"><StatsBar /></div>
+        <div data-seccion="home_problema"><Problem /></div>
+        <div data-seccion="home_sep"><SepBanner /></div>
+        <div data-seccion="home_diagnostico"><DiagnosticTeaser /></div>
+        <div data-seccion="home_servicios"><ServicesSplit /></div>
+        <div data-seccion="home_tecnologia"><Technology /></div>
+        <div data-seccion="home_por_que"><WhyNutri /></div>
+        <div data-seccion="home_escuelas"><Schools /></div>
+        <div data-seccion="home_faq"><FAQ /></div>
+        <div data-seccion="home_contacto"><Contact /></div>
       </main>
       <Footer />
       <WhatsAppButton />

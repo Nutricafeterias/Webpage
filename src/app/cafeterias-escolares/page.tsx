@@ -103,17 +103,17 @@ export default function CafeteriasEscolaresPage() {
         </div>
 
         <QueVendemos />
-        <Experience />
-        <Services />
-        <CafeteriaStyles />
-        <MenuPreview />
-        <Parents />
-        <HowItWorks />
-        <BeforeAfter />
-        <Safety />
+        <div data-seccion="cafeteria_experiencia"><Experience /></div>
+        <div data-seccion="cafeteria_servicios"><Services /></div>
+        <div data-seccion="cafeteria_estilos"><CafeteriaStyles /></div>
+        <div data-seccion="cafeteria_menu"><MenuPreview /></div>
+        <div data-seccion="cafeteria_familias"><Parents /></div>
+        <div data-seccion="cafeteria_como_funciona"><HowItWorks /></div>
+        <div data-seccion="cafeteria_antes_despues"><BeforeAfter /></div>
+        <div data-seccion="cafeteria_seguridad"><Safety /></div>
 
         {/* CTA final */}
-        <div className="py-20 bg-white">
+        <div data-seccion="cafeteria_cta_final" className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
             <div className="p-10 rounded-3xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-center shadow-xl shadow-emerald-200">
               <p className="text-2xl md:text-3xl font-black text-white">

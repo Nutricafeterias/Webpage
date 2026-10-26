@@ -7,6 +7,7 @@ import { ArrowRight, ArrowLeft, Loader2, CheckCircle, Lock } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { atribucionParaEnvio, textoOrigen } from '@/lib/atribucion'
 import { waHref } from '@/lib/whatsapp'
+import { capturar } from '@/lib/analitica'
 
 type Option = { label: string; emoji: string; points: number }
 type Question = {
@@ -199,6 +200,7 @@ export function Diagnostic() {
     }
     setSending(false)
     track('diagnostico_completado', { puntaje: pct, escuela: lead.escuela })
+    capturar('diagnostico_completado', { puntaje: pct, pagina: window.location.pathname })
     setStage('result')
   }
 
@@ -358,7 +360,7 @@ export function Diagnostic() {
             </p>
           </div>
 
-          <form onSubmit={submitLead} className="space-y-3">
+          <form onSubmit={submitLead} data-formulario="diagnostico" className="space-y-3">
             <input
               required value={lead.nombre}
               onChange={e => setLead({ ...lead, nombre: e.target.value })}

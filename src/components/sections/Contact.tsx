@@ -148,7 +148,7 @@ export function Contact() {
                 </motion.div>
 
               ) : (
-                <form onSubmit={enviar} className="space-y-4">
+                <form onSubmit={enviar} data-formulario="contacto" className="space-y-4">
                   {/* Campo trampa para bots: las personas no lo ven. */}
                   <input type="text" name="sitio_web" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
                   {/* Atribución para el respaldo de Formspree (se llena al enviar). */}
