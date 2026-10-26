@@ -175,17 +175,15 @@ export function Diagnostic() {
     setSending(true)
     try {
       const detail = QUESTIONS.map(q => `${q.area}: ${answers[q.key]?.label ?? '—'} (${answers[q.key]?.points ?? 0}/2)`).join('\n')
-      // Directo al CRM de Nutri: crea escuela+contacto+acción y notifica a Ricardo.
-      await fetch('https://crm.nutricafeteria.com.mx/api/quiz', {
+      // Al CRM del ERP (como el formulario de contacto): entra con Andrea, el equipo comercial.
+      await fetch('/api/lead', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           nombre: lead.nombre,
           escuela: lead.escuela,
           email: lead.email,
-          puntaje: `${pct}/100`,
-          detalle: detail,
-          origen: 'Diagnóstico interactivo',
+          mensaje: `Diagnóstico interactivo: ${pct}/100\n${detail}`,
         }),
       })
     } catch {
