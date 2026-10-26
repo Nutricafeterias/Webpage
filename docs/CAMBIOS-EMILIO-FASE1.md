@@ -85,3 +85,28 @@ Expresiones: #1, 10 años/una década, millón de órdenes/+1M, 97 %, Distintivo
 - `/menus` en dos pestañas (Comedor / Cafetería) y `/lineamientos-sep` con bloque «En el comedor»: propuestos en el brief, no hechos en esta fase (solo meta).
 - ESLint: quedan errores previos del repo (`<a href="/#contacto">` en varias páginas y `setState` en efectos de `Diagnostic.tsx`); `next build` no los bloquea.
 - Durante la verificación el disco de la Mac se llenó (ENOSPC). Borré solo `.next/dev`, la caché del servidor de desarrollo que había generado yo en este worktree (111 MB). Después la build y las pruebas pasaron con `next start`.
+
+## Rediseño comedores + SEO (26-oct)
+
+Encargo de Ricardo: página de comedores más visual (fotos de platillos, menú y barra) y diseñada para posicionar «comedores escolares» como ya lo hace la home con «cafeterías escolares» (pos. 2.3). Base GSC (3 meses): /comedores-escolares pos. 8.0; «comedores escolares» 6.2; «comedor escolar» 5.9; «comedores escolares sep» 10.2; «… en escuelas de tiempo completo» 12.4.
+
+**Keywords objetivo**: comedores escolares · comedor escolar · servicio de comedor escolar · comedores escolares CDMX · empresa de comedores escolares · menú de comedor escolar conforme a la SEP · comedores escolares en escuelas de tiempo completo · cuánto cuesta un comedor escolar.
+
+**Diseño** (`src/app/comedores-escolares/page.tsx`; el texto aprobado se conserva):
+- Hero a sangre con `hero-comedor.jpg`, h1 aprobado, sellos en vidrio, CTA naranja; en móvil la foto va arriba y el texto debajo.
+- Franja de cifras: #1 en México, +1,000,000 órdenes, 4.9 / 5, SEP.
+- Mosaico «Así se ve un día en el comedor» (barra, plato completo, tinga, fruta y agua).
+- Menú semanal: banner `menu-semana.jpg` + 5 tarjetas por día (sustituye la tabla, mismos datos).
+- Porciones por edad con `plato-completo.jpg` y tarjetas comparativas; bloque oscuro «Se cocina el mismo día»; línea de 4 turnos; degustación (`#degustacion`) con `tinga-frijoles.jpg`.
+- Nuevos bloques: «Comedores escolares en escuelas de tiempo completo» y «¿Cuánto cuesta un comedor escolar?» (→ guía del blog).
+- `src/components/ui/FotoComedor.tsx`: `next/image` con respaldo de gradiente si el archivo no existe (comprobación `fs` en servidor) y etiqueta «Concepto Nutri» en todas las fotos; en dev `unoptimized` para no generar caché de imágenes.
+- `src/components/ui/Reveal.tsx`: aparición sutil con framer-motion; el contenido sigue en el HTML del servidor.
+
+**SEO on-page**:
+- title «Comedores escolares en CDMX | Servicio de comedor · Nutri» (57 car.), description de 152 car., canonical, OG/Twitter con el hero (solo si existe el archivo).
+- h2 por variante: «Servicio de comedor escolar…», «Menú de comedor escolar conforme a la SEP», «Comedores escolares en escuelas de tiempo completo», «¿Cuánto cuesta un comedor escolar?», «Preguntas frecuentes sobre el comedor escolar», «Empresa de comedores escolares en CDMX» (bloque de ~400 palabras con h3: qué es, turnos, SEP/NOM-043/NOM-251, privadas/tiempo completo/públicas).
+- JSON-LD: `Service` (serviceType «Servicio de comedor escolar», provider `Organization`, areaServed CDMX + ZMVM), `FAQPage` (19 preguntas: +«¿Qué es un comedor escolar?», «diferencia con cafetería», «privadas y públicas»), `BreadcrumbList` (+ migas visibles), `ImageObject` del hero.
+
+**Enlazado interno**: home/ServicesSplit (CTA «Ver el servicio de comedor escolar» y `alt` descriptivos); `/menus` → tarjetas «Menú de comedor escolar» / «Menú de cafetería escolar»; `/lineamientos-sep` → párrafo con anclas «comedor escolar» y «cafetería escolar»; desde comedores → `/menus`, `/lineamientos-sep`, `/blog/cuanto-cuesta-comedor-escolar-cdmx` y `/cafeterias-escolares`. Sitemap: ya estaba con prioridad 0.9.
+
+**Pendiente**: `tinga-frijoles.jpg` y `fruta-agua.jpg` aún no llegan (se muestra el gradiente de respaldo); las imágenes de `public/img/comedor/` no están commiteadas (las está generando otra sesión) y deben entrar al repo antes de publicar. Verificado con `tsc` y en el dev server (200, un h1, JSON-LD) a 1280 px y 375 px; sin `next build` por disco.
