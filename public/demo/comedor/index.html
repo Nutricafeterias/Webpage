@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* Demo del comedor para la degustación — Centro Escolar Benito Juárez.
+/* Demo del comedor para degustaciones — Colegio Demo (genérico).
    TODO es simulado y vive en este equipo (localStorage). No cobra, no toca el ERP.
    La cámara es la app «Nutri Cámara» del tótem (http://127.0.0.1:8765). */
 :root{
@@ -369,7 +369,7 @@ P.hijoListo=()=>{const h=hijo();return `${cab('¡Listo!','','')}
 P.inicio=()=>{const h=hijo();if(!h)return P.hijo();
   const sig=primerComprable(), tiene=h.comidas.includes(clave(sig));
   const prox=h.comidas.filter(c=>c>=clave(hoy0())).length;
-  return `${cab('Hola, '+E.papa.nombre.split(' ')[0],'Centro Escolar Benito Juárez')}
+  return `${cab('Hola, '+E.papa.nombre.split(' ')[0],'Colegio Demo')}
   <div class="cuerpo">
    <div class="chips">${E.hijos.map((x,i)=>`<button class="chip${i==E.sel?' on':''}" data-h="${i}"><span class="ava">${ini(x.nombre)}</span>${esc(x.nombre)}</button>`).join('')}<button class="chip" data-ir="hijo" style="padding:10px 18px">＋</button></div>
    <div class="saldo" style="margin-top:16px"><small>Saldo de ${esc(h.nombre)}</small><b>${pesos(h.saldo)}</b><button class="btn" data-ir="recarga">Recargar saldo</button></div>
@@ -524,7 +524,7 @@ P.rostro=()=>{const h=hijo();return `${cab(datos.alta?'Registra el rostro de '+h
    <div style="font-size:19px;color:var(--cacao);margin:4px 0 18px;line-height:1.4">Que ${esc(h.nombre)} se pare frente a la cámara del tótem, mire de frente y <b>parpadee</b>.</div>
    <div class="circulo" style="width:440px;height:440px"><img id="cImg" alt=""><div class="sincam" id="cSin">Conectando la cámara…</div><div class="aro" id="cAro"></div></div>
    <div class="indicacion" id="cInd">Ponte frente a la cámara</div>
-   <div class="sub-ind">Solo guardamos una huella numérica del rostro, nunca la foto.</div>
+   <div class="sub-ind">Registro voluntario y con tu consentimiento. No guardamos la foto.</div>
    <div class="simular" id="cSim"></div>
    ${datos.alta?'<button class="btn sec" data-ir="hijoListo" style="margin-top:18px">Registrarlo después</button>':''}
   </div>`};
