@@ -12,7 +12,7 @@ Zona de servicio: Ciudad de México y área metropolitana del Valle de México (
 - Nombre comercial: Nutri Cafeterías. Razón social: Nutricafeterías, S.A.
 - Fundada en agosto de 2018. Abrió su primera cafetería escolar en agosto de 2019, tras ganar su primera licitación.
 - Se presenta como el operador de cafeterías escolares #1 en México.
-- Más de 1,000,000 de órdenes servidas desde 2018, según sus registros de venta. 4.9 / 5 de satisfacción.
+- Más de 1,000,000 de órdenes servidas desde 2018, según sus registros de venta. 4.9 / 5 de satisfacción en una encuesta a 500 personas de la comunidad de la Universidad Panamericana, Campus Ciudad UP (2025).
 - Hoy (octubre de 2026) opera en la Universidad Panamericana, Campus Ciudad UP, y en IPADE Business School (Ciudad de México).
 - Atiende preescolar, primaria, secundaria, preparatoria y universidad, en escuelas privadas y públicas.
 - Tecnología propia: ERP y punto de venta desarrollados por Nutri, tótems de autoservicio, App Nutri para familias y reconocimiento facial opcional.
@@ -35,7 +35,7 @@ Una escuela puede tener las dos líneas, por ejemplo comedor para primaria y caf
 
 ## Cómo opera
 
-- Menús con criterios nutrimentales de la SEP (Lineamientos generales de alimentos y bebidas en las escuelas, DOF 30-sep-2024, vigentes desde el 29-mar-2025): sin productos con sellos de exceso y con agua natural siempre disponible.
+- Menús diseñados por nutriólogos con los criterios nutrimentales de la SEP (Lineamientos generales de alimentos y bebidas en las escuelas, DOF 30-sep-2024, vigentes desde el 29-mar-2025): sin productos con sellos de exceso y con agua natural siempre disponible.
 - Comida que se cocina el mismo día, con recetas estandarizadas y porción por edad.
 - Higiene según la NOM-251-SSA1-2009, con un programa propio de capacitación para todo el personal: bitácoras de temperatura y trazabilidad de proveedores.
 - Opera bajo los estándares del Distintivo H; todo su equipo está capacitado en ellos y, según el proyecto de cada escuela, tramita el Distintivo H para la cafetería.

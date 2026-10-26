@@ -26,7 +26,7 @@ const pillars = [
     title: 'Comida real, recién hecha',
     tag: 'Experiencia',
     desc: 'Menús atractivos, balanceados y adaptados. Porque comer bien también debe ser algo que disfruten.',
-    items: ['Menús con criterios nutrimentales de la SEP', 'Opciones frescas diarias', 'Preferencias reales'],
+    items: ['Menús diseñados por nutriólogos, conforme a la SEP', 'Opciones frescas diarias', 'Preferencias reales'],
     stat: '100% fresco',
   },
   {

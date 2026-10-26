@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const steps = [
   { num: '01', emoji: '🔍', title: 'Evaluamos tu escuela',       desc: 'Visitamos, entendemos sus necesidades y diseñamos un plan personalizado. Sin costo.', color: 'bg-emerald-50 border-emerald-200', num_color: 'text-emerald-500' },
-  { num: '02', emoji: '🍽️', title: 'Diseñamos el menú',          desc: 'Con criterios nutrimentales de la SEP y considerando las preferencias reales de tus alumnos.', color: 'bg-amber-50 border-amber-200', num_color: 'text-amber-500' },
+  { num: '02', emoji: '🍽️', title: 'Diseñamos el menú',          desc: 'Nuestros nutriólogos lo diseñan con los criterios nutrimentales de la SEP y considerando las preferencias reales de tus alumnos.', color: 'bg-amber-50 border-amber-200', num_color: 'text-amber-500' },
   { num: '03', emoji: '🤖', title: 'Instalamos la tecnología',   desc: 'Tótems, punto de venta, app para familias y reconocimiento facial opcional. Listo antes del primer día.', color: 'bg-blue-50 border-blue-200', num_color: 'text-blue-500' },
   { num: '04', emoji: '👥', title: 'Capacitamos al equipo',      desc: 'Seleccionamos y entrenamos al equipo que operará tu cafetería.', color: 'bg-purple-50 border-purple-200', num_color: 'text-purple-500' },
   { num: '05', emoji: '🚀', title: '¡Arrancamos!',               desc: 'Desde el primer día con servicio completo, fluido y al nivel de tu institución.', color: 'bg-rose-50 border-rose-200', num_color: 'text-rose-500' },

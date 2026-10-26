@@ -20,7 +20,7 @@ const pillars = [
   },
   {
     emoji: '👩‍⚕️',
-    title: 'Menús con criterios nutrimentales de la SEP',
+    title: 'Menús diseñados por nutriólogos',
     desc: 'Cada platillo pasa el doble filtro: balance nutricional conforme a lineamientos SEP y aceptación real de los alumnos.',
   },
   {

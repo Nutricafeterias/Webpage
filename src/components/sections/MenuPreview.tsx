@@ -34,7 +34,7 @@ export function MenuPreview() {
             <span className="gradient-text-orange">realmente quieren comer</span>
           </h2>
           <p className="mt-4 text-stone-500 max-w-xl mx-auto text-lg">
-            Equilibramos nutrición con preferencias reales. Diseñada con criterios nutrimentales de la SEP,
+            Equilibramos nutrición con preferencias reales. Diseñada por nutriólogos con los criterios nutrimentales de la SEP,
             adaptada a cada escuela, fresca todos los días.
           </p>
         </motion.div>
