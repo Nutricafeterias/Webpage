@@ -201,14 +201,14 @@ export default function NosotrosPage() {
               <p className="text-emerald-100 mt-2 mb-6">
                 Visita una de nuestras cafeterías operando — es la mejor carta de presentación.
               </p>
-              <a
+              <Link
                 href="/#contacto"
                 data-cta="nosotros_agendar_visita"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white text-emerald-700 font-black hover:bg-emerald-50 transition-all duration-200 shadow-lg hover:scale-[1.03]"
               >
                 Agendar una visita
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

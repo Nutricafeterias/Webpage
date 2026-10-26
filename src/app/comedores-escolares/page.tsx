@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 }
 
 const org = {
-  '@type': 'Organization',
+  '@type': 'LocalBusiness',
   '@id': `${BASE}/#organization`,
   name: 'Nutri Cafeterías',
   url: BASE,
