@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 import { track } from '@vercel/analytics'
 import { ArrowRight, ArrowLeft, Loader2, CheckCircle, Lock } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { atribucionParaEnvio, textoOrigen } from '@/lib/atribucion'
+import { waHref } from '@/lib/whatsapp'
 
 type Option = { label: string; emoji: string; points: number }
 type Question = {
@@ -174,7 +176,10 @@ export function Diagnostic() {
     e.preventDefault()
     setSending(true)
     try {
-      const detail = QUESTIONS.map(q => `${q.area}: ${answers[q.key]?.label ?? '—'} (${answers[q.key]?.points ?? 0}/2)`).join('\n')
+      const atrib = atribucionParaEnvio()
+      const detail =
+        QUESTIONS.map(q => `${q.area}: ${answers[q.key]?.label ?? '—'} (${answers[q.key]?.points ?? 0}/2)`).join('\n') +
+        '\n\n' + textoOrigen(atrib)
       // Directo al CRM de Nutri: crea escuela+contacto+acción y notifica a Ricardo.
       await fetch('https://crm.nutricafeteria.com.mx/api/quiz', {
         method: 'POST',
@@ -186,6 +191,7 @@ export function Diagnostic() {
           puntaje: `${pct}/100`,
           detalle: detail,
           origen: 'Diagnóstico interactivo',
+          atribucion: atrib,
         }),
       })
     } catch {
@@ -196,8 +202,9 @@ export function Diagnostic() {
     setStage('result')
   }
 
-  const waText = encodeURIComponent(
+  const waUrl = waHref(
     `¡Hola! Hice el diagnóstico de mi cafetería escolar en su página y obtuve ${pct}/100. Me gustaría platicar sobre cómo mejorarlo.`,
+    'diagnostico',
   )
 
   return (
@@ -462,7 +469,10 @@ export function Diagnostic() {
                 Agendar reunión gratis →
               </a>
               <a
-                href={`https://wa.me/522219251954?text=${waText}`}
+                href={waUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="whatsapp_diagnostico"
                 className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-emerald-700/60 text-white font-bold hover:bg-emerald-700 transition-colors"
               >
                 <WhatsAppIcon className="w-4 h-4" /> Platicar por WhatsApp

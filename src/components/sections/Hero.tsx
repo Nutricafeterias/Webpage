@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Star } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import Image from 'next/image'
+import { waHref } from '@/lib/whatsapp'
 
 export function Hero() {
   return (
@@ -64,13 +65,17 @@ export function Hero() {
           >
             <a
               href="#contacto"
+              data-cta="agenda_reunion"
               className="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-base transition-all duration-200 shadow-lg shadow-emerald-200 hover:shadow-emerald-300 hover:scale-[1.03] active:scale-[0.98]"
             >
               ¡Agenda una reunión gratis!
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              href="https://wa.me/522219251954"
+              href={waHref('Hola, me interesa conocer más sobre Nutri Cafeterías para mi escuela', 'home')}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="whatsapp_hero"
               className="group inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white hover:bg-green-50 border-2 border-stone-200 hover:border-green-300 text-stone-800 font-semibold transition-all duration-200 shadow-sm"
             >
               <WhatsAppIcon className="w-4 h-4 text-green-500" />

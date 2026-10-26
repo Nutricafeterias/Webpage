@@ -4,17 +4,26 @@ import { motion } from 'framer-motion'
 import { useForm, ValidationError } from '@formspree/react'
 import { ArrowRight, Clock, Phone, CheckCircle, Mail, Loader2 } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { useRef } from 'react'
+import { usePathname } from 'next/navigation'
+import { atribucionParaEnvio, textoOrigen } from '@/lib/atribucion'
+import { waHref, origenDesdeRuta } from '@/lib/whatsapp'
 
 export function Contact() {
   const [state, handleSubmit] = useForm('xrejlppw')
+  const pathname = usePathname()
+  const origenRef = useRef<HTMLInputElement>(null)
 
   // El lead también entra directo al CRM del ERP (Formspree queda de respaldo).
+  // Ambos reciben la atribución (página de entrada, referrer, UTM, gclid, dispositivo).
   const enviar = (e: React.FormEvent<HTMLFormElement>) => {
+    const atribucion = atribucionParaEnvio()
+    if (origenRef.current) origenRef.current.value = textoOrigen(atribucion)
     const datos = Object.fromEntries(new FormData(e.currentTarget).entries())
     void fetch('/api/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(datos),
+      body: JSON.stringify({ ...datos, ...atribucion }),
     }).catch(() => undefined)
     return handleSubmit(e)
   }
@@ -82,7 +91,10 @@ export function Contact() {
 
             <div className="space-y-3">
               <a
-                href="https://wa.me/522219251954"
+                href={waHref('Hola, me interesa agendar una reunión con Nutri Cafeterías', origenDesdeRuta(pathname))}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="whatsapp_contacto"
                 className="flex items-center gap-3 p-4 rounded-2xl border-2 border-emerald-200 bg-white hover:bg-emerald-50 transition-colors group shadow-sm"
               >
                 <div className="p-2 rounded-xl bg-emerald-100">
@@ -139,6 +151,8 @@ export function Contact() {
                 <form onSubmit={enviar} className="space-y-4">
                   {/* Campo trampa para bots: las personas no lo ven. */}
                   <input type="text" name="sitio_web" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+                  {/* Atribución para el respaldo de Formspree (se llena al enviar). */}
+                  <input type="hidden" name="origen_web" ref={origenRef} />
                   <h3 className="font-black text-stone-900 text-lg mb-5">Agenda tu reunión gratis 🗓️</h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

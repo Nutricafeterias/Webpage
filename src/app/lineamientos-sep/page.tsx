@@ -5,6 +5,7 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { waHref } from '@/lib/whatsapp'
 
 export const metadata: Metadata = {
   title: 'Lineamientos SEP para Cafeterías Escolares | Cumplimiento Garantizado — Nutri Cafeterías',
@@ -132,7 +133,10 @@ export default function LineamientosSepPage() {
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href="https://wa.me/522219251954?text=Hola!%20Quiero%20una%20revisión%20de%20cumplimiento%20SEP%20para%20la%20cafetería%20de%20mi%20escuela."
+                href={waHref('Hola, quiero una revisión de cumplimiento SEP para la cafetería o comedor de mi escuela', 'sep')}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="whatsapp_revision_sep"
                 className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-emerald-700/60 text-white font-bold hover:bg-emerald-700 transition-colors"
               >
                 <WhatsAppIcon className="w-4 h-4" /> Revisión por WhatsApp

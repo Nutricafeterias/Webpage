@@ -1,6 +1,7 @@
 import { Mail } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import Image from 'next/image'
+import { WaLink } from '@/components/WaLink'
 
 const links = [
   { href: '/cafeterias-escolares', label: 'Cafetería escolar' },
@@ -51,9 +52,9 @@ export function Footer() {
               la experiencia dentro de las instituciones de México. 🇲🇽
             </p>
             <div className="flex items-center gap-3 mt-5">
-              <a href="https://wa.me/522219251954" className="p-2.5 rounded-xl bg-stone-800 hover:bg-emerald-600 text-stone-400 hover:text-white transition-all" aria-label="WhatsApp">
+              <WaLink cta="whatsapp_footer" className="p-2.5 rounded-xl bg-stone-800 hover:bg-emerald-600 text-stone-400 hover:text-white transition-all" aria-label="WhatsApp">
                 <WhatsAppIcon className="w-4 h-4" />
-              </a>
+              </WaLink>
               <a href="mailto:contacto@nutricafeteria.com.mx" className="p-2.5 rounded-xl bg-stone-800 hover:bg-blue-600 text-stone-400 hover:text-white transition-all" aria-label="Email">
                 <Mail className="w-4 h-4" />
               </a>
