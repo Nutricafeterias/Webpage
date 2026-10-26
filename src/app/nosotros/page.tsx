@@ -26,15 +26,25 @@ const hechos = [
   'Nutri Cafeterías es un operador de cafeterías y comedores escolares en la Ciudad de México y su área metropolitana.',
   'La razón social es Nutricafeterías, S.A., y factura a la escuela y a las familias que lo pidan.',
   'Nutri Cafeterías se fundó en agosto de 2018 y abrió su primera cafetería escolar en agosto de 2019.',
-  'Somos el operador de cafeterías escolares #1 en México, con más de 1,000,000 de órdenes servidas.',
+  'Somos el operador de cafeterías escolares #1 en México.',
+  'Hemos servido más de 1,000,000 de órdenes desde 2018, según nuestros registros de venta.',
   'Nuestro servicio tiene 4.9 / 5 de satisfacción.',
-  'Hoy operamos en la Universidad Panamericana, Campus Ciudad UP, y en IPADE Business School.',
+  'Hoy (octubre de 2026) operamos en la Universidad Panamericana, Campus Ciudad UP, y en IPADE Business School, en la Ciudad de México.',
   'Atendemos desde preescolar hasta universidad, con dos líneas de servicio: cafetería escolar y comedor escolar.',
   'La comida del comedor se cocina el mismo día y se sirve por turnos, con porción por edad.',
   'Desarrollamos y operamos nuestro propio ERP y nuestro propio punto de venta.',
   'Las familias pagan con la App Nutri para familias o en efectivo en caja, con la misma fuerza.',
   'Tenemos tótems de autoservicio y pago con reconocimiento facial opcional, con consentimiento del tutor y alternativa sin rostro.',
   'Seguimos los Lineamientos de la SEP y la NOM-251, y operamos bajo los estándares del Distintivo H.',
+]
+
+// Qué tecnología está en operación hoy y desde cuándo (sin «próximamente»).
+const tecnologiaHoy = [
+  { t: 'Punto de venta propio', d: 'En operación desde septiembre de 2026. Lo desarrollamos y lo operamos nosotros.' },
+  { t: 'ERP propio', d: 'En operación: inventarios, compras, recetas, caja y reportes para la dirección.' },
+  { t: 'App Nutri para familias', d: 'En operación desde octubre de 2026: saldo por hijo, recargas, límite diario, alergias y avisos. Siempre con efectivo en caja.' },
+  { t: 'Tótems de autoservicio', d: 'Operando en el Campus Ciudad UP de la Universidad Panamericana desde octubre de 2026.' },
+  { t: 'Reconocimiento facial', d: 'En operación desde octubre de 2026, opcional, con consentimiento del tutor y alternativa sin rostro.' },
 ]
 
 const BASE = 'https://cafeteriasescolares.com.mx'
@@ -113,6 +123,24 @@ export default function NosotrosPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* Tecnología en operación hoy */}
+        <section id="tecnologia-hoy" data-seccion="nosotros_tecnologia_hoy" className="pb-20 bg-[#F7F3EA]">
+          <div className="max-w-5xl mx-auto px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-black text-stone-900 text-center mb-3">
+              Tecnología <span className="gradient-text-primary">en operación hoy</span>
+            </h2>
+            <p className="text-center text-stone-500 mb-10">Lo que ya funciona en nuestras cafeterías, con la fecha en que entró en operación.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {tecnologiaHoy.map(x => (
+                <div key={x.t} className="p-5 rounded-2xl bg-white border-2 border-stone-100 shadow-sm">
+                  <h3 className="font-black text-stone-900 mb-1">{x.t}</h3>
+                  <p className="text-sm text-stone-600 leading-relaxed">{x.d}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

@@ -26,7 +26,7 @@ export const respaldos: Respaldo[] = [
     clave: 'cofepris',
     emoji: '🏛️',
     titulo: 'Aviso de funcionamiento COFEPRIS',
-    texto: 'Cada cafetería que operamos cuenta con su aviso de funcionamiento ante COFEPRIS.',
+    texto: 'Cada cafetería que operamos cuenta con su aviso de funcionamiento ante COFEPRIS. Entregamos la documentación a la escuela durante el proceso.',
   },
   {
     clave: 'repse',

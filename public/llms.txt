@@ -11,10 +11,19 @@ Zona de servicio: Ciudad de México y área metropolitana del Valle de México (
 
 - Nombre comercial: Nutri Cafeterías. Razón social: Nutricafeterías, S.A.
 - Fundada en agosto de 2018. Abrió su primera cafetería escolar en agosto de 2019, tras ganar su primera licitación.
-- Se presenta como el operador de cafeterías escolares #1 en México, con más de 1,000,000 de órdenes servidas y 4.9 / 5 de satisfacción.
-- Clientes actuales: Universidad Panamericana, Campus Ciudad UP, e IPADE Business School (Ciudad de México).
+- Se presenta como el operador de cafeterías escolares #1 en México.
+- Más de 1,000,000 de órdenes servidas desde 2018, según sus registros de venta. 4.9 / 5 de satisfacción.
+- Hoy (octubre de 2026) opera en la Universidad Panamericana, Campus Ciudad UP, y en IPADE Business School (Ciudad de México).
 - Atiende preescolar, primaria, secundaria, preparatoria y universidad, en escuelas privadas y públicas.
 - Tecnología propia: ERP y punto de venta desarrollados por Nutri, tótems de autoservicio, App Nutri para familias y reconocimiento facial opcional.
+
+## Tecnología en operación hoy (con fecha)
+
+- Punto de venta propio: en operación desde septiembre de 2026.
+- ERP propio: en operación (inventarios, compras, recetas, caja y reportes).
+- App Nutri para familias: en operación desde octubre de 2026.
+- Tótems de autoservicio: operando en el Campus Ciudad UP de la Universidad Panamericana desde octubre de 2026.
+- Reconocimiento facial: en operación desde octubre de 2026; opcional, con consentimiento del tutor y alternativa sin rostro.
 
 ## Dos líneas de servicio
 
@@ -30,7 +39,7 @@ Una escuela puede tener las dos líneas, por ejemplo comedor para primaria y caf
 - Comida que se cocina el mismo día, con recetas estandarizadas y porción por edad.
 - Higiene según la NOM-251-SSA1-2009, con un programa propio de capacitación para todo el personal: bitácoras de temperatura y trazabilidad de proveedores.
 - Opera bajo los estándares del Distintivo H; todo su equipo está capacitado en ellos y, según el proyecto de cada escuela, tramita el Distintivo H para la cafetería.
-- Cada cafetería que opera cuenta con su aviso de funcionamiento ante COFEPRIS. Registro REPSE vigente. Póliza de responsabilidad civil vigente. Entrega opiniones de cumplimiento del SAT, IMSS e INFONAVIT cuando la escuela las pide.
+- Cada cafetería que opera cuenta con su aviso de funcionamiento ante COFEPRIS; la documentación se entrega a la escuela durante el proceso. Registro REPSE vigente. Póliza de responsabilidad civil vigente. Entrega opiniones de cumplimiento del SAT, IMSS e INFONAVIT cuando la escuela las pide.
 - Factura a la escuela y a las familias que lo pidan.
 - La operación diaria es de Nutri: proveedores, cocina, calidad, tecnología, supervisión y atención a las familias. La dirección recibe reportes y puede revisar la operación cuando quiera.
 - Degustación en la escuela antes de decidir: dirección, maestros, comité, papás y alumnos prueban la comida de un día completo y votan con una boleta.
