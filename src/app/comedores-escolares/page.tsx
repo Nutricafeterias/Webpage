@@ -171,14 +171,6 @@ const recienHecho = [
 
 const horarios = ['13:00', '13:45', '14:30', '15:15']
 
-const turnos = [
-  'Cada grupo entra en su horario. Por ejemplo: 4 turnos de 45 minutos (13:00, 13:45, 14:30 y 15:15), primero los más chicos.',
-  'El plato se sirve al momento, con utensilios medidos: la misma porción para todos los niños del grupo.',
-  'Revisión al cerrar cada turno: confirmamos que todos recibieron entrada, plato fuerte, verdura, fruta y agua.',
-  'Un equipo fijo que conoce a los niños, les sirve con paciencia y tiene a la vista sus alergias.',
-  'Funciona con 100 alumnos o con 900, en uno o varios comedores.',
-]
-
 const comunicacion = [
   { emoji: '📸', t: 'Foto del plato del día', d: 'Por WhatsApp, todos los días.' },
   { emoji: '🗓️', t: 'Menú del mes por adelantado', d: 'Por WhatsApp y en la app.' },
@@ -206,9 +198,9 @@ const tiempoCompleto = [
 
 const diaColor = [
   'from-emerald-500 to-emerald-400',
-  'from-amber-500 to-amber-400',
+  'from-emerald-400 to-emerald-300',
   'from-emerald-600 to-emerald-500',
-  'from-amber-600 to-amber-500',
+  'from-emerald-500 to-emerald-400',
   'from-emerald-700 to-emerald-500',
 ]
 
@@ -257,12 +249,12 @@ export default function ComedoresEscolaresPage() {
             <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0,transparent_120px,var(--color-emerald-950)_320px)] sm:bg-none sm:bg-gradient-to-t sm:from-emerald-950 sm:via-emerald-950/80 sm:to-transparent md:bg-gradient-to-r md:from-emerald-950/95 md:via-emerald-950/65 md:to-transparent" />
             <div className="relative z-10 w-full px-6 pb-8 pt-60 sm:p-10 md:p-14 lg:p-16">
               <div className="max-w-2xl">
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400 text-stone-900 font-black text-xs uppercase tracking-wider mb-5">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-300 text-stone-900 font-black text-xs uppercase tracking-wider mb-5">
                   🍽️ Comedores escolares en CDMX
                 </span>
                 <h1 className="text-[2.1rem] leading-[1.08] sm:text-5xl lg:text-6xl font-black text-white">
                   Comedor escolar:{' '}
-                  <span className="text-amber-300">comida completa, recién hecha,</span>{' '}
+                  <span className="text-emerald-200">comida completa, recién hecha,</span>{' '}
                   para cada niño, todos los días
                 </h1>
                 <p className="mt-5 text-emerald-50/90 text-base sm:text-lg leading-relaxed">
@@ -271,7 +263,7 @@ export default function ComedoresEscolaresPage() {
                   primero. Conforme a los lineamientos de la SEP.
                 </p>
                 <div className="mt-7 flex flex-col sm:flex-row gap-3">
-                  <Link href="/#contacto" data-cta="agenda_degustacion" className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-stone-900 font-black transition-all duration-200 shadow-xl shadow-black/20 hover:scale-[1.03]">
+                  <Link href="/#contacto" data-cta="agenda_degustacion" className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-emerald-300 hover:bg-emerald-200 text-stone-900 font-black transition-all duration-200 shadow-xl shadow-black/20 hover:scale-[1.03]">
                     Agenda una degustación
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -468,7 +460,7 @@ export default function ComedoresEscolaresPage() {
               </div>
               <div className="mt-5 flex flex-wrap gap-2">
                 {['500 kcal', '20 g de proteína', '5 g de fibra', '320 mg de sodio', '0 g de azúcar añadida'].map((n, i) => (
-                  <span key={n} className={`px-3 py-1.5 rounded-full text-xs font-bold ${i === 4 ? 'bg-amber-400 text-stone-900' : 'bg-white border border-stone-200 text-stone-700'}`}>
+                  <span key={n} className={`px-3 py-1.5 rounded-full text-xs font-bold ${i === 4 ? 'bg-emerald-300 text-stone-900' : 'bg-white border border-stone-200 text-stone-700'}`}>
                     {n}
                   </span>
                 ))}
@@ -485,12 +477,12 @@ export default function ComedoresEscolaresPage() {
         {/* Recién hecho */}
         <section data-seccion="comedor_recien_hecho" className="mt-24 md:mt-28 py-20 bg-emerald-800 relative overflow-hidden">
           <div aria-hidden className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-emerald-500/30 blur-3xl" />
-          <div aria-hidden className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-amber-500/20 blur-3xl" />
+          <div aria-hidden className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-emerald-300/20 blur-3xl" />
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <Reveal className="text-center mb-12">
               <h2 className="text-3xl md:text-5xl font-black text-white leading-tight">
                 Se cocina el mismo día.{' '}
-                <span className="text-amber-300">Nunca se congela.</span>
+                <span className="text-emerald-200">Nunca se congela.</span>
               </h2>
             </Reveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -508,38 +500,6 @@ export default function ComedoresEscolaresPage() {
         </section>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Turnos */}
-          <section data-seccion="comedor_turnos" className="mt-24 md:mt-28 max-w-4xl mx-auto">
-            <Reveal className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-black text-stone-900">
-                Por turnos, por grupo,{' '}
-                <span className="gradient-text-primary">sin filas</span>
-              </h2>
-            </Reveal>
-            <Reveal>
-              <div className="relative grid grid-cols-4 gap-2 mb-8">
-                <div aria-hidden className="absolute top-5 left-[12.5%] right-[12.5%] h-1 rounded-full bg-gradient-to-r from-emerald-300 via-emerald-500 to-amber-500" />
-                {horarios.map((h, i) => (
-                  <div key={h} className="relative text-center">
-                    <span className="mx-auto flex w-10 h-10 rounded-full bg-white border-4 border-emerald-500 items-center justify-center text-xs font-black text-emerald-700 shadow">
-                      {i + 1}
-                    </span>
-                    <p className="mt-2 font-black text-stone-900 text-sm md:text-base">{h}</p>
-                    <p className="text-[11px] md:text-xs text-stone-500">Turno {i + 1}</p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-            <ul className="space-y-3">
-              {turnos.map(t => (
-                <li key={t} className="flex items-start gap-3 p-5 rounded-2xl bg-white border-2 border-stone-100 shadow-sm text-stone-700">
-                  <span className="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs font-black">✓</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </section>
-
           {/* Pagos */}
           <section data-seccion="comedor_pagos" className="mt-24 md:mt-28 max-w-5xl mx-auto">
             <Reveal className="text-center mb-10">
@@ -618,7 +578,7 @@ export default function ComedoresEscolaresPage() {
 
           {/* Degustación */}
           <section id="degustacion" data-seccion="comedor_degustacion" className="mt-24 md:mt-28 scroll-mt-28">
-            <div className="grid grid-cols-1 lg:grid-cols-5 rounded-[2rem] overflow-hidden bg-white border-2 border-amber-200 shadow-xl shadow-amber-100">
+            <div className="grid grid-cols-1 lg:grid-cols-5 rounded-[2rem] overflow-hidden bg-white border-2 border-emerald-200 shadow-xl shadow-emerald-100">
               <FotoComedor
                 archivo="tinga-frijoles.jpg"
                 alt="Degustación de comedor escolar: tinga de pollo con frijoles y tortillas de maíz"
@@ -627,7 +587,7 @@ export default function ComedoresEscolaresPage() {
                 className="lg:col-span-2 min-h-[240px] lg:min-h-full"
               />
               <div className="lg:col-span-3 p-8 md:p-12">
-                <span className="inline-flex px-3 py-1 rounded-full bg-amber-400 text-stone-900 font-black text-xs uppercase tracking-wider mb-4">
+                <span className="inline-flex px-3 py-1 rounded-full bg-emerald-300 text-stone-900 font-black text-xs uppercase tracking-wider mb-4">
                   Degustación en tu escuela
                 </span>
                 <h2 className="text-3xl md:text-4xl font-black text-stone-900 mb-4">
@@ -654,6 +614,26 @@ export default function ComedoresEscolaresPage() {
                 <span className="gradient-text-primary">Tú recibes el aviso.</span>
               </h2>
             </Reveal>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+              <div className="relative aspect-[3/2] rounded-3xl overflow-hidden shadow-lg">
+                <FotoComedor
+                  archivo="totem-facial.jpg"
+                  alt="Alumna entrando al comedor escolar con reconocimiento facial en el tótem de autoservicio"
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  emoji="🙂"
+                  className="absolute inset-0"
+                />
+              </div>
+              <div className="relative aspect-[3/2] rounded-3xl overflow-hidden shadow-lg">
+                <FotoComedor
+                  archivo="app-familias.jpg"
+                  alt="Mamá revisando en la app para familias el saldo y el menú del comedor escolar de su hijo"
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  emoji="📱"
+                  className="absolute inset-0"
+                />
+              </div>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {[
                 { t: 'Tótem con reconocimiento facial', d: 'A la entrada del comedor: el niño se para frente a la cámara y entra, sin tarjetas ni boletos. Si no tiene comida comprada, su profesor lo revisa contigo.' },
@@ -743,7 +723,7 @@ export default function ComedoresEscolaresPage() {
             <div className="p-8 md:p-12 rounded-[2rem] bg-stone-900 text-center relative overflow-hidden">
               <div aria-hidden className="absolute -top-24 left-1/2 -translate-x-1/2 w-[32rem] h-48 rounded-full bg-emerald-500/30 blur-3xl" />
               <h2 className="relative text-3xl md:text-4xl font-black text-white">
-                ¿Cuánto cuesta un <span className="text-amber-300">comedor escolar</span>?
+                ¿Cuánto cuesta un <span className="text-emerald-200">comedor escolar</span>?
               </h2>
               <p className="relative mt-4 text-stone-300 max-w-2xl mx-auto leading-relaxed">
                 Depende del número de alumnos, de los tiempos del menú y de lo que la escuela necesite.
@@ -797,7 +777,7 @@ export default function ComedoresEscolaresPage() {
               <Link
                 href="/#contacto"
                 data-cta="agenda_degustacion"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-amber-500 text-stone-900 font-black hover:bg-amber-400 transition-all duration-200 shadow-lg hover:scale-[1.03]"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-emerald-300 text-stone-900 font-black hover:bg-emerald-200 transition-all duration-200 shadow-lg hover:scale-[1.03]"
               >
                 Agendar degustación →
               </Link>
