@@ -4,6 +4,8 @@ const base = [
   '🏫 Universidad Panamericana',
   '🙂 Pago con reconocimiento facial (opcional)',
   '📱 App para familias + efectivo en caja',
+  '🥇 Operador #1 en México',
+  '🎉 +1,000,000 órdenes servidas',
   '🏆 Desde 2018',
   '🧾 ERP y punto de venta propios',
   '🛡️ Seguimos la NOM-251',

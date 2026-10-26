@@ -27,7 +27,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 text-sm font-semibold mb-6 shadow-sm"
           >
             <Star className="w-3.5 h-3.5 fill-emerald-500 text-emerald-500" />
-            Cafeterías y comedores escolares · desde 2018
+            Operador de cafeterías escolares #1 en México
           </motion.div>
 
           {/* Headline */}

@@ -86,6 +86,7 @@ export function Footer() {
             <h4 className="font-black text-white text-sm uppercase tracking-wider">En números</h4>
             {[
               { emoji: '📅', text: 'Desde 2018' },
+              { emoji: '🍽️', text: '+1,000,000 órdenes servidas' },
               { emoji: '🏫', text: 'Hasta 11 cafeterías a la vez' },
               { emoji: '🧾', text: 'ERP y punto de venta propios' },
             ].map(s => (
