@@ -55,7 +55,7 @@ export function Footer() {
               <a href="https://wa.me/522219251954" className="p-2.5 rounded-xl bg-stone-800 hover:bg-emerald-600 text-stone-400 hover:text-white transition-all" aria-label="WhatsApp">
                 <WhatsAppIcon className="w-4 h-4" />
               </a>
-              <a href="mailto:contacto@nutricafeteria.com.mx" className="p-2.5 rounded-xl bg-stone-800 hover:bg-blue-600 text-stone-400 hover:text-white transition-all" aria-label="Email">
+              <a href="mailto:a.fernandez@nutricafeteria.com.mx" className="p-2.5 rounded-xl bg-stone-800 hover:bg-blue-600 text-stone-400 hover:text-white transition-all" aria-label="Email">
                 <Mail className="w-4 h-4" />
               </a>
               <a href="#" className="p-2.5 rounded-xl bg-stone-800 hover:bg-pink-600 text-stone-400 hover:text-white transition-all" aria-label="Instagram">
