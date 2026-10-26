@@ -5,7 +5,7 @@ import { Star } from 'lucide-react'
 import Image from 'next/image'
 
 const schools = [
-  { name: 'Universidad Panamericana', location: 'Campus Ciudad UP', initials: 'UP',  image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=400&fit=crop&q=85' },
+  { name: 'Universidad Panamericana, Campus Ciudad UP', location: 'Ciudad de México', initials: 'UP',  image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=600&h=400&fit=crop&q=85' },
   { name: 'IPADE Business School',    location: 'Ciudad de México', initials: 'IP',  image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&h=400&fit=crop&q=85' },
 ]
 
@@ -13,7 +13,7 @@ const testimonials = [
   {
     quote: 'Desde que Nutri Cafeterías opera nuestra cafetería, el servicio mejoró significativamente en rapidez, organización y satisfacción de los alumnos.',
     author: 'Director General',
-    school: 'Universidad Panamericana',
+    school: 'Universidad Panamericana, Campus Ciudad UP',
     emoji: '🎓',
     bg: 'bg-emerald-50 border-emerald-200',
   },

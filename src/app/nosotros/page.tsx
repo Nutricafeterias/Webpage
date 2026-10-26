@@ -11,7 +11,7 @@ import { Respaldos } from '@/components/sections/Respaldos'
 export const metadata: Metadata = {
   title: 'Nosotros | Nutri Cafeterías — Cafeterías y comedores escolares desde 2018',
   description:
-    'Conoce a Nutri Cafeterías: operamos cafeterías y comedores escolares en México desde 2018. Seguimos la NOM-251 y los Lineamientos SEP, con ERP y punto de venta propios, cocineros y supervisores al servicio de cada escuela.',
+    'Nutri Cafeterías opera cafeterías y comedores escolares en CDMX desde 2018: Universidad Panamericana, Campus Ciudad UP, e IPADE. ERP y POS propios, app para familias y efectivo en caja.',
   alternates: { canonical: 'https://cafeteriasescolares.com.mx/nosotros' },
   openGraph: {
     title: 'Nosotros — Nutri Cafeterías',
@@ -20,6 +20,42 @@ export const metadata: Metadata = {
     type: 'website',
   },
 }
+
+// Hechos citables: una oración, un dato. Solo claims permitidos por DG (ESTRATEGIA §4).
+const hechos = [
+  'Nutri Cafeterías es un operador de cafeterías y comedores escolares en la Ciudad de México y su área metropolitana.',
+  'La razón social es Nutricafeterías, S.A., y factura a la escuela y a las familias que lo pidan.',
+  'Nutri Cafeterías se fundó en agosto de 2018 y abrió su primera cafetería escolar en agosto de 2019.',
+  'Somos el operador de cafeterías escolares #1 en México, con más de 1,000,000 de órdenes servidas.',
+  'Nuestro servicio tiene 4.9 / 5 de satisfacción.',
+  'Hoy operamos en la Universidad Panamericana, Campus Ciudad UP, y en IPADE Business School.',
+  'Atendemos desde preescolar hasta universidad, con dos líneas de servicio: cafetería escolar y comedor escolar.',
+  'La comida del comedor se cocina el mismo día y se sirve por turnos, con porción por edad.',
+  'Desarrollamos y operamos nuestro propio ERP y nuestro propio punto de venta.',
+  'Las familias pagan con la App Nutri para familias o en efectivo en caja, con la misma fuerza.',
+  'Tenemos tótems de autoservicio y pago con reconocimiento facial opcional, con consentimiento del tutor y alternativa sin rostro.',
+  'Seguimos los Lineamientos de la SEP y la NOM-251, y operamos bajo los estándares del Distintivo H.',
+]
+
+const BASE = 'https://cafeteriasescolares.com.mx'
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    url: `${BASE}/nosotros`,
+    name: 'Nosotros — Nutri Cafeterías',
+    inLanguage: 'es-MX',
+    about: { '@id': `${BASE}/#organization` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE },
+      { '@type': 'ListItem', position: 2, name: 'Nosotros', item: `${BASE}/nosotros` },
+    ],
+  },
+]
 
 const valores = [
   { emoji: '🥗', title: 'Nutrición sin sacrificar sabor', desc: 'Creemos que la comida saludable solo funciona si los alumnos la eligen por gusto. Por eso cada platillo pasa el doble filtro: criterios nutrimentales de la SEP y comensal real.' },
@@ -38,6 +74,7 @@ const equipo = [
 export default function NosotrosPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar />
       <main className="pt-28 bg-[#F7F3EA]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -52,14 +89,32 @@ export default function NosotrosPage() {
             </h1>
             <p className="mt-5 text-stone-500 text-lg leading-relaxed">
               Nutri Cafeterías nació con una convicción: la cafetería escolar puede servir comida real,
-              a tiempo y a la vista. Abrimos
-              nuestra primera cafetería en agosto de 2019, tras ganar nuestra primera licitación,
-              y llegamos a operar 11 cafeterías escolares al mismo tiempo en la Ciudad de México.
+              a tiempo y a la vista. Abrimos nuestra primera cafetería escolar en agosto de 2019,
+              tras ganar nuestra primera licitación, y desde entonces operamos cafeterías y comedores
+              escolares en la Ciudad de México.
             </p>
           </div>
         </div>
 
         <StatsBar />
+
+        {/* Por qué Nutri: hechos en frases cortas */}
+        <section id="por-que-nutri" data-seccion="nosotros_hechos" className="py-20 bg-[#F7F3EA]">
+          <div className="max-w-4xl mx-auto px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-black text-stone-900 text-center mb-3">
+              Por qué Nutri, <span className="gradient-text-primary">en datos</span>
+            </h2>
+            <p className="text-center text-stone-500 mb-10">Lo esencial de Nutri Cafeterías, en una línea cada cosa.</p>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {hechos.map(h => (
+                <li key={h} className="flex items-start gap-3 p-4 rounded-2xl bg-white border-2 border-stone-100 text-sm text-stone-700 leading-relaxed">
+                  <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-black">✓</span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
         {/* Valores */}
         <div className="py-20 bg-white">
@@ -120,6 +175,7 @@ export default function NosotrosPage() {
               </p>
               <a
                 href="/#contacto"
+                data-cta="nosotros_agendar_visita"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white text-emerald-700 font-black hover:bg-emerald-50 transition-all duration-200 shadow-lg hover:scale-[1.03]"
               >
                 Agendar una visita

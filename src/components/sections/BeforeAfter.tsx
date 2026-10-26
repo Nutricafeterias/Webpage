@@ -110,7 +110,7 @@ export function BeforeAfter() {
           </p>
           <div className="mt-4 flex items-center justify-center gap-2">
             <span className="text-2xl">🏫</span>
-            <span className="text-stone-500 text-sm font-semibold">— Director, Universidad Panamericana</span>
+            <span className="text-stone-500 text-sm font-semibold">— Director, Universidad Panamericana, Campus Ciudad UP</span>
           </div>
         </motion.blockquote>
       </div>
