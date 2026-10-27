@@ -123,7 +123,7 @@ const sellos = [
 
 const cifras = [
   { n: '#1', d: 'Operador de cafeterías escolares en México' },
-  { n: '+1,000,000', d: 'órdenes servidas' },
+  { n: '+1,000,000', d: 'comidas servidas' },
   { n: '4.9 / 5', d: 'de satisfacción' },
   { n: 'SEP', d: 'productos conforme a los lineamientos' },
 ]

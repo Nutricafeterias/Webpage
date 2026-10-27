@@ -27,7 +27,7 @@ const hechos = [
   'La razón social es Nutricafeterías, S.A., y factura a la escuela y a las familias que lo pidan.',
   'Nutri Cafeterías se fundó en agosto de 2018 y abrió su primera cafetería escolar en agosto de 2019.',
   'Somos el operador de cafeterías escolares #1 en México.',
-  'Hemos servido más de 1,000,000 de órdenes desde 2018, según nuestros registros de venta.',
+  'Hemos servido más de 1,000,000 de comidas desde 2018: llegamos a operar 11 planteles a la vez, con alrededor de 1,000 comidas diarias por plantel.',
   'Nuestro servicio tiene 4.9 / 5 de satisfacción en una encuesta a 500 personas de la comunidad de la Universidad Panamericana, Campus Ciudad UP (2025).',
   'Hoy (octubre de 2026) operamos en la Universidad Panamericana, Campus Ciudad UP, y en IPADE Business School, en la Ciudad de México.',
   'Atendemos desde preescolar hasta universidad, con dos líneas de servicio: cafetería escolar y comedor escolar.',

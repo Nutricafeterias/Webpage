@@ -107,7 +107,7 @@ export function Hero() {
                 ))}
               </div>
               <p className="text-xs text-stone-500 mt-0.5">
-                <strong className="text-stone-700">4.9 / 5</strong> de satisfacción · <strong className="text-stone-700">+1,000,000</strong> órdenes · desde 2018
+                <strong className="text-stone-700">4.9 / 5</strong> de satisfacción · <strong className="text-stone-700">+1,000,000</strong> comidas · desde 2018
               </p>
             </div>
           </motion.div>

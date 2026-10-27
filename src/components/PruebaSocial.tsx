@@ -6,7 +6,7 @@ import { Star } from 'lucide-react'
  */
 export const CLAIMS = [
   { dato: '#1', texto: 'operador de cafeterías escolares en México' },
-  { dato: '+1,000,000', texto: 'órdenes servidas' },
+  { dato: '+1,000,000', texto: 'comidas servidas' },
   { dato: '4.9 / 5', texto: 'de satisfacción' },
   { dato: 'Desde 2018', texto: 'en la Universidad Panamericana, Campus Ciudad UP, e IPADE' },
 ] as const

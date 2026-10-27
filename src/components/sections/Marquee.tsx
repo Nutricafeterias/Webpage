@@ -5,7 +5,7 @@ const base = [
   '🙂 Pago con reconocimiento facial (opcional)',
   '📱 App para familias + efectivo en caja',
   '🥇 Operador #1 en México',
-  '🎉 +1,000,000 órdenes servidas',
+  '🎉 +1,000,000 comidas servidas',
   '🏆 Desde 2018',
   '🧾 ERP y punto de venta propios',
   '🛡️ Seguimos la NOM-251',

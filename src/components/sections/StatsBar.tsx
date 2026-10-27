@@ -7,7 +7,7 @@ const stats = [
   { value: 2018, prefix: '',  suffix: '',      label: 'Año de fundación',     emoji: '🏆', color: 'text-amber-600',   bg: 'bg-amber-50',   plain: true },
   { value: 4.9,  prefix: '',  suffix: ' / 5',  label: 'Satisfacción',         emoji: '⭐', color: 'text-orange-600',  bg: 'bg-orange-50',  plain: true },
   { value: 0,    prefix: '$', suffix: '',      label: 'Inversión para la escuela', emoji: '🛡️', color: 'text-emerald-600', bg: 'bg-emerald-50', plain: false },
-  { value: 1000000, prefix: '+', suffix: '',   label: 'Órdenes servidas',     emoji: '🍽️', color: 'text-blue-600',    bg: 'bg-blue-50',    plain: false },
+  { value: 1000000, prefix: '+', suffix: '',   label: 'Comidas servidas',     emoji: '🍽️', color: 'text-blue-600',    bg: 'bg-blue-50',    plain: false },
 ]
 
 function StatItem({ s, delay }: { s: typeof stats[0]; delay: number }) {
