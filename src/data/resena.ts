@@ -5,4 +5,4 @@
 // que se queda en null y /resena muestra una página de espera.
 // Al verificarse: Perfil de Negocio → «Pedir reseñas» → copiar el enlace
 // (g.page/r/... o search.google.com/local/writereview?placeid=...) y pegarlo aquí.
-export const GOOGLE_RESENA_URL: string | null = null
+export const GOOGLE_RESENA_URL: string | null = 'https://g.page/r/CSacotuNpUuqEAI/review'
