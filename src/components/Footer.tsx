@@ -2,6 +2,8 @@ import { Mail } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import Image from 'next/image'
 import { WaLink } from '@/components/WaLink'
+import { RedIcon } from '@/components/ui/RedIcon'
+import { REDES } from '@/data/redes'
 
 const links = [
   { href: '/cafeterias-escolares', label: 'Cafetería escolar' },
@@ -53,7 +55,19 @@ export function Footer() {
               la experiencia dentro de las instituciones de México. 🇲🇽
             </p>
             <div className="flex items-center gap-3 mt-5">
-              {/* Instagram/Facebook se quitaron: apuntaban a «#». Se agregan cuando existan los perfiles (y van al sameAs del JSON-LD). */}
+              {REDES.map(r => (
+                <a
+                  key={r.red}
+                  href={r.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cta={`red_${r.red.toLowerCase()}_footer`}
+                  className="p-2.5 rounded-xl bg-stone-800 hover:bg-emerald-600 text-stone-400 hover:text-white transition-all"
+                  aria-label={`Nutri Cafeterías en ${r.red}`}
+                >
+                  <RedIcon red={r.red} />
+                </a>
+              ))}
               <WaLink cta="whatsapp_footer" className="p-2.5 rounded-xl bg-stone-800 hover:bg-emerald-600 text-stone-400 hover:text-white transition-all" aria-label="WhatsApp">
                 <WhatsAppIcon className="w-4 h-4" />
               </WaLink>
