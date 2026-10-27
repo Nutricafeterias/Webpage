@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 // Política explícita: el sitio se puede leer por buscadores y por los
 // rastreadores de asistentes de IA (decisión de DG, 26-oct-2026). Se nombran uno
 // por uno para que ninguna regla genérica los bloquee por accidente.
-const PRIVADO = ['/propuestas/', '/demo/', '/api/']
+const PRIVADO = ['/propuestas/', '/demo/', '/api/', '/resena']
 
 const RASTREADORES_IA = [
   'GPTBot',
