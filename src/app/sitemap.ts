@@ -34,6 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${base}/universidades`,
+      lastModified: ACTUALIZADO,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${base}/comedores-escolares`,
       lastModified: ACTUALIZADO,
       changeFrequency: 'monthly',

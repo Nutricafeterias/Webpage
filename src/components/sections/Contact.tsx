@@ -9,6 +9,8 @@ import { usePathname } from 'next/navigation'
 import { atribucionParaEnvio, textoOrigen } from '@/lib/atribucion'
 import { waHref, origenDesdeRuta } from '@/lib/whatsapp'
 import { PruebaSocial } from '@/components/PruebaSocial'
+import { COMO_NOS_CONOCISTE } from '@/lib/lead'
+import { capturar } from '@/lib/analitica'
 
 export function Contact() {
   const [state, handleSubmit] = useForm('xrejlppw')
@@ -21,6 +23,10 @@ export function Contact() {
     const atribucion = atribucionParaEnvio()
     if (origenRef.current) origenRef.current.value = textoOrigen(atribucion)
     const datos = Object.fromEntries(new FormData(e.currentTarget).entries())
+    capturar('lead_contacto_enviado', {
+      como_nos_conocio: typeof datos.como_nos_conocio === 'string' && datos.como_nos_conocio ? datos.como_nos_conocio : 'sin_respuesta',
+      pagina: window.location.pathname,
+    })
     void fetch('/api/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -214,6 +220,20 @@ export function Contact() {
                       <ValidationError field="cargo" errors={state.errors} className="text-xs text-red-500 mt-1" />
                     </div>
 
+                  </div>
+
+                  {/* ¿Cómo nos conociste? (opcional: no se pide para no bajar la conversión) */}
+                  <div>
+                    <label htmlFor="como_nos_conocio" className="block text-sm font-bold text-stone-700 mb-1.5">¿Cómo nos conociste? <span className="font-medium text-stone-400">(opcional)</span></label>
+                    <select
+                      id="como_nos_conocio" name="como_nos_conocio" defaultValue="" disabled={state.submitting}
+                      className="w-full px-4 py-3 rounded-xl bg-stone-50 border-2 border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-emerald-400 focus:bg-white transition-all disabled:opacity-50"
+                    >
+                      <option value="">Elige una opción</option>
+                      {COMO_NOS_CONOCISTE.map(o => (
+                        <option key={o} value={o}>{o}</option>
+                      ))}
+                    </select>
                   </div>
 
                   {/* Form-level errors */}

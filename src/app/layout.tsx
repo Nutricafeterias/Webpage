@@ -6,6 +6,7 @@ import { AtribucionTracker } from '@/components/AtribucionTracker'
 import { CampanaPopup } from '@/components/CampanaPopup'
 import { Analitica } from '@/components/Analitica'
 import { CtaMovil } from '@/components/CtaMovil'
+import { REDES } from '@/data/redes'
 
 const jakarta = Plus_Jakarta_Sans({
   variable: '--font-sans',
@@ -79,7 +80,7 @@ export const metadata: Metadata = {
 
 // Datos de la empresa para buscadores y asistentes de IA. Solo hechos
 // permitidos por DG (ver ~/nutri-web-emilio/ESTRATEGIA.md §4). sameAs lleva
-// únicamente perfiles que existan; hoy no hay perfiles sociales publicados.
+// únicamente perfiles oficiales que existan (fuente única: src/data/redes.ts).
 const BASE = 'https://cafeteriasescolares.com.mx'
 const DESCRIPCION_EMPRESA =
   'Nutri Cafeterías es un operador de cafeterías y comedores escolares en la Ciudad de México y su área metropolitana, desde preescolar hasta universidad. Cafetería: platillos a la carta, snacks y bebidas conforme a los Lineamientos SEP. Comedor: menú del día de 3 o 4 tiempos por turnos, que se cocina el mismo día. Sigue la NOM-251, con ERP y punto de venta propios, tótems de autoservicio, pago con reconocimiento facial opcional y App Nutri para familias, siempre con efectivo en caja. Fundada en agosto de 2018. Opera en la Universidad Panamericana, Campus Ciudad UP, y en IPADE Business School.'
@@ -100,6 +101,7 @@ const jsonLd = {
       image: `${BASE}/logo.png`,
       telephone: '+52-221-925-1954',
       email: 'a.fernandez@nutricafeteria.com.mx',
+      sameAs: REDES.map(r => r.url),
       foundingDate: '2018-08',
       address: {
         '@type': 'PostalAddress',
@@ -135,6 +137,7 @@ const jsonLd = {
         name: 'Servicios de Nutri Cafeterías',
         itemListElement: [
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Cafetería escolar', url: `${BASE}/cafeterias-escolares`, description: 'Platillos a la carta, snacks empaquetados y bebidas conforme a los Lineamientos SEP, con tótems, app para familias y efectivo en caja.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Cafetería universitaria', url: `${BASE}/universidades`, description: 'Cafetería para prepas y universidades con horario extendido, tótems, pedidos anticipados para recoger, app y POS propios.' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Comedor escolar', url: `${BASE}/comedores-escolares`, description: 'Menú del día de 3 o 4 tiempos que se cocina el mismo día, servido por turnos y con porción por edad, conforme a los Lineamientos SEP.' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tecnología de cafetería escolar', description: 'ERP y punto de venta propios, tótems de autoservicio, reconocimiento facial opcional con consentimiento y App Nutri para familias con saldo, recargas, límite diario y alergias.' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Eventos escolares', url: `${BASE}/catering-escolar`, description: 'Complemento para graduaciones, juntas de consejo, coffee breaks y desayunos institucionales.' } },

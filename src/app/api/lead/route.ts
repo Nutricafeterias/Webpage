@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { CAMPOS_ATRIBUCION, textoOrigen, type AtribucionEnvio } from '@/lib/atribucion'
+import { comoNosConocioValido } from '@/lib/lead'
 
 // Formulario de contacto → CRM comercial del ERP de Nutri (22-oct-2026).
 // Se reenvía desde el servidor (sin CORS y sin exponer el ERP al navegador).
@@ -32,12 +33,18 @@ export async function POST(req: Request) {
     const v = cuerpo[c]
     if (typeof v === 'string' && v) (atrib as Record<string, string>)[c] = v.slice(0, 300)
   }
-  if (Object.keys(atrib).length) {
-    const origen = textoOrigen(atrib).slice(0, 700)
-    const base = (lead.mensaje ?? '').slice(0, MAX_MENSAJE - origen.length - 4)
-    lead.mensaje = base ? `${base} || ${origen}` : origen
-    Object.assign(lead, atrib)
+  // «¿Cómo nos conociste?» (opcional, lista cerrada): lo declara la persona;
+  // la atribución técnica (referrer/UTM) se conserva intacta a un lado.
+  const comoNosConocio = comoNosConocioValido(cuerpo.como_nos_conocio)
+  const declarado = comoNosConocio ? `Cómo nos conoció: ${comoNosConocio}` : ''
+  const origen = Object.keys(atrib).length ? textoOrigen(atrib).slice(0, 700) : ''
+  const cola = [declarado, origen].filter(Boolean).join(' || ')
+  if (cola) {
+    const base = (lead.mensaje ?? '').slice(0, MAX_MENSAJE - cola.length - 4)
+    lead.mensaje = base ? `${base} || ${cola}` : cola
   }
+  if (Object.keys(atrib).length) Object.assign(lead, atrib)
+  if (comoNosConocio) lead.como_nos_conocio = comoNosConocio
 
   try {
     const r = await fetch(ERP, {

@@ -11,8 +11,8 @@ const services = [
     desc: 'Platillos a la carta, snacks y bebidas que cumplen con la SEP, con tótems, app para familias y reconocimiento facial para que nadie pierda el receso en la fila. Y siempre efectivo en caja.',
     href: '/cafeterias-escolares',
     cta: 'Conoce el servicio',
-    alt: 'Cafetería escolar con platillos a la carta, snacks y bebidas',
-    image: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=800&h=520&fit=crop&q=85',
+    alt: 'Alumnos en la barra de la cafetería escolar Nutri del Campus Ciudad UP',
+    image: '/img/cafeteria/barra.jpg',
     badge: 'El más solicitado ⭐',
   },
   {
@@ -100,6 +100,12 @@ export function ServicesSplit() {
             </motion.a>
           ))}
         </div>
+        <p className="mt-8 text-center text-stone-600">
+          ¿Prepa o universidad?{' '}
+          <a href="/universidades" data-cta="cruce_a_universidades_home" className="text-emerald-700 font-black hover:underline underline-offset-2">
+            Conoce la cafetería universitaria que operamos en Campus Ciudad UP →
+          </a>
+        </p>
       </div>
     </section>
   )

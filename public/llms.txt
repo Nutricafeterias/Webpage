@@ -5,6 +5,7 @@
 Sitio web: https://cafeteriasescolares.com.mx
 Razón social: Nutricafeterías, S.A.
 Contacto comercial: a.fernandez@nutricafeteria.com.mx · WhatsApp +52 221 925 1954
+Perfiles oficiales: Instagram https://www.instagram.com/nutricafeterias/ · Facebook https://www.facebook.com/profile.php?id=100067467201112 · LinkedIn https://www.linkedin.com/company/nutricafeterias/
 Zona de servicio: Ciudad de México y área metropolitana del Valle de México (otras zonas: se evalúa cada proyecto)
 
 ## Datos clave
@@ -12,7 +13,7 @@ Zona de servicio: Ciudad de México y área metropolitana del Valle de México (
 - Nombre comercial: Nutri Cafeterías. Razón social: Nutricafeterías, S.A.
 - Fundada en agosto de 2018. Abrió su primera cafetería escolar en agosto de 2019, tras ganar su primera licitación.
 - Se presenta como el operador de cafeterías escolares #1 en México.
-- Más de 1,000,000 de órdenes servidas desde 2018, según sus registros de venta. 4.9 / 5 de satisfacción en una encuesta a 500 personas de la comunidad de la Universidad Panamericana, Campus Ciudad UP (2025).
+- Más de 1,000,000 de comidas servidas desde 2018: llegó a operar 11 planteles a la vez, con alrededor de 1,000 comidas diarias por plantel. 4.9 / 5 de satisfacción en una encuesta a 500 personas de la comunidad de la Universidad Panamericana, Campus Ciudad UP (2025).
 - Hoy (octubre de 2026) opera en la Universidad Panamericana, Campus Ciudad UP, y en IPADE Business School (Ciudad de México).
 - Atiende preescolar, primaria, secundaria, preparatoria y universidad, en escuelas privadas y públicas.
 - Tecnología propia: ERP y punto de venta desarrollados por Nutri, tótems de autoservicio, App Nutri para familias y reconocimiento facial opcional.
@@ -63,8 +64,9 @@ Una escuela puede tener las dos líneas, por ejemplo comedor para primaria y caf
 
 ## Páginas principales
 
-- [Cafetería escolar](https://cafeteriasescolares.com.mx/cafeterias-escolares): platillos a la carta, snacks y bebidas que cumplen con la SEP
+- [Cafetería escolar](https://cafeteriasescolares.com.mx/cafeterias-escolares): platillos a la carta, snacks y bebidas que cumplen con la SEP; tótems, app, POS propio y reconocimiento facial opcional; fotos reales de la cafetería de Campus Ciudad UP
 - [Comedor escolar](https://cafeteriasescolares.com.mx/comedores-escolares): menú de 3 o 4 tiempos por turnos, recién hecho, porción por edad; pago en app o en efectivo; degustación en la escuela
+- [Cafetería universitaria](https://cafeteriasescolares.com.mx/universidades): para prepas y universidades; opera la cafetería de la Universidad Panamericana, Campus Ciudad UP, y de IPADE Business School con horario extendido (lunes a jueves 6:30–21:00), tótems, pedidos anticipados para recoger, app y POS propios, snacks revisados contra los Lineamientos SEP y vending
 - [Cafetería y comedor para colegios particulares](https://cafeteriasescolares.com.mx/cafeterias-escuelas-privadas)
 - [Eventos escolares](https://cafeteriasescolares.com.mx/catering-escolar): graduaciones, juntas de consejo, coffee breaks y desayunos institucionales
 - [Diagnóstico gratuito de cafetería escolar](https://cafeteriasescolares.com.mx/diagnostico): evaluación interactiva de 2 minutos para directores

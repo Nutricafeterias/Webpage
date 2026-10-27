@@ -11,6 +11,7 @@ const menus = [
     items: [
       { href: '/cafeterias-escolares', label: 'Cafetería escolar', desc: 'A la carta, snacks y bebidas que cumplen con la SEP' },
       { href: '/comedores-escolares',  label: 'Comedor escolar', desc: 'Comida completa de 3 o 4 tiempos, por turnos' },
+      { href: '/universidades',        label: 'Prepas y universidades', desc: 'Cafetería universitaria con tótems y horario extendido' },
       { href: '/catering-escolar',     label: 'Eventos escolares', desc: 'Complemento: graduaciones, juntas y coffee breaks', small: true },
     ],
   },

@@ -37,8 +37,10 @@ IntersectionObserver). Se monta una sola vez en `src/app/layout.tsx`.
 | `form_submit` | Envío de un formulario | `formulario`, `pagina` |
 | `diagnostico_completado` | Al terminar el diagnóstico y dejar datos | `puntaje`, `pagina` |
 | `lead_magnet_descarga` | Clic en «Descargar el PDF» tras el mini formulario | `recurso`, `pagina` |
-| `lead_corto_enviado` | Envío correcto de un formulario corto (recurso u hoja rápida) | `formulario`, `rol`, `pagina` |
+| `lead_corto_enviado` | Envío correcto de un formulario corto (recurso u hoja rápida) | `formulario`, `rol`, `como_nos_conocio`, `pagina` |
 | `cta_movil_abierto` | Se abre la hoja de contacto rápido | `motivo`, `desde`, `pagina` |
+| `lead_contacto_enviado` | Envío del formulario de contacto (#contacto) | `como_nos_conocio` (o `sin_respuesta`), `pagina` |
+| `$feature_flag_called` | Automático de PostHog cuando una prueba A/B resuelve su variante (exposición). Solo se emite si el flag llega a tiempo (2 s); si no, el visitante ve el control y no cuenta | `$feature_flag`, `$feature_flag_response` |
 | `seccion_vista` | Una sección con `data-seccion` entra 35 % en pantalla (una vez por vista de página) | `seccion`, `pagina` |
 
 Nunca se envían a PostHog nombre, correo, teléfono ni escuela.
@@ -47,9 +49,15 @@ Nunca se envían a PostHog nombre, correo, teléfono ni escuela.
 
 - **Home:** `home_hero`, `home_stats`, `home_problema`, `home_sep`, `home_diagnostico`,
   `home_servicios`, `home_tecnologia`, `home_por_que`, `home_escuelas`, `home_faq`, `home_contacto`.
-- **Cafetería:** `cafeteria_hero`, `cafeteria_que_vendemos`, `cafeteria_experiencia`,
-  `cafeteria_servicios`, `cafeteria_estilos`, `cafeteria_menu`, `cafeteria_familias`,
-  `cafeteria_como_funciona`, `cafeteria_antes_despues`, `cafeteria_seguridad`, `cafeteria_cta_final`.
+- **Cafetería (rediseño nov-2026):** `cafeteria_hero`, `cafeteria_galeria`, `cafeteria_que_vendemos`,
+  `cafeteria_cumplimiento`, `cafeteria_tecnologia`, `cafeteria_para_quien`, `cafeteria_como_funciona`,
+  `cafeteria_costo`, `cafeteria_faq`, `cafeteria_cta_final`, `cafeteria_seo`.
+- **Universidades:** `uni_hero`, `uni_pruebas`, `uni_reto`, `uni_servicios`, `uni_encuesta`, `uni_galeria`,
+  `uni_faq`, `uni_cta_final`, `uni_seo`.
+
+### Pruebas A/B
+
+- **AB-01** (`ab-01-cta-hero`): botón principal del hero del inicio. `control` = «Agenda una reunión sin costo» → `#contacto` (`data-cta="agenda_reunion"`); `test` = «Evalúa tu cafetería en 2 minutos» → `/diagnostico` (`data-cta="diagnostico_hero_ab01"`). Código: `varianteAB()` en `src/lib/analitica.ts` y `Hero.tsx`. Diseño y criterio de cierre: `~/nutri-web-emilio/AB-01.md`.
 - **Comedor:** `comedor_hero`, `comedor_que_incluye`, `comedor_menu_semanal`, `comedor_porciones`,
   `comedor_recien_hecho`, `comedor_turnos`, `comedor_pagos`, `comedor_cancelaciones`,
   `comedor_comunicacion`, `comedor_degustacion`, `comedor_tecnologia`, `comedor_cumplimiento`,

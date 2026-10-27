@@ -2,11 +2,14 @@ import { Mail } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import Image from 'next/image'
 import { WaLink } from '@/components/WaLink'
+import { RedIcon } from '@/components/ui/RedIcon'
+import { REDES } from '@/data/redes'
 
 const links = [
   { href: '/cafeterias-escolares', label: 'Cafetería escolar' },
   { href: '/comedores-escolares',  label: 'Comedor escolar' },
   { href: '/cafeterias-escuelas-privadas', label: 'Colegios particulares' },
+  { href: '/universidades', label: 'Prepas y universidades' },
   { href: '/catering-escolar',     label: 'Eventos escolares' },
   { href: '/menus',       label: 'Menús' },
   { href: '/lineamientos-sep', label: 'Lineamientos SEP' },
@@ -52,7 +55,19 @@ export function Footer() {
               la experiencia dentro de las instituciones de México. 🇲🇽
             </p>
             <div className="flex items-center gap-3 mt-5">
-              {/* Instagram/Facebook se quitaron: apuntaban a «#». Se agregan cuando existan los perfiles (y van al sameAs del JSON-LD). */}
+              {REDES.map(r => (
+                <a
+                  key={r.red}
+                  href={r.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cta={`red_${r.red.toLowerCase()}_footer`}
+                  className="p-2.5 rounded-xl bg-stone-800 hover:bg-emerald-600 text-stone-400 hover:text-white transition-all"
+                  aria-label={`Nutri Cafeterías en ${r.red}`}
+                >
+                  <RedIcon red={r.red} />
+                </a>
+              ))}
               <WaLink cta="whatsapp_footer" className="p-2.5 rounded-xl bg-stone-800 hover:bg-emerald-600 text-stone-400 hover:text-white transition-all" aria-label="WhatsApp">
                 <WhatsAppIcon className="w-4 h-4" />
               </WaLink>
@@ -81,7 +96,7 @@ export function Footer() {
             <h4 className="font-black text-white text-sm uppercase tracking-wider">En números</h4>
             {[
               { emoji: '📅', text: 'Desde 2018' },
-              { emoji: '🍽️', text: '+1,000,000 órdenes servidas' },
+              { emoji: '🍽️', text: '+1,000,000 comidas servidas' },
               { emoji: '⭐', text: '4.9 / 5 de satisfacción' },
               { emoji: '🧾', text: 'ERP y punto de venta propios' },
             ].map(s => (
