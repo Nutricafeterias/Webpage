@@ -233,6 +233,7 @@ export function CtaMovil() {
                       id={`rapido_${hoja}`}
                       mensaje={`${m.mensaje} · desde ${ruta}`}
                       boton={m.boton}
+                      conComoNosConociste
                       onExito={() => setEnviado(true)}
                     />
                   </div>

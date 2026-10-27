@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { ArrowRight, Loader2, Lock } from 'lucide-react'
 import { capturar } from '@/lib/analitica'
-import { contactoValido, enviarLeadCorto } from '@/lib/lead'
+import { COMO_NOS_CONOCISTE, contactoValido, enviarLeadCorto } from '@/lib/lead'
 
 const ROLES = ['Dirección o dueño', 'Administración', 'Docente', 'Mamá o papá', 'Otro'] as const
 
@@ -19,6 +19,7 @@ export function FormularioCorto({
   mensaje,
   boton,
   conRol = false,
+  conComoNosConociste = false,
   nota = 'Te respondemos en menos de 1 día hábil. No compartimos tus datos.',
   onExito,
 }: {
@@ -28,6 +29,8 @@ export function FormularioCorto({
   mensaje: string
   boton: string
   conRol?: boolean
+  /** Muestra «¿Cómo nos conociste?» (opcional). */
+  conComoNosConociste?: boolean
   nota?: string
   onExito?: () => void
 }) {
@@ -54,13 +57,19 @@ export function FormularioCorto({
       cargo: rol,
       mensaje: rol ? `${mensaje} · Rol: ${rol}` : mensaje,
       sitio_web: String(fd.get('sitio_web') ?? ''),
+      como_nos_conocio: String(fd.get('como_nos_conocio') ?? ''),
     })
     setEnviando(false)
     if (!ok) {
       setError('No pudimos enviar tus datos. Intenta de nuevo o escríbenos por WhatsApp.')
       return
     }
-    capturar('lead_corto_enviado', { formulario: id, rol: rol || 'sin_rol', pagina: window.location.pathname })
+    capturar('lead_corto_enviado', {
+      formulario: id,
+      rol: rol || 'sin_rol',
+      como_nos_conocio: String(fd.get('como_nos_conocio') ?? '') || 'sin_respuesta',
+      pagina: window.location.pathname,
+    })
     onExito?.()
   }
 
@@ -98,6 +107,19 @@ export function FormularioCorto({
             ))}
           </div>
         </fieldset>
+      )}
+      {conComoNosConociste && (
+        <div>
+          <label htmlFor={`${id}-como`} className="block text-sm font-bold text-stone-700 mb-1">
+            ¿Cómo nos conociste? <span className="font-medium text-stone-400">(opcional)</span>
+          </label>
+          <select id={`${id}-como`} name="como_nos_conocio" defaultValue="" disabled={enviando} className={campo}>
+            <option value="">Elige una opción</option>
+            {COMO_NOS_CONOCISTE.map(o => (
+              <option key={o} value={o}>{o}</option>
+            ))}
+          </select>
+        </div>
       )}
       {error && <p role="alert" className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2">{error}</p>}
       <button

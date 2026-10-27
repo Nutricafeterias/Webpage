@@ -9,6 +9,24 @@ import { atribucionParaEnvio, textoOrigen } from '@/lib/atribucion'
 
 const FORMSPREE = 'https://formspree.io/f/xrejlppw'
 
+/**
+ * «¿Cómo nos conociste?» (opcional, nunca obligatorio). Alimenta el KPI rector
+ * del Blueprint: % de leads calificados de origen NO relacional. El valor viaja
+ * a /api/lead como `como_nos_conocio` y queda en el mensaje del lead del CRM.
+ */
+export const COMO_NOS_CONOCISTE = [
+  'Google',
+  'ChatGPT u otra IA',
+  'Recomendación',
+  'Redes sociales',
+  'Evento o visita',
+  'Otro',
+] as const
+
+export function comoNosConocioValido(v: unknown): string {
+  return typeof v === 'string' && (COMO_NOS_CONOCISTE as readonly string[]).includes(v) ? v : ''
+}
+
 export type LeadCorto = {
   nombre: string
   escuela: string
@@ -18,6 +36,8 @@ export type LeadCorto = {
   /** Qué pidió (p. ej. «Descargó: menú semanal SEP (PDF)»). Va al CRM. */
   mensaje: string
   sitio_web?: string
+  /** «¿Cómo nos conociste?» (opcional). */
+  como_nos_conocio?: string
 }
 
 /** Separa «WhatsApp o correo» en el campo correcto. */
@@ -45,6 +65,7 @@ export async function enviarLeadCorto(l: LeadCorto): Promise<boolean> {
     email,
     mensaje: l.mensaje,
     sitio_web: l.sitio_web ?? '',
+    como_nos_conocio: comoNosConocioValido(l.como_nos_conocio),
   }
   const erp = fetch('/api/lead', {
     method: 'POST',
