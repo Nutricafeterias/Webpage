@@ -5,8 +5,26 @@ import { ArrowRight, Star } from 'lucide-react'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import Image from 'next/image'
 import { waHref } from '@/lib/whatsapp'
+import { useEffect, useState } from 'react'
+import { varianteAB } from '@/lib/analitica'
+
+/**
+ * AB-01 (ver ~/nutri-web-emilio/AB-01.md): oferta del botón principal del hero.
+ * control = «Agenda una reunión sin costo» → #contacto
+ * test    = «Evalúa tu cafetería en 2 minutos» → /diagnostico
+ * Sin PostHog (o si tarda) se muestra siempre el control.
+ */
+export const AB01_FLAG = 'ab-01-cta-hero'
+const AB01 = {
+  control: { texto: 'Agenda una reunión sin costo', href: '#contacto', cta: 'agenda_reunion' },
+  test: { texto: 'Evalúa tu cafetería en 2 minutos', href: '/diagnostico', cta: 'diagnostico_hero_ab01' },
+} as const
 
 export function Hero() {
+  const [variante, setVariante] = useState<keyof typeof AB01>('control')
+  useEffect(() => varianteAB(AB01_FLAG, v => setVariante(v === 'test' ? 'test' : 'control')), [])
+  const boton = AB01[variante]
+
   return (
     <section className="relative lg:min-h-screen overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-amber-50 flex items-center pt-20">
 
@@ -50,11 +68,12 @@ export function Hero() {
           {/* CTAs */}
           <div className="mt-6 lg:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
             <a
-              href="#contacto"
-              data-cta="agenda_reunion"
+              href={boton.href}
+              data-cta={boton.cta}
+              data-ab={`${AB01_FLAG}:${variante}`}
               className="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-base transition-all duration-200 shadow-lg shadow-emerald-200 hover:shadow-emerald-300 hover:scale-[1.03] active:scale-[0.98]"
             >
-              Agenda una reunión sin costo
+              {boton.texto}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
