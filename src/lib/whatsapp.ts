@@ -22,6 +22,7 @@ export function origenDesdeRuta(pathname: string | null | undefined): string {
     diagnostico: 'diagnostico',
     menus: 'menus',
     nosotros: 'nosotros',
+    universidades: 'universidades',
   }
   if (mapa[limpio]) return mapa[limpio]
   if (limpio.startsWith('blog/')) return `blog:${limpio.slice(5, 40)}`

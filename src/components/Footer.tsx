@@ -7,6 +7,7 @@ const links = [
   { href: '/cafeterias-escolares', label: 'Cafetería escolar' },
   { href: '/comedores-escolares',  label: 'Comedor escolar' },
   { href: '/cafeterias-escuelas-privadas', label: 'Colegios particulares' },
+  { href: '/universidades', label: 'Prepas y universidades' },
   { href: '/catering-escolar',     label: 'Eventos escolares' },
   { href: '/menus',       label: 'Menús' },
   { href: '/lineamientos-sep', label: 'Lineamientos SEP' },

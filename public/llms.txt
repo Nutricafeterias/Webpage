@@ -63,8 +63,9 @@ Una escuela puede tener las dos líneas, por ejemplo comedor para primaria y caf
 
 ## Páginas principales
 
-- [Cafetería escolar](https://cafeteriasescolares.com.mx/cafeterias-escolares): platillos a la carta, snacks y bebidas que cumplen con la SEP
+- [Cafetería escolar](https://cafeteriasescolares.com.mx/cafeterias-escolares): platillos a la carta, snacks y bebidas que cumplen con la SEP; tótems, app, POS propio y reconocimiento facial opcional; fotos reales de la cafetería de Campus Ciudad UP
 - [Comedor escolar](https://cafeteriasescolares.com.mx/comedores-escolares): menú de 3 o 4 tiempos por turnos, recién hecho, porción por edad; pago en app o en efectivo; degustación en la escuela
+- [Cafetería universitaria](https://cafeteriasescolares.com.mx/universidades): para prepas y universidades; opera la cafetería de la Universidad Panamericana, Campus Ciudad UP, y de IPADE Business School con horario extendido (lunes a jueves 6:30–21:00), tótems, pedidos anticipados para recoger, app y POS propios, snacks revisados contra los Lineamientos SEP y vending
 - [Cafetería y comedor para colegios particulares](https://cafeteriasescolares.com.mx/cafeterias-escuelas-privadas)
 - [Eventos escolares](https://cafeteriasescolares.com.mx/catering-escolar): graduaciones, juntas de consejo, coffee breaks y desayunos institucionales
 - [Diagnóstico gratuito de cafetería escolar](https://cafeteriasescolares.com.mx/diagnostico): evaluación interactiva de 2 minutos para directores
