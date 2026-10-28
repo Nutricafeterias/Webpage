@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Demo Nutri · Instituto Thomas Jefferson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Demo de tótem y app para el Instituto Thomas Jefferson, Campus Santa Mónica.
+   TODO es simulado y vive en este equipo (localStorage). No cobra, no toca el ERP.
+   La cámara es la app «Nutri Cámara» del tótem (http://127.0.0.1:8765). */
+:root{
+  --crema:#F7F3EA;--lino:#EDE7D8;--arena:#D8CDB6;--piedra:#A79B82;--cacao:#5B5346;--carbon:#26241F;
+  --verde:#1F5D3B;--verde2:#6EAF4A;--verde3:#C7E3B4;--verde4:#EAF4E2;--naranja:#F39C12;--naranja2:#FFF1DC;--rojo:#C63A3A;--rojo2:#FBE4E4;
+  --fondo:#FBF8F1;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--fondo);color:var(--carbon);font-family:'Montserrat',system-ui,sans-serif;overflow:hidden;user-select:none;-webkit-user-select:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select{font-family:inherit;font-size:22px;padding:16px 18px;border:2px solid var(--lino);border-radius:16px;width:100%;background:#fff;color:var(--carbon);outline:none;user-select:text;-webkit-user-select:text}
+input:focus,select:focus{border-color:var(--verde2)}
+
+/* ---------- marco general (tótem 1080×1920) ---------- */
+#raiz{position:fixed;left:0;top:0;width:1080px;height:1920px;display:flex;flex-direction:column;transform-origin:0 0}
+.barra{display:flex;align-items:center;justify-content:space-between;padding:26px 40px 18px}
+.barra .logo{height:74px}
+.modos{display:flex;gap:10px;background:#fff;border:2px solid var(--lino);border-radius:999px;padding:6px}
+.modos button{font-size:21px;font-weight:800;padding:14px 26px;border-radius:999px;color:var(--cacao)}
+.modos button.on{background:var(--verde);color:#fff}
+.vista{flex:1;display:none;flex-direction:column;align-items:center;min-height:0}
+.vista.on{display:flex}
+
+/* ---------- vista app: celular en el centro ---------- */
+.titular{text-align:center;margin:4px 40px 20px}
+.titular .k{font-size:17px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--piedra)}
+.titular h1{margin:8px 0 0;font-size:46px;line-height:1.05;font-weight:800;color:var(--verde);letter-spacing:-.02em}
+.cel{position:relative;width:660px;height:1400px;background:#16150F;border-radius:72px;padding:18px;box-shadow:0 30px 70px rgba(38,36,31,.25)}
+.cel .pantalla{position:relative;width:100%;height:100%;border-radius:56px;overflow:hidden;background:var(--fondo);display:flex;flex-direction:column}
+.cel .muesca{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:170px;height:34px;background:#16150F;border-radius:0 0 22px 22px;z-index:5}
+.formas{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:22px 40px 0;max-width:1000px}
+.formas span{background:#fff;border:2px solid var(--lino);border-radius:999px;padding:11px 18px;font-size:17px;font-weight:700;color:var(--cacao)}
+.formas span b{color:var(--verde)}
+
+/* ---------- dentro del celular ---------- */
+.app-cab{padding:58px 26px 14px;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:2px solid var(--lino)}
+.app-cab .t{font-size:24px;font-weight:800}
+.app-cab .t small{display:block;font-size:14px;font-weight:600;color:var(--piedra);margin-top:2px}
+.app-cab .atras{font-size:30px;font-weight:700;color:var(--verde);width:48px;height:48px;border-radius:50%;background:var(--verde4)}
+.campana{position:relative;width:56px;height:56px;border-radius:50%;background:var(--verde4);display:flex;align-items:center;justify-content:center}
+.campana svg{width:28px;height:28px}
+.campana i{position:absolute;top:-4px;right:-4px;min-width:26px;height:26px;border-radius:13px;background:var(--rojo);color:#fff;font-size:15px;font-weight:800;font-style:normal;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.cuerpo{flex:1;overflow-y:auto;padding:22px 24px 30px}
+.cuerpo::-webkit-scrollbar{display:none}
+.pie-app{padding:16px 24px 34px;background:#fff;border-top:2px solid var(--lino)}
+.h2{font-size:15px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--piedra);margin:22px 2px 10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:22px;border-radius:20px;font-size:23px;font-weight:800;background:var(--verde);color:#fff}
+.btn.sec{background:#fff;color:var(--verde);border:2px solid var(--verde3)}
+.btn.nar{background:var(--naranja)}
+.btn:disabled{opacity:.4}
+.btn+.btn{margin-top:12px}
+.campo{margin-bottom:14px}
+.campo label{display:block;font-size:15px;font-weight:700;color:var(--cacao);margin:0 0 6px 4px}
+.ejemplo{display:inline-block;font-size:16px;font-weight:700;color:var(--verde);background:var(--verde4);border-radius:999px;padding:9px 16px;margin:0 0 16px}
+.tarjeta{background:#fff;border:2px solid var(--lino);border-radius:24px;padding:20px 22px;margin-bottom:14px}
+.chips{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;display:flex;align-items:center;gap:10px;padding:10px 18px 10px 10px;border-radius:999px;background:#fff;border:2px solid var(--lino);font-size:19px;font-weight:800}
+.chip.on{border-color:var(--verde);background:var(--verde4)}
+.ava{width:44px;height:44px;border-radius:50%;background:var(--naranja);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;flex:none}
+.saldo{background:var(--verde);color:#fff;border-radius:28px;padding:24px 26px;position:relative;overflow:hidden}
+.saldo small{font-size:16px;font-weight:700;opacity:.85}
+.saldo b{display:block;font-size:54px;font-weight:800;letter-spacing:-.02em;margin:4px 0 14px}
+.saldo .btn{background:#fff;color:var(--verde);padding:16px;font-size:20px}
+.fila{display:flex;align-items:center;gap:14px}
+.fila .ic{width:52px;height:52px;border-radius:16px;background:var(--verde4);display:flex;align-items:center;justify-content:center;font-size:26px;flex:none}
+.fila .tx{flex:1;min-width:0}
+.fila .tx b{display:block;font-size:20px;font-weight:800}
+.fila .tx span{display:block;font-size:16px;color:var(--cacao);margin-top:2px}
+.estado{font-size:15px;font-weight:800;border-radius:999px;padding:7px 14px;white-space:nowrap}
+.estado.ok{background:var(--verde4);color:var(--verde)}
+.estado.no{background:var(--naranja2);color:#B26B00}
+.acciones{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.accion{background:#fff;border:2px solid var(--lino);border-radius:22px;padding:20px 16px;text-align:left}
+.accion .e{font-size:30px}
+.accion b{display:block;font-size:19px;font-weight:800;margin-top:8px}
+.accion span{display:block;font-size:14px;color:var(--cacao);margin-top:2px}
+.montos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.monto{padding:20px 0;border-radius:18px;background:#fff;border:2px solid var(--lino);font-size:24px;font-weight:800}
+.monto.on{border-color:var(--verde);background:var(--verde4);color:var(--verde)}
+.tc{background:linear-gradient(135deg,#2E3A2F,#1F5D3B);color:#fff;border-radius:22px;padding:22px 24px;font-size:22px;font-weight:700;letter-spacing:.06em;position:relative}
+.tc small{display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
+.tc .exp{display:flex;justify-content:space-between;margin-top:16px;font-size:16px;opacity:.9}
+.aviso{font-size:15px;color:var(--cacao);background:var(--crema);border-radius:16px;padding:14px 16px;line-height:1.4;margin-top:12px}
+.aviso b{color:var(--carbon)}
+.resumen{display:flex;justify-content:space-between;font-size:19px;padding:6px 2px}
+.resumen.t{font-size:24px;font-weight:800;border-top:2px solid var(--lino);margin-top:6px;padding-top:12px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#fff;border:2px solid var(--lino);border-radius:18px;padding:5px;margin-bottom:16px}
+.tabs button{padding:14px 0;border-radius:14px;font-size:18px;font-weight:800;color:var(--cacao)}
+.tabs button.on{background:var(--verde);color:#fff}
+.dia{display:flex;align-items:center;gap:14px;background:#fff;border:2px solid var(--lino);border-radius:20px;padding:14px 16px;margin-bottom:10px}
+.dia.on{border-color:var(--verde);background:var(--verde4)}
+.dia.off{opacity:.55}
+.dia .f{width:66px;text-align:center;flex:none}
+.dia .f small{display:block;font-size:13px;font-weight:800;text-transform:uppercase;color:var(--piedra);letter-spacing:.08em}
+.dia .f b{display:block;font-size:30px;font-weight:800;line-height:1}
+.dia .m{flex:1;min-width:0}
+.dia .m b{display:block;font-size:18px;font-weight:800;line-height:1.2}
+.dia .m span{display:block;font-size:14px;color:var(--cacao);margin-top:3px}
+.check{width:38px;height:38px;border-radius:12px;border:2px solid var(--arena);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;flex:none}
+.dia.on .check{background:var(--verde);border-color:var(--verde)}
+.paquete{background:#fff;border:2px solid var(--lino);border-radius:24px;padding:22px}
+.paquete.on{border-color:var(--verde);background:var(--verde4)}
+.paquete .p{font-size:44px;font-weight:800;color:var(--verde)}
+.paquete .p small{font-size:18px;color:var(--cacao);font-weight:600}
+.paquete .ah{display:inline-block;background:var(--naranja);color:#fff;font-size:15px;font-weight:800;border-radius:999px;padding:6px 12px;margin-top:6px}
+.noti{display:flex;gap:14px;background:#fff;border:2px solid var(--lino);border-radius:20px;padding:16px;margin-bottom:10px}
+.noti .ic{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;flex:none;background:var(--verde4)}
+.noti b{display:block;font-size:18px;font-weight:800}
+.noti span{display:block;font-size:15px;color:var(--cacao);margin-top:2px;line-height:1.35}
+.noti small{display:block;font-size:13px;color:var(--piedra);margin-top:4px;font-weight:600}
+.noti.nueva{border-color:var(--verde2)}
+.vacio{text-align:center;color:var(--piedra);font-size:18px;padding:40px 10px}
+.exito{text-align:center;padding:50px 10px 10px}
+.exito .ok{width:130px;height:130px;border-radius:50%;background:var(--verde);color:#fff;font-size:74px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;animation:pop .45s ease}
+.exito h2{font-size:34px;margin:0 0 8px;color:var(--verde)}
+.exito p{font-size:19px;color:var(--cacao);margin:0 0 26px;line-height:1.4}
+@keyframes pop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.cargando{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:90px 0;font-size:21px;font-weight:700;color:var(--cacao)}
+.spin{width:70px;height:70px;border-radius:50%;border:8px solid var(--verde3);border-top-color:var(--verde);animation:gira .8s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.banner{position:absolute;left:16px;right:16px;top:-140px;z-index:20;background:#fff;border-radius:24px;box-shadow:0 14px 40px rgba(0,0,0,.18);padding:16px 18px;display:flex;gap:14px;align-items:center;transition:top .45s cubic-bezier(.2,1.2,.4,1)}
+.banner.on{top:62px}
+.banner img{width:50px;height:50px;border-radius:12px}
+.banner b{display:block;font-size:17px;font-weight:800}
+.banner span{display:block;font-size:15px;color:var(--cacao);margin-top:2px}
+.logo-app{display:block;height:84px;margin:40px auto 30px}
+
+/* ---------- cámara (registro de rostro y entrada) ---------- */
+.circulo{position:relative;border-radius:50%;overflow:hidden;background:#1d1c18;margin:0 auto}
+.circulo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.circulo .aro{position:absolute;inset:0;border-radius:50%;border:12px solid var(--arena);transition:border-color .25s}
+.circulo .aro.listo{border-color:var(--verde2)}
+.circulo .aro.leyendo{border-color:var(--naranja)}
+.circulo .sincam{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:#C9C1AF;font-size:20px;font-weight:700;padding:30px}
+.indicacion{font-size:30px;font-weight:800;text-align:center;margin:26px 0 8px;color:var(--verde)}
+.sub-ind{font-size:18px;text-align:center;color:var(--cacao)}
+.simular{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
+.simular button{font-size:15px;font-weight:700;padding:10px 14px;border-radius:999px;border:2px dashed var(--arena);color:var(--cacao)}
+
+/* ---------- vista entrada al comedor ---------- */
+.entrada{flex:1;width:100%;display:flex;flex-direction:column;align-items:center;padding:6px 60px 40px}
+.entrada .cab{text-align:center}
+.entrada .cab .k{font-size:20px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--piedra)}
+.entrada .cab h1{font-size:64px;margin:10px 0 6px;color:var(--verde);font-weight:800;letter-spacing:-.02em;line-height:1}
+.entrada .cab p{font-size:24px;color:var(--cacao);margin:0;font-weight:600}
+.entrada .circulo{width:760px;height:760px;margin-top:56px}
+.entrada .indicacion{font-size:46px;margin-top:44px}
+.entrada .sub-ind{font-size:24px}
+.menu-hoy{margin-top:auto;width:100%;background:#fff;border:2px solid var(--lino);border-radius:28px;padding:24px 30px;display:flex;align-items:center;gap:22px}
+.menu-hoy .e{font-size:54px}
+.menu-hoy small{display:block;font-size:16px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--piedra)}
+.menu-hoy b{display:block;font-size:26px;font-weight:800;margin-top:4px}
+.menu-hoy span{display:block;font-size:19px;color:var(--cacao);margin-top:4px}
+.resultado{position:absolute;inset:0;z-index:50;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px;color:#fff}
+.resultado.on{display:flex;animation:entra .35s ease}
+@keyframes entra{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+.resultado.verde{background:var(--verde)}
+.resultado.naranja{background:#D9850B}
+.resultado.gris{background:#5B5346}
+.resultado .icono{width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:150px;margin-bottom:50px}
+.resultado h2{font-size:86px;line-height:1.02;margin:0 0 24px;font-weight:800;letter-spacing:-.02em}
+.resultado p{font-size:38px;margin:0;font-weight:600;line-height:1.3;max-width:900px}
+.resultado .grupo{margin-top:40px;font-size:26px;font-weight:800;background:rgba(255,255,255,.18);border-radius:999px;padding:14px 30px}
+
+/* ---------- reinicio ---------- */
+#dlgReinicio{position:absolute;inset:0;background:rgba(38,36,31,.55);z-index:80;display:none;align-items:center;justify-content:center}
+#dlgReinicio.on{display:flex}
+#dlgReinicio .caja{background:#fff;border-radius:32px;padding:40px;width:720px;text-align:center}
+#dlgReinicio h3{font-size:34px;margin:0 0 12px}
+#dlgReinicio p{font-size:21px;color:var(--cacao);margin:0 0 28px}
+#dlgReinicio .btn{margin-top:12px}
+/* ---------- tótem de pedido ITJ ---------- */
+.totem{flex:1;width:100%;display:flex;flex-direction:column;padding:0 40px 30px;min-height:0}
+.t-cab{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin:4px 0 18px}
+.t-cab h1{margin:0;font-size:58px;line-height:1;color:var(--verde);font-weight:800;letter-spacing:-.02em}
+.t-cab .k{font-size:18px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--piedra);margin-bottom:8px}
+.t-niv{display:flex;gap:8px;background:#fff;border:2px solid var(--lino);border-radius:999px;padding:6px}
+.t-niv button{font-size:19px;font-weight:800;padding:12px 20px;border-radius:999px;color:var(--cacao)}
+.t-niv button.on{background:var(--naranja);color:#fff}
+.t-cats{display:flex;gap:10px;margin-bottom:18px;overflow-x:auto}
+.t-cats button{flex:none;font-size:22px;font-weight:800;padding:16px 26px;border-radius:18px;background:#fff;border:2px solid var(--lino);color:var(--cacao)}
+.t-cats button.on{background:var(--verde);border-color:var(--verde);color:#fff}
+.t-grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:270px;gap:18px;overflow-y:auto;align-content:start;padding-bottom:10px}
+.t-grid::-webkit-scrollbar{display:none}
+.prod{background:#fff;border:2px solid var(--lino);border-radius:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px;text-align:center}
+.prod:active{border-color:var(--verde2);background:var(--verde4)}
+.prod .pe{font-size:92px;line-height:1}
+.prod b{font-size:26px;font-weight:800;line-height:1.1}
+.prod span{font-size:22px;font-weight:700;color:var(--verde)}
+.t-carro{background:#fff;border:2px solid var(--lino);border-radius:30px;padding:20px 24px;margin-top:16px}
+.carro-vacio{text-align:center;font-size:24px;color:var(--piedra);font-weight:700;padding:26px 0}
+.carro-lin{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.carro-lin span{background:var(--verde4);border-radius:999px;padding:10px 12px 10px 18px;font-size:19px;font-weight:700;display:flex;align-items:center;gap:8px}
+.carro-lin span button{width:30px;height:30px;border-radius:50%;background:#fff;font-size:14px;font-weight:800;color:var(--rojo)}
+.carro-pie{display:grid;grid-template-columns:200px 1fr 300px;gap:14px;align-items:center}
+.carro-pie .btn{margin:0;padding:26px;font-size:25px}
+.carro-t small{display:block;font-size:16px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--piedra)}
+.carro-t b{display:block;font-size:46px;font-weight:800;color:var(--verde)}
+.dlg{position:absolute;inset:0;background:rgba(38,36,31,.55);z-index:60;display:none;align-items:center;justify-content:center}
+.dlg.on{display:flex}
+.dlg .caja{background:#fff;border-radius:40px;padding:44px;width:860px;text-align:center}
+.dlg h3{font-size:42px;margin:0 0 8px;line-height:1.1}
+.dlg .desc{font-size:21px;color:var(--cacao);margin:0 0 26px}
+.ops{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.op{background:var(--fondo);border:2px solid var(--lino);border-radius:24px;padding:26px 18px}
+.op b{display:block;font-size:28px;font-weight:800}
+.op span{display:block;font-size:24px;font-weight:700;color:var(--verde);margin-top:4px}
+.pago .circulo{width:600px;height:600px;margin:20px auto 0}
+.pago .tot{font-size:30px;font-weight:800;color:var(--cacao)}
+.pago .tot b{color:var(--verde);font-size:44px}
+
+</style>
+</head>
+<body>
+<div id="raiz">
+  <div class="barra">
+    <img class="logo" src="/demo/itj/logo.png" alt="Nutri Cafeterías" id="logo">
+    <div class="modos">
+      <button id="mApp" class="on">App de papás</button>
+      <button id="mTotem">Tótem de pedido</button>
+    </div>
+  </div>
+
+  <section class="vista on" id="vApp">
+    <div class="titular"><div class="k">Instituto Thomas Jefferson · así funciona para los papás</div><h1>Todo desde tu celular</h1></div>
+    <div class="cel"><div class="muesca"></div>
+      <div class="pantalla" id="pantalla">
+        <div class="banner" id="banner"><img src="/demo/itj/isotipo.png" alt=""><div><b id="bannerT"></b><span id="bannerS"></span></div></div>
+        <div id="app" style="display:flex;flex-direction:column;height:100%"></div>
+      </div>
+    </div>
+    <div class="formas">
+      <span><b>Sin filas</b> · pide antes del recreo</span>
+      <span>Saldo y <b>límite diario</b></span>
+      <span>Aviso de cada compra</span>
+      <span>Tarjeta · transferencia · OXXO</span>
+      <span>Efectivo en caja</span>
+    </div>
+  </section>
+
+  <section class="vista" id="vTotem">
+    <div class="totem">
+      <div class="t-cab"><div><div class="k">Instituto Thomas Jefferson</div><h1>¿Qué se te antoja hoy?</h1></div><div class="t-niv" id="tNiv"></div></div>
+      <div class="t-cats" id="tCats"></div>
+      <div class="t-grid" id="tGrid"></div>
+      <div class="t-carro" id="tCarro"></div>
+    </div>
+  </section>
+
+  <div class="dlg" id="dlgVar"><div class="caja"><h3 id="vTit"></h3><p class="desc" id="vDesc"></p><div class="ops" id="vOps"></div><button class="btn sec" id="vCerrar" style="margin-top:18px">Cancelar</button></div></div>
+  <div class="dlg pago" id="dlgPago"><div class="caja">
+    <h3>Mira la cámara y parpadea</h3><div class="tot">Total <b id="pTot"></b></div>
+    <div class="circulo"><img id="pImg" alt=""><div class="sincam" id="pSin">Conectando la cámara…</div><div class="aro" id="pAro"></div></div>
+    <div class="indicacion" id="pInd">Ponte frente a la cámara</div>
+    <div class="sub-ind">Se descuenta de tu saldo · sin efectivo y sin tarjetas</div>
+    <div class="simular" id="pSim"></div>
+    <button class="btn sec" id="pCancelar" style="margin-top:22px">Cancelar</button></div></div>
+  <div class="resultado" id="res"><div class="icono" id="resI"></div><h2 id="resT"></h2><p id="resP"></p><div class="grupo" id="resG"></div></div>
+  <div id="dlgReinicio"><div class="caja"><h3>¿Reiniciar la demo?</h3><p>Se borran las cuentas, hijos, rostros, saldo y compras de prueba de este equipo.</p>
+    <button class="btn" id="rSi" style="background:var(--rojo)">Sí, empezar de cero</button><button class="btn sec" id="rNo">Cancelar</button></div></div>
+</div>
+<script>
+"use strict";
+/* ================= datos fijos ITJ ================= */
+const COMISION=0.02;
+const CAMARA='http://127.0.0.1:8765';
+const UMBRAL=0.70, MARGEN=0.06, REAL_MIN=0.5;
+const MENU={"primaria": [{"c": "Platillos", "i": [{"n": "Tacos", "e": "🌮", "d": "Tortilla de maíz nixtamalizada, proteína a elegir, cebolla, cilantro y salsa baja en sal.", "v": [["Pollo", 30], ["Bistec", 30], ["Pastor", 30], ["Campechano", 30], ["Arrachera", 40]]}, {"n": "Chilaquiles", "e": "🫓", "d": "Verdes o rojos. Totopo de maíz horneado, no frito, salsa y frijol bajos en sal, crema lige", "v": [["Verdes o rojos", 49]]}, {"n": "Huevos", "e": "🍳", "d": "Huevos al gusto con frijoles y tortilla de maíz.", "v": [["A la mexicana", 49]]}, {"n": "Burrito", "e": "🌯", "d": "Tortilla de harina, proteína a elegir, frijol, arroz, queso Oaxaca reducido en grasa, lech", "v": [["Pollo", 59], ["Bistec", 59]]}, {"n": "Gringa", "e": "🌮", "d": "Tortilla de harina con queso Oaxaca reducido en grasa gratinado a la plancha, proteína a e", "v": [["Pastor", 55]]}, {"n": "Mollete", "e": "🥖", "d": "Bolillo chico con frijol bajo en sal, queso manchego reducido en grasa gratinado y pico de", "v": [["Natural", 34]]}, {"n": "Quesadilla", "e": "🫓", "d": "Tortilla de maíz o de harina con queso Oaxaca reducido en grasa y salsa.", "v": [["Maíz", 25], ["Harina", 25]]}, {"n": "Enchiladas", "e": "🌶️", "d": "Verdes o rojas, rellenas de pollo, con salsa baja en sal, crema ligera, queso fresco, cebo", "v": [["Verdes o rojas", 55]]}, {"n": "Enfrijoladas", "e": "🫘", "d": "Rellenas de pollo, bañadas en salsa de frijol baja en sal, con crema ligera, queso fresco ", "v": [["Con pollo", 55]]}, {"n": "Arma tu panini", "e": "🥪", "d": "Arma el tuyo en 5 pasos: pan (ciabatta o integral) · proteína (pollo asado, pavo, pepperon", "v": [["El Clásico", 59], ["El Italiano", 59], ["Pollo Pesto", 59]]}, {"n": "Arma tu ensalada", "e": "🥗", "d": "Arma la tuya: base (lechugas, espinaca o mitad y mitad) · proteína + (pollo a la parrilla,", "v": [["Arcoíris", 69], ["Frutal", 69]]}, {"n": "Comida del día", "e": "🍽️", "d": "Plato del Bien Comer: sopa o crema, plato fuerte, guarnición, fruta de postre y agua sin a", "v": [["Menú de ejemplo", 79]]}]}, {"c": "Take & go", "i": [{"n": "Vaso de fruta", "e": "🍉", "d": "Melón, sandía, papaya y uva con limón y chile.", "v": [["Vaso de fruta", 40]]}, {"n": "Crudités", "e": "🥕", "d": "Pepino, jícama y zanahoria con limón y chile.", "v": [["Crudités", 35]]}, {"n": "Parfait", "e": "🥣", "d": "Yogurt natural sin azúcar, granola de la casa sin miel, fresa y blueberry.", "v": [["Parfait", 49]]}, {"n": "Cuernito de pavo", "e": "🥐", "d": "Cuernito con pechuga de pavo reducida en sodio, queso reducido en grasa, lechuga y jitomat", "v": [["Cuernito de pavo", 55]]}]}, {"c": "Bebidas", "i": [{"n": "Licuado", "e": "🥤", "d": "Con leche descremada, sin azúcar añadida. El de chocolate se hace con algarroba: sabe a ch", "v": [["Plátano", 50], ["Chocolate (algarroba)", 50]]}, {"n": "Chocolate caliente", "e": "☕", "d": "Hecho con algarroba y leche descremada, canela y vainilla. Sin cafeína y sin azúcar añadid", "v": [["Chocolate caliente", 50]]}]}, {"c": "Hazlo combo", "i": [{"n": "Agrega jugo o fruta", "e": "🍊", "d": "Jugo de naranja natural de 200 ml o vaso de fruta chico, con cualquier platillo.", "v": [["Jugo de naranja", 25], ["Fruta", 20]]}]}, {"c": "Especiales", "i": [{"n": "Nutri Box", "e": "📦", "d": "La Estrella del Día (cambia cada día: rollitos, coditos, brochetitas, mini wrap y más) + f", "v": [["Ejemplo: Rollitos Nutri", 89]]}, {"n": "Happy Cakes", "e": "🥞", "d": "Dos hotcakes de avena con carita de fruta: plátano, fresa y blueberries. Sin miel ni jarab", "v": [["Happy Cakes", 45]]}]}], "secundaria": [{"c": "Platillos", "i": [{"n": "Tacos", "e": "🌮", "d": "Tortilla de maíz nixtamalizada, proteína a elegir, cebolla, cilantro y salsa baja en sal.", "v": [["Pollo", 30], ["Bistec", 30], ["Pastor", 30], ["Campechano", 30], ["Arrachera", 40]]}, {"n": "Chilaquiles", "e": "🫓", "d": "Verdes o rojos. Totopo de maíz horneado, no frito, salsa y frijol bajos en sal, crema lige", "v": [["Verdes o rojos", 59], ["Con pollo", 59]]}, {"n": "Huevos", "e": "🍳", "d": "Huevos al gusto con frijoles y tortilla de maíz.", "v": [["A la mexicana", 59]]}, {"n": "Burrito", "e": "🌯", "d": "Tortilla de harina, proteína a elegir, frijol, arroz, queso Oaxaca reducido en grasa, lech", "v": [["Pollo", 79], ["Bistec", 79], ["Pastor", 79], ["Campechano", 79], ["Arrachera", 89]]}, {"n": "Gringa", "e": "🌮", "d": "Tortilla de harina con queso Oaxaca reducido en grasa gratinado a la plancha, proteína a e", "v": [["Pastor", 70], ["Pollo", 70], ["Arrachera", 75]]}, {"n": "Mollete", "e": "🥖", "d": "Bolillo chico con frijol bajo en sal, queso manchego reducido en grasa gratinado y pico de", "v": [["Natural", 34], ["Con chorizo de pavo", 34], ["Con tocino de pavo", 34]]}, {"n": "Quesadilla", "e": "🫓", "d": "Tortilla de maíz o de harina con queso Oaxaca reducido en grasa y salsa.", "v": [["Maíz", 25], ["Harina", 25]]}, {"n": "Enchiladas", "e": "🌶️", "d": "Verdes o rojas, rellenas de pollo, con salsa baja en sal, crema ligera, queso fresco, cebo", "v": [["Verdes o rojas", 69]]}, {"n": "Enfrijoladas", "e": "🫘", "d": "Rellenas de pollo, bañadas en salsa de frijol baja en sal, con crema ligera, queso fresco ", "v": [["Con pollo", 69]]}, {"n": "Arma tu panini", "e": "🥪", "d": "Arma el tuyo en 5 pasos: pan (ciabatta o integral) · proteína (pollo asado, pavo, pepperon", "v": [["El Clásico", 75], ["El Italiano", 75], ["Pollo Pesto", 75], ["Carnes Frías", 75]]}, {"n": "Arma tu ensalada", "e": "🥗", "d": "Arma la tuya: base (lechugas, espinaca o mitad y mitad) · proteína + (pollo a la parrilla,", "v": [["Nutri de pollo y fresa", 85], ["César de pollo", 75], ["Mexicana", 75], ["Armada con pollo", 75]]}, {"n": "Comida del día", "e": "🍽️", "d": "Plato del Bien Comer: sopa o crema, plato fuerte, guarnición, fruta de postre y agua sin a", "v": [["Menú de ejemplo", 95]]}]}, {"c": "Take & go", "i": [{"n": "Vaso de fruta", "e": "🍉", "d": "Melón, sandía, papaya y uva con limón y chile.", "v": [["Vaso de fruta", 40]]}, {"n": "Crudités", "e": "🥕", "d": "Pepino, jícama y zanahoria con limón y chile.", "v": [["Crudités", 35]]}, {"n": "Parfait", "e": "🥣", "d": "Yogurt natural sin azúcar, granola de la casa sin miel, fresa y blueberry.", "v": [["Parfait", 49]]}, {"n": "Cuernito de pavo", "e": "🥐", "d": "Cuernito con pechuga de pavo reducida en sodio, queso reducido en grasa, lechuga y jitomat", "v": [["Cuernito de pavo", 55]]}]}, {"c": "Bebidas", "i": [{"n": "Licuado", "e": "🥤", "d": "Con leche descremada, sin azúcar añadida. El de chocolate se hace con algarroba: sabe a ch", "v": [["Plátano", 50], ["Chocolate (algarroba)", 50]]}, {"n": "Chocolate caliente", "e": "☕", "d": "Hecho con algarroba y leche descremada, canela y vainilla. Sin cafeína y sin azúcar añadid", "v": [["Chocolate caliente", 50]]}]}, {"c": "Hazlo combo", "i": [{"n": "Agrega jugo o fruta", "e": "🍊", "d": "Jugo de naranja natural de 200 ml o vaso de fruta chico, con cualquier platillo.", "v": [["Jugo de naranja", 25], ["Fruta", 20]]}]}, {"c": "Especiales", "i": [{"n": "Costra", "e": "🧀", "d": "Queso Oaxaca reducido en grasa dorado a la plancha con pastor o arrachera, sobre tortilla ", "v": [["Pastor", 69], ["Arrachera", 79]]}, {"n": "Smoothie de fruta", "e": "🍓", "d": "Fresa, mango y plátano con yogurt natural y leche descremada. Sin azúcar.", "v": [["Smoothie de fruta", 59]]}]}], "prepa": [{"c": "Platillos", "i": [{"n": "Tacos", "e": "🌮", "d": "Tortilla de maíz nixtamalizada, proteína a elegir, cebolla, cilantro y salsa baja en sal.", "v": [["Pollo", 30], ["Bistec", 30], ["Pastor", 30], ["Campechano", 30], ["Arrachera", 40]]}, {"n": "Chilaquiles", "e": "🫓", "d": "Verdes o rojos. Totopo de maíz horneado, no frito, salsa y frijol bajos en sal, crema lige", "v": [["Verdes o rojos", 59], ["Con pollo", 59]]}, {"n": "Huevos", "e": "🍳", "d": "Huevos al gusto con frijoles y tortilla de maíz.", "v": [["A la mexicana", 59]]}, {"n": "Burrito", "e": "🌯", "d": "Tortilla de harina, proteína a elegir, frijol, arroz, queso Oaxaca reducido en grasa, lech", "v": [["Pollo", 79], ["Bistec", 79], ["Pastor", 79], ["Campechano", 79], ["Arrachera", 89]]}, {"n": "Gringa", "e": "🌮", "d": "Tortilla de harina con queso Oaxaca reducido en grasa gratinado a la plancha, proteína a e", "v": [["Pastor", 70], ["Pollo", 70], ["Arrachera", 75]]}, {"n": "Mollete", "e": "🥖", "d": "Bolillo chico con frijol bajo en sal, queso manchego reducido en grasa gratinado y pico de", "v": [["Natural", 34], ["Con chorizo de pavo", 34], ["Con tocino de pavo", 34]]}, {"n": "Quesadilla", "e": "🫓", "d": "Tortilla de maíz o de harina con queso Oaxaca reducido en grasa y salsa.", "v": [["Maíz", 25], ["Harina", 25]]}, {"n": "Enchiladas", "e": "🌶️", "d": "Verdes o rojas, rellenas de pollo, con salsa baja en sal, crema ligera, queso fresco, cebo", "v": [["Verdes o rojas", 69]]}, {"n": "Enfrijoladas", "e": "🫘", "d": "Rellenas de pollo, bañadas en salsa de frijol baja en sal, con crema ligera, queso fresco ", "v": [["Con pollo", 69]]}, {"n": "Arma tu panini", "e": "🥪", "d": "Arma el tuyo en 5 pasos: pan (ciabatta o integral) · proteína (pollo asado, pavo, pepperon", "v": [["El Clásico", 75], ["El Italiano", 75], ["Pollo Pesto", 75], ["Carnes Frías", 75]]}, {"n": "Arma tu ensalada", "e": "🥗", "d": "Arma la tuya: base (lechugas, espinaca o mitad y mitad) · proteína + (pollo a la parrilla,", "v": [["Nutri de pollo y fresa", 85], ["César de pollo", 75], ["Mexicana", 75], ["Armada con pollo", 75]]}, {"n": "Comida del día", "e": "🍽️", "d": "Plato del Bien Comer: sopa o crema, plato fuerte, guarnición, fruta de postre y agua sin a", "v": [["Menú de ejemplo", 95]]}]}, {"c": "Take & go", "i": [{"n": "Vaso de fruta", "e": "🍉", "d": "Melón, sandía, papaya y uva con limón y chile.", "v": [["Vaso de fruta", 40]]}, {"n": "Crudités", "e": "🥕", "d": "Pepino, jícama y zanahoria con limón y chile.", "v": [["Crudités", 35]]}, {"n": "Parfait", "e": "🥣", "d": "Yogurt natural sin azúcar, granola de la casa sin miel, fresa y blueberry.", "v": [["Parfait", 49]]}, {"n": "Cuernito de pavo", "e": "🥐", "d": "Cuernito con pechuga de pavo reducida en sodio, queso reducido en grasa, lechuga y jitomat", "v": [["Cuernito de pavo", 55]]}]}, {"c": "Bebidas", "i": [{"n": "Licuado", "e": "🥤", "d": "Con leche descremada, sin azúcar añadida. El de chocolate se hace con algarroba: sabe a ch", "v": [["Plátano", 50], ["Chocolate (algarroba)", 50]]}, {"n": "Chocolate caliente", "e": "☕", "d": "Hecho con algarroba y leche descremada, canela y vainilla. Sin cafeína y sin azúcar añadid", "v": [["Chocolate caliente", 50]]}]}, {"c": "Hazlo combo", "i": [{"n": "Agrega jugo o fruta", "e": "🍊", "d": "Jugo de naranja natural de 200 ml o vaso de fruta chico, con cualquier platillo.", "v": [["Jugo de naranja", 25], ["Fruta", 20]]}]}, {"c": "Especiales", "i": [{"n": "Açaí bowl", "e": "🫐", "d": "Açaí sin azúcar con plátano, fresa, blueberry y granola de la casa sin miel.", "v": [["Açaí bowl", 99]]}, {"n": "Poke bowl", "e": "🍱", "d": "Arroz, pollo o atún, pepino, zanahoria, edamame, aguacate, ajonjolí y soya reducida en sod", "v": [["Pollo", 89], ["Atún", 89]]}]}]};
+const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+// Grados del ITJ Campus Santa Mónica → cafetería y recreos
+const GRADOS=[...[1,2,3,4,5,6].map(g=>g+'.° de primaria'),...[1,2,3].map(g=>g+'.° de secundaria'),...[1,2,3].map(g=>g+'.° de prepa')];
+const nivelDe=gr=>gr.includes('primaria')?'primaria':gr.includes('secundaria')?'secundaria':'prepa';
+const CAFE={primaria:'Cafetería de primaria',secundaria:'Cafetería de secundaria',prepa:'Cafetería de prepa'};
+const RECREOS=gr=>{const n=nivelDe(gr);if(n==='primaria')return parseInt(gr)<=3?['10:30']:['11:30'];return['10:00','13:00']};
+const EJ_HIJOS=[['Sofía','4.° de primaria'],['Mateo','2.° de secundaria'],['Valeria','1.° de prepa'],['Diego','1.° de primaria']];
+const LIMITES=[0,80,100,150,200];
+
+/* ================= estado (localStorage) ================= */
+const LLAVE='nutri-demo-itj-v1';
+let E=cargar();
+function nuevo(){return{papa:null,hijos:[],sel:0,avisos:[],noLeidos:0,folio:100}}
+function cargar(){try{return JSON.parse(localStorage.getItem(LLAVE))||nuevo()}catch(e){return nuevo()}}
+function guardar(){try{localStorage.setItem(LLAVE,JSON.stringify(E))}catch(e){}}
+const hijo=()=>E.hijos[E.sel];
+const hoyK=()=>{const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()};
+const gastoHoy=h=>(h.gasto&&h.gasto.k===hoyK())?h.gasto.m:0;
+function gastar(h,m){if(!h.gasto||h.gasto.k!==hoyK())h.gasto={k:hoyK(),m:0};h.gasto.m+=m}
+
+/* ================= utilidades ================= */
+const fechaLarga=d=>DIAS[d.getDay()][0].toUpperCase()+DIAS[d.getDay()].slice(1)+' '+d.getDate()+' de '+MESES[d.getMonth()];
+const hora=()=>{const d=new Date();return d.getHours()+':'+String(d.getMinutes()).padStart(2,'0')};
+const pesos=n=>{const e=Math.abs(n-Math.round(n))<0.005;return '$'+n.toLocaleString('es-MX',{minimumFractionDigits:e?0:2,maximumFractionDigits:e?0:2})};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ini=n=>(n||'?').trim()[0].toUpperCase();
+const CAMPANA='<svg viewBox="0 0 24 24" fill="none" stroke="#1F5D3B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>';
+function cab(titulo,sub,atras){
+  return `<div class="app-cab">${atras?`<button class="atras" data-ir="${atras}">‹</button>`:''}
+  <div class="t" style="flex:1;${atras?'margin-left:14px':''}">${esc(titulo)}${sub?`<small>${esc(sub)}</small>`:''}</div>
+  ${E.papa&&E.sesion?`<button class="campana" data-ir="avisos">${CAMPANA}${E.noLeidos?`<i>${E.noLeidos}</i>`:''}</button>`:''}</div>`;
+}
+let pant='inicio', datos={};
+function ir(p,d){detenerCamara();pant=p;datos=d||{};pintar()}
+document.addEventListener('click',ev=>{const b=ev.target.closest('[data-ir]');if(b&&b.closest('#app'))ir(b.dataset.ir)});
+function aviso(icono,titulo,texto,banner){
+  E.avisos.unshift({i:icono,t:titulo,x:texto,h:hora(),n:true});E.noLeidos++;guardar();
+  if(banner)mostrarBanner(titulo,texto);
+}
+let tBanner;
+function mostrarBanner(t,s){$('bannerT').textContent=t;$('bannerS').textContent=s;$('banner').classList.add('on');clearTimeout(tBanner);tBanner=setTimeout(()=>$('banner').classList.remove('on'),5200)}
+
+/* ================= pantallas de la app ================= */
+function pintar(){
+  const A=$('app');
+  if(E.papa&&E.sesion===undefined)E.sesion=true;
+  if((!E.papa||!E.sesion)&&!['bienvenida','registro','login'].includes(pant))pant='bienvenida';
+  if(E.papa&&!E.hijos.length&&pant==='inicio'){pant='hijo';datos={primero:true}}
+  const f=P[pant]||P.inicio;A.innerHTML=f();if(F[pant])F[pant]();
+}
+const P={}, F={};
+
+P.bienvenida=()=>`<div class="cuerpo" style="display:flex;flex-direction:column;justify-content:center;padding-top:60px">
+  <img class="logo-app" src="/demo/itj/logo.png" alt="Nutri">
+  <img src="/demo/itj/logo_itj.png" alt="Instituto Thomas Jefferson" style="display:block;width:330px;margin:-10px auto 34px">
+  <div style="text-align:center;font-size:36px;font-weight:800;color:var(--verde);line-height:1.1;margin-bottom:12px">El recreo de tus hijos,<br>sin filas</div>
+  <div style="text-align:center;font-size:19px;color:var(--cacao);margin-bottom:44px;line-height:1.4">Recarga su saldo, pide su comida antes del recreo<br>y entérate de todo lo que compran.</div>
+  <button class="btn nar" data-ir="registro">Crear mi cuenta</button>
+  <button class="btn sec" data-ir="login">Ya tengo cuenta</button></div>`;
+P.login=()=>`${cab('Iniciar sesión','','bienvenida')}
+  <div class="cuerpo">${E.papa?`
+  <div class="campo"><label>Celular</label><input id="lCel" inputmode="numeric" value="${esc(E.papa.cel||'')}" autocomplete="off"></div>
+  <div class="campo"><label>Contraseña</label><input id="lPas" type="password" value="nutri123" autocomplete="off"></div>
+  <div class="aviso">Hola de nuevo, <b>${esc(E.papa.nombre)}</b>.</div>`:`<div class="vacio">Todavía no hay una cuenta en este equipo.</div>`}
+  </div><div class="pie-app">${E.papa?'<button class="btn" id="lOk">Entrar</button>':'<button class="btn nar" data-ir="registro">Crear mi cuenta</button>'}</div>`;
+F.login=()=>{if($('lOk'))$('lOk').onclick=()=>{E.sesion=true;guardar();ir('inicio')}};
+
+P.registro=()=>`${cab('Crea tu cuenta','Toma menos de un minuto','bienvenida')}
+  <div class="cuerpo">
+  <button class="ejemplo" id="llenar">✨ Llenar con un ejemplo</button>
+  <div class="campo"><label>Nombre(s)</label><input id="rNom" placeholder="Nombre(s)" autocomplete="off"></div>
+  <div class="campo"><label>Apellidos</label><input id="rApe" placeholder="Ej. Martínez López" autocomplete="off"></div>
+  <div class="campo"><label>Celular</label><input id="rCel" inputmode="numeric" placeholder="55 0000 0000" autocomplete="off"></div>
+  <div class="campo"><label>Contraseña</label><input id="rPas" type="password" placeholder="Mínimo 6 caracteres" autocomplete="off"></div>
+  <div class="aviso">Con una sola cuenta manejas el saldo de <b>todos tus hijos</b>, en primaria, secundaria o prepa.</div>
+  </div><div class="pie-app"><button class="btn" id="rOk">Crear cuenta</button></div>`;
+F.registro=()=>{
+  $('llenar').onclick=()=>{$('rNom').value='Laura';$('rApe').value='Martínez López';$('rCel').value='55 1234 5678';$('rPas').value='nutri123'};
+  $('rOk').onclick=()=>{const n=$('rNom').value.trim()||'Laura';const a=$('rApe').value.trim()||'Martínez López';
+    E=nuevo();E.papa={nombre:n,apellidos:a,cel:$('rCel').value.trim()||'55 1234 5678'};E.sesion=true;guardar();ir('hijo',{primero:true})};
+};
+
+P.hijo=()=>`${cab(datos.primero?'Agrega a tu hijo':'Agregar otro hijo','Uno por uno, los que quieras',E.hijos.length?'inicio':'')}
+  <div class="cuerpo">
+  <button class="ejemplo" id="llenar">✨ Llenar con un ejemplo</button>
+  <div class="campo"><label>Nombre(s) de tu hijo o hija</label><input id="hNom" placeholder="Nombre(s)" autocomplete="off"></div>
+  <div class="campo"><label>Apellidos</label><input id="hApe" placeholder="Ej. Martínez López" value="${esc((E.papa&&E.papa.apellidos)||'')}" autocomplete="off"></div>
+  <div class="campo"><label>Grado</label><select id="hGr">${GRADOS.map(g=>`<option>${g}</option>`).join('')}</select></div>
+  <div class="h2">¿Tiene alguna alergia?</div>
+  <div class="chips" id="hAl" style="flex-wrap:wrap">${['Ninguna','Cacahuate','Lácteos','Gluten','Huevo','Mariscos'].map((a,i)=>`<button class="chip${i==0?' on':''}" data-a="${a}" style="padding:12px 18px">${a}</button>`).join('')}</div>
+  <div class="aviso" style="margin-top:16px">Si marcas una alergia, el tótem y la caja <b>se lo avisan</b> antes de cobrarle.</div>
+  </div><div class="pie-app"><button class="btn" id="hOk">Guardar</button></div>`;
+F.hijo=()=>{
+  const al=$('hAl');al.onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;
+    if(b.dataset.a==='Ninguna'){al.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===b))}
+    else{b.classList.toggle('on');al.querySelector('[data-a="Ninguna"]').classList.toggle('on',!al.querySelector('.chip.on:not([data-a="Ninguna"])'))}};
+  $('llenar').onclick=()=>{const usados=E.hijos.map(h=>h.nombre);const ej=EJ_HIJOS.find(x=>!usados.includes(x[0]))||EJ_HIJOS[0];$('hNom').value=ej[0];if(!$('hApe').value)$('hApe').value=(E.papa&&E.papa.apellidos)||'Martínez López';$('hGr').value=ej[1]};
+  $('hOk').onclick=()=>{const n=$('hNom').value.trim();if(!n){$('hNom').focus();return}
+    const alergias=[...al.querySelectorAll('.chip.on')].map(c=>c.dataset.a).filter(a=>a!=='Ninguna');
+    E.hijos.push({nombre:n,apellidos:$('hApe').value.trim(),grupo:$('hGr').value,alergias,saldo:0,limite:100,pedidos:[],rostro:null});E.sel=E.hijos.length-1;guardar();
+    ir('rostro',{alta:true})};
+};
+P.hijoListo=()=>{const h=hijo();return `${cab('¡Listo!','','')}
+  <div class="cuerpo"><div class="exito"><div class="ok">✓</div><h2>${esc(h.nombre+(h.apellidos?' '+h.apellidos:''))} ya está en tu cuenta</h2><p>${esc(h.grupo)} · ${CAFE[nivelDe(h.grupo)]}${h.alergias.length?'<br>Alergia: '+esc(h.alergias.join(', ')):''}<br>${h.rostro?'<b style="color:var(--verde)">✓ Rostro registrado: ya puede pagar en el tótem</b>':'Puedes registrar su rostro después desde el inicio'}</p></div>
+  <button class="btn sec" data-ir="hijo">＋ Agregar otro hijo</button>
+  <button class="btn" data-ir="inicio">Continuar</button></div>`};
+
+P.inicio=()=>{const h=hijo();if(!h)return P.hijo();
+  const g=gastoHoy(h);const pend=(h.pedidos||[]).filter(p=>!p.entregado);
+  return `${cab('Hola, '+E.papa.nombre.split(' ')[0],'Instituto Thomas Jefferson · Santa Mónica')}
+  <div class="cuerpo">
+   <div class="chips">${E.hijos.map((x,i)=>`<button class="chip${i==E.sel?' on':''}" data-h="${i}"><span class="ava">${ini(x.nombre)}</span>${esc(x.nombre)}</button>`).join('')}<button class="chip" data-ir="hijo" style="padding:10px 18px">＋</button></div>
+   <div class="saldo" style="margin-top:16px"><small>Saldo de ${esc(h.nombre)} · ${esc(h.grupo)}</small><b>${pesos(h.saldo)}</b><button class="btn" data-ir="recarga">Recargar saldo</button></div>
+   <div class="tarjeta" style="margin-top:14px"><div class="fila"><div class="ic">📊</div><div class="tx"><b>Hoy lleva ${pesos(g)}</b><span>${h.limite?'Límite diario: '+pesos(h.limite):'Sin límite diario'}</span></div><button class="estado ok" data-ir="limite">Cambiar</button></div></div>
+   ${pend.length?`<div class="tarjeta" style="border-color:var(--verde2)"><div class="fila"><div class="ic">🛍️</div><div class="tx"><b>Pedido para el recreo de las ${pend[0].recreo}</b><span>${esc(pend[0].txt)} · lo recoge en la barra</span></div><span class="estado ok">Pagado ✓</span></div></div>`:''}
+   <div class="acciones">
+     <button class="accion" data-ir="pedir"><div class="e">🛍️</div><b>Pedir para el recreo</b><span>Lo recoge sin hacer fila</span></button>
+     <button class="accion" data-ir="rostro"><div class="e">${h.rostro?'✅':'🙂'}</div><b>${h.rostro?'Rostro registrado':'Registrar rostro'}</b><span>${h.rostro?'Ya paga en el tótem':'Para pagar sin efectivo'}</span></button>
+     <button class="accion" data-ir="menu"><div class="e">📖</div><b>Ver menú</b><span>${CAFE[nivelDe(h.grupo)]}</span></button>
+     <button class="accion" data-ir="movs"><div class="e">🧾</div><b>Movimientos</b><span>Recargas y compras</span></button>
+   </div>
+   <button class="accion" data-ir="ayuda" style="width:100%;margin-top:12px;display:flex;align-items:center;gap:14px"><div class="e">💬</div><div><b style="margin:0">Ayuda</b><span>Preguntas frecuentes y WhatsApp</span></div></button>
+   <button class="btn sec" id="salir" style="margin-top:18px;color:var(--rojo);border-color:var(--rojo2)">Cerrar sesión</button>
+  </div>`};
+F.inicio=()=>{document.querySelectorAll('[data-h]').forEach(b=>b.onclick=()=>{E.sel=+b.dataset.h;guardar();pintar()});
+  if($('salir'))$('salir').onclick=()=>{E.sesion=false;guardar();ir('bienvenida')}};
+
+/* ----- límite diario ----- */
+P.limite=()=>{const h=hijo();return `${cab('Límite diario',h.nombre,'inicio')}<div class="cuerpo">
+  <div style="font-size:19px;color:var(--cacao);margin:4px 2px 16px;line-height:1.4">¿Cuánto puede gastar ${esc(h.nombre)} al día en la cafetería?</div>
+  <div class="montos">${LIMITES.map(v=>`<button class="monto${h.limite===v?' on':''}" data-l="${v}">${v?pesos(v):'Sin límite'}</button>`).join('')}</div>
+  <div class="aviso">Si intenta pasar el límite, el tótem no le cobra y <b>te avisamos</b>.</div></div>`};
+F.limite=()=>document.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{hijo().limite=+b.dataset.l;guardar();ir('inicio')});
+
+/* ----- recarga ----- */
+const METODOS=[
+ {k:'TARJETA',n:'Tarjeta',d:'Crédito o débito.',tiempo:'El saldo se abona en cuanto se aprueba el pago (segundos).',ic:'💳',com:COMISION,btn:'Pagar con tarjeta'},
+ {k:'SPEI',n:'Transferencia SPEI',d:'Te damos una CLABE y el importe exacto. Transfiere desde la app de tu banco.',tiempo:'El saldo se abona al confirmarse la transferencia: normalmente minutos.',ic:'🏦',com:0,btn:'Obtener CLABE para transferir'},
+ {k:'OXXO',n:'Efectivo en OXXO',d:'Te damos una ficha con referencia. Paga en caja de cualquier OXXO.',tiempo:'El saldo se abona hasta 2 horas hábiles después de pagar.',ic:'🏪',com:COMISION,btn:'Obtener ficha para pagar en OXXO'},
+ {k:'WALLET',n:'Apple Pay / Google Pay',d:'Con la tarjeta que ya tienes en tu teléfono.',tiempo:'El saldo se abona en cuanto se aprueba el pago (segundos).',ic:'📱',com:COMISION,btn:'Pagar con Apple Pay / Google Pay'},
+];
+const comision=(m,met)=>Math.round(m*met.com*100)/100;
+P.recarga=()=>{const h=hijo();const otro=datos.otro||'';const m=otro?Number(otro):(datos.monto||200);const valido=m>=50&&m<=5000;
+  const met=METODOS.find(x=>x.k===(datos.met||'TARJETA'));
+  return `${cab('Recargar a '+h.nombre,'Saldo actual: '+pesos(h.saldo),'inicio')}
+  <div class="cuerpo">
+   <div class="h2" style="margin-top:4px">¿Cuánto quieres recargar?</div>
+   <div class="montos" style="grid-template-columns:repeat(4,1fr)">${[100,200,300,500].map(v=>`<button class="monto${!otro&&v==m?' on':''}" data-m="${v}">${pesos(v)}</button>`).join('')}</div>
+   <div class="campo" style="margin-top:12px"><label>Otro monto ($50 a $5,000)</label><input id="otro" inputmode="numeric" placeholder="Escribe el monto" value="${esc(otro)}" autocomplete="off"></div>
+   <div class="h2">¿Cómo pagas?</div>
+   ${METODOS.map(x=>`<button class="dia${x.k===met.k?' on':''}" data-met="${x.k}" style="width:100%;text-align:left"><div class="f" style="font-size:32px">${x.ic}</div><div class="m"><b>${x.n}</b><span>${x.d}</span></div></button>`).join('')}
+   ${valido?`<div class="tarjeta" style="margin-top:6px"><div class="resumen t" style="border:0;margin:0;padding:0"><span>Recarga para ${esc(h.nombre)}</span><span>${pesos(m)}</span></div></div>
+   <div class="aviso" style="background:var(--verde4)"><b>${met.tiempo}</b></div>`:`<div class="aviso">Escribe un monto entre $50 y $5,000.</div>`}
+  </div><div class="pie-app"><button class="btn nar" id="pagar" ${valido?'':'disabled'}>${met.btn}${valido?' · '+pesos(m):''}</button></div>`};
+F.recarga=()=>{
+  document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{datos.monto=+b.dataset.m;datos.otro='';pintar()});
+  document.querySelectorAll('[data-met]').forEach(b=>b.onclick=()=>{datos.met=b.dataset.met;pintar()});
+  const o=$('otro');o.onchange=()=>{datos.otro=o.value.replace(/[^0-9]/g,'');pintar()};
+  o.onkeydown=e=>{if(e.key==='Enter')o.blur()};
+  $('pagar').onclick=()=>{const otro=datos.otro||'';const m=otro?Number(otro):(datos.monto||200);const met=METODOS.find(x=>x.k===(datos.met||'TARJETA'));
+    const exito=()=>{const h=hijo();h.saldo+=m;mov(h,'Recarga · '+met.n,m);guardar();aviso('💳','Recarga exitosa',`${pesos(m)} al saldo de ${h.nombre} · ${met.n}`,false);
+      return {t:'¡Recarga lista!',p:`${esc(h.nombre)} ya tiene <b>${pesos(h.saldo)}</b> de saldo.<br>Ya puede pagar en el tótem con su rostro.`,sig:'pedir',sigT:'Pedir para el recreo'}};
+    const total=m+comision(m,met);
+    if(met.k==='TARJETA')ir('tarjetaPago',{monto:m,comision:comision(m,met),concepto:'Recarga a '+hijo().nombre,exito,volver:'recarga',vDatos:{...datos}});
+    else if(met.k==='WALLET')procesar(exito,'Confirmando con tu teléfono…');
+    else ir('referencia',{met,monto:m,com:comision(m,met),total,exito})};
+};
+P.tarjetaPago=()=>{const total=datos.monto+datos.comision;const tit=esc((E.papa.nombre+' '+(E.papa.apellidos||'')).toUpperCase());
+  return `${cab('Datos de tu tarjeta',datos.concepto,'')}
+  <div class="cuerpo">
+   <div class="tc"><small>Tarjeta de prueba · no se cobra nada</small>4242 4242 4242 4242<div class="exp"><span>${tit}</span><span>12/29</span></div></div>
+   <div class="campo" style="margin-top:16px"><label>Número de tarjeta</label><input value="4242 4242 4242 4242" readonly></div>
+   <div class="campo"><label>Nombre como aparece en la tarjeta</label><input value="${tit}" readonly></div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div class="campo"><label>Vencimiento</label><input value="12/29" readonly></div><div class="campo"><label>CVV</label><input value="123" readonly></div></div>
+   <div class="aviso">En la caja de la cafetería y por transferencia, <b>sin comisión</b>.</div>
+   <div class="tarjeta" style="margin-top:12px"><div class="resumen"><span>Importe</span><span>${pesos(datos.monto)}</span></div>
+     <div class="resumen"><span>Comisión por pago en línea (2 %)</span><span>${pesos(datos.comision)}</span></div>
+     <div class="resumen t"><span>Total a pagar</span><span>${pesos(total)}</span></div></div>
+  </div><div class="pie-app"><button class="btn nar" id="tPagar">Pagar ${pesos(total)}</button><button class="btn sec" id="tCancelar">Cancelar</button></div>`};
+F.tarjetaPago=()=>{const d=datos;$('tPagar').onclick=()=>procesar(d.exito);$('tCancelar').onclick=()=>ir(d.volver,d.vDatos)};
+P.referencia=()=>{const spei=datos.met.k==='SPEI';
+  return `${cab(spei?'Transfiere a esta CLABE':'Ficha para pagar en OXXO','Importe exacto: '+pesos(datos.total),'recarga')}
+  <div class="cuerpo">
+   <div class="tarjeta" style="text-align:center;padding:30px 20px"><div class="h2" style="margin:0 0 10px">${spei?'CLABE':'Referencia'}</div>
+     <div style="font-size:32px;font-weight:800;letter-spacing:.08em">${spei?'6461 8012 3456 7890 12':'9800 2610 1934 5571'}</div>
+     ${spei?'<div style="font-size:17px;color:var(--cacao);margin-top:10px">Banco: STP · Beneficiario: Nutricafeterias</div>':'<div style="margin:18px auto 0;height:70px;width:80%;background:repeating-linear-gradient(90deg,#26241F 0 3px,#fff 3px 5px,#26241F 5px 6px,#fff 6px 9px)"></div>'}
+     <div style="font-size:40px;font-weight:800;color:var(--verde);margin-top:18px">${pesos(datos.total)}</div>
+     ${datos.com?`<div style="font-size:15px;color:var(--cacao);margin-top:4px">Recarga ${pesos(datos.monto)} + comisión ${pesos(datos.com)} (2 %)</div>`:'<div style="font-size:15px;color:var(--cacao);margin-top:4px">Sin comisión</div>'}</div>
+   <div class="aviso">${esc(datos.met.tiempo)} Mientras tanto la recarga aparece como <b>«Pendiente»</b>.</div>
+  </div><div class="pie-app"><button class="btn" id="yaPague">${spei?'Simular que ya transferí':'Simular que ya pagué en OXXO'}</button></div>`};
+F.referencia=()=>{const d=datos;$('yaPague').onclick=()=>procesar(d.exito,'Confirmando el pago…')};
+function procesar(fn,msg){const A=$('app');A.innerHTML=`${cab('Procesando pago','','')}<div class="cuerpo"><div class="cargando"><div class="spin"></div>${msg||'Confirmando con el banco…'}</div></div>`;
+  setTimeout(()=>{const r=fn();A.innerHTML=`${cab('Listo','','')}<div class="cuerpo"><div class="exito"><div class="ok">✓</div><h2>${r.t}</h2><p>${r.p}</p></div>
+    ${r.sig?`<button class="btn" data-ir="${r.sig}">${r.sigT}</button>`:''}<button class="btn sec" data-ir="inicio">Ir al inicio</button></div>`},1600)}
+
+/* ----- pedir para el recreo (pedido anticipado desde la app) ----- */
+function lineasTxt(c){return c.map(x=>(x.q>1?x.q+' × ':'')+x.n+(x.v&&x.v!==x.n?' de '+x.v.toLowerCase():'')).join(', ')}
+const totalC=c=>c.reduce((s,x)=>s+x.p*x.q,0);
+P.pedir=()=>{const h=hijo();const niv=nivelDe(h.grupo);datos.c=datos.c||[];const rec=RECREOS(h.grupo);datos.recreo=datos.recreo||rec[0];
+  const t=totalC(datos.c);const alcanza=h.saldo>=t;
+  return `${cab('Pedir para el recreo',h.nombre+' · '+CAFE[niv],'inicio')}<div class="cuerpo">
+   <div class="h2" style="margin-top:4px">¿Para qué recreo?</div>
+   <div class="tabs" style="grid-template-columns:repeat(${rec.length},1fr)">${rec.map(r=>`<button class="${r===datos.recreo?'on':''}" data-rec="${r}">Hoy · ${r}</button>`).join('')}</div>
+   ${MENU[niv].map(cat=>`<div class="h2">${esc(cat.c)}</div>`+cat.i.map(it=>`<div class="tarjeta" style="padding:16px 18px"><div class="fila"><div class="ic">${it.e}</div><div class="tx"><b>${esc(it.n)}</b><span>${it.v.length>1?'Desde '+pesos(Math.min(...it.v.map(v=>v[1]))):pesos(it.v[0][1])}</span></div></div>
+     <div class="chips" style="flex-wrap:wrap;margin-top:12px">${it.v.map(v=>{const q=(datos.c.find(x=>x.n===it.n&&x.v===v[0])||{}).q||0;return `<button class="chip${q?' on':''}" data-add="${esc(it.n)}|${esc(v[0])}|${v[1]}" style="padding:10px 16px;font-size:16px">${it.v.length>1?esc(v[0])+' · ':''}${pesos(v[1])}${q?' ×'+q:''}</button>`}).join('')}</div></div>`).join('')).join('')}
+  </div><div class="pie-app">
+   <div class="resumen"><span>${datos.c.length?esc(lineasTxt(datos.c)):'Toca un platillo para agregarlo'}</span><b>${pesos(t)}</b></div>
+   <div class="resumen" style="font-size:16px;color:var(--cacao)"><span>Saldo de ${esc(h.nombre)}</span><span>${pesos(h.saldo)}</span></div>
+   ${datos.c.length?(alcanza?`<button class="btn" id="pOk" style="margin-top:10px">Pagar con su saldo · ${pesos(t)}</button><button class="btn sec" id="pBorrar">Vaciar</button>`:`<button class="btn nar" data-ir="recarga" style="margin-top:10px">Saldo insuficiente · Recargar</button>`):''}
+  </div>`};
+F.pedir=()=>{
+  document.querySelectorAll('[data-rec]').forEach(b=>b.onclick=()=>{datos.recreo=b.dataset.rec;pintar()});
+  document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{const [n,v,p]=b.dataset.add.split('|');const x=datos.c.find(y=>y.n===n&&y.v===v);if(x)x.q++;else datos.c.push({n,v,p:+p,q:1});
+    const y=document.querySelector('#app .cuerpo').scrollTop;pintar();document.querySelector('#app .cuerpo').scrollTop=y});
+  if($('pBorrar'))$('pBorrar').onclick=()=>{datos.c=[];pintar()};
+  if($('pOk'))$('pOk').onclick=()=>{const d=datos;const t=totalC(d.c);
+    procesar(()=>{const h=hijo();h.saldo-=t;gastar(h,t);E.folio++;const txt=lineasTxt(d.c);
+      h.pedidos=h.pedidos||[];h.pedidos.unshift({txt,recreo:d.recreo,folio:'A'+E.folio,entregado:false});
+      mov(h,'Pedido para el recreo · '+txt,-t);guardar();aviso('🛍️','Pedido listo para las '+d.recreo,`${h.nombre}: ${txt} · ${pesos(t)}`,false);
+      return {t:'¡Pedido hecho!',p:`${esc(h.nombre)} lo recoge en la barra a las <b>${d.recreo}</b>, sin hacer fila.<br>Folio <b>A${E.folio}</b>`}},'Pagando con su saldo…')};
+};
+
+/* ----- movimientos ----- */
+function mov(h,desc,monto){h.movs=h.movs||[];const d=new Date();h.movs.unshift({desc,monto,f:d.getDate()+' '+MESES[d.getMonth()].slice(0,3)+' · '+hora()})}
+P.movs=()=>{const h=hijo();const ms=h.movs||[];
+  return `${cab('Movimientos',h.nombre+' · saldo '+pesos(h.saldo),'inicio')}<div class="cuerpo">
+   <div class="saldo" style="margin-bottom:16px"><small>Saldo de ${esc(h.nombre)}</small><b style="margin-bottom:0">${pesos(h.saldo)}</b></div>
+   ${ms.length?ms.map(x=>`<div class="noti"><div class="ic" style="background:${x.monto>0?'var(--verde4)':'var(--naranja2)'}">${x.monto>0?'↓':'🛍️'}</div><div style="flex:1"><b>${esc(x.desc)}</b><small>${x.f}</small></div>
+     <div style="font-size:19px;font-weight:800;color:${x.monto>0?'var(--verde)':'var(--carbon)'};white-space:nowrap">${x.monto>0?'+'+pesos(x.monto):'−'+pesos(-x.monto)}</div></div>`).join(''):'<div class="vacio">Aquí verás cada recarga y cada compra en la cafetería, con fecha, hora y monto.</div>'}
+  </div>`};
+/* ----- menú ----- */
+P.menu=()=>{const h=hijo();const niv=nivelDe(h.grupo);
+  return `${cab('Menú',CAFE[niv],'inicio')}<div class="cuerpo">
+   <div class="aviso" style="margin:0 0 6px"><b>0 sellos · 0 cafeína · 0 azúcar añadida · 0 fritos.</b> Se cocina el mismo día en la cafetería.</div>
+   ${MENU[niv].map(cat=>`<div class="h2">${esc(cat.c)}</div>`+cat.i.map(it=>`<div class="dia"><div class="f" style="font-size:34px">${it.e}</div><div class="m"><b>${esc(it.n)}</b><span>${it.v.map(v=>(it.v.length>1?v[0]+' ':'')+pesos(v[1])).join(' · ')}</span></div></div>`).join('')).join('')}
+  </div>`};
+/* ----- ayuda ----- */
+const FAQ=[
+ ['¿Cómo recargo saldo?','Desde «Recargar saldo»: con tarjeta de débito o crédito, transferencia SPEI, efectivo en OXXO o Apple Pay / Google Pay. También en la caja de la cafetería, con tarjeta o en efectivo, sin comisión.'],
+ ['¿Cómo paga mi hijo?','Elige en el tótem, mira la cámara y listo: se descuenta de su saldo. También puede pagar en la caja.'],
+ ['¿Puedo poner un límite?','Sí. En «Límite diario» eliges cuánto puede gastar al día. Si lo intenta pasar, no se le cobra y te avisamos.'],
+ ['¿Me entero de lo que compra?','Sí. Cada compra te llega como aviso al momento, con lo que compró y cuánto gastó.'],
+ ['¿Puedo pedir antes del recreo?','Sí. Desde «Pedir para el recreo» eliges su comida; la recoge en la barra a la hora de su recreo, sin hacer fila.'],
+ ['¿Cómo cuidan sus alergias?','Las registras al dar de alta a tu hijo; el tótem y la caja se las avisan antes de cobrarle.'],
+ ['¿Qué guardan de su rostro?','Solo un código matemático, nunca la foto. El registro es voluntario y con tu autorización.'],
+];
+P.ayuda=()=>`${cab('Ayuda','Estamos para ayudarte','inicio')}<div class="cuerpo">
+  ${FAQ.map(([p,r],i)=>`<button class="tarjeta" data-faq="${i}" style="width:100%;text-align:left;display:block;margin-bottom:10px"><div style="display:flex;justify-content:space-between;gap:12px;font-size:19px;font-weight:800">${p}<span style="color:var(--verde)">${datos.abierta==i?'−':'+'}</span></div>${datos.abierta==i?`<div style="font-size:17px;color:var(--cacao);margin-top:10px;line-height:1.45;font-weight:500">${r}</div>`:''}</button>`).join('')}
+  <div class="tarjeta" style="text-align:center;background:var(--verde4);border-color:var(--verde3)"><div style="font-size:19px;font-weight:800">¿No encontraste tu respuesta?</div><div style="font-size:16px;color:var(--cacao);margin:6px 0 14px">Escríbenos y te contestamos en horario escolar.</div>
+   <button class="btn" id="wa" style="background:#25D366">💬 Escríbenos por WhatsApp</button><div id="waTxt" style="font-size:16px;color:var(--cacao);margin-top:10px"></div></div>
+ </div>`;
+F.ayuda=()=>{document.querySelectorAll('[data-faq]').forEach(b=>b.onclick=()=>{const i=+b.dataset.faq;datos.abierta=datos.abierta===i?null:i;const y=document.querySelector('#app .cuerpo').scrollTop;pintar();document.querySelector('#app .cuerpo').scrollTop=y});
+  $('wa').onclick=()=>{$('waTxt').innerHTML='En tu celular se abre WhatsApp con Nutri Cafeterías: <b>221 935 4734</b>'}};
+/* ----- avisos ----- */
+P.avisos=()=>{E.avisos.forEach(a=>a.v=a.n);E.noLeidos=0;E.avisos.forEach(a=>a.n=false);guardar();
+  return `${cab('Avisos','','inicio')}<div class="cuerpo">${E.avisos.length?E.avisos.map(a=>`<div class="noti${a.v?' nueva':''}"><div class="ic">${a.i}</div><div><b>${esc(a.t)}</b><span>${esc(a.x)}</span><small>${a.h}</small></div></div>`).join(''):'<div class="vacio">Aquí verás cada compra de tus hijos, tus recargas y sus pedidos.</div>'}</div>`};
+/* ----- registrar rostro ----- */
+P.rostro=()=>{const h=hijo();return `${cab(datos.alta?'Registra el rostro de '+h.nombre:'Registrar rostro',datos.alta?'Paso 2 de 2 · así pagará en el tótem':h.nombre,datos.alta?'':'inicio')}
+  <div class="cuerpo" style="text-align:center">
+   <div style="font-size:19px;color:var(--cacao);margin:4px 0 18px;line-height:1.4">Que ${esc(h.nombre)} se pare frente a la cámara del tótem, mire de frente y <b>parpadee</b>.</div>
+   <div class="circulo" style="width:440px;height:440px"><img id="cImg" alt=""><div class="sincam" id="cSin">Conectando la cámara…</div><div class="aro" id="cAro"></div></div>
+   <div class="indicacion" id="cInd">Ponte frente a la cámara</div>
+   <div class="sub-ind">Solo guardamos un código del rostro, nunca la foto.</div>
+   <div class="simular" id="cSim"></div>
+   ${datos.alta?'<button class="btn sec" data-ir="hijoListo" style="margin-top:18px">Registrarlo después</button>':''}
+  </div>`};
+P.rostroOk=()=>{const h=hijo();return `${cab('Rostro registrado','','')}<div class="cuerpo"><div class="exito"><div class="ok">✓</div><h2>¡Listo, ${esc(h.nombre)}!</h2><p>Ya puede pagar en el tótem solo con su cara.<br>Sin efectivo, sin tarjetas y sin filas.</p></div><button class="btn" data-ir="inicio">Ir al inicio</button></div>`};
+F.rostro=()=>camara({img:'cImg',sin:'cSin',aro:'cAro',ind:'cInd',sim:'cSim',modo:'registro'});
+
+/* ================= cámara (Nutri Cámara del tótem) ================= */
+let cam=null;
+function detenerCamara(){if(cam){cam.vivo=false;cam=null}}
+async function pedirCam(ruta,ms){const c=new AbortController();const t=setTimeout(()=>c.abort(),ms||1500);
+  try{const r=await fetch(CAMARA+ruta,{cache:'no-store',signal:c.signal});if(!r.ok)throw 0;return r}finally{clearTimeout(t)}}
+function indicacion(e){if(!e||e.camara===false)return'Conectando la cámara…';if(!e.presente)return'Ponte frente a la cámara';
+  if(!e.cerca)return'Acércate un poco';if(e.muyCerca)return'Aléjate un poco';if(!e.centrado)return'Ponte al centro';
+  if(!e.deFrente)return'Mira de frente a la cámara';if(!e.ojosAbiertos)return'Abre los ojos';return'Ahora parpadea';}
+function leerVector(b64){const bin=atob(b64);if(bin.length!==2048)return null;const dv=new DataView(new ArrayBuffer(2048));
+  for(let i=0;i<2048;i++)dv.setUint8(i,bin.charCodeAt(i));const v=new Float32Array(512);let n=0;
+  for(let i=0;i<512;i++){v[i]=dv.getFloat32(i*4,true);n+=v[i]*v[i]}n=Math.sqrt(n)||1;for(let i=0;i<512;i++)v[i]/=n;return Array.from(v)}
+function promedio(vs){const p=new Array(512).fill(0);vs.forEach(v=>v.forEach((x,i)=>p[i]+=x));const n=Math.sqrt(p.reduce((s,x)=>s+x*x,0))||1;return p.map(x=>x/n)}
+const sim=(a,b)=>{let s=0;for(let i=0;i<a.length;i++)s+=a[i]*b[i];return s};
+function identificar(consulta){
+  let mejor=-1,seg=-1,quien=-1;
+  E.hijos.forEach((h,i)=>{if(!h.rostro)return;let s=-1;h.rostro.forEach(m=>s=Math.max(s,sim(consulta,m)));
+    if(s>mejor){seg=mejor;mejor=s;quien=i}else if(s>seg)seg=s});
+  if(quien<0||mejor<UMBRAL||(seg>0&&mejor-seg<MARGEN))return -1;return quien;
+}
+const azar=()=>{const f=Array.from({length:512},()=>Math.random()-.5);const n=Math.sqrt(f.reduce((a,x)=>a+x*x,0));return f.map(x=>x/n)};
+function camara(o){
+  detenerCamara();const c={vivo:true,base:null,ocupado:false};cam=c;
+  const img=$(o.img),sin=$(o.sin),aro=$(o.aro),ind=$(o.ind);let url=null,fallas=0;
+  const pintarSim=()=>{const s=$(o.sim);if(!s)return;
+    if(fallas<3){s.innerHTML='';return}
+    if(o.modo==='registro')s.innerHTML=`<button data-s="reg">Simular registro (sin cámara)</button>`;
+    else s.innerHTML=E.hijos.map((h,i)=>h.rostro?`<button data-s="${i}">Simular a ${esc(h.nombre)}</button>`:'').join('')+`<button data-s="x">Simular desconocido</button>`;
+    s.onclick=ev=>{const b=ev.target.closest('[data-s]');if(!b)return;const v=b.dataset.s;
+      if(v==='reg'||v==='x')listo([azar()],1);else listo([E.hijos[+v].rostro[0]],1)}};
+  const listo=(vs,real)=>{if(c.ocupado)return;c.ocupado=true;
+    if(o.modo==='registro'){
+      if(real<REAL_MIN){ind.textContent='No pudimos confirmar. Intenta otra vez';c.ocupado=false;return}
+      const h=hijo();const q=promedio(vs);
+      const otro=E.hijos.find(x=>x!==h&&x.rostro&&x.rostro.some(m=>sim(q,m)>=UMBRAL));
+      if(otro){ind.textContent='Este rostro ya está registrado como '+otro.nombre;c.avisoHasta=Date.now()+4000;c.ocupado=false;return}
+      h.rostro=vs;guardar();ir(datos.alta?'hijoListo':'rostroOk');
+    }else{detenerCamara();pagoResultado(vs,real)}};
+  (async function ciclo(){
+    let ultimaFoto=0;
+    while(c.vivo){
+      try{
+        const r=await pedirCam('/rostro',1500);const e=await r.json();fallas=0;pintarSim();
+        if(!(c.avisoHasta>Date.now()))ind.textContent=indicacion(e);
+        aro.className='aro'+(e.listoParaParpadear?' listo':'')+(e.presente&&!e.listoParaParpadear?' leyendo':'');
+        const res=e.resultado;
+        if(res&&res.id){
+          if(c.base===null)c.base=res.id;
+          else if(res.id>c.base){c.base=res.id;
+            const hs=(res.huellas||[]).map(leerVector).filter(Boolean);
+            if(hs.length)listo(o.modo==='registro'?hs:[promedio(hs)],res.real==null?1:res.real);}
+        }else if(c.base===null)c.base=0;
+        if(Date.now()-ultimaFoto>110){ultimaFoto=Date.now();
+          try{const f=await pedirCam('/foto.jpg',1500);const b=await f.blob();if(!c.vivo)break;
+            const u=URL.createObjectURL(b);img.src=u;if(url)URL.revokeObjectURL(url);url=u;sin.style.display='none'}catch(_){}}
+      }catch(err){fallas++;sin.style.display='flex';sin.textContent=fallas>2?'Cámara no conectada':'Conectando la cámara…';ind.textContent=fallas>2?'Cámara no conectada':'Conectando la cámara…';pintarSim();
+        await new Promise(r=>setTimeout(r,900));}
+      await new Promise(r=>setTimeout(r,90));
+    }
+  })();
+}
+
+/* ================= tótem de pedido ================= */
+const T={niv:'secundaria',cat:0,c:[]};
+function pintarTotem(){
+  const cats=MENU[T.niv];if(T.cat>=cats.length)T.cat=0;
+  $('tNiv').innerHTML=['primaria','secundaria','prepa'].map(n=>`<button class="${n===T.niv?'on':''}" data-niv="${n}">${{primaria:'Primaria',secundaria:'Secundaria',prepa:'Prepa'}[n]}</button>`).join('');
+  $('tCats').innerHTML=cats.map((c,i)=>`<button class="${i===T.cat?'on':''}" data-cat="${i}">${esc(c.c)}</button>`).join('');
+  $('tGrid').innerHTML=cats[T.cat].i.map((it,i)=>`<button class="prod" data-p="${i}"><div class="pe">${it.e}</div><b>${esc(it.n)}</b><span>${it.v.length>1?'Desde ':''}${pesos(Math.min(...it.v.map(v=>v[1])))}</span></button>`).join('');
+  const t=totalC(T.c);
+  $('tCarro').innerHTML=T.c.length?`<div class="carro-lin">${T.c.map((x,i)=>`<span>${x.q>1?x.q+' × ':''}${esc(x.n)}${x.v!==x.n?' · '+esc(x.v):''} <button data-q="${i}">✕</button></span>`).join('')}</div>
+    <div class="carro-pie"><div class="carro-t"><small>Total</small><b>${pesos(t)}</b></div><button class="btn" id="tRostro">🙂 Pagar con mi rostro</button><button class="btn sec" id="tCaja">Pagar en caja</button></div>`
+   :`<div class="carro-vacio">Toca un platillo para agregarlo a tu pedido</div>`;
+  document.querySelectorAll('[data-niv]').forEach(b=>b.onclick=()=>{T.niv=b.dataset.niv;T.cat=0;T.c=[];pintarTotem()});
+  document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{T.cat=+b.dataset.cat;pintarTotem()});
+  document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>abrirVariantes(cats[T.cat].i[+b.dataset.p]));
+  document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const x=T.c[+b.dataset.q];x.q--;if(!x.q)T.c.splice(+b.dataset.q,1);pintarTotem()});
+  if($('tRostro'))$('tRostro').onclick=abrirPago;
+  if($('tCaja'))$('tCaja').onclick=()=>{E.folio++;guardar();const t=totalC(T.c);
+    mostrarRes('verde','🧾','Tu folio: A'+E.folio,'Paga '+pesos(t)+' en la caja y recoge en la barra.','');T.c=[];pintarTotem()};
+}
+function abrirVariantes(it){
+  if(it.v.length===1){agregar(it,it.v[0]);return}
+  $('vTit').innerHTML=`<span style="font-size:70px">${it.e}</span><br>${esc(it.n)}`;$('vDesc').textContent=it.d||'';
+  $('vOps').innerHTML=it.v.map((v,i)=>`<button class="op" data-v="${i}"><b>${esc(v[0])}</b><span>${pesos(v[1])}</span></button>`).join('');
+  $('vOps').onclick=e=>{const b=e.target.closest('[data-v]');if(!b)return;agregar(it,it.v[+b.dataset.v]);$('dlgVar').classList.remove('on')};
+  $('dlgVar').classList.add('on');
+}
+$('vCerrar').onclick=()=>$('dlgVar').classList.remove('on');
+function agregar(it,v){const x=T.c.find(y=>y.n===it.n&&y.v===v[0]);if(x)x.q++;else T.c.push({n:it.n,v:v[0],p:v[1],q:1});pintarTotem()}
+function abrirPago(){
+  $('pTot').textContent=pesos(totalC(T.c));$('dlgPago').classList.add('on');
+  camara({img:'pImg',sin:'pSin',aro:'pAro',ind:'pInd',sim:'pSim',modo:'pago'});
+}
+$('pCancelar').onclick=()=>{detenerCamara();$('dlgPago').classList.remove('on')};
+function pagoResultado(vs,real){
+  $('dlgPago').classList.remove('on');const t=totalC(T.c);const txt=lineasTxt(T.c);
+  const i=real>=REAL_MIN?identificar(vs[0]):-1;
+  if(i<0){mostrarRes('gris','?','No te encontramos','Intenta otra vez o paga en la caja.','');return}
+  const h=E.hijos[i];
+  if(h.saldo<t){aviso('⚠️',h.nombre+' no tuvo saldo',`Quiso comprar ${txt} (${pesos(t)}) y tiene ${pesos(h.saldo)}. Recarga desde la app.`,false);
+    mostrarRes('naranja','!',h.nombre+', te falta saldo','Tienes '+pesos(h.saldo)+'. Puedes pagar en la caja; ya le avisamos a tu familia.',h.grupo);return}
+  if(h.limite&&gastoHoy(h)+t>h.limite){aviso('⚠️',h.nombre+' llegó a su límite',`Quiso comprar ${txt} (${pesos(t)}). Límite diario: ${pesos(h.limite)}.`,false);
+    mostrarRes('naranja','!',h.nombre+', llegaste a tu límite de hoy','Tu límite diario es de '+pesos(h.limite)+'.',h.grupo);return}
+  h.saldo-=t;gastar(h,t);E.folio++;mov(h,'Compra en el tótem · '+txt,-t);guardar();
+  aviso('🛍️',h.nombre+' compró en la cafetería',`${txt} · ${pesos(t)} · le quedan ${pesos(h.saldo)}`,false);
+  mostrarRes('verde','✓','¡Listo, '+h.nombre+'!','Tu folio: A'+E.folio+' · recógelo en la barra',h.grupo+' · te quedan '+pesos(h.saldo));
+  T.c=[];pintarTotem();
+}
+let tRes;
+function mostrarRes(tipo,icono,t,p,g){const R=$('res');R.className='resultado on '+tipo;$('resI').textContent=icono;$('resT').textContent=t;$('resP').textContent=p;
+  $('resG').textContent=g;$('resG').style.display=g?'':'none';clearTimeout(tRes);tRes=setTimeout(()=>R.classList.remove('on'),5200)}
+$('res').onclick=()=>$('res').classList.remove('on');
+
+/* ================= modos y reinicio ================= */
+function modo(m){
+  $('mApp').classList.toggle('on',m==='app');$('mTotem').classList.toggle('on',m==='totem');
+  $('vApp').classList.toggle('on',m==='app');$('vTotem').classList.toggle('on',m==='totem');
+  detenerCamara();$('res').classList.remove('on');$('dlgPago').classList.remove('on');
+  if(m==='totem'){E=cargar();pintarTotem()}
+  else{E=cargar();if(pant==='rostro')pant='inicio';pintar();if(E.noLeidos&&E.avisos[0])setTimeout(()=>mostrarBanner(E.avisos[0].t,E.avisos[0].x),500)}
+}
+$('mApp').onclick=()=>modo('app');$('mTotem').onclick=()=>modo('totem');
+let tLargo;const logo=$('logo');
+const abrirRe=()=>$('dlgReinicio').classList.add('on');
+logo.addEventListener('pointerdown',()=>{tLargo=setTimeout(abrirRe,1800)});
+['pointerup','pointerleave','pointercancel'].forEach(ev=>logo.addEventListener(ev,()=>clearTimeout(tLargo)));
+$('rNo').onclick=()=>$('dlgReinicio').classList.remove('on');
+$('rSi').onclick=()=>{E=nuevo();guardar();T.c=[];$('dlgReinicio').classList.remove('on');pant='bienvenida';modo('app')};
+function ajustar(){const s=Math.min(innerWidth/1080,innerHeight/1920);const r=$('raiz');
+  r.style.transform=`translate(${(innerWidth-1080*s)/2}px,${(innerHeight-1920*s)/2}px) scale(${s})`}
+addEventListener('resize',ajustar);ajustar();
+pant=E.papa?'inicio':'bienvenida';pintar();
+</script>
+</body>
+</html>
