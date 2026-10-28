@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="robots" content="noindex, nofollow">
 <title>Demo Nutri · Instituto Thomas Jefferson</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'Montserrat';font-weight:400;font-style:normal;font-display:block;src:url(/demo/itj/fonts/montserrat-400.woff2) format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:500;font-style:normal;font-display:block;src:url(/demo/itj/fonts/montserrat-500.woff2) format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:600;font-style:normal;font-display:block;src:url(/demo/itj/fonts/montserrat-600.woff2) format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:700;font-style:normal;font-display:block;src:url(/demo/itj/fonts/montserrat-700.woff2) format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:800;font-style:normal;font-display:block;src:url(/demo/itj/fonts/montserrat-800.woff2) format('woff2')}
 /* Demo de tótem y app para el Instituto Thomas Jefferson, Campus Santa Mónica.
    TODO es simulado y vive en este equipo (localStorage). No cobra, no toca el ERP.
    La cámara es la app «Nutri Cámara» del tótem (http://127.0.0.1:8765). */
@@ -682,6 +684,9 @@ function ajustar(){const s=Math.min(innerWidth/1080,innerHeight/1920);const r=$(
   r.style.transform=`translate(${(innerWidth-1080*s)/2}px,${(innerHeight-1920*s)/2}px) scale(${s})`}
 addEventListener('resize',ajustar);ajustar();
 pant=E.papa?'inicio':'bienvenida';pintar();
+
+/* Funciona sin internet: el service worker guarda la demo en el tótem la primera vez que carga. */
+if('serviceWorker' in navigator){navigator.serviceWorker.register('/demo/sw-itj.js',{scope:'/demo/itj'}).catch(()=>{})}
 </script>
 </body>
 </html>
