@@ -30,7 +30,7 @@ input:focus,select:focus{border-color:var(--verde2)}
 .barra{display:flex;align-items:center;justify-content:space-between;padding:26px 40px 18px}
 .barra .logo{height:74px}
 .modos{display:flex;gap:10px;background:#fff;border:2px solid var(--lino);border-radius:999px;padding:6px}
-.modos button{font-size:21px;font-weight:800;padding:14px 26px;border-radius:999px;color:var(--cacao)}
+.modos button{font-size:19px;font-weight:800;padding:13px 20px;border-radius:999px;color:var(--cacao)}
 .modos button.on{background:var(--verde);color:#fff}
 .vista{flex:1;display:none;flex-direction:column;align-items:center;min-height:0}
 .vista.on{display:flex}
@@ -185,6 +185,10 @@ input:focus,select:focus{border-color:var(--verde2)}
 #dlgReinicio p{font-size:21px;color:var(--cacao);margin:0 0 28px}
 #dlgReinicio .btn{margin-top:12px}
 /* ---------- tótem de pedido ITJ ---------- */
+.t-saldo{display:flex;gap:10px;margin:-6px 0 16px;flex-wrap:wrap}
+.t-saldo span{background:#fff;border:2px solid var(--lino);border-radius:999px;padding:10px 18px;font-size:20px;font-weight:700;color:var(--cacao)}
+.t-saldo span b{color:var(--verde)}
+.resultado p{white-space:pre-line}
 .totem{flex:1;width:100%;display:flex;flex-direction:column;padding:0 40px 30px;min-height:0}
 .t-cab{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin:4px 0 18px}
 .t-cab h1{margin:0;font-size:58px;line-height:1;color:var(--verde);font-weight:800;letter-spacing:-.02em}
@@ -233,6 +237,7 @@ input:focus,select:focus{border-color:var(--verde2)}
     <div class="modos">
       <button id="mApp" class="on">App de papás</button>
       <button id="mTotem">Tótem de pedido</button>
+      <button id="mRecoge">Tótem de entrega</button>
     </div>
   </div>
 
@@ -254,22 +259,35 @@ input:focus,select:focus{border-color:var(--verde2)}
   </section>
 
   <section class="vista" id="vTotem">
-    <div class="totem">
-      <div class="t-cab"><div><div class="k">Instituto Thomas Jefferson</div><h1>¿Qué se te antoja hoy?</h1></div><div class="t-niv" id="tNiv"></div></div>
+    <div class="entrada" id="tEspera">
+      <div class="cab"><div class="k">Instituto Thomas Jefferson · Tótem de pedido</div><h1>Pon tu cara para pedir</h1><p>Mira la cámara y parpadea</p></div>
+      <div class="circulo"><img id="tImg" alt=""><div class="sincam" id="tSin">Conectando la cámara…</div><div class="aro" id="tAro"></div></div>
+      <div class="indicacion" id="tInd">Ponte frente a la cámara</div>
+      <div class="sub-ind">Sin efectivo, sin tarjetas: tu cara es tu cuenta</div>
+      <div class="simular" id="tSim"></div>
+      <button class="btn sec" id="tSinCuenta" style="margin-top:auto;width:auto;padding:20px 40px">Pedir sin cuenta · pago en caja</button>
+    </div>
+    <div class="totem" id="tPedido" style="display:none">
+      <div class="t-cab"><div><div class="k" id="tQuien"></div><h1 id="tHola">¿Qué se te antoja hoy?</h1></div><button class="btn sec" id="tSalir" style="width:auto;padding:16px 26px;font-size:20px">Salir</button></div>
+      <div class="t-saldo" id="tSaldo"></div>
       <div class="t-cats" id="tCats"></div>
       <div class="t-grid" id="tGrid"></div>
       <div class="t-carro" id="tCarro"></div>
     </div>
   </section>
 
+  <section class="vista" id="vRecoge">
+    <div class="entrada">
+      <div class="cab"><div class="k">Instituto Thomas Jefferson · Tótem de entrega</div><h1>Recoge tu pedido</h1><p>Pon tu cara frente a la cámara y parpadea</p></div>
+      <div class="circulo"><img id="kImg" alt=""><div class="sincam" id="kSin">Conectando la cámara…</div><div class="aro" id="kAro"></div></div>
+      <div class="indicacion" id="kInd">Ponte frente a la cámara</div>
+      <div class="sub-ind">Te entregamos tu pedido y le avisamos a tu familia</div>
+      <div class="simular" id="kSim"></div>
+      <div class="menu-hoy"><div class="e">🛍️</div><div><small>Pedidos por entregar</small><b id="kPend"></b><span id="kPendS"></span></div></div>
+    </div>
+  </section>
+
   <div class="dlg" id="dlgVar"><div class="caja"><h3 id="vTit"></h3><p class="desc" id="vDesc"></p><div class="ops" id="vOps"></div><button class="btn sec" id="vCerrar" style="margin-top:18px">Cancelar</button></div></div>
-  <div class="dlg pago" id="dlgPago"><div class="caja">
-    <h3>Mira la cámara y parpadea</h3><div class="tot">Total <b id="pTot"></b></div>
-    <div class="circulo"><img id="pImg" alt=""><div class="sincam" id="pSin">Conectando la cámara…</div><div class="aro" id="pAro"></div></div>
-    <div class="indicacion" id="pInd">Ponte frente a la cámara</div>
-    <div class="sub-ind">Se descuenta de tu saldo · sin efectivo y sin tarjetas</div>
-    <div class="simular" id="pSim"></div>
-    <button class="btn sec" id="pCancelar" style="margin-top:22px">Cancelar</button></div></div>
   <div class="resultado" id="res"><div class="icono" id="resI"></div><h2 id="resT"></h2><p id="resP"></p><div class="grupo" id="resG"></div></div>
   <div id="dlgReinicio"><div class="caja"><h3>¿Reiniciar la demo?</h3><p>Se borran las cuentas, hijos, rostros, saldo y compras de prueba de este equipo.</p>
     <button class="btn" id="rSi" style="background:var(--rojo)">Sí, empezar de cero</button><button class="btn sec" id="rNo">Cancelar</button></div></div>
@@ -280,7 +298,7 @@ input:focus,select:focus{border-color:var(--verde2)}
 const COMISION=0.02;
 const CAMARA='http://127.0.0.1:8765';
 const UMBRAL=0.70, MARGEN=0.06, REAL_MIN=0.5;
-const MENU={"primaria": [{"c": "Platillos", "i": [{"n": "Tacos", "e": "🌮", "d": "Tortilla de maíz nixtamalizada, proteína a elegir, cebolla, cilantro y salsa baja en sal.", "v": [["Pollo", 30], ["Bistec", 30], ["Pastor", 30], ["Campechano", 30], ["Arrachera", 40]]}, {"n": "Chilaquiles", "e": "🫓", "d": "Verdes o rojos. Totopo de maíz horneado, no frito, salsa y frijol bajos en sal, crema lige", "v": [["Verdes o rojos", 49]]}, {"n": "Huevos", "e": "🍳", "d": "Huevos al gusto con frijoles y tortilla de maíz.", "v": [["A la mexicana", 49]]}, {"n": "Burrito", "e": "🌯", "d": "Tortilla de harina, proteína a elegir, frijol, arroz, queso Oaxaca reducido en grasa, lech", "v": [["Pollo", 59], ["Bistec", 59]]}, {"n": "Gringa", "e": "🌮", "d": "Tortilla de harina con queso Oaxaca reducido en grasa gratinado a la plancha, proteína a e", "v": [["Pastor", 55]]}, {"n": "Mollete", "e": "🥖", "d": "Bolillo chico con frijol bajo en sal, queso manchego reducido en grasa gratinado y pico de", "v": [["Natural", 34]]}, {"n": "Quesadilla", "e": "🫓", "d": "Tortilla de maíz o de harina con queso Oaxaca reducido en grasa y salsa.", "v": [["Maíz", 25], ["Harina", 25]]}, {"n": "Enchiladas", "e": "🌶️", "d": "Verdes o rojas, rellenas de pollo, con salsa baja en sal, crema ligera, queso fresco, cebo", "v": [["Verdes o rojas", 55]]}, {"n": "Enfrijoladas", "e": "🫘", "d": "Rellenas de pollo, bañadas en salsa de frijol baja en sal, con crema ligera, queso fresco ", "v": [["Con pollo", 55]]}, {"n": "Arma tu panini", "e": "🥪", "d": "Arma el tuyo en 5 pasos: pan (ciabatta o integral) · proteína (pollo asado, pavo, pepperon", "v": [["El Clásico", 59], ["El Italiano", 59], ["Pollo Pesto", 59]]}, {"n": "Arma tu ensalada", "e": "🥗", "d": "Arma la tuya: base (lechugas, espinaca o mitad y mitad) · proteína + (pollo a la parrilla,", "v": [["Arcoíris", 69], ["Frutal", 69]]}, {"n": "Comida del día", "e": "🍽️", "d": "Plato del Bien Comer: sopa o crema, plato fuerte, guarnición, fruta de postre y agua sin a", "v": [["Menú de ejemplo", 79]]}]}, {"c": "Take & go", "i": [{"n": "Vaso de fruta", "e": "🍉", "d": "Melón, sandía, papaya y uva con limón y chile.", "v": [["Vaso de fruta", 40]]}, {"n": "Crudités", "e": "🥕", "d": "Pepino, jícama y zanahoria con limón y chile.", "v": [["Crudités", 35]]}, {"n": "Parfait", "e": "🥣", "d": "Yogurt natural sin azúcar, granola de la casa sin miel, fresa y blueberry.", "v": [["Parfait", 49]]}, {"n": "Cuernito de pavo", "e": "🥐", "d": "Cuernito con pechuga de pavo reducida en sodio, queso reducido en grasa, lechuga y jitomat", "v": [["Cuernito de pavo", 55]]}]}, {"c": "Bebidas", "i": [{"n": "Licuado", "e": "🥤", "d": "Con leche descremada, sin azúcar añadida. El de chocolate se hace con algarroba: sabe a ch", "v": [["Plátano", 50], ["Chocolate (algarroba)", 50]]}, {"n": "Chocolate caliente", "e": "☕", "d": "Hecho con algarroba y leche descremada, canela y vainilla. Sin cafeína y sin azúcar añadid", "v": [["Chocolate caliente", 50]]}]}, {"c": "Hazlo combo", "i": [{"n": "Agrega jugo o fruta", "e": "🍊", "d": "Jugo de naranja natural de 200 ml o vaso de fruta chico, con cualquier platillo.", "v": [["Jugo de naranja", 25], ["Fruta", 20]]}]}, {"c": "Especiales", "i": [{"n": "Nutri Box", "e": "📦", "d": "La Estrella del Día (cambia cada día: rollitos, coditos, brochetitas, mini wrap y más) + f", "v": [["Ejemplo: Rollitos Nutri", 89]]}, {"n": "Happy Cakes", "e": "🥞", "d": "Dos hotcakes de avena con carita de fruta: plátano, fresa y blueberries. Sin miel ni jarab", "v": [["Happy Cakes", 45]]}]}], "secundaria": [{"c": "Platillos", "i": [{"n": "Tacos", "e": "🌮", "d": "Tortilla de maíz nixtamalizada, proteína a elegir, cebolla, cilantro y salsa baja en sal.", "v": [["Pollo", 30], ["Bistec", 30], ["Pastor", 30], ["Campechano", 30], ["Arrachera", 40]]}, {"n": "Chilaquiles", "e": "🫓", "d": "Verdes o rojos. Totopo de maíz horneado, no frito, salsa y frijol bajos en sal, crema lige", "v": [["Verdes o rojos", 59], ["Con pollo", 59]]}, {"n": "Huevos", "e": "🍳", "d": "Huevos al gusto con frijoles y tortilla de maíz.", "v": [["A la mexicana", 59]]}, {"n": "Burrito", "e": "🌯", "d": "Tortilla de harina, proteína a elegir, frijol, arroz, queso Oaxaca reducido en grasa, lech", "v": [["Pollo", 79], ["Bistec", 79], ["Pastor", 79], ["Campechano", 79], ["Arrachera", 89]]}, {"n": "Gringa", "e": "🌮", "d": "Tortilla de harina con queso Oaxaca reducido en grasa gratinado a la plancha, proteína a e", "v": [["Pastor", 70], ["Pollo", 70], ["Arrachera", 75]]}, {"n": "Mollete", "e": "🥖", "d": "Bolillo chico con frijol bajo en sal, queso manchego reducido en grasa gratinado y pico de", "v": [["Natural", 34], ["Con chorizo de pavo", 34], ["Con tocino de pavo", 34]]}, {"n": "Quesadilla", "e": "🫓", "d": "Tortilla de maíz o de harina con queso Oaxaca reducido en grasa y salsa.", "v": [["Maíz", 25], ["Harina", 25]]}, {"n": "Enchiladas", "e": "🌶️", "d": "Verdes o rojas, rellenas de pollo, con salsa baja en sal, crema ligera, queso fresco, cebo", "v": [["Verdes o rojas", 69]]}, {"n": "Enfrijoladas", "e": "🫘", "d": "Rellenas de pollo, bañadas en salsa de frijol baja en sal, con crema ligera, queso fresco ", "v": [["Con pollo", 69]]}, {"n": "Arma tu panini", "e": "🥪", "d": "Arma el tuyo en 5 pasos: pan (ciabatta o integral) · proteína (pollo asado, pavo, pepperon", "v": [["El Clásico", 75], ["El Italiano", 75], ["Pollo Pesto", 75], ["Carnes Frías", 75]]}, {"n": "Arma tu ensalada", "e": "🥗", "d": "Arma la tuya: base (lechugas, espinaca o mitad y mitad) · proteína + (pollo a la parrilla,", "v": [["Nutri de pollo y fresa", 85], ["César de pollo", 75], ["Mexicana", 75], ["Armada con pollo", 75]]}, {"n": "Comida del día", "e": "🍽️", "d": "Plato del Bien Comer: sopa o crema, plato fuerte, guarnición, fruta de postre y agua sin a", "v": [["Menú de ejemplo", 95]]}]}, {"c": "Take & go", "i": [{"n": "Vaso de fruta", "e": "🍉", "d": "Melón, sandía, papaya y uva con limón y chile.", "v": [["Vaso de fruta", 40]]}, {"n": "Crudités", "e": "🥕", "d": "Pepino, jícama y zanahoria con limón y chile.", "v": [["Crudités", 35]]}, {"n": "Parfait", "e": "🥣", "d": "Yogurt natural sin azúcar, granola de la casa sin miel, fresa y blueberry.", "v": [["Parfait", 49]]}, {"n": "Cuernito de pavo", "e": "🥐", "d": "Cuernito con pechuga de pavo reducida en sodio, queso reducido en grasa, lechuga y jitomat", "v": [["Cuernito de pavo", 55]]}]}, {"c": "Bebidas", "i": [{"n": "Licuado", "e": "🥤", "d": "Con leche descremada, sin azúcar añadida. El de chocolate se hace con algarroba: sabe a ch", "v": [["Plátano", 50], ["Chocolate (algarroba)", 50]]}, {"n": "Chocolate caliente", "e": "☕", "d": "Hecho con algarroba y leche descremada, canela y vainilla. Sin cafeína y sin azúcar añadid", "v": [["Chocolate caliente", 50]]}]}, {"c": "Hazlo combo", "i": [{"n": "Agrega jugo o fruta", "e": "🍊", "d": "Jugo de naranja natural de 200 ml o vaso de fruta chico, con cualquier platillo.", "v": [["Jugo de naranja", 25], ["Fruta", 20]]}]}, {"c": "Especiales", "i": [{"n": "Costra", "e": "🧀", "d": "Queso Oaxaca reducido en grasa dorado a la plancha con pastor o arrachera, sobre tortilla ", "v": [["Pastor", 69], ["Arrachera", 79]]}, {"n": "Smoothie de fruta", "e": "🍓", "d": "Fresa, mango y plátano con yogurt natural y leche descremada. Sin azúcar.", "v": [["Smoothie de fruta", 59]]}]}], "prepa": [{"c": "Platillos", "i": [{"n": "Tacos", "e": "🌮", "d": "Tortilla de maíz nixtamalizada, proteína a elegir, cebolla, cilantro y salsa baja en sal.", "v": [["Pollo", 30], ["Bistec", 30], ["Pastor", 30], ["Campechano", 30], ["Arrachera", 40]]}, {"n": "Chilaquiles", "e": "🫓", "d": "Verdes o rojos. Totopo de maíz horneado, no frito, salsa y frijol bajos en sal, crema lige", "v": [["Verdes o rojos", 59], ["Con pollo", 59]]}, {"n": "Huevos", "e": "🍳", "d": "Huevos al gusto con frijoles y tortilla de maíz.", "v": [["A la mexicana", 59]]}, {"n": "Burrito", "e": "🌯", "d": "Tortilla de harina, proteína a elegir, frijol, arroz, queso Oaxaca reducido en grasa, lech", "v": [["Pollo", 79], ["Bistec", 79], ["Pastor", 79], ["Campechano", 79], ["Arrachera", 89]]}, {"n": "Gringa", "e": "🌮", "d": "Tortilla de harina con queso Oaxaca reducido en grasa gratinado a la plancha, proteína a e", "v": [["Pastor", 70], ["Pollo", 70], ["Arrachera", 75]]}, {"n": "Mollete", "e": "🥖", "d": "Bolillo chico con frijol bajo en sal, queso manchego reducido en grasa gratinado y pico de", "v": [["Natural", 34], ["Con chorizo de pavo", 34], ["Con tocino de pavo", 34]]}, {"n": "Quesadilla", "e": "🫓", "d": "Tortilla de maíz o de harina con queso Oaxaca reducido en grasa y salsa.", "v": [["Maíz", 25], ["Harina", 25]]}, {"n": "Enchiladas", "e": "🌶️", "d": "Verdes o rojas, rellenas de pollo, con salsa baja en sal, crema ligera, queso fresco, cebo", "v": [["Verdes o rojas", 69]]}, {"n": "Enfrijoladas", "e": "🫘", "d": "Rellenas de pollo, bañadas en salsa de frijol baja en sal, con crema ligera, queso fresco ", "v": [["Con pollo", 69]]}, {"n": "Arma tu panini", "e": "🥪", "d": "Arma el tuyo en 5 pasos: pan (ciabatta o integral) · proteína (pollo asado, pavo, pepperon", "v": [["El Clásico", 75], ["El Italiano", 75], ["Pollo Pesto", 75], ["Carnes Frías", 75]]}, {"n": "Arma tu ensalada", "e": "🥗", "d": "Arma la tuya: base (lechugas, espinaca o mitad y mitad) · proteína + (pollo a la parrilla,", "v": [["Nutri de pollo y fresa", 85], ["César de pollo", 75], ["Mexicana", 75], ["Armada con pollo", 75]]}, {"n": "Comida del día", "e": "🍽️", "d": "Plato del Bien Comer: sopa o crema, plato fuerte, guarnición, fruta de postre y agua sin a", "v": [["Menú de ejemplo", 95]]}]}, {"c": "Take & go", "i": [{"n": "Vaso de fruta", "e": "🍉", "d": "Melón, sandía, papaya y uva con limón y chile.", "v": [["Vaso de fruta", 40]]}, {"n": "Crudités", "e": "🥕", "d": "Pepino, jícama y zanahoria con limón y chile.", "v": [["Crudités", 35]]}, {"n": "Parfait", "e": "🥣", "d": "Yogurt natural sin azúcar, granola de la casa sin miel, fresa y blueberry.", "v": [["Parfait", 49]]}, {"n": "Cuernito de pavo", "e": "🥐", "d": "Cuernito con pechuga de pavo reducida en sodio, queso reducido en grasa, lechuga y jitomat", "v": [["Cuernito de pavo", 55]]}]}, {"c": "Bebidas", "i": [{"n": "Licuado", "e": "🥤", "d": "Con leche descremada, sin azúcar añadida. El de chocolate se hace con algarroba: sabe a ch", "v": [["Plátano", 50], ["Chocolate (algarroba)", 50]]}, {"n": "Chocolate caliente", "e": "☕", "d": "Hecho con algarroba y leche descremada, canela y vainilla. Sin cafeína y sin azúcar añadid", "v": [["Chocolate caliente", 50]]}]}, {"c": "Hazlo combo", "i": [{"n": "Agrega jugo o fruta", "e": "🍊", "d": "Jugo de naranja natural de 200 ml o vaso de fruta chico, con cualquier platillo.", "v": [["Jugo de naranja", 25], ["Fruta", 20]]}]}, {"c": "Especiales", "i": [{"n": "Açaí bowl", "e": "🫐", "d": "Açaí sin azúcar con plátano, fresa, blueberry y granola de la casa sin miel.", "v": [["Açaí bowl", 99]]}, {"n": "Poke bowl", "e": "🍱", "d": "Arroz, pollo o atún, pepino, zanahoria, edamame, aguacate, ajonjolí y soya reducida en sod", "v": [["Pollo", 89], ["Atún", 89]]}]}]};
+const MENU={"primaria": [{"c": "Platillos", "i": [{"n": "Tacos", "e": "🌮", "d": "Tortilla de maíz nixtamalizada, proteína a elegir, cebolla, cilantro y salsa baja en sal.", "v": [["Pollo", 30], ["Bistec", 30], ["Pastor", 30], ["Campechano", 30], ["Arrachera", 40]]}, {"n": "Chilaquiles", "e": "🫓", "d": "Verdes o rojos. Totopo de maíz horneado, no frito, salsa y frijol bajos en sal, crema lige", "v": [["Verdes o rojos", 49]]}, {"n": "Huevos", "e": "🍳", "d": "Huevos al gusto con frijoles y tortilla de maíz.", "v": [["A la mexicana", 49]]}, {"n": "Burrito", "e": "🌯", "d": "Tortilla de harina, proteína a elegir, frijol, arroz, queso Oaxaca reducido en grasa, lech", "v": [["Pollo", 59], ["Bistec", 59]]}, {"n": "Gringa", "e": "🌮", "d": "Tortilla de harina con queso Oaxaca reducido en grasa gratinado a la plancha, proteína a e", "v": [["Pastor", 55]]}, {"n": "Mollete", "e": "🥖", "d": "Bolillo chico con frijol bajo en sal, queso manchego reducido en grasa gratinado y pico de", "v": [["Natural", 34]]}, {"n": "Quesadilla", "e": "🫓", "d": "Tortilla de maíz o de harina con queso Oaxaca reducido en grasa y salsa.", "v": [["Maíz", 25], ["Harina", 25]]}, {"n": "Enchiladas", "e": "🌶️", "d": "Verdes o rojas, rellenas de pollo, con salsa baja en sal, crema ligera, queso fresco, cebo", "v": [["Verdes o rojas", 55]]}, {"n": "Enfrijoladas", "e": "🫘", "d": "Rellenas de pollo, bañadas en salsa de frijol baja en sal, con crema ligera, queso fresco ", "v": [["Con pollo", 55]]}, {"n": "Arma tu panini", "e": "🥪", "d": "Arma el tuyo en 5 pasos: pan (ciabatta o integral) · proteína (pollo asado, pavo, pepperon", "v": [["El Clásico", 59], ["El Italiano", 59], ["Pollo Pesto", 59]]}, {"n": "Arma tu ensalada", "e": "🥗", "d": "Arma la tuya: base (lechugas, espinaca o mitad y mitad) · proteína + (pollo a la parrilla,", "v": [["Arcoíris", 69], ["Frutal", 69]]}, {"n": "Comida del día", "e": "🍽️", "d": "Plato del Bien Comer: sopa o crema, plato fuerte, guarnición, fruta de postre y agua sin a", "v": [["Menú de ejemplo", 79]]}]}, {"c": "Snacks saludables", "i": [{"n": "Chips de jícama", "e": "🥒", "d": "The Healthy Snack", "v": [["Limón y sal", 34], ["Adobo", 34]]}, {"n": "Chips de pepino", "e": "🥒", "d": "The Healthy Snack", "v": [["Limón y sal", 34], ["Adobo", 34]]}, {"n": "Chips de camote", "e": "🍠", "d": "The Healthy Snack", "v": [["Limón y sal", 34], ["Adobo", 34]]}, {"n": "Chips de betabel", "e": "🫜", "d": "The Healthy Snack", "v": [["Limón y sal", 34], ["Adobo", 34]]}, {"n": "Papas deshidratadas", "e": "🥔", "d": "The Healthy Snack", "v": [["Sal y limón", 39], ["Chilito", 39]]}, {"n": "Churritos de amaranto", "e": "🌽", "d": "The Healthy Snack", "v": [["Nopal, sal y limón", 29], ["Sal y limón", 29], ["Chilito", 29]]}, {"n": "Maíz inflado al vapor", "e": "🍿", "d": "The Healthy Snack", "v": [["Queso", 20], ["Fuego", 20], ["Ranchero", 20], ["Sal", 20]]}, {"n": "Chicharrón de soya", "e": "🥓", "d": "The Healthy Snack", "v": [["Natural", 39]]}, {"n": "Crunchy mix", "e": "🥗", "d": "The Healthy Snack", "v": [["Mix de la casa", 29]]}, {"n": "Tubitos de amaranto", "e": "🌶️", "d": "The Healthy Snack", "v": [["Chilito piquín", 30]]}]}, {"c": "Dulces sin azúcar", "i": [{"n": "Gomitas sin azúcar", "e": "🐻", "d": "The Healthy Snack", "v": [["Ositos de frutas", 59], ["Fresa con chilito", 59]]}, {"n": "Nueces con chocolate belga", "e": "🌰", "d": "The Healthy Snack", "v": [["Almendra", 59], ["Nuez de la India", 59], ["Avellana", 59], ["Pistache", 59]]}, {"n": "Fresas enchiladas", "e": "🍓", "d": "The Healthy Snack", "v": [["Natural", 44]]}, {"n": "Piñitas con chamoy", "e": "🍍", "d": "The Healthy Snack", "v": [["Chamoy de jamaica", 34]]}, {"n": "Almohaditas de avena", "e": "🍪", "d": "The Healthy Snack", "v": [["Chocolate", 20]]}, {"n": "Obleas de amaranto", "e": "🥮", "d": "The Healthy Snack", "v": [["Stevia", 29]]}]}, {"c": "Take & go", "i": [{"n": "Vaso de fruta", "e": "🍉", "d": "Melón, sandía, papaya y uva con limón y chile.", "v": [["Vaso de fruta", 40]]}, {"n": "Crudités", "e": "🥕", "d": "Pepino, jícama y zanahoria con limón y chile.", "v": [["Crudités", 35]]}, {"n": "Parfait", "e": "🥣", "d": "Yogurt natural sin azúcar, granola de la casa sin miel, fresa y blueberry.", "v": [["Parfait", 49]]}, {"n": "Cuernito de pavo", "e": "🥐", "d": "Cuernito con pechuga de pavo reducida en sodio, queso reducido en grasa, lechuga y jitomat", "v": [["Cuernito de pavo", 55]]}]}, {"c": "Bebidas", "i": [{"n": "Licuado", "e": "🥤", "d": "Con leche descremada, sin azúcar añadida. El de chocolate se hace con algarroba: sabe a ch", "v": [["Plátano", 50], ["Chocolate (algarroba)", 50]]}, {"n": "Chocolate caliente", "e": "☕", "d": "Hecho con algarroba y leche descremada, canela y vainilla. Sin cafeína y sin azúcar añadid", "v": [["Chocolate caliente", 50]]}]}, {"c": "Hazlo combo", "i": [{"n": "Agrega jugo o fruta", "e": "🍊", "d": "Jugo de naranja natural de 200 ml o vaso de fruta chico, con cualquier platillo.", "v": [["Jugo de naranja", 25], ["Fruta", 20]]}]}, {"c": "Especiales", "i": [{"n": "Nutri Box", "e": "📦", "d": "La Estrella del Día (cambia cada día: rollitos, coditos, brochetitas, mini wrap y más) + f", "v": [["Ejemplo: Rollitos Nutri", 89]]}, {"n": "Happy Cakes", "e": "🥞", "d": "Dos hotcakes de avena con carita de fruta: plátano, fresa y blueberries. Sin miel ni jarab", "v": [["Happy Cakes", 45]]}]}], "secundaria": [{"c": "Platillos", "i": [{"n": "Tacos", "e": "🌮", "d": "Tortilla de maíz nixtamalizada, proteína a elegir, cebolla, cilantro y salsa baja en sal.", "v": [["Pollo", 30], ["Bistec", 30], ["Pastor", 30], ["Campechano", 30], ["Arrachera", 40]]}, {"n": "Chilaquiles", "e": "🫓", "d": "Verdes o rojos. Totopo de maíz horneado, no frito, salsa y frijol bajos en sal, crema lige", "v": [["Verdes o rojos", 59], ["Con pollo", 59]]}, {"n": "Huevos", "e": "🍳", "d": "Huevos al gusto con frijoles y tortilla de maíz.", "v": [["A la mexicana", 59]]}, {"n": "Burrito", "e": "🌯", "d": "Tortilla de harina, proteína a elegir, frijol, arroz, queso Oaxaca reducido en grasa, lech", "v": [["Pollo", 79], ["Bistec", 79], ["Pastor", 79], ["Campechano", 79], ["Arrachera", 89]]}, {"n": "Gringa", "e": "🌮", "d": "Tortilla de harina con queso Oaxaca reducido en grasa gratinado a la plancha, proteína a e", "v": [["Pastor", 70], ["Pollo", 70], ["Arrachera", 75]]}, {"n": "Mollete", "e": "🥖", "d": "Bolillo chico con frijol bajo en sal, queso manchego reducido en grasa gratinado y pico de", "v": [["Natural", 34], ["Con chorizo de pavo", 34], ["Con tocino de pavo", 34]]}, {"n": "Quesadilla", "e": "🫓", "d": "Tortilla de maíz o de harina con queso Oaxaca reducido en grasa y salsa.", "v": [["Maíz", 25], ["Harina", 25]]}, {"n": "Enchiladas", "e": "🌶️", "d": "Verdes o rojas, rellenas de pollo, con salsa baja en sal, crema ligera, queso fresco, cebo", "v": [["Verdes o rojas", 69]]}, {"n": "Enfrijoladas", "e": "🫘", "d": "Rellenas de pollo, bañadas en salsa de frijol baja en sal, con crema ligera, queso fresco ", "v": [["Con pollo", 69]]}, {"n": "Arma tu panini", "e": "🥪", "d": "Arma el tuyo en 5 pasos: pan (ciabatta o integral) · proteína (pollo asado, pavo, pepperon", "v": [["El Clásico", 75], ["El Italiano", 75], ["Pollo Pesto", 75], ["Carnes Frías", 75]]}, {"n": "Arma tu ensalada", "e": "🥗", "d": "Arma la tuya: base (lechugas, espinaca o mitad y mitad) · proteína + (pollo a la parrilla,", "v": [["Nutri de pollo y fresa", 85], ["César de pollo", 75], ["Mexicana", 75], ["Armada con pollo", 75]]}, {"n": "Comida del día", "e": "🍽️", "d": "Plato del Bien Comer: sopa o crema, plato fuerte, guarnición, fruta de postre y agua sin a", "v": [["Menú de ejemplo", 95]]}]}, {"c": "Snacks saludables", "i": [{"n": "Chips de jícama", "e": "🥒", "d": "The Healthy Snack", "v": [["Limón y sal", 34], ["Adobo", 34]]}, {"n": "Chips de pepino", "e": "🥒", "d": "The Healthy Snack", "v": [["Limón y sal", 34], ["Adobo", 34]]}, {"n": "Chips de camote", "e": "🍠", "d": "The Healthy Snack", "v": [["Limón y sal", 34], ["Adobo", 34]]}, {"n": "Chips de betabel", "e": "🫜", "d": "The Healthy Snack", "v": [["Limón y sal", 34], ["Adobo", 34]]}, {"n": "Papas deshidratadas", "e": "🥔", "d": "The Healthy Snack", "v": [["Sal y limón", 39], ["Chilito", 39]]}, {"n": "Churritos de amaranto", "e": "🌽", "d": "The Healthy Snack", "v": [["Nopal, sal y limón", 29], ["Sal y limón", 29], ["Chilito", 29]]}, {"n": "Maíz inflado al vapor", "e": "🍿", "d": "The Healthy Snack", "v": [["Queso", 20], ["Fuego", 20], ["Ranchero", 20], ["Sal", 20]]}, {"n": "Chicharrón de soya", "e": "🥓", "d": "The Healthy Snack", "v": [["Natural", 39]]}, {"n": "Crunchy mix", "e": "🥗", "d": "The Healthy Snack", "v": [["Mix de la casa", 29]]}, {"n": "Tubitos de amaranto", "e": "🌶️", "d": "The Healthy Snack", "v": [["Chilito piquín", 30]]}]}, {"c": "Dulces sin azúcar", "i": [{"n": "Gomitas sin azúcar", "e": "🐻", "d": "The Healthy Snack", "v": [["Ositos de frutas", 59], ["Fresa con chilito", 59]]}, {"n": "Nueces con chocolate belga", "e": "🌰", "d": "The Healthy Snack", "v": [["Almendra", 59], ["Nuez de la India", 59], ["Avellana", 59], ["Pistache", 59]]}, {"n": "Fresas enchiladas", "e": "🍓", "d": "The Healthy Snack", "v": [["Natural", 44]]}, {"n": "Piñitas con chamoy", "e": "🍍", "d": "The Healthy Snack", "v": [["Chamoy de jamaica", 34]]}, {"n": "Almohaditas de avena", "e": "🍪", "d": "The Healthy Snack", "v": [["Chocolate", 20]]}, {"n": "Obleas de amaranto", "e": "🥮", "d": "The Healthy Snack", "v": [["Stevia", 29]]}]}, {"c": "Take & go", "i": [{"n": "Vaso de fruta", "e": "🍉", "d": "Melón, sandía, papaya y uva con limón y chile.", "v": [["Vaso de fruta", 40]]}, {"n": "Crudités", "e": "🥕", "d": "Pepino, jícama y zanahoria con limón y chile.", "v": [["Crudités", 35]]}, {"n": "Parfait", "e": "🥣", "d": "Yogurt natural sin azúcar, granola de la casa sin miel, fresa y blueberry.", "v": [["Parfait", 49]]}, {"n": "Cuernito de pavo", "e": "🥐", "d": "Cuernito con pechuga de pavo reducida en sodio, queso reducido en grasa, lechuga y jitomat", "v": [["Cuernito de pavo", 55]]}]}, {"c": "Bebidas", "i": [{"n": "Licuado", "e": "🥤", "d": "Con leche descremada, sin azúcar añadida. El de chocolate se hace con algarroba: sabe a ch", "v": [["Plátano", 50], ["Chocolate (algarroba)", 50]]}, {"n": "Chocolate caliente", "e": "☕", "d": "Hecho con algarroba y leche descremada, canela y vainilla. Sin cafeína y sin azúcar añadid", "v": [["Chocolate caliente", 50]]}]}, {"c": "Hazlo combo", "i": [{"n": "Agrega jugo o fruta", "e": "🍊", "d": "Jugo de naranja natural de 200 ml o vaso de fruta chico, con cualquier platillo.", "v": [["Jugo de naranja", 25], ["Fruta", 20]]}]}, {"c": "Especiales", "i": [{"n": "Costra", "e": "🧀", "d": "Queso Oaxaca reducido en grasa dorado a la plancha con pastor o arrachera, sobre tortilla ", "v": [["Pastor", 69], ["Arrachera", 79]]}, {"n": "Smoothie de fruta", "e": "🍓", "d": "Fresa, mango y plátano con yogurt natural y leche descremada. Sin azúcar.", "v": [["Smoothie de fruta", 59]]}]}], "prepa": [{"c": "Platillos", "i": [{"n": "Tacos", "e": "🌮", "d": "Tortilla de maíz nixtamalizada, proteína a elegir, cebolla, cilantro y salsa baja en sal.", "v": [["Pollo", 30], ["Bistec", 30], ["Pastor", 30], ["Campechano", 30], ["Arrachera", 40]]}, {"n": "Chilaquiles", "e": "🫓", "d": "Verdes o rojos. Totopo de maíz horneado, no frito, salsa y frijol bajos en sal, crema lige", "v": [["Verdes o rojos", 59], ["Con pollo", 59]]}, {"n": "Huevos", "e": "🍳", "d": "Huevos al gusto con frijoles y tortilla de maíz.", "v": [["A la mexicana", 59]]}, {"n": "Burrito", "e": "🌯", "d": "Tortilla de harina, proteína a elegir, frijol, arroz, queso Oaxaca reducido en grasa, lech", "v": [["Pollo", 79], ["Bistec", 79], ["Pastor", 79], ["Campechano", 79], ["Arrachera", 89]]}, {"n": "Gringa", "e": "🌮", "d": "Tortilla de harina con queso Oaxaca reducido en grasa gratinado a la plancha, proteína a e", "v": [["Pastor", 70], ["Pollo", 70], ["Arrachera", 75]]}, {"n": "Mollete", "e": "🥖", "d": "Bolillo chico con frijol bajo en sal, queso manchego reducido en grasa gratinado y pico de", "v": [["Natural", 34], ["Con chorizo de pavo", 34], ["Con tocino de pavo", 34]]}, {"n": "Quesadilla", "e": "🫓", "d": "Tortilla de maíz o de harina con queso Oaxaca reducido en grasa y salsa.", "v": [["Maíz", 25], ["Harina", 25]]}, {"n": "Enchiladas", "e": "🌶️", "d": "Verdes o rojas, rellenas de pollo, con salsa baja en sal, crema ligera, queso fresco, cebo", "v": [["Verdes o rojas", 69]]}, {"n": "Enfrijoladas", "e": "🫘", "d": "Rellenas de pollo, bañadas en salsa de frijol baja en sal, con crema ligera, queso fresco ", "v": [["Con pollo", 69]]}, {"n": "Arma tu panini", "e": "🥪", "d": "Arma el tuyo en 5 pasos: pan (ciabatta o integral) · proteína (pollo asado, pavo, pepperon", "v": [["El Clásico", 75], ["El Italiano", 75], ["Pollo Pesto", 75], ["Carnes Frías", 75]]}, {"n": "Arma tu ensalada", "e": "🥗", "d": "Arma la tuya: base (lechugas, espinaca o mitad y mitad) · proteína + (pollo a la parrilla,", "v": [["Nutri de pollo y fresa", 85], ["César de pollo", 75], ["Mexicana", 75], ["Armada con pollo", 75]]}, {"n": "Comida del día", "e": "🍽️", "d": "Plato del Bien Comer: sopa o crema, plato fuerte, guarnición, fruta de postre y agua sin a", "v": [["Menú de ejemplo", 95]]}]}, {"c": "Snacks saludables", "i": [{"n": "Chips de jícama", "e": "🥒", "d": "The Healthy Snack", "v": [["Limón y sal", 34], ["Adobo", 34]]}, {"n": "Chips de pepino", "e": "🥒", "d": "The Healthy Snack", "v": [["Limón y sal", 34], ["Adobo", 34]]}, {"n": "Chips de camote", "e": "🍠", "d": "The Healthy Snack", "v": [["Limón y sal", 34], ["Adobo", 34]]}, {"n": "Chips de betabel", "e": "🫜", "d": "The Healthy Snack", "v": [["Limón y sal", 34], ["Adobo", 34]]}, {"n": "Papas deshidratadas", "e": "🥔", "d": "The Healthy Snack", "v": [["Sal y limón", 39], ["Chilito", 39]]}, {"n": "Churritos de amaranto", "e": "🌽", "d": "The Healthy Snack", "v": [["Nopal, sal y limón", 29], ["Sal y limón", 29], ["Chilito", 29]]}, {"n": "Maíz inflado al vapor", "e": "🍿", "d": "The Healthy Snack", "v": [["Queso", 20], ["Fuego", 20], ["Ranchero", 20], ["Sal", 20]]}, {"n": "Chicharrón de soya", "e": "🥓", "d": "The Healthy Snack", "v": [["Natural", 39]]}, {"n": "Crunchy mix", "e": "🥗", "d": "The Healthy Snack", "v": [["Mix de la casa", 29]]}, {"n": "Tubitos de amaranto", "e": "🌶️", "d": "The Healthy Snack", "v": [["Chilito piquín", 30]]}]}, {"c": "Dulces sin azúcar", "i": [{"n": "Gomitas sin azúcar", "e": "🐻", "d": "The Healthy Snack", "v": [["Ositos de frutas", 59], ["Fresa con chilito", 59]]}, {"n": "Nueces con chocolate belga", "e": "🌰", "d": "The Healthy Snack", "v": [["Almendra", 59], ["Nuez de la India", 59], ["Avellana", 59], ["Pistache", 59]]}, {"n": "Fresas enchiladas", "e": "🍓", "d": "The Healthy Snack", "v": [["Natural", 44]]}, {"n": "Piñitas con chamoy", "e": "🍍", "d": "The Healthy Snack", "v": [["Chamoy de jamaica", 34]]}, {"n": "Almohaditas de avena", "e": "🍪", "d": "The Healthy Snack", "v": [["Chocolate", 20]]}, {"n": "Obleas de amaranto", "e": "🥮", "d": "The Healthy Snack", "v": [["Stevia", 29]]}]}, {"c": "Take & go", "i": [{"n": "Vaso de fruta", "e": "🍉", "d": "Melón, sandía, papaya y uva con limón y chile.", "v": [["Vaso de fruta", 40]]}, {"n": "Crudités", "e": "🥕", "d": "Pepino, jícama y zanahoria con limón y chile.", "v": [["Crudités", 35]]}, {"n": "Parfait", "e": "🥣", "d": "Yogurt natural sin azúcar, granola de la casa sin miel, fresa y blueberry.", "v": [["Parfait", 49]]}, {"n": "Cuernito de pavo", "e": "🥐", "d": "Cuernito con pechuga de pavo reducida en sodio, queso reducido en grasa, lechuga y jitomat", "v": [["Cuernito de pavo", 55]]}]}, {"c": "Bebidas", "i": [{"n": "Licuado", "e": "🥤", "d": "Con leche descremada, sin azúcar añadida. El de chocolate se hace con algarroba: sabe a ch", "v": [["Plátano", 50], ["Chocolate (algarroba)", 50]]}, {"n": "Chocolate caliente", "e": "☕", "d": "Hecho con algarroba y leche descremada, canela y vainilla. Sin cafeína y sin azúcar añadid", "v": [["Chocolate caliente", 50]]}]}, {"c": "Hazlo combo", "i": [{"n": "Agrega jugo o fruta", "e": "🍊", "d": "Jugo de naranja natural de 200 ml o vaso de fruta chico, con cualquier platillo.", "v": [["Jugo de naranja", 25], ["Fruta", 20]]}]}, {"c": "Especiales", "i": [{"n": "Açaí bowl", "e": "🫐", "d": "Açaí sin azúcar con plátano, fresa, blueberry y granola de la casa sin miel.", "v": [["Açaí bowl", 99]]}, {"n": "Poke bowl", "e": "🍱", "d": "Arroz, pollo o atún, pepino, zanahoria, edamame, aguacate, ajonjolí y soya reducida en sod", "v": [["Pollo", 89], ["Atún", 89]]}]}]};
 const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
 const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 // Grados del ITJ Campus Santa Mónica → cafetería y recreos
@@ -401,7 +419,7 @@ P.inicio=()=>{const h=hijo();if(!h)return P.hijo();
    <div class="chips">${E.hijos.map((x,i)=>`<button class="chip${i==E.sel?' on':''}" data-h="${i}"><span class="ava">${ini(x.nombre)}</span>${esc(x.nombre)}</button>`).join('')}<button class="chip" data-ir="hijo" style="padding:10px 18px">＋</button></div>
    <div class="saldo" style="margin-top:16px"><small>Saldo de ${esc(h.nombre)} · ${esc(h.grupo)}</small><b>${pesos(h.saldo)}</b><button class="btn" data-ir="recarga">Recargar saldo</button></div>
    <div class="tarjeta" style="margin-top:14px"><div class="fila"><div class="ic">📊</div><div class="tx"><b>Hoy lleva ${pesos(g)}</b><span>${h.limite?'Límite diario: '+pesos(h.limite):'Sin límite diario'}</span></div><button class="estado ok" data-ir="limite">Cambiar</button></div></div>
-   ${pend.length?`<div class="tarjeta" style="border-color:var(--verde2)"><div class="fila"><div class="ic">🛍️</div><div class="tx"><b>Pedido para el recreo de las ${pend[0].recreo}</b><span>${esc(pend[0].txt)} · lo recoge en la barra</span></div><span class="estado ok">Pagado ✓</span></div></div>`:''}
+   ${pend.length?`<div class="tarjeta" style="border-color:var(--verde2)"><div class="fila"><div class="ic">🛍️</div><div class="tx"><b>${pend[0].recreo==='ahora'?'Pedido del tótem':'Pedido para el recreo de las '+pend[0].recreo} · ${pend[0].folio}</b><span>${esc(pend[0].txt)} · por recoger en el tótem de entrega</span></div><span class="estado no">Por recoger</span></div></div>`:''}
    <div class="acciones">
      <button class="accion" data-ir="pedir"><div class="e">🛍️</div><b>Pedir para el recreo</b><span>Lo recoge sin hacer fila</span></button>
      <button class="accion" data-ir="rostro"><div class="e">${h.rostro?'✅':'🙂'}</div><b>${h.rostro?'Rostro registrado':'Registrar rostro'}</b><span>${h.rostro?'Ya paga en el tótem':'Para pagar sin efectivo'}</span></button>
@@ -506,7 +524,7 @@ F.pedir=()=>{
     procesar(()=>{const h=hijo();h.saldo-=t;gastar(h,t);E.folio++;const txt=lineasTxt(d.c);
       h.pedidos=h.pedidos||[];h.pedidos.unshift({txt,recreo:d.recreo,folio:'A'+E.folio,entregado:false});
       mov(h,'Pedido para el recreo · '+txt,-t);guardar();aviso('🛍️','Pedido listo para las '+d.recreo,`${h.nombre}: ${txt} · ${pesos(t)}`,false);
-      return {t:'¡Pedido hecho!',p:`${esc(h.nombre)} lo recoge en la barra a las <b>${d.recreo}</b>, sin hacer fila.<br>Folio <b>A${E.folio}</b>`}},'Pagando con su saldo…')};
+      return {t:'¡Pedido hecho!',p:`${esc(h.nombre)} lo recoge en el tótem de entrega en el recreo de las <b>${d.recreo}</b>, sin hacer fila.<br>Folio <b>A${E.folio}</b>`}},'Pagando con su saldo…')};
 };
 
 /* ----- movimientos ----- */
@@ -580,9 +598,9 @@ function camara(o){
   detenerCamara();const c={vivo:true,base:null,ocupado:false};cam=c;
   const img=$(o.img),sin=$(o.sin),aro=$(o.aro),ind=$(o.ind);let url=null,fallas=0;
   const pintarSim=()=>{const s=$(o.sim);if(!s)return;
-    if(fallas<3){s.innerHTML='';return}
-    if(o.modo==='registro')s.innerHTML=`<button data-s="reg">Simular registro (sin cámara)</button>`;
-    else s.innerHTML=E.hijos.map((h,i)=>h.rostro?`<button data-s="${i}">Simular a ${esc(h.nombre)}</button>`:'').join('')+`<button data-s="x">Simular desconocido</button>`;
+    const html=fallas<3?'':o.modo==='registro'?`<button data-s="reg">Simular registro (sin cámara)</button>`
+      :E.hijos.map((h,i)=>h.rostro?`<button data-s="${i}">Simular a ${esc(h.nombre)}</button>`:'').join('')+`<button data-s="x">Simular desconocido</button>`;
+    if(s.dataset.h!==html){s.innerHTML=html;s.dataset.h=html}
     s.onclick=ev=>{const b=ev.target.closest('[data-s]');if(!b)return;const v=b.dataset.s;
       if(v==='reg'||v==='x')listo([azar()],1);else listo([E.hijos[+v].rostro[0]],1)}};
   const listo=(vs,real)=>{if(c.ocupado)return;c.ocupado=true;
@@ -592,7 +610,7 @@ function camara(o){
       const otro=E.hijos.find(x=>x!==h&&x.rostro&&x.rostro.some(m=>sim(q,m)>=UMBRAL));
       if(otro){ind.textContent='Este rostro ya está registrado como '+otro.nombre;c.avisoHasta=Date.now()+4000;c.ocupado=false;return}
       h.rostro=vs;guardar();ir(datos.alta?'hijoListo':'rostroOk');
-    }else{detenerCamara();pagoResultado(vs,real)}};
+    }else o.alIdentificar(vs,real,()=>{c.ocupado=false})};
   (async function ciclo(){
     let ultimaFoto=0;
     while(c.vivo){
@@ -618,23 +636,37 @@ function camara(o){
 }
 
 /* ================= tótem de pedido ================= */
-const T={niv:'secundaria',cat:0,c:[]};
+const T={h:null,niv:'secundaria',cat:0,c:[]};let tInact;
+const quien=()=>T.h==null?null:E.hijos[T.h];
+function esperaPedido(){T.h=null;T.c=[];clearTimeout(tInact);$('tPedido').style.display='none';$('tEspera').style.display='flex';$('dlgVar').classList.remove('on');
+  camara({img:'tImg',sin:'tSin',aro:'tAro',ind:'tInd',sim:'tSim',modo:'pedido',alIdentificar:(vs,real,seguir)=>{
+    const i=real>=REAL_MIN?identificar(vs[0]):-1;
+    if(i<0){mostrarRes('gris','?','No te encontramos','Intenta otra vez o pide sin cuenta y paga en la caja.','');setTimeout(seguir,2500);return}
+    abrirPedido(i)}});
+}
+function abrirPedido(i){detenerCamara();T.h=i;T.c=[];T.cat=0;const h=quien();T.niv=h?nivelDe(h.grupo):'secundaria';
+  $('tEspera').style.display='none';$('tPedido').style.display='flex';pintarTotem();vigilarInactividad()}
+function vigilarInactividad(){clearTimeout(tInact);tInact=setTimeout(()=>{if($('vTotem').classList.contains('on'))esperaPedido()},60000)}
+$('tPedido').addEventListener('pointerdown',vigilarInactividad);
+$('tSalir').onclick=esperaPedido;$('tSinCuenta').onclick=()=>abrirPedido(null);
 function pintarTotem(){
-  const cats=MENU[T.niv];if(T.cat>=cats.length)T.cat=0;
-  $('tNiv').innerHTML=['primaria','secundaria','prepa'].map(n=>`<button class="${n===T.niv?'on':''}" data-niv="${n}">${{primaria:'Primaria',secundaria:'Secundaria',prepa:'Prepa'}[n]}</button>`).join('');
+  const h=quien();const cats=MENU[T.niv];if(T.cat>=cats.length)T.cat=0;
+  $('tQuien').textContent=h?h.grupo+' · '+CAFE[T.niv]:'Sin cuenta · pago en caja';
+  $('tHola').textContent=h?'¡Hola, '+h.nombre+'!':'¿Qué se te antoja hoy?';
+  $('tSaldo').innerHTML=h?`<span>Saldo <b>${pesos(h.saldo)}</b></span>${h.limite?`<span>Hoy puedes gastar <b>${pesos(Math.max(0,h.limite-gastoHoy(h)))}</b></span>`:''}${h.alergias.length?`<span style="border-color:var(--naranja);color:#B26B00">⚠️ Alergia: ${esc(h.alergias.join(', '))}</span>`:''}`:'';
   $('tCats').innerHTML=cats.map((c,i)=>`<button class="${i===T.cat?'on':''}" data-cat="${i}">${esc(c.c)}</button>`).join('');
   $('tGrid').innerHTML=cats[T.cat].i.map((it,i)=>`<button class="prod" data-p="${i}"><div class="pe">${it.e}</div><b>${esc(it.n)}</b><span>${it.v.length>1?'Desde ':''}${pesos(Math.min(...it.v.map(v=>v[1])))}</span></button>`).join('');
   const t=totalC(T.c);
   $('tCarro').innerHTML=T.c.length?`<div class="carro-lin">${T.c.map((x,i)=>`<span>${x.q>1?x.q+' × ':''}${esc(x.n)}${x.v!==x.n?' · '+esc(x.v):''} <button data-q="${i}">✕</button></span>`).join('')}</div>
-    <div class="carro-pie"><div class="carro-t"><small>Total</small><b>${pesos(t)}</b></div><button class="btn" id="tRostro">🙂 Pagar con mi rostro</button><button class="btn sec" id="tCaja">Pagar en caja</button></div>`
-   :`<div class="carro-vacio">Toca un platillo para agregarlo a tu pedido</div>`;
-  document.querySelectorAll('[data-niv]').forEach(b=>b.onclick=()=>{T.niv=b.dataset.niv;T.cat=0;T.c=[];pintarTotem()});
+    <div class="carro-pie"><div class="carro-t"><small>Total</small><b>${pesos(t)}</b></div>${h?`<button class="btn" id="tPagar">Pagar con mi saldo</button><button class="btn sec" id="tCaja">Pagar en caja</button>`:`<button class="btn" id="tCaja" style="grid-column:span 2">Pedir y pagar en caja</button>`}</div>`
+   :`<div class="carro-vacio">Toca un producto para agregarlo a tu pedido</div>`;
   document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{T.cat=+b.dataset.cat;pintarTotem()});
   document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>abrirVariantes(cats[T.cat].i[+b.dataset.p]));
   document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const x=T.c[+b.dataset.q];x.q--;if(!x.q)T.c.splice(+b.dataset.q,1);pintarTotem()});
-  if($('tRostro'))$('tRostro').onclick=abrirPago;
-  if($('tCaja'))$('tCaja').onclick=()=>{E.folio++;guardar();const t=totalC(T.c);
-    mostrarRes('verde','🧾','Tu folio: A'+E.folio,'Paga '+pesos(t)+' en la caja y recoge en la barra.','');T.c=[];pintarTotem()};
+  if($('tPagar'))$('tPagar').onclick=pagarSaldo;
+  if($('tCaja'))$('tCaja').onclick=()=>{E.folio++;const t=totalC(T.c);const txt=lineasTxt(T.c);const h=quien();
+    if(h){h.pedidos=h.pedidos||[];h.pedidos.unshift({txt,recreo:'ahora',folio:'A'+E.folio,entregado:false,caja:true})}
+    guardar();mostrarRes('verde','🧾','Tu folio: A'+E.folio,'Paga '+pesos(t)+' en la caja\ny recoge en la barra de entrega.','');esperaPedido()};
 }
 function abrirVariantes(it){
   if(it.v.length===1){agregar(it,it.v[0]);return}
@@ -645,25 +677,36 @@ function abrirVariantes(it){
 }
 $('vCerrar').onclick=()=>$('dlgVar').classList.remove('on');
 function agregar(it,v){const x=T.c.find(y=>y.n===it.n&&y.v===v[0]);if(x)x.q++;else T.c.push({n:it.n,v:v[0],p:v[1],q:1});pintarTotem()}
-function abrirPago(){
-  $('pTot').textContent=pesos(totalC(T.c));$('dlgPago').classList.add('on');
-  camara({img:'pImg',sin:'pSin',aro:'pAro',ind:'pInd',sim:'pSim',modo:'pago'});
-}
-$('pCancelar').onclick=()=>{detenerCamara();$('dlgPago').classList.remove('on')};
-function pagoResultado(vs,real){
-  $('dlgPago').classList.remove('on');const t=totalC(T.c);const txt=lineasTxt(T.c);
-  const i=real>=REAL_MIN?identificar(vs[0]):-1;
-  if(i<0){mostrarRes('gris','?','No te encontramos','Intenta otra vez o paga en la caja.','');return}
-  const h=E.hijos[i];
+function pagarSaldo(){
+  const h=quien();const t=totalC(T.c);const txt=lineasTxt(T.c);
   if(h.saldo<t){aviso('⚠️',h.nombre+' no tuvo saldo',`Quiso comprar ${txt} (${pesos(t)}) y tiene ${pesos(h.saldo)}. Recarga desde la app.`,false);
-    mostrarRes('naranja','!',h.nombre+', te falta saldo','Tienes '+pesos(h.saldo)+'. Puedes pagar en la caja; ya le avisamos a tu familia.',h.grupo);return}
+    mostrarRes('naranja','!',h.nombre+', te falta saldo','Tienes '+pesos(h.saldo)+'. Puedes pagar en la caja;\nya le avisamos a tu familia.',h.grupo);return}
   if(h.limite&&gastoHoy(h)+t>h.limite){aviso('⚠️',h.nombre+' llegó a su límite',`Quiso comprar ${txt} (${pesos(t)}). Límite diario: ${pesos(h.limite)}.`,false);
     mostrarRes('naranja','!',h.nombre+', llegaste a tu límite de hoy','Tu límite diario es de '+pesos(h.limite)+'.',h.grupo);return}
-  h.saldo-=t;gastar(h,t);E.folio++;mov(h,'Compra en el tótem · '+txt,-t);guardar();
+  h.saldo-=t;gastar(h,t);E.folio++;h.pedidos=h.pedidos||[];h.pedidos.unshift({txt,recreo:'ahora',folio:'A'+E.folio,entregado:false});
+  mov(h,'Compra en el tótem · '+txt,-t);guardar();
   aviso('🛍️',h.nombre+' compró en la cafetería',`${txt} · ${pesos(t)} · le quedan ${pesos(h.saldo)}`,false);
-  mostrarRes('verde','✓','¡Listo, '+h.nombre+'!','Tu folio: A'+E.folio+' · recógelo en la barra',h.grupo+' · te quedan '+pesos(h.saldo));
-  T.c=[];pintarTotem();
+  mostrarRes('verde','✓','¡Listo, '+h.nombre+'!','Tu folio: A'+E.folio+'\nRecógelo en el tótem de entrega',h.grupo+' · te quedan '+pesos(h.saldo));
+  esperaPedido();
 }
+
+/* ================= tótem de entrega ================= */
+function pendientes(){const r=[];E.hijos.forEach(h=>(h.pedidos||[]).forEach(p=>{if(!p.entregado)r.push([h,p])}));return r}
+function pintarPendientes(){const r=pendientes();$('kPend').textContent=r.length?r.length+(r.length==1?' pedido listo':' pedidos listos'):'Sin pedidos pendientes';
+  $('kPendS').textContent=r.slice(0,3).map(([h,p])=>p.folio+' · '+h.nombre).join('   ')}
+function esperaRecoge(){pintarPendientes();
+  camara({img:'kImg',sin:'kSin',aro:'kAro',ind:'kInd',sim:'kSim',modo:'recoge',alIdentificar:(vs,real,seguir)=>{
+    const i=real>=REAL_MIN?identificar(vs[0]):-1;
+    if(i<0){mostrarRes('gris','?','No te encontramos','Intenta otra vez o pide ayuda en la barra.','');setTimeout(seguir,3000);return}
+    const h=E.hijos[i];const ps=(h.pedidos||[]).filter(p=>!p.entregado);
+    if(!ps.length){mostrarRes('naranja','!',h.nombre+', no tienes pedidos por recoger','Pide en el tótem de pedido o desde la app.',h.grupo);setTimeout(seguir,4000);return}
+    ps.forEach(p=>{p.entregado=true});guardar();
+    const lista=ps.map(p=>'• '+p.txt).join('\n');
+    aviso('✅',h.nombre+' recogió su pedido',ps.map(p=>p.txt).join(' · ')+' · '+hora()+' h',false);
+    mostrarRes('verde','✓','¡Aquí está tu pedido, '+h.nombre+'!',lista,'Folio '+ps.map(p=>p.folio).join(', ')+' · '+h.grupo);
+    pintarPendientes();setTimeout(seguir,5500)}});
+}
+
 let tRes;
 function mostrarRes(tipo,icono,t,p,g){const R=$('res');R.className='resultado on '+tipo;$('resI').textContent=icono;$('resT').textContent=t;$('resP').textContent=p;
   $('resG').textContent=g;$('resG').style.display=g?'':'none';clearTimeout(tRes);tRes=setTimeout(()=>R.classList.remove('on'),5200)}
@@ -671,13 +714,13 @@ $('res').onclick=()=>$('res').classList.remove('on');
 
 /* ================= modos y reinicio ================= */
 function modo(m){
-  $('mApp').classList.toggle('on',m==='app');$('mTotem').classList.toggle('on',m==='totem');
-  $('vApp').classList.toggle('on',m==='app');$('vTotem').classList.toggle('on',m==='totem');
-  detenerCamara();$('res').classList.remove('on');$('dlgPago').classList.remove('on');
-  if(m==='totem'){E=cargar();pintarTotem()}
+  [['mApp','vApp','app'],['mTotem','vTotem','totem'],['mRecoge','vRecoge','recoge']].forEach(([b,v,k])=>{$(b).classList.toggle('on',m===k);$(v).classList.toggle('on',m===k)});
+  detenerCamara();clearTimeout(tInact);$('res').classList.remove('on');$('dlgVar').classList.remove('on');
+  if(m==='totem'){E=cargar();esperaPedido()}
+  else if(m==='recoge'){E=cargar();esperaRecoge()}
   else{E=cargar();if(pant==='rostro')pant='inicio';pintar();if(E.noLeidos&&E.avisos[0])setTimeout(()=>mostrarBanner(E.avisos[0].t,E.avisos[0].x),500)}
 }
-$('mApp').onclick=()=>modo('app');$('mTotem').onclick=()=>modo('totem');
+$('mApp').onclick=()=>modo('app');$('mTotem').onclick=()=>modo('totem');$('mRecoge').onclick=()=>modo('recoge');
 let tLargo;const logo=$('logo');
 const abrirRe=()=>$('dlgReinicio').classList.add('on');
 logo.addEventListener('pointerdown',()=>{tLargo=setTimeout(abrirRe,1800)});
