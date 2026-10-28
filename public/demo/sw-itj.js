@@ -1,6 +1,6 @@
 /* Service worker de la demo ITJ: guarda todo en el equipo para que funcione sin internet y rápido.
    Estrategia: responde del caché al instante y, si hay internet, actualiza en segundo plano. */
-const CACHE='nutri-demo-itj-v7';
+const CACHE='nutri-demo-itj-v8';
 const ARCHIVOS=['/demo/itj','/demo/itj/logo.png','/demo/itj/isotipo.png','/demo/itj/logo_itj.png','/demo/itj/logo_itj_solo.png','/demo/itj/fotos/tacos.jpg','/demo/itj/fotos/panini.jpg','/demo/itj/fotos/ensalada.jpg',
   ...[400,500,600,700,800].map(w=>`/demo/itj/fonts/montserrat-${w}.woff2`)];
 // Copia limpia (sin la marca de «redirigida», que Chrome no acepta al servir una navegación desde caché)

@@ -293,6 +293,13 @@ input:focus,select:focus{border-color:var(--verde2)}
     </div>
   </section>
 
+  <div class="dlg" id="dlgPago"><div class="caja" style="width:900px">
+    <div style="font-size:22px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--piedra)">Pagar con Face ID</div>
+    <h3 id="pTot" style="font-size:72px;color:var(--verde);margin:10px 0 24px"></h3>
+    <div class="circulo" style="width:600px;height:600px"><img id="pImg" alt=""><div class="sincam" id="pSin">Conectando la cámara…</div><div class="aro" id="pAro"></div></div>
+    <div id="pInd" style="font-size:34px;font-weight:800;margin:22px 0 6px;color:var(--verde)">Mira la cámara y parpadea</div>
+    <div class="simular" id="pSim"></div>
+    <button class="btn sec" id="pCancelar" style="margin-top:18px">Cancelar</button></div></div>
   <div class="dlg" id="dlgVar"><div class="caja"><h3 id="vTit"></h3><p class="desc" id="vDesc"></p><div class="ops" id="vOps"></div><button class="btn sec" id="vCerrar" style="margin-top:18px">Cancelar</button></div></div>
   <div class="resultado" id="res"><div class="icono" id="resI"></div><h2 id="resT"></h2><p id="resP"></p><div class="grupo" id="resG"></div></div>
   <div id="dlgReinicio"><div class="caja"><h3>¿Reiniciar la demo?</h3><p>Se borran las cuentas, hijos, rostros, saldo y compras de prueba de este equipo.</p>
@@ -648,7 +655,7 @@ function camara(o){
 /* ================= tótem de pedido ================= */
 const T={h:null,niv:'secundaria',cat:0,c:[],q:''};let tInact;
 const quien=()=>T.h==null?null:E.hijos[T.h];
-function esperaPedido(){T.h=null;T.c=[];clearTimeout(tInact);$('tPedido').style.display='none';$('tEspera').style.display='flex';$('dlgVar').classList.remove('on');
+function esperaPedido(){T.h=null;T.c=[];clearTimeout(tInact);$('dlgPago').classList.remove('on');$('tPedido').style.display='none';$('tEspera').style.display='flex';$('dlgVar').classList.remove('on');
   camara({img:'tImg',sin:'tSin',aro:'tAro',ind:'tInd',sim:'tSim',modo:'pedido',alIdentificar:(vs,real,seguir)=>{
     const i=real>=REAL_MIN?identificar(vs[0]):-1;
     if(i<0){mostrarRes('gris','?','No te encontramos','Intenta otra vez o pide ayuda en la barra.','');setTimeout(seguir,2500);return}
@@ -677,7 +684,7 @@ function pintarTotem(){
   document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{T.cat=+b.dataset.cat;T.q='';$('tBusca').value='';pintarTotem()});
   document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>abrirVariantes(T.lista[+b.dataset.p]));
   document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const x=T.c[+b.dataset.q];x.q--;if(!x.q)T.c.splice(+b.dataset.q,1);pintarTotem()});
-  if($('tCobrar'))$('tCobrar').onclick=()=>{mostrarRes('verde','🙂','Confirmando con Face ID…','Mira la cámara un momento','');setTimeout(pagarSaldo,1300)};
+  if($('tCobrar'))$('tCobrar').onclick=abrirPago;
 }
 function abrirVariantes(it){
   const al=choca(it);if(al.length){mostrarRes('naranja','⚠️','Este producto tiene '+al.join(' y ').toLowerCase(),'Por tu alergia no te lo podemos vender.\nElige otro producto.',quien().grupo);return}
@@ -690,6 +697,13 @@ function abrirVariantes(it){
 $('vCerrar').onclick=()=>$('dlgVar').classList.remove('on');
 function choca(it){const h=quien();return h&&it.al?it.al.filter(a=>h.alergias.includes(a)):[]}
 function agregar(it,v){const x=T.c.find(y=>y.n===it.n&&y.v===v[0]);if(x)x.q++;else T.c.push({n:it.n,v:v[0],p:v[1],q:1});pintarTotem()}
+function abrirPago(){clearTimeout(tInact);$('pTot').textContent=pesos(totalC(T.c));$('dlgPago').classList.add('on');
+  camara({img:'pImg',sin:'pSin',aro:'pAro',ind:'pInd',sim:'pSim',modo:'pago',alIdentificar:(vs,real,seguir)=>{
+    const i=real>=REAL_MIN?identificar(vs[0]):-1;
+    if(i!==T.h){$('pInd').textContent=i<0?'No te reconocimos. Parpadea otra vez':'Esa cara no es de '+quien().nombre;setTimeout(seguir,1800);return}
+    detenerCamara();$('dlgPago').classList.remove('on');pagarSaldo()}});
+}
+$('pCancelar').onclick=()=>{detenerCamara();$('dlgPago').classList.remove('on');vigilarInactividad()};
 function pagarSaldo(){
   const h=quien();const t=totalC(T.c);const txt=lineasTxt(T.c);
   if(h.saldo<t){aviso('⚠️',h.nombre+' no tuvo saldo',`Quiso comprar ${txt} (${pesos(t)}) y tiene ${pesos(h.saldo)}. Recarga desde la app.`,false);
@@ -699,7 +713,7 @@ function pagarSaldo(){
   h.saldo-=t;gastar(h,t);E.folio++;h.pedidos=h.pedidos||[];h.pedidos.unshift({txt,recreo:'ahora',folio:'A'+E.folio,entregado:false});
   mov(h,'Compra en el tótem · '+txt,-t);guardar();
   aviso('🛍️',h.nombre+' compró en la cafetería',`${txt} · ${pesos(t)} · le quedan ${pesos(h.saldo)}`,false);
-  mostrarRes('verde','✓','¡Listo, '+h.nombre+'!','Tu folio: A'+E.folio+'\nRecógelo en el tótem de entrega',h.grupo+' · te quedan '+pesos(h.saldo));
+  mostrarRes('verde','✓','¡Ya pagaste, '+h.nombre+'!',pesos(t)+' · folio A'+E.folio+'\nRecógelo en el tótem de entrega',h.grupo+' · te quedan '+pesos(h.saldo));
   esperaPedido();
 }
 
@@ -727,7 +741,7 @@ $('res').onclick=()=>$('res').classList.remove('on');
 /* ================= modos y reinicio ================= */
 function modo(m){
   [['mApp','vApp','app'],['mTotem','vTotem','totem'],['mRecoge','vRecoge','recoge']].forEach(([b,v,k])=>{$(b).classList.toggle('on',m===k);$(v).classList.toggle('on',m===k)});
-  detenerCamara();clearTimeout(tInact);$('res').classList.remove('on');$('dlgVar').classList.remove('on');
+  detenerCamara();clearTimeout(tInact);$('res').classList.remove('on');$('dlgVar').classList.remove('on');$('dlgPago').classList.remove('on');
   if(m==='totem'){E=cargar();esperaPedido()}
   else if(m==='recoge'){E=cargar();esperaRecoge()}
   else{E=cargar();if(pant==='rostro')pant='inicio';pintar();if(E.noLeidos&&E.avisos[0])setTimeout(()=>mostrarBanner(E.avisos[0].t,E.avisos[0].x),500)}
@@ -739,7 +753,9 @@ logo.addEventListener('pointerdown',()=>{tLargo=setTimeout(abrirRe,1800)});
 ['pointerup','pointerleave','pointercancel'].forEach(ev=>logo.addEventListener(ev,()=>clearTimeout(tLargo)));
 $('rNo').onclick=()=>$('dlgReinicio').classList.remove('on');
 $('rSi').onclick=()=>{E=nuevo();guardar();T.c=[];$('dlgReinicio').classList.remove('on');pant='bienvenida';modo('app')};
-function ajustar(){const s=Math.min(innerWidth/1080,innerHeight/1920);const r=$('raiz');
+let ultAj=null;
+function ajustar(){const ae=document.activeElement;const tecl=ae&&/INPUT|TEXTAREA/.test(ae.tagName)&&ultAj&&ultAj.w===innerWidth&&innerHeight<ultAj.h;
+  if(tecl)return;ultAj={w:innerWidth,h:innerHeight};const s=Math.min(innerWidth/1080,innerHeight/1920);const r=$('raiz');
   r.style.transform=`translate(${(innerWidth-1080*s)/2}px,${(innerHeight-1920*s)/2}px) scale(${s})`}
 addEventListener('resize',ajustar);ajustar();
 pant=E.papa?'inicio':'bienvenida';pintar();
