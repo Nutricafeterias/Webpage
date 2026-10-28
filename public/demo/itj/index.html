@@ -336,8 +336,12 @@ function pintar(){
 const P={}, F={};
 
 P.bienvenida=()=>`<div class="cuerpo" style="display:flex;flex-direction:column;justify-content:center;padding-top:60px">
-  <img class="logo-app" src="/demo/itj/logo.png" alt="Nutri">
-  <img src="/demo/itj/logo_itj.png" alt="Instituto Thomas Jefferson" style="display:block;width:330px;margin:-10px auto 34px">
+  <img src="/demo/itj/logo_itj_solo.png" alt="Instituto Thomas Jefferson" style="display:block;width:440px;margin:0 auto 26px">
+  <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin:0 auto 40px">
+    <span style="height:2px;width:60px;background:var(--lino)"></span>
+    <img src="/demo/itj/logo.png" alt="Nutri Cafeterías" style="height:58px">
+    <span style="height:2px;width:60px;background:var(--lino)"></span>
+  </div>
   <div style="text-align:center;font-size:36px;font-weight:800;color:var(--verde);line-height:1.1;margin-bottom:12px">El recreo de tus hijos,<br>sin filas</div>
   <div style="text-align:center;font-size:19px;color:var(--cacao);margin-bottom:44px;line-height:1.4">Recarga su saldo, pide su comida antes del recreo<br>y entérate de todo lo que compran.</div>
   <button class="btn nar" data-ir="registro">Crear mi cuenta</button>
