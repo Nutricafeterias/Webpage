@@ -686,7 +686,7 @@ addEventListener('resize',ajustar);ajustar();
 pant=E.papa?'inicio':'bienvenida';pintar();
 
 /* Funciona sin internet: el service worker guarda la demo en el tótem la primera vez que carga. */
-if('serviceWorker' in navigator){navigator.serviceWorker.register('/demo/sw-itj.js',{scope:'/demo/itj'}).catch(()=>{})}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('/demo/sw-itj.js',{scope:'/demo/itj'}).then(()=>navigator.serviceWorker.ready).then(()=>console.info('demo-itj: '+(navigator.serviceWorker.controller?'funcionando desde el equipo (sin internet OK)':'guardada; desde la siguiente carga funciona sin internet'))).catch(e=>console.warn('demo-itj sw: '+e))}
 </script>
 </body>
 </html>
