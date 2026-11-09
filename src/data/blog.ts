@@ -30,6 +30,68 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'menu-comedor-escolar-ejemplo-semanal-como-armarlo-sep',
+    title: 'Menú de comedor escolar: ejemplo de una semana y cómo armarlo conforme a la SEP',
+    description:
+      'Ejemplo de menú semanal de comedor escolar en 3 o 4 tiempos y las reglas para armarlo conforme a los Lineamientos SEP: qué lleva cada día, cómo ajustar la porción por edad y qué pedirle a tu operador. Pide una degustación en tu escuela.',
+    date: '2026-11-09',
+    readTime: '6 min',
+    category: 'Guías para directores',
+    emoji: '🍲',
+    image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=1200&h=630&fit=crop&q=85',
+    keywords: ['menú de comedor escolar', 'menús escolares ejemplos', 'menú escolar semanal', 'menú comedor escolar SEP', 'comedor escolar CDMX', 'cómo armar un menú escolar'],
+    related: [
+      { href: '/comedores-escolares', anchor: 'Comedor escolar en CDMX: menú de 3 o 4 tiempos, recién hecho' },
+      { href: '/menus', anchor: 'Menú escolar semanal conforme a la SEP: ejemplo para cafetería y comedor' },
+      { href: '/lineamientos-sep', anchor: 'Lineamientos SEP para cafetería y comedor escolar: qué exige y cómo cumplir' },
+      { href: '/blog/cuanto-cuesta-comedor-escolar-cdmx', anchor: '¿Cuánto cuesta un comedor escolar en CDMX?' },
+    ],
+    content: [
+      { type: 'p', text: 'Un menú de comedor escolar bien armado tiene una estructura que se repite todos los días y un contenido que cambia durante la semana: entrada, plato fuerte con proteína, verdura, fruta de postre y agua natural, servidos en 3 o 4 tiempos, sin productos con sellos de exceso. Esta guía explica cómo se arma, muestra un ejemplo de una semana y lista lo que conviene pedirle a quien lo prepara.' },
+      { type: 'p', text: 'Sirve si estás comparando operadores, si vas a revisar el menú actual de tu escuela o si simplemente quieres saber qué es razonable esperar de un comedor.' },
+      { type: 'h2', text: 'Qué debe llevar un menú de comedor, conforme a la SEP' },
+      { type: 'p', text: 'Desde el 29 de marzo de 2025 están vigentes los Lineamientos generales de alimentos y bebidas en las escuelas, que prohíben vender productos con sellos de advertencia y piden que el agua natural esté siempre disponible. Sobre esa base, el menú de un comedor se revisa con cinco reglas simples:' },
+      { type: 'ul', items: [
+        'Verdura y fruta fresca todos los días.',
+        'Cereales como tortilla de maíz, arroz, avena o pan integral.',
+        'Una proteína diaria: pollo, res, pescado, huevo, frijol, lenteja o garbanzo.',
+        'Agua natural como bebida principal.',
+        'Ningún producto con uno o más sellos de exceso; sin refrescos, frituras, dulces ni pastelitos industrializados.',
+      ] },
+      { type: 'h2', text: 'Ejemplo de una semana de comedor en 4 tiempos' },
+      { type: 'p', text: 'Este es un ejemplo de estructura, no un menú cerrado: cada escuela recibe un ciclo adaptado a su comunidad, a sus alérgenos y a su cocina. Lo importante es ver el patrón.' },
+      { type: 'ul', items: [
+        'Lunes: crema de verduras, pollo en salsa verde con arroz, ensalada y fruta de temporada.',
+        'Martes: sopa de lentejas, tinga de res con frijoles y tortillas de maíz, verdura al vapor y fruta.',
+        'Miércoles: caldo de verduras, pescado al horno con puré de papa, ensalada fresca y fruta.',
+        'Jueves: sopa de pasta, albóndigas en salsa de jitomate con verduras salteadas y fruta.',
+        'Viernes: crema de calabacita, huevo a la mexicana con frijoles, tortillas de maíz y fruta.',
+      ] },
+      { type: 'p', text: 'Fíjate en lo que se repite: una proteína distinta cada día, una verdura en cada plato, fruta de postre en lugar de un dulce y agua natural para acompañar. Variar la proteína y el cereal durante la semana evita que el menú se vuelva monótono para los alumnos.' },
+      { type: 'h2', text: 'La porción cambia con la edad' },
+      { type: 'p', text: 'Un menú servido igual a un alumno de preescolar y a uno de preparatoria desperdicia comida en un caso y deja con hambre en el otro. Lo correcto es que el menú sea el mismo para todos, pero que la porción se ajuste por nivel. Pregunta cómo la define el operador y quién la supervisa en el servicio.' },
+      { type: 'h2', text: 'Servir por turnos sin perder calidad' },
+      { type: 'p', text: 'En un comedor con varios turnos, el reto no es el menú sino el mismo sabor del primer al último turno. Eso depende de cocinar en tandas, de la temperatura al servir y de que alguien pruebe el plato antes de abrir el servicio. Un menú excelente en papel que llega frío al tercer turno no cumple su función.' },
+      { type: 'quote', text: 'Un menú se juzga en el plato del último turno, no en la hoja que se publica a las familias. Por eso nuestra comida del comedor se cocina el mismo día en que se sirve.' },
+      { type: 'h2', text: 'Cinco preguntas para revisar el menú de tu escuela' },
+      { type: 'ul', items: [
+        '¿Quién valida el menú contra los Lineamientos SEP y con qué documento?',
+        '¿Hay verdura, proteína y fruta en cada comida, o solo en el papel?',
+        '¿La comida se cocina el mismo día? ¿Algo llega recalentado?',
+        '¿Cómo se ajusta la porción por edad y cómo se atienden las alergias?',
+        '¿Los alumnos y las familias pueden probar y votar el menú antes de firmar?',
+      ] },
+      { type: 'h2', text: 'Cómo lo hacemos en Nutri Cafeterías' },
+      { type: 'p', text: 'Nutri Cafeterías opera cafeterías y comedores escolares en la Ciudad de México desde 2018. En el comedor servimos un menú del día de 3 o 4 tiempos, con porción por edad, diseñado con nutriólogos y revisado contra los Lineamientos SEP y la NOM-251. Las familias pueden pagar en la App Nutri y en efectivo en caja, por día, semana o mes.' },
+      { type: 'p', text: 'Si quieres ver cómo se vería en tu escuela, conoce el servicio de comedor escolar en cafeteriasescolares.com.mx/comedores-escolares y pide una degustación con voto de alumnos y familias, sin costo. También puedes revisar el menú escolar semanal de ejemplo en cafeteriasescolares.com.mx/menus antes de escribirnos.' },
+    ],
+    faq: [
+      { q: '¿Qué lleva un menú de comedor escolar conforme a la SEP?', a: 'Verdura y fruta fresca diarias, un cereal como tortilla de maíz o arroz, una proteína cada día, agua natural como bebida principal y ningún producto con sellos de exceso, según los Lineamientos generales de alimentos y bebidas en las escuelas vigentes desde el 29-mar-2025.' },
+      { q: '¿Cuántos tiempos tiene un menú de comedor escolar?', a: 'Lo habitual es de 3 o 4 tiempos: entrada o sopa, plato fuerte con proteína y verdura, fruta de postre y agua natural.' },
+      { q: '¿Cómo saber si el menú le va a gustar a los alumnos?', a: 'Con una degustación en la escuela antes de contratar, donde alumnos y familias prueben la comida de un día completo y voten.' },
+    ],
+  },
+  {
     slug: 'como-elegir-operador-cafeteria-escolar',
     title: 'Cómo elegir al operador de la cafetería de tu escuela: 12 criterios (y las preguntas para hacerle a cualquier proveedor)',
     description:
